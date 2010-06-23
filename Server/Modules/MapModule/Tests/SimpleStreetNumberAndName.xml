@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<streetnames>
+   <streetname name="Baravägen 1"                                 street="Baravägen"                           number="1"/>
+   <streetname name="Baravägen"                                   street="Baravägen"                           number="0"/>
+   <streetname name="Stora vägen"                                 street="Stora vägen"                         number="0"/>
+   <streetname name="Stora vägen 23"                              street="Stora vägen"                         number="23"/>
+   <streetname name="23t Stora vägen"                             street="Stora vägen"                         number="23"/>
+   <streetname name="Stora 23 vägen"                              street="Stora 23 vägen"                      number="0"/>
+   <streetname name="17 Odd_street: name, wouldn't ya say?"       street="Odd_street: name, wouldn't ya say?"  number="17"/>   
+   <streetname name="1 Baravägen 2"                               street="1 Baravägen 2"                       number="0"/>
+   <streetname name="Kastanjevägen 17G"                           street="Kastanjevägen"                       number="17"/>
+   <streetname name="17G Kastanjevägen"                           street="Kastanjevägen"                       number="17"/>
+   <streetname name="1.5 Kastanjevägen"                           street="1.5 Kastanjevägen"                   number="0"/>
+   <streetname name="01 Kastanjevägen"                            street="Kastanjevägen"                       number="1"/>
+   <streetname name="波蘭"                                         street="波蘭"                                 number="0"/>
+   <streetname name="123F 波蘭"                                    street="波蘭"                                 number="123"/>
+   <streetname name="波蘭 321G"                                    street="波蘭"                                 number="321"/>
+   <streetname name="波蘭 北達科他州 321G"                           street="波蘭 北達科他州"                        number="321"/>
+   <streetname name="484 F D Roosevelt Avenue, Suite 17"          street="484 F D Roosevelt Avenue, Suite 17"  number="0"/>
+   <streetname name="G-2/43 Middle Circle"                        street="G-2/43 Middle Circle"                number="0"/>
+   <streetname name="E-19 A South Extension Market-1"             street="E-19 A South Extension Market-1"     number="0"/>
+   <streetname name="52-C, Flyover Complex"                       street="52-C, Flyover Complex"               number="0"/>
+   <streetname name="II Stall No 1, Chandan Market"               street="II Stall No 1, Chandan Market"       number="0"/>
+   <streetname name="4/15A, Asaf Ali Road"                        street="4/15A, Asaf Ali Road"                number="0"/>
+   <streetname name="E-15"                                        street="E-15"                                number="0"/>
+   <streetname name="Jalan Melawai VII/4A"                        street="Jalan Melawai VII/4A"                number="0"/>
+   <streetname name="No. 8 Jalan Conlay"                          street="No. 8 Jalan Conlay"                  number="0"/>
+   <streetname name="Lot G9 Level Two, Block G"                   street="Lot G9 Level Two, Block G"           number="0"/>
+</streetnames>

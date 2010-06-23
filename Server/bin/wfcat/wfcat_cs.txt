@@ -1,0 +1,15 @@
+Airport	Letiště
+City Centre	Centrum města
+Ferry Terminal	Trajektový přístav
+Hotel	Hotel
+Museum	Muzeum
+Nightlife	Noční život
+Open Parking Area	Otevřené parkoviště
+Parking Garage	Parkovací garáže
+Petrol Station	Čerpací stanice
+Post Office	Pošta
+Train Station	Železniční stanice
+Rent a car	Půjčovna automobilů
+Restaurant	Restaurace
+Shopping	Nákupní centrum
+Tourist information	Turistická kancelář

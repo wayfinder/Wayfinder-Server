@@ -1,0 +1,526 @@
+%
+% Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+% All rights reserved.
+% 
+% Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+% 
+%     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+%     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+%     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+% 
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+%
+
+\section{Global parameters}
+
+These parameters can be sent in any request.
+
+
+\subsection{Global parameter ids}
+
+
+\begin{list}{\textbf{ParamID}}{}
+\item \textbf{0} \textbf{Type} empty, zero length \textbf{Name} NullParam
+                 \textbf{Default~value} - \\
+  \index{NullParam, Parameter}
+  \index{0, ParamID}
+  \label{NullParam}
+  \textbf{Description} The empty param.
+\item \textbf{1} \textbf{Type} string \textbf{Name} User ID
+                 \textbf{Default~value} - \\
+  \index{User ID, Parameter}
+  \index{1, ParamID}
+  \label{User ID}
+  \textbf{Description} This string parameter is the user's login or user's
+  UIN. Used when client doesn't know which it is.
+\item \textbf{2} \textbf{Type} string \textbf{Name} User Password
+                 \textbf{Default~value} - \\
+  \index{User Password, Parameter}
+  \index{2, ParamID}
+  \label{User Password}
+  \textbf{Description} This string parameter is the user's password.
+\item \textbf{3} \textbf{Type} byte array \textbf{Name} User Licence (key)
+                 \textbf{Default~value} - \\
+  \index{User Licence (key), Parameter}
+  \index{3, ParamID}
+  \label{User Licence (key)}
+  \textbf{Description} This binary parameter is the user's licence key.
+\item \textbf{4} \textbf{Type} string \textbf{Name} Client type
+                 \textbf{Default~value} - \\
+  \index{Client type, Parameter}
+  \index{4, ParamID}
+ \textbf{Description} Information about client type like "Navigator", 
+  "PocketPC" or "Symbian" as a string. See Client type specification.
+\item \textbf{5} \textbf{Type} string \textbf{Name} Client type options
+                 \textbf{Default~value} - \\
+  \index{Client type options, Parameter}
+  \index{5, ParamID}
+  \textbf{Description} Information such as processor type and or device type,
+  iPAQARM, Nokia7650, as a string. More client type options may be added
+  after a comma sign (','). See Client type specification.
+\item \textbf{6} \textbf{Type} uint16 \textbf{Name} Language of client
+                 \textbf{Default~value} - \\
+  \index{Language of client, Parameter}
+  \index{6, ParamID}
+  \label{LanguageClient}
+  \textbf{Description} Language of the client. Should always be sent as it
+  affects almost every request. See Section \ref{languageCode} for languages.
+\item \textbf{7} \textbf{Type} byte \textbf{Name} Wayfinder Subscription Type
+                 \textbf{Default~value} - \\
+  \index{Wayfinder Subscription Type, Parameter}
+  \index{7, ParamID}
+  \label{Wayfinder Subscription Type}
+  \textbf{Description} Byte parameter sent from client to server and from 
+  server to client containing the Wayfinder Subscription Type the client 
+  think it is and what Subscription Type the server think the client is.
+  The types of Wayfinder Subscriptions are:\\
+      \begin{tabular}{|l|l|l|}
+        \hline
+        Number & Type    & Comment \\\hline
+        0x0    & Trial   & Trial \\\hline
+        0x1    & Silver  & WMMG \\\hline
+        0x2    & Gold    & WMN \\\hline
+      \end{tabular}
+\item \textbf{8} \textbf{Type} string \textbf{Name} User Login
+                 \textbf{Default~value} - \\
+  \index{User Login, Parameter}
+  \index{8, ParamID}
+  \label{User Login}
+  \textbf{Description} This string parameter is the user's login. Used 
+  together with User Password to authenticate user.
+\item \textbf{9} \textbf{Type} string \textbf{Name} User UIN
+                 \textbf{Default~value} - \\
+  \index{User UIN, Parameter}
+  \index{9, ParamID}
+  \label{User UIN}
+  \textbf{Description} This string parameter is the user's UIN.
+\item \textbf{10} \textbf{Type} uint32 \textbf{Name} Retry time
+                 \textbf{Default~value} 5 \\
+  \index{Retry time, Parameter}
+  \index{10, ParamID}
+  \label{Retry time}
+  \textbf{Description} This is the time in seconds until the client should 
+  retry contacting the server. Sent from server if it doesn't want to 
+  handle the request immediately. Usually with a status code like 
+  {\tt NAV\_STATUS\_SERVER\_OVERLOADED} or 
+  {\tt NAV\_STATUS\_SERVER\_UPGRADE\_IN\_PROGRESS}.
+\item \textbf{11} \textbf{Type} uint32*3 \textbf{Name} Program version
+                 \textbf{Default~value} - \\
+  \index{Program version, Parameter}
+  \index{11, ParamID}
+  \label{Program version}
+  \textbf{Description} The program version of the client.
+\item \textbf{12} \textbf{Type} uint32 \textbf{Name} Transactions left 
+                 \textbf{Default~value} - \\
+  \index{Transactions left, Parameter}
+  \index{12, ParamID}
+  \textbf{Description} Uint32 parameter sent from the server to the client 
+  detailing how many transactions are left before the user has to buy new ones.
+  Only sent if appropriate.
+  The two MSBs are the type of transactions.
+  \begin{table}[hbt]
+    \begin{center}
+      \begin{tabular}{|l|l|l|}
+        \hline
+        MSBs   & Type              & Comment \\\hline
+        00$_2$ & Transactions      & A search, map, or route is a transaction.
+                                     \\\hline
+        01$_2$ & Reserved          & Reserved for future use. \\\hline
+        10$_2$ & Transaction Days left & How many 24h days of usage left. 
+                                         \\\hline
+        11$_2$ & Reserved          & Reserved for future use.  \\\hline
+      \end{tabular}
+    \end{center}
+  \end{table}
+\item \textbf{13} \textbf{Type} uint32 \textbf{Name} Transactions Day Start
+                 \textbf{Default~value} - \\
+  \index{Transactions Day Start, Parameter}
+  \index{13, ParamID}
+  \textbf{Description} Uint32 parameter with the UTC time of when the 
+  current Transactions Day started.
+\item \textbf{14} \textbf{Type} String \textbf{Name} SessionKey
+                 \textbf{Default~value} - \\
+  \index{SessionKey, Parameter}
+  \index{14, ParamID}
+  \textbf{Description} String with the sessionKey for the current connection to
+  the server. Sent from server on requests from client without it. Client can
+  use it on resued connection to server instead of normal authentication.
+
+\item \textbf{15} \textbf{Type} String \textbf{Name} Upload files 
+                 \textbf{Default~value} - \\
+  \index{Upload files , Parameter}
+  \index{15, ParamID}
+  \textbf{Description} String with files that the client should upload to 
+                       server.
+\item \textbf{16} \textbf{Type} Byte array \textbf{Name} Uploaded files 
+                 \textbf{Default~value} - \\
+  \index{Uploaded files , Parameter}
+  \index{16, ParamID}
+  \textbf{Description} Byte array with the files uploaded format: 
+  ([filename string] : [length in decimal string] : [length bytes data])+.
+\item \textbf{17} \textbf{Type} byte array \textbf{Name} Old user Licence
+  (key) \textbf{Default~value} - \\
+  \index{Old User Licence (key), Parameter}
+  \index{17, ParamID}
+  \label{Old User Licence (key)}
+  \textbf{Description} The prevoius value that the client has moved from.
+\item \textbf{18} \textbf{Type} uint16 \textbf{Name} Days left 
+                 \textbf{Default~value} - \\
+  \index{Days left, Parameter}
+  \index{18, ParamID}
+  \textbf{Description} Uint16 parameter sent from the server to the client 
+  detailing how many days left for user's account.
+\item \textbf{19} \textbf{Type} byte array \textbf{Name} Server Auth Bob
+                  \textbf{Default~value} - \\
+  \index{Server Auth Bob, Parameter}
+  \index{19, ParamID}
+  \label{Server Auth Bob}
+  \textbf{Description} This binary parameter is a authentication binary
+                       object that the server has set in the client and
+                       only the server can understand. Client should
+                       send it to secondary servers to authenticate
+                       itself.
+\item \textbf{20} \textbf{Type} uint32 \textbf{Name} Server Auth Bob 
+                  Checksum
+                  \textbf{Default~value} - \\
+  \index{Server Auth Bob Checksum, Parameter}
+  \index{20, ParamID}
+  \label{Server Auth Bob Checksum}
+  \textbf{Description} Checksum for Server Auth Bob.
+\item \textbf{21} \textbf{Type} uint32 array \textbf{Name} Rights bitfield
+                  \textbf{Default~value} - \\
+  \index{Rights bitfield, Parameter}
+  \index{21, ParamID}
+  \label{Rights bitfield}
+  \textbf{Description} Array of uint32s with the right bit for the user.
+\item \textbf{22} \textbf{Type} uint32*3 \textbf{Name} Resource version
+                 \textbf{Default~value} - \\
+  \index{Resource version, Parameter}
+  \index{22, ParamID}
+  \label{Resource version}
+  \textbf{Description} The resource version of the client.
+\item \textbf{23} \textbf{Type} String \textbf{Name} New version
+                 \textbf{Default~value} - \\
+  \index{New version, Parameter}
+  \index{23, ParamID}
+  \label{New version}
+  \textbf{Description} The latest program, resource and MLFW version.
+                       Sent as a string with  
+                       ProgramVersion ':' ResourceVersion ':' MLFWVersion. 
+                       Where
+                       ProgramVersion and ResourceVersion are formatted:
+                       [1-9][0-9]* '.' [1-9][0-9]* '.' [1-9][0-9]*.
+                       ResourceVersion has same format as ProgramVersion.
+                       MLFWVersion is a single number.
+
+\item \textbf{24} \textbf{Type} uint32 \textbf{Name} Earth extended error
+                 \textbf{Default~value} - \\
+  \index{Earth Extended error, Parameter}
+  \index{24, ParamID}
+  \label{Earth Extended error}
+  \textbf{Description} If the status of the packet is {\tt
+    NAV\_STATUS\_EXTENDED\_ERROR}, this parameter contains the
+  earth extended error code. See also Extended error below. Do no extend 
+  this use Extended url below.
+\begin{verbatim}
+enum ExtendedErrorCode {
+     NO_EXTENDED_ERROR           =  0x0,
+     ROUTING_NOT_ALLOWED         =  0x17001,
+};
+\end{verbatim}
+\item \textbf{25} \textbf{Type} uint32 \textbf{Name} UTC time
+                  \textbf{Default~value} - \\
+  \index{UTC time, Parameter}
+  \index{25, ParamID}
+  \label{UTC time}
+  \textbf{Description} The UTC time in the server.
+\item \textbf{26} \textbf{Type} String \textbf{Name} External url
+                 \textbf{Default~value} - \\
+  \index{External url, Parameter}
+  \index{26, ParamID}
+  \label{External url}
+  \textbf{Description} If the status of the packet is {\tt
+    NAV\_STATUS\_EXTENDED\_ERROR}, this parameter contains the
+  external URL. This URL is sent to Content Window in client.
+  Please note that this is a string. So do not change it in client!
+\item \textbf{27} \textbf{Type} String \textbf{Name} Latest News Id
+                 \textbf{Default~value} - \\
+  \index{Latest News Id, Parameter}
+  \index{27, ParamID}
+  \textbf{Description} String with the server provided latest news id.
+                       Compared to last value in client and client
+                       goes to latest news page if not same or if 
+                       parameter is empty.
+\item \textbf{28} \textbf{Type} String \textbf{Name} Search desc CRC
+                  \textbf{Default~value} - \\
+  \index{Search desc CRC, Parameter}
+  \index{28, ParamID}
+  \label{Search desc CRC}
+  \textbf{Description} The crc of the search description. See combined search.
+\item \textbf{29} \textbf{Type} String \textbf{Name} User Licence (key) Type
+                 \textbf{Default~value} - \\
+  \index{User Licence (key) Type, Parameter}
+  \index{29, ParamID}
+  \label{User Licence (key) Type}
+  \textbf{Description} The user licence key's type, paramID 3. Valid types are:
+  "imei", "btmac", "bbpin", "imsi", "esn", "phone\_msisdn", "iphone\_dev\_id" or "customer\_msisdn".
+  If this parameter is not present "imei" is assumed.
+\item \textbf{30} \textbf{Type} String \textbf{Name} Old User Licence (key) Type
+                 \textbf{Default~value} - \\
+  \index{Old User Licence (key) Type, Parameter}
+  \index{30, ParamID}
+  \label{Old User Licence (key) Type}
+  \textbf{Description} The old user licence key's type, paramID 17. Same values
+  as paramID 29.
+
+\item \textbf{31} \textbf{Type} String \textbf{Name} Phone Property Key
+                 \textbf{Default~value} - \\
+  \index{Phone Property Key, Parameter}
+  \index{31, ParamID}
+  \label{Phone Property Key}
+  \textbf{Description} A phone property name. Is paired together with 
+  the same index value in paramID 32.
+\item \textbf{32} \textbf{Type} String \textbf{Name} Phone Property Value
+                 \textbf{Default~value} - \\
+  \index{Phone Property Value, Parameter}
+  \index{32, ParamID}
+  \label{Phone Property Value}
+  \textbf{Description} A phone property value. Is paired together with 
+  the same index key in paramID 31.
+\item \textbf{33} \textbf{Type} String \textbf{Name} Extended Error Data Value
+                 \textbf{Default~value} - \\
+  \index{Extended Error Data Value, Parameter}
+  \index{33, ParamID}
+  \label{Extended Error Data Value}
+  \textbf{Description} An extended error data value. Can typically be used, but not limited to, 
+  to indicate which product id that could be purchased for expired rights. \\
+  The string is formatted as "<error data type>;<error data value>". For iPhone client types,
+  the error data type is "iPhoneAppStore" and the error data value is the corresponding App Store
+  product id for the product corresponding to the missing rights.
+\item \textbf{34} \textbf{Type} String \textbf{Name} New version URL
+                 \textbf{Default~value} - \\
+  \index{New version URL, Parameter}
+  \index{34, ParamID}
+  \label{New version URL}
+  \textbf{Description} The URL where to download the new version of the client. 
+  Is sent together with paramID 23.
+\end{list}
+
+
+\section{Global types}
+
+\subsection{Language}
+
+\label{languageCode}
+\begin{verbatim}
+      enum languageCode {
+         ENGLISH            = 0,     /// English
+         SWEDISH            = 1,     /// Swedish
+         GERMAN             = 2,     /// German
+         DANISH             = 3,     /// Danish
+         FINNISH            = 4,     /// Finnish
+         NORWEGIAN          = 5,     /// Norwegian
+         ITALIAN            = 6,     /// Italian
+         DUTCH              = 7,     /// Dutch 
+         SPANISH            = 8,     /// Spanish
+         FRENCH             = 9,     /// French 
+         WELCH              = 10,    /// Welch 
+         PORTUGUESE         = 11,    /// Portuguese
+         CZECH              = 12,    /// Czech
+         AMERICAN_ENGLISH   = 13,    /// EN_US 
+         HUNGARIAN          = 14,    /// Hungarian
+         GREEK              = 15,    /// Greek
+         POLISH             = 16,    /// Polish
+         SLOVAK             = 17,    /// Slovak
+         RUSSIAN            = 18,    /// Russian
+         SLOVENIAN          = 19,    /// Slovenian
+         TURKISH            = 20,    /// Turkish
+         ARABIC             = 21,    /// Arabic
+         SWISS_FRENCH       = 22,
+         SWISS_GERMAN       = 23,
+         ICELANDIC          = 24,
+         BELGIAN_FLEMISH    = 25,
+         AUSTRALIAN_ENGLISH = 26,
+         BELGIAN_FRENCH     = 27,
+         AUSTRIAN_GERMAN    = 28,
+         NEW_ZEALAND_ENGLISH= 29,
+         CHINESE_TAIWAN     = 30,
+         CHINESE_HONG_KONG  = 31,
+         CHINESE_PRC        = 32,
+         JAPANESE           = 33,
+         THAI               = 34,
+         AFRIKAANS          = 35,
+         ALBANIAN           = 36
+         AMHARIC            = 37,
+         ARMENIAN           = 38,
+         TAGALOG            = 39,
+         BELARUSIAN         = 40,
+         BENGALI            = 41,
+         BULGARIAN          = 42,
+         BURMESE            = 43,
+         CATALAN            = 44,
+         CROATIAN           = 45,
+         CANADIAN_ENGLISH   = 46,
+         SOUTH_AFRICAN_ENGLISH=47,
+         ESTONIAN           = 48,
+         FARSI              = 49,
+         CANADIAN_FRENCH    = 50,
+         GAELIC             = 51,
+         GEORGIAN           = 52,
+         GREEK_CYPRUS       = 53,
+         GUJARATI           = 54,
+         HEBREW             = 55,
+         HINDI              = 56,
+         INDONESIAN         = 57,
+         IRISH              = 58,
+         SWISS_ITALIAN      = 59,
+         KANNADA            = 60,
+         KAZAKH             = 61,
+         KHMER              = 62,
+         KOREAN             = 63,
+         LAO                = 64,
+         LATVIAN            = 65,
+         LITHUANIAN         = 66,
+         MACEDONIAN         = 67,
+         MALAY              = 68,
+         MALAYALAM          = 69,
+         MARATHI            = 70,
+         MOLDAVIAN          = 71,
+         MONGOLIAN          = 72,
+         NYNORSK            = 73,
+         BRAZILIAN_PORTUGUESE=74,
+         PUNJABI            = 75,
+         ROMANIAN           = 76,
+         SERBIAN            = 77,
+         SINHALESE          = 78,
+         SOMALI             = 79,
+         LATIN_AMERICAN_SPANISH=80,
+         SWAHILI            = 81,
+         FINNISH_SWEDISH    = 82,
+         TAMIL              = 83,
+         TELUGU             = 84,
+         TIBETAN            = 85,
+         TIGRINYA           = 86,
+         CYPRUS_TURKISH     = 87,
+         TURKMEN            = 88,
+         UKRAINIAN          = 89,
+         URDU               = 90,
+         VIETNAMESE         = 91,
+         ZULU               = 92,
+         SESOTHO            = 93,
+         BASQUE             = 94,
+         GALICIAN           = 95,
+         ASIA_PACIFIC_ENGLISH=96,
+         TAIWAN_ENGLISH     = 97,
+         HONG_KONG_ENGLISH  = 98,
+         CHINA_ENGLISH      = 99,
+         JAPAN_ENGLISH      = 100,
+         THAI_ENGLISH       = 101,
+         ASIA_PACIFIC_MALAY = 102,
+         BOSNIAN            = 103,
+         MALTESE            = 104,
+         CHINESE_TRADITIONAL= 105,
+      };
+\end{verbatim}
+
+\section{Authentication of client}
+\label{Authentication of client}
+
+\begin{enumerate}
+
+\item Blocked Client
+  \begin{itemize}
+    \item Client is blocked if blocked-date for the client-type is expired.
+    \item Expired user status should be returned.
+  \end{itemize}
+\item Connection reused with sessionKey.
+  \begin{itemize}
+    \item Client must be previously authenticated using other method.
+    \item SessionKey must match the one for the connection.
+  \end{itemize}
+\item MSISDN and Licence Key - Reserved for future use
+\item User (ID | Login | UIN) and Licence Key
+  \begin{itemize}
+  \item Of the three User params UIN is prefered first then Login and last 
+    ID.
+  \item Licence Key is the IMEI, or other identifier, of the client hardware.
+  \item If Old Licence Key too then.
+    \begin{itemize}
+    \item Find user by User param.
+      \begin{itemize}
+      \item User has Old Licence Key then change User to have new Licence Key.
+      \item User has new Licence Key then all is ok.
+      \item User has neither Old nor new Licence Key then resolve the
+        situation by using {\tt NAV\_WHOAMI\_REQ}, see Section
+        \ref{NAV_WHOAMI_REQ}.
+      \end{itemize}
+    \end{itemize}
+  \item The owner of the Licence Key is looked up.
+    \begin{itemize}
+    \item One user with Licence Key then check if User param matches.
+      If not send owner User param to client.
+    \item More than one user with Licence Key then check if the user
+      from the User param has the Licence Key.
+    \item No user with Licence Key then call {\tt NAV\_WHOAMI\_REQ}
+      (see Section \ref{NAV_WHOAMI_REQ}) to create a new user.
+    \end{itemize}
+  \end{itemize}
+\item User Login and User Password
+  \begin{itemize}
+    \item The User login and Password is checked against the logonID and 
+      Password database. If check fails user is unauthorized.
+  \end{itemize}
+\item Only Licence Key (IMEI) \\
+  Then the NAV\_WHOAMI\_REQ, see Section \ref{NAV_WHOAMI_REQ}, 
+  is handled and if it returns a user then the client is authorized,
+  not if not.
+
+\item Else unauthorized.
+
+\end{enumerate}
+
+After the authorization is done some other checks are made.
+
+\begin{enumerate}
+    \item A check if user's Valid date is expired if so Expired user status 
+      is returned.
+    \item A check if the user has any region access time left. If not then
+      Expired user status is returned but if the request is Upgrade req then 
+      this check is not made. Check is also not made for tunnel request
+      as they can be used to extend account.
+\end{enumerate}
+
+
+\subsection{Matrix of Doom}
+\label{Matrix of Doom}
+
+The Matrix of Doom and the Matrix of Doom II describes what to do when 
+matching clients WFST, WayFinder Subscription Type, and servers WFST for 
+a user. See Figure \ref{Matrix of Doom figure}.
+
+% \begin{figure}[hbt]
+% \resizebox{\textwidth}{!}{\includegraphics{MOD_II}}
+% \caption{Matrix of Doom I and II}
+% \label{Matrix of Doom figure}
+% \end{figure}
+
+\newcommand{\newuser}{Create user}
+\newcommand{\trial}{Send Trial to client}
+\newcommand{\silver}{Send Silver to client}
+\newcommand{\gold}{Send Gold to client}
+
+\begin{figure}[hbt]
+\begin{centering}
+\begin{tabular}{|l||p{17mm}|p{17mm}|p{17mm}|p{17mm}|} \hline
+\textbf{Matrix of Doom}  & \multicolumn{4}{|c|}{\textbf{Wayfinder client}}\\\hline\hline
+\textbf{NavigatorServer} & Trial & Silver & Gold & Unknown     \\\hline
+Unknown & \newuser & \newuser     & \newuser & \newuser        \\\hline
+Trial   & OK       & \textbf{II:} \trial   & \trial   & \trial \\\cline{3-3}
+        &          & \textbf{I:} Upgrade to silver & &         \\\hline 
+Silver  & \silver  & OK           & \silver  & \silver         \\\hline
+Gold    & \gold    & \gold        & OK       & \gold           \\\hline 
+  \end{tabular}
+\caption{Matrix of Doom I and II}
+\label{Matrix of Doom figure}
+\end{centering}
+\end{figure}

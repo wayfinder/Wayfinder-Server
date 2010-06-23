@@ -1,0 +1,231 @@
+#!/bin/zsh
+
+
+
+
+# Print the commandline to the log.
+commandLine="$0";
+for i; do
+    commandLine="${commandLine} $i";
+done
+echo "Command line: ${commandLine}";
+echo ""
+
+
+# Read input arguments.
+argNbr=0;  # Index of non-flagged parameter.
+pos=1;     # Corresponds to index of positional parameter.
+flaggedArg=""; #false
+for i; do 
+   case $i in
+      -h) echo "Writes differences between the maps to different log" 
+          echo "files. Give the old maps as firstmaps and the new maps"
+          echo "as secondmaps."
+          echo ""
+          echo "Usage: "
+          echo "maps_genQualityCheck [OPTIONS] FIRSTMAPS SECONDMAPS"
+          echo ""
+          echo "OPTIONS"
+          echo "-bin BINDIR"
+          echo "   Tells where to find the QualTool binary file."
+          echo "-bin2 BINDIR"
+          echo "   If this option is given the QualTool binary file in this"
+          echo "   directory is used for the secound maps."
+          echo "-firstMapsQualLog"
+          echo "   An old qualitylog for first maps to re-use. This is the"
+          echo "   2_file of the first maps qualDiff-dir."
+          echo "   This option saves time, creating the qualDiff faster."
+          echo "   Must give the full path to this file for it to work."
+          echo "-08 or -09"
+          echo "   Compares only 080000000 or 090000000 and higher IDs."
+          echo "   Useful when the compared mapsets have different number"
+          echo "   of undeview maps."
+          exit;;
+      -bin) eval BINDIR_ARG=$`echo $[pos+1]`;
+             flaggedArg="true";;
+      -bin2) eval BINDIR2_ARG=$`echo $[pos+1]`;
+             flaggedArg="true";;
+      -f)eval FROM_ARG=$`echo $[pos+1]`;
+             flaggedArg="true";;
+      -t)eval TO_ARG=$`echo $[pos+1]`;
+             flaggedArg="true";;
+      -firstMapsQualLog) eval FIRSTMAPSQUALLOG_ARG=$`echo $[pos+1]`;
+             flaggedArg="true";;
+      -08) _08="true";;
+      -09) _09="true";;
+      -*) echo "Invalid option $i"; exit;;
+      *) if [ ${flaggedArg} ]; then
+           flaggedArg=""; #false
+         else
+            eval arg${argNbr}="$i";
+            argNbr=$[argNbr+1]
+         fi;;
+   esac
+   pos=$[pos+1];
+done
+
+firstMapsQualLog="";
+if [ "$FIRSTMAPSQUALLOG_ARG" ]; then
+   if [ -e $FIRSTMAPSQUALLOG_ARG ]; then
+      firstMapsQualLog="$FIRSTMAPSQUALLOG_ARG";
+   fi
+fi
+
+pushd ${BINDIR_ARG}  > /dev/null;
+BINDIR=`pwd`;
+popd > /dev/null;
+BINDIR2=${BINDIR};
+if [ "${BINDIR2_ARG}" ]; then
+    pushd ${BINDIR2_ARG}  > /dev/null;
+    BINDIR2=`pwd`;
+    popd  > /dev/null;
+fi
+
+FIRSTMAPS=${arg0};
+SECONDMAPS=${arg1};
+INITIALDIR=`pwd`;
+
+
+function getLeadingMergeSubStr() {
+    FILENAME=$1;
+
+    if [ "`echo ${FILENAME} | grep -E ^merge`" ]; then
+        # There is a "merge" in the string.
+
+        echo ${FILENAME} | sed -e 's/_.*$//'
+    else
+        echo ${FILENAME}
+    fi
+}
+
+
+   #Create absolute paths
+pushd ${FIRSTMAPS} > /dev/null
+FIRSTMAPS=`pwd`
+popd > /dev/null
+pushd ${SECONDMAPS} > /dev/null
+SECONDMAPS=`pwd`
+popd > /dev/null
+
+
+   #QualTool
+pushd $BINDIR > /dev/null
+firstBasename=`basename ${FIRSTMAPS}`
+secondBasename=`basename ${SECONDMAPS}`
+
+   # Handle _08 _09 options.
+preID="";
+if [ "${_08}" ]; then
+    echo "Only comparing overviews."
+    preID="08";
+    logSfx="Ovr";
+elif [ "${_09}" ]; then
+    echo "Only comparing overviews."
+    preID="09";
+    logSfx="Sup";
+fi
+
+
+    # Set log file names togther
+firstMapsLogName="${INITIALDIR}/1_${firstBasename}_MapsQual${logSfx}.log";
+secondMapsLogName="${INITIALDIR}/2_${secondBasename}_MapsQual${logSfx}.log"
+diffMapsLogName="${INITIALDIR}/`getLeadingMergeSubStr ${firstBasename}`-`getLeadingMergeSubStr ${secondBasename}`_MapsQualDiff${logSfx}.log"
+diffShortMapsLogName="${INITIALDIR}/`getLeadingMergeSubStr ${firstBasename}`-`getLeadingMergeSubStr ${secondBasename}`_ShortMapsQualDiff${logSfx}.log"
+
+echo ""
+echo `date +"%Y%m%d %T"`" Comparing:"
+echo "- ${FIRSTMAPS}"
+if [ "$firstMapsQualLog" ]; then
+   echo "  re-using $firstMapsQualLog"
+fi
+echo "- ${SECONDMAPS}"
+echo ""
+echo "Output is printed to:"
+echo "- ${firstMapsLogName}"
+echo "- ${secondMapsLogName}"
+echo "- ${diffMapsLogName}"
+echo ""
+
+if [ "`ls ${FIRSTMAPS}/*.mcm`" ]; then
+   suffix1="mcm";
+elif [ "`ls ${FIRSTMAPS}/*.mcm.bz2`" ]; then
+   suffix1="mcm.bz2";
+fi
+
+if [ "`ls ${SECONDMAPS}/*.mcm`" ]; then
+   suffix2="mcm";
+elif [ "`ls ${SECONDMAPS}/*.mcm.bz2`" ]; then
+   suffix2="mcm.bz2";
+fi
+
+if [ "${FROM_ARG}" ]; then
+    if [ "${TO_ARG}" ]; then
+        theIDs=(`getMapIDList $FROM_ARG $TO_ARG`);
+        
+        FIRSTMAPFILES="";
+        SECONDMAPFILES="";
+        for id in ${theIDs}; do
+            FIRSTMAPFILES="${FIRSTMAPFILES}
+${FIRSTMAPS}/${id}.${suffix1}"
+            SECONDMAPFILES="${SECONDMAPFILES}
+${SECONDMAPS}/${id}.${suffix2}"
+
+        done;
+    else
+        echo "-f without -t. Exits."
+        exit;
+    fi
+else
+    if [ "${TO_ARG}" ]; then
+        echo "-t without -f. Exits."
+        exit;
+    fi
+
+    FIRSTMAPFILES="${FIRSTMAPS}/*.${suffix1}"
+    SECONDMAPFILES="${SECONDMAPS}/*.${suffix2}"
+fi
+
+
+if [ "$firstMapsQualLog" ]; then
+   echo ""
+   echo "Re-using qual log for first maps: "
+   echo "${firstMapsLogName}"
+   echo " cp $firstMapsQualLog ${firstMapsLogName}"
+   cp $firstMapsQualLog ${firstMapsLogName}
+   chk_res
+   # if the copy fails, might be due to that the firstMapsQualLog is given
+   # with relative path, must be given with full path to work
+else 
+   echo ""
+   echo "Writing qualitylog for first maps: "
+   echo " ${firstMapsLogName}"
+   ./QualTool -M ${FIRSTMAPS}/${preID}*.${suffix1} >& ${firstMapsLogName}
+fi
+
+echo ""
+echo "Writing qualitylog for second maps:"
+echo " ${secondMapsLogName}"
+pushd $BINDIR2 > /dev/null
+./QualTool -M ${SECONDMAPS}/${preID}*.${suffix2} >& ${secondMapsLogName}
+popd > /dev/null
+
+echo ""
+echo "Writing qualitylog for diffs:"
+echo " ${diffMapsLogName}"
+./QualTool -c ${firstMapsLogName} -C ${secondMapsLogName} >& ${diffMapsLogName}
+
+
+popd > /dev/null
+
+
+   #Print the differences to the a short log.
+grep -E ".*:.*: [^ ^-]"  ${diffMapsLogName} > qualtmp.log
+grep -E "DIFF TOTALS" ${diffMapsLogName}  >> qualtmp.log
+   #Clear out not interesting lines.
+cat qualtmp.log | grep -v "Nbr POIs from others" | grep -v "[^S]: Total number" | grep -v "Km roads roadClass" > ${diffShortMapsLogName}
+rm qualtmp.log
+
+
+echo ""
+echo `date +"%Y%m%d %T"`" Done."
+

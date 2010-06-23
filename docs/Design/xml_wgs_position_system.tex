@@ -1,0 +1,15 @@
+%  Included from externalapi.tex and public_xml.tex
+The supported coordinate systems and formats.
+
+The WGS84 format is: (N|S|E|W) D(D*)$^{\circ}$ MM' SS[.dddd]'', as used in the coordinate ``\emph{N 69$^{\circ}$ 03' 35.7840'', E 24$^{\circ}$ 09' 58.8238''}''.
+That is, first one letter for point of compass, from (N|S|E|W).
+\emph{N} and \emph{S} are used for latitudes. \emph{E} and \emph{W} are used for longitudes.
+Then D(D*) is the number of degrees, with one or more digits.
+\emph{D} represents a digit in degrees.
+Then MM, the number of minutes, with exactly two digits. Pad with leading zeroes to make this two digits.
+\emph{M} represents a digit in minutes.
+Then SS, the number of seconds, with exactly two digits. Pad with leading zeroes to make this two digits.
+\emph{S} represents a digit in seconds.
+Then an optional 4 digit decimal number [.dddd], the number of milliseconds.
+\emph{d} represents a digit in milliseconds.
+

@@ -1,0 +1,15 @@
+Rent a car	Autovermietung
+Train Station	Bahnhof
+Shopping	Einkaufszentrum
+Airport	Flughafen
+Ferry Terminal	Fährverbindung
+Hotel	Hotel, Motel
+Museum	Museum
+Nightlife	Nachtleben
+Parking Garage	Parkgarage
+Open Parking Area	Parkplätze im Freien
+Post Office	Postamt
+Restaurant	Restaurant
+City Centre	Stadtmitte
+Petrol Station	Tankstelle
+Tourist information	Touristeninformation

@@ -1,0 +1,15 @@
+Airport	Αεροδρόμιο
+City Centre	Το κέντρο της πόλης
+Ferry Terminal	Τερματικός σταθμός των πλοίων
+Hotel	Ξενοδοχείο
+Museum	Μουσείο
+Nightlife	Νυχτερινή ζωή
+Open Parking Area	Ανοιχτή περιοχή για παρκάρισμα
+Parking Garage	Γκαράζ για παρκάρισμα
+Petrol Station	Βενζινάδικο
+Post Office	Ταχυδρομείο
+Train Station	Σιδηροδρομικός σταθμός
+Rent a car	Νοικιάστε αυτοκίνητο
+Restaurant	Εστιατόριο
+Shopping	Εμπορικό κέντρο
+Tourist information	Τουριστικό γραφείο

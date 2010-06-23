@@ -1,0 +1,185 @@
+% 
+% 
+% Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+% All rights reserved.
+% 
+% Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+% 
+%     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+%     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+%     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+% 
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+%  
+% This file should be included after the packages in all documents for the 
+% MC2-project
+%
+
+\makeindex
+
+% Find out what kind of output that is created. Also define the "preimage"
+% and "postimage" that is used for all images.
+\def\preimage{\begin{center}}
+\def\postimage{\end{center}}
+%\newif\ifhtml
+\ifhtml
+   \usepackage{html}                  % Makes latex2html much likely to
+                                      % include pictures...
+   \def\preimage{\begin{makeimage}}
+   \def\postimage{\end{makeimage}}
+\fi
+
+% A list with variable left margin (first argument sets the width)
+\newenvironment{desc2}[1]
+  { \begin{list}{\raisebox{1pt}{\ensuremath{\bullet}}}
+    {
+      \settowidth{\leftmargin}{\textbf{#1}}
+      \setlength{\labelwidth}{\leftmargin}
+      \setlength{\itemindent}{0pt}
+      \setlength{\labelsep}{6pt}
+      \addtolength{\leftmargin}{\labelsep}
+      \def\makelabel##1{\textbf{##1}\hfil}
+    }
+  }
+{ \end{list} }
+
+% Redefine some of the sectioning commands
+% This will not be done when creating html-output
+%begin{latexonly}
+   \makeatletter
+   \renewcommand{\ps@plain}{%
+      \renewcommand{\@oddhead}{}%  The head's empty
+      \renewcommand{\@evenhead}{}%
+      \renewcommand{\@oddfoot}{%
+         \footnotesize\tt\today ~\printtime ~(\version)\hfil%
+         \confidentialText}%
+      \renewcommand{\@evenfoot}{}}
+   \renewcommand{\section}{\@startsection%
+      {section}%
+      {1}%
+      {0mm}%
+      {-3.5ex plus-1ex minus-.2ex}%
+      {2ex plus.2ex}
+      {\normalfont\LARGE\bfseries}}%
+   \renewcommand{\subsection}{\@startsection%
+      {subsection}%
+      {2}%
+      {0mm}%
+      {-2ex plus-1ex minus-.2ex}%
+      {1ex plus.2ex}%
+      {\normalfont\Large\bfseries}}%
+   \renewcommand{\subsubsection}{\@startsection%
+      {subsubsection}%
+      {3}%
+      {0mm}%
+      {-2ex plus-1ex minus-.2ex}%
+      {0.1ex plus.1ex}%
+      {\normalfont\large\bfseries}}%
+   \makeatother
+%end{latexonly}
+
+% Create a new command that clears the left-page befora a chapter
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{fancy}\cleardoublepage}}
+
+% Create a new command that prints the current time
+\newcounter{hours}
+\newcounter{minutes}
+\newcommand{\printtime}{%
+   \setcounter{hours}{\time/60}%
+   \setcounter{minutes}{\time-\value{hours}*60}%
+   \ifthenelse{\theminutes<10}%
+      {\thehours:0\theminutes}%
+      {\thehours:\theminutes}}
+
+% Set the header and footer (not when generating html-output)
+%begin{latexonly}
+   \ifthenelse{\equal{\prefereddocumentclass}{book}}{
+      \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+   }{
+   }
+   \renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+   \lhead[\fancyplain{}{\bfseries\thepage}]%
+         {\fancyplain{}{\bfseries\rightmark}}
+   \ifthenelse{\equal{\printtableofcontents}{true}}{
+      \rhead[\fancyplain{}{\bfseries\projectName -- \leftmark}]%
+            {\fancyplain{}{\bfseries\thepage}}
+   }{
+      \rhead[\fancyplain{}{\bfseries\projectName -- \documentName~(\version)}]%
+            {\fancyplain{}{\bfseries\thepage}}
+   }
+   \rfoot[\footnotesize\today ~\printtime ~(\version)]%
+         {\footnotesize\confidentialText}
+   \lfoot[\footnotesize\confidentialText]%
+         {\footnotesize\today ~\printtime ~(\version)}
+   \cfoot{}
+%end{latexonly}
+
+% Headline on title page
+\ifthenelse{\equal{\documentCode}{}}{%
+   \title{\projectName\\[4mm]\documentName\\[4mm]\version}  
+}{
+   \title{\projectName\\[4mm]\documentName\\[4mm]\documentCode\\[4mm]\version}  
+}
+
+% The author
+\author{\authorName}
+\date{}
+
+\begin{document}
+%begin{latexonly}
+\ifthenelse{\equal{\prefereddocumentclass}{book}}{
+   \pagenumbering{roman}
+}{
+   \setcounter{page}{0}
+}
+%end{latexonly}
+
+%begin{latexonly}
+\ifthenelse{\equal{\createtitlepage}{true}}{
+%end{latexonly}
+   \maketitle                                % Creates title page
+%begin{latexonly}
+}{}
+%end{latexonly}
+
+%begin{latexonly}
+   \ifthenelse{\equal{\printtableofcontents}{front}}{
+      \setcounter{tocdepth}{2}
+      \tableofcontents
+      \addtocounter{secnumdepth}{1}
+      \thispagestyle{empty}
+   }{}
+%end{latexonly}
+
+% Skip this when generating html-output
+%begin{latexonly}
+   \ifthenelse{\equal{\createtitlepage}{true}}{
+      \newpage
+      \thispagestyle{empty}
+      ~\\[19cm]
+      \texttt{Copyright }\copyright~\texttt{1999 -- 2010 by 
+      Wayfinder Systems AB}~\\[2mm]
+      \texttt{This copy (\version) is generated \today, \printtime.}}
+   {}
+   \newpage
+%end{latexonly}
+
+%begin{latexonly}
+   \ifthenelse{\equal{\printtableofcontents}{true}}{
+      \clearemptydoublepage
+      \setcounter{tocdepth}{1}
+      \tableofcontents
+      \addtocounter{secnumdepth}{1}
+      \clearemptydoublepage}
+   {}
+%end{latexonly}
+
+\ifhtml
+   \tableofcontents
+\fi
+
+%begin{latexonly}
+   \pagenumbering{arabic}
+%end{latexonly}
+
+

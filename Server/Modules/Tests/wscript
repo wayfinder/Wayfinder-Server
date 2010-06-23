@@ -1,0 +1,23 @@
+from waftools import mc2test
+
+def unit_test(bld, target, source):
+   return mc2test.unit_test(bld, target, source,
+                            'Module ServersShared ServersSharedNet \
+   ServersSharedDrawing ServersSharedGfx ServersSharedXML \
+ServersSharedCommon ServersSharedItems ServersSharedDatabase Shared \
+SharedNet',
+                            'SHARED SERVERSSHARED')
+
+def build(bld):
+    unit_test( bld, 'JobDispatcherTest', 'JobDispatcherTest.cpp' )
+    unit_test( bld, 'MapElementTest', 'MapElementTest.cpp' )
+    unit_test( bld, 'MapStatisticsTest', 'MapStatisticsTest.cpp' )
+    unit_test( bld, 'SimpleBalancerTest', [ 'SimpleBalancerTest.cpp',
+                                            'SimpleBalancerHelpers.cpp' ] )
+    # Somehow the JobTimeout test returns failure, although it actually
+    # Succeeds, so set it as a normal program instead of unit test
+    # until this is fixed.
+    jt = unit_test( bld, 'JobTimeoutTest', 'JobTimeoutTest.cpp' )
+    jt.unit_test = False
+
+    

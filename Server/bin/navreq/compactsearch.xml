@@ -1,0 +1,79 @@
+<!--
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  
+      * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+      * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<mc2ngp>
+<!-- 
+ To be used with NGPMaker 
+ Usage: ./NGPMaker compactsearch.xml compactsearch.bin
+ and then to send to the server: 
+ #cat compactsearch.bin | nc server port > /dev/null
+-->
+
+  <request protocolVersion="0xc" type="0x44" id="0" version="1" useGzip="true" >
+     <desc>Combined search</desc>
+     <name>NAV_COMBINED_SEARCH_REQ</name>
+     <param id="8" type="string">
+         <value>iphpuser</value>
+         <desc>User Login</desc>
+     </param>
+     <param id="2" type="string">
+         <value>password</value>
+         <desc>User password</desc>
+     </param>
+     <param id="6" type="uint16" >
+         <!-- Swedish -->
+         <value>1</value>
+         <desc>Language</desc>
+     </param>
+
+<!-- optional position search
+     <param id="1000" type="int32_array" >
+         <value>97247252, 23021371</value>
+         <desc>Coordinates to search from</desc>
+     </param>
+-->
+
+     <param id="1201" type="string">
+        <value>Lund</value>
+        <desc>Search area</desc>
+     </param>
+
+     <param id="1203" type="string">
+        <value>Restaurant</value>
+        <desc>Search item</desc>
+     </param>
+
+     <param id="1205" type="uint32">
+        <value>1</value>
+        <desc>Top region ID</desc>
+     </param>
+
+     <param id="5600" type="uint32">
+        <value>0</value>
+        <desc>Start index</desc>
+     </param>
+     <param id="5601" type="uint32">
+        <value>0</value>
+        <desc>Round</desc>
+     </param>
+     <param id="5602" type="uint32">
+        <value>-1</value>
+        <desc>Heading</desc>
+     </param>
+     <param id="5603" type="uint32">
+        <value>5</value>
+        <desc>Max hits</desc>
+     </param>
+
+  </request>
+
+</mc2ngp>

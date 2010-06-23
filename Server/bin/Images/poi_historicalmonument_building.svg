@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="40" version="1.1" viewBox="-20 0 40 40" width="40">
+<g>
+<path d="M17.001,0h-14C1.345,0,0,1.341,0,2.997v16.986l5.745-3.998h11.256c1.655,0,2.999-1.341,2.999-2.996V2.997   C20,1.341,18.656,0,17.001,0z" fill="#004A00"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 18.9761)" gradientUnits="userSpaceOnUse" id="XMLID_11_" x1="9.9624" x2="9.9624" y1="17.9773" y2="0.8723">
+<stop offset="0" style="stop-color:#007805"/>
+<stop offset="0.1364" style="stop-color:#047A05"/>
+<stop offset="0.2774" style="stop-color:#118104"/>
+<stop offset="0.4206" style="stop-color:#258C04"/>
+<stop offset="0.5651" style="stop-color:#429C03"/>
+<stop offset="0.7094" style="stop-color:#67B101"/>
+<stop offset="0.8146" style="stop-color:#87C200"/>
+<stop offset="1" style="stop-color:#87C200"/>
+</linearGradient>
+<path d="M17.001,0.999h-14c-1.105,0-2,0.896-2,1.998v9.992L1,18.104l4.29-3.118h11.711   c1.104,0,1.999-0.895,1.999-1.998V2.997C19,1.894,18.104,0.999,17.001,0.999z" fill="url(#XMLID_11_)"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 18.9761)" gradientUnits="userSpaceOnUse" id="XMLID_12_" x1="9.9922" x2="9.9922" y1="14.2791" y2="17.9363">
+<stop offset="0" style="stop-color:#007805"/>
+<stop offset="1" style="stop-color:#E2FFBD"/>
+</linearGradient>
+<path d="M19.014,2.869c0,1.01-0.766,1.828-1.709,1.828H2.755c-0.945,0-1.709-0.818-1.709-1.828l0,0   c0-1.011,0.765-1.829,1.709-1.829h14.548C18.248,1.04,19.014,1.858,19.014,2.869L19.014,2.869z" fill="url(#XMLID_12_)"/>
+<rect fill="#FFFFFF" height="0.706" width="10.672" x="4.758" y="4.685"/>
+<polygon fill="#FFFFFF" points="10,2.081 18.048,4.731 1.952,4.731  "/>
+<polygon fill="#FFFFFF" points="15.182,5.626 15.297,12.153 14.417,12.153 14.549,5.626  "/>
+<polygon fill="#FFFFFF" points="11.99,5.626 12.123,12.153 11.241,12.153 11.373,5.626  "/>
+<polygon fill="#FFFFFF" points="8.814,5.626 8.947,12.153 8.065,12.153 8.198,5.626  "/>
+<polygon fill="#FFFFFF" points="16.488,12.903 17.047,12.903 17.047,13.416 17.62,13.416 17.62,13.931 2.567,13.931 2.567,13.416    3.14,13.416 3.14,12.903 3.7,12.903 3.7,12.373 16.488,12.373  "/>
+<polygon fill="#FFFFFF" points="5.639,5.626 5.771,12.153 4.89,12.153 5.008,5.626  "/>
+<polygon fill="#FFFFFF" points="5.771,12.153 5.639,5.626 5.008,5.626 4.89,12.153  "/>
+<polygon fill="#FFFFFF" points="8.947,12.153 8.814,5.626 8.198,5.626 8.065,12.153  "/>
+<polygon fill="#FFFFFF" points="12.123,12.153 11.99,5.626 11.373,5.626 11.241,12.153  "/>
+<polygon fill="#FFFFFF" points="15.297,12.153 15.182,5.626 14.549,5.626 14.417,12.153  "/>
+<rect fill="#FFFFFF" height="0.706" width="10.672" x="4.758" y="4.685"/>
+<polygon fill="#FFFFFF" points="17.047,12.903 16.488,12.903 16.488,12.373 3.7,12.373 3.7,12.903 3.14,12.903 3.14,13.416    2.567,13.416 2.567,13.931 17.62,13.931 17.62,13.416 17.047,13.416  "/>
+</g>
+</svg>

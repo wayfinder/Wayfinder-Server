@@ -1,0 +1,15 @@
+screen -t zsh /bin/zsh
+screen -t Map ./runBin ./MapModule
+screen -t Search ./runBin ./SearchModule
+screen -t Route ./runBin ./RouteModule
+screen -t User ./runBin ./UserModule
+screen -t GfxM ./runBin ./GfxModule
+screen -t Email ./runBin ./EmailModule
+screen -t Comm ./runBin ./CommunicationModule
+screen -t IM ./runBin ./InfoModule
+screen -t Ext ./runBin ./ExtServiceModule
+screen -t NS ./runBin ./NavigatorServer --boxtype=1 --plexor-plexor_data_ports=7655 --client_settings=./navclientsettings.txt
+screen -t HNS ./runBin ./NavigatorServer --boxtype=1 --httpport=1246 --client_settings=./navclientsettings.txt
+screen -t XS ./runBin ./XMLServer --port=11122 --unsecport=12211 --client_settings=./navclientsettings.txt
+hardstatus alwayslastline "%w"
+detach

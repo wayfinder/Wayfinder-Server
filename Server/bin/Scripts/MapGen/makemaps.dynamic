@@ -1,0 +1,233 @@
+#!/bin/sh -x
+# Script to apply dynamic extra data (map corrections) and WASP changes 
+# in merge map generation.
+# Requires to have these binaries inthe current directory
+# GenerateMapServer, WASPExtractor, ExtradataExtractor, 
+# mc2.prop with MAP_PATH = ./ and POI SQL database settings defined
+#
+
+
+# BASEGENFILESPATH 
+# genfiles is the base directory where all setting files for map generation
+# is stored
+# Update it to point to the full path of where you create the BASEGENFILESPATH
+#BASEGENFILESPATH="fullpath/genfiles";
+BASEGENFILESPATH="."
+
+source ${BASEGENFILESPATH}/script/mfunctions.sh
+
+#Parameters used in this script
+updateCreationTimes="";  #false
+
+#Default values for extra options
+runDynamicExtradata="true";
+runDynamicWasp="true";
+filterMaps="true";
+
+
+# Print the commandline to the log.
+commandLine="$0";
+for i; do
+    commandLine="${commandLine} $i";
+done
+echo "Command line: ${commandLine}";
+
+
+# Read input arguments.
+argNbr=0;      # Index of non-flagged parameter.
+pos=1;         # Corresponds to index of positional parameter.
+flaggedArg=""; #false
+for i; do
+   case $i in
+      -h) echo "Usage:"
+          echo " makemaps.dynamic [OPTIONS]"
+          echo ""
+          echo "Example:"
+          echo " (this is how it is called from makemaps.mcgen script)" 
+          echo " ./makemaps.dynamic -noFilt"
+          echo ""
+          echo "Options:"
+          echo "-noDynamicExtradata"
+          echo "        No dynamic extra data will be applied to the maps."
+          echo "-noDynamicWasp"
+          echo "        No dynamic WASPing will be applied to the maps."
+          echo "-noFilt"
+          echo "        Makes the script not filter the maps."
+          echo "        Typically used when running dynamic from makemaps.mcgen. "
+          echo "        If you want filtering, give option -filtComputers "
+          echo "        to list the computers you want to use for filtering."
+          echo "-filtComputers COMPUTERS"
+          echo "        The computers used for filtering, if filtering "
+          echo "        is wanted. The filtering is distributed over all "
+          echo "        of the given computers."
+          echo "        If option given, the computer running this script "
+          echo "        is used also for filtering, running sequentially."
+          echo "        Give the computers within \" signs"
+          echo ""
+          echo ""
+          exit;;
+      -noDynamicExtradata) runDynamicExtradata="";;
+      -noDynamicWasp)      runDynamicWasp="";;
+      -noFilt) filterMaps="";;
+      -filtComputers) inArgNbr=$[pos+1];
+           eval  FILTCMP_ARG=$\{`echo ${inArgNbr}`\};
+           flaggedArg="true";;
+      -*) echo "Invalid option $i"; exit;;
+      *) if [ ${flaggedArg} ]; then
+           flaggedArg=""; #false
+         else
+            eval arg${argNbr}="$i";
+            argNbr=$[argNbr+1]
+         fi;;
+   esac
+   pos=$[pos+1];
+done
+
+
+
+# Create dir for logfiles
+LOGPATH="logpath"
+mkdir -p $LOGPATH
+# Write where the logfiles can be found.
+echo "Log files are written in ${HOSTNAME}:${LOGPATH}"
+
+mkdir -p temp
+
+
+
+# Apply dynamic WASP?
+if [ ${runDynamicWasp} ]; then
+   # Extract WASP changes (since last time) and apply to underviewmaps
+   # The affected itemIds are written to outfile called modifiedPOIs.txt
+   # (the WASPExtractor reads dates from mcm map headers to know date
+   #  from which to update pois for each map individually, then writes the
+   #  current date for the maps that were updated.)
+   echo ""
+   echo `date +"%Y%m%d %T"`" Apply dynamic WASPing, underviews."
+   echo `date +"%Y%m%d %T"`" Using WASP date from maps."
+    ./WASPExtractor -t  \
+                    00*.mcm >& $LOGPATH/dyn_we_addwasp.log
+    chk_res
+    dos2unix modifiedPOIs.txt
+    chgrp maps modifiedPOIs.txt
+    chmod a+r modifiedPOIs.txt
+      
+   # Apply the WASP changes also to o- and co-maps, all levels
+   echo ""
+   echo `date +"%Y%m%d %T"`" Apply dynamic WASPing, overview levels."
+    nice time ./GenerateMapServer --wasponmergedmaps=modifiedPOIs.txt >& $LOGPATH/dyn_gs_addwaspToOvr.log
+    chk_res
+
+    mv modifiedPOIs.txt temp
+    
+    updateCreationTimes="true";
+fi
+
+
+
+# Apply dynamic ED?
+if [ ${runDynamicExtradata} ]; then
+   # Loop maps in this directory to find ed-date per country
+   # = the earliest date that dynamic ed was applied for any map in 
+   # that country..
+   echo ""
+   echo `date +"%Y%m%d %T"`" Find extra data date for countries, looping maps in directory."
+    nice time ./GenerateMapServer --getEDtimePerCountry=edtimes.txt >& $LOGPATH/dyn_gs_edTimesPerCountry.log
+    chk_res
+    dos2unix edtimes.txt
+    chgrp maps edtimes.txt
+    chmod a+r edtimes.txt
+
+   # Loop the edtimes-file and extract new extradata records from the 
+   # ED database for these countries and dates.
+   # Country;yyyy-mm-dd hh:mm:ss
+   echo ""
+   echo `date +"%Y%m%d %T"`" Extract extra data records for all countries."
+   while read line; do
+
+      # Split the line to country and date in separate variables
+      countryID=`echo $line | awk -F ";" '{print $1}'`
+      country=`echo $line | awk -F ";" '{print $2}'`
+      lastEDtime=`echo $line | awk -F ";" '{print $3}'`
+      mapOrigin=`echo $line | awk -F ";" '{print $4}'`
+      echo "For country $countryID \"$country\" date is \"$lastEDtime\""
+
+      # check that there really was 4 columns
+      if [ "$countryID" -a "$country" -a "$lastEDtime" -a "$mapOrigin" ]; then
+         # ok
+         ok=1;
+      else
+         echo "Something wrong with edtimes.txt file, should have 4 columns"
+         echo "countryID=$countryID country=$country lastEDtime=$lastEDtime mapOrigin=$mapOrigin"
+         exit 1;
+      fi
+
+      # Check that country is a valid string ?
+      # (for use in ExtradataExtractor)
+      
+      # Extract extradata records ..
+      ./ExtradataExtractor -t allInsertTypes \
+                           -i "$countryID" \
+                           -c "$country" \
+                           -r ${mapOrigin} \
+                           -d "$lastEDtime" \
+                           >> extradataToAdd.txt 2>> $LOGPATH/dyn_ee_extractED.log
+      chk_res
+   done < edtimes.txt
+   dos2unix extradataToAdd.txt
+   chgrp maps extradataToAdd.txt
+   chmod a+r extradataToAdd.txt
+   mv edtimes.txt temp
+
+
+
+   # Apply the dynamic extra data on underview maps.
+   echo ""
+   echo `date +"%Y%m%d %T"`" Apply dynamic extra data, underview maps."
+    nice time ./GenerateMapServer --extradataonmergedmaps -x extradataToAdd.txt >& $LOGPATH/dyn_gs_addED.log
+    chk_res
+
+    dos2unix modifiedItemsED.txt
+    chgrp maps modifiedItemsED.txt
+    chmod a+r modifiedItemsED.txt
+    mv extradataToAdd.txt temp
+    
+
+    # Apply extra data changes in underviews to ovierview maps.
+    echo "Apply extra data changes in underviews to ovierview maps."
+    nice time ./GenerateMapServer --wasponmergedmaps=modifiedItemsED.txt >& $LOGPATH/dyn_gs_addEdToOvr.log
+
+    mv modifiedItemsED.txt temp
+
+    updateCreationTimes="true";
+fi
+
+
+
+   # Filter masp (log prints in filterMergedMaps.sh)
+if [ "${filterMaps}" ]; then
+    if [ "${FILTCMP_ARG}" ]; then
+        FILT_COMPUTERS="${FILTCMP_ARG}";
+    else
+        FILT_COMPUTERS="`hostname`";
+    fi
+    BKPDIR="`pwd`"; # before_filt directory will be created here.
+    GENDIR="`pwd`"; # the maps to filter should be found here.
+    ${BASEGENFILESPATH}/script/filterMergedMaps.sh "${BKPDIR}" "${GENDIR}" "${FILT_COMPUTERS}"
+    chk_res
+fi
+
+
+
+# Update creation times for the maps if something was done.
+if [ ${updateCreationTimes} ]; then
+   echo ""
+   echo `date +"%Y%m%d %T"`" MM: updates creation times.";
+   nice time ./GenerateMapServer --updateCreationTimes >& $LOGPATH/dyn_gms_U.log
+   chk_res
+fi
+
+
+
+
+echo "Dynamic finished";

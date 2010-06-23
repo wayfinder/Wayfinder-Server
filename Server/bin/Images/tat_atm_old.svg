@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="20" version="1.1" viewBox="-278.469 420.404 20 20" width="20">
+<path d="M-261.468,420.375h-13.999c-1.658,0-3.002,1.349-3.002,3.011v10.028v7.02l5.744-4.011h11.257  c1.656,0,2.999-1.348,2.999-3.009v-10.028C-258.468,421.723-259.81,420.375-261.468,420.375z" fill="#612900"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 39.0229)" gradientUnits="userSpaceOnUse" id="XMLID_419_" x1="-268.5066" x2="-268.5066" y1="-382.3557" y2="-399.5227">
+<stop offset="0" style="stop-color:#FF5E00"/>
+<stop offset="0.1643" style="stop-color:#FF6201"/>
+<stop offset="0.334" style="stop-color:#FF6F04"/>
+<stop offset="0.5062" style="stop-color:#FF8308"/>
+<stop offset="0.6792" style="stop-color:#FFA00E"/>
+<stop offset="0.8146" style="stop-color:#FFBC14"/>
+<stop offset="1" style="stop-color:#FFBC14"/>
+</linearGradient>
+<path d="M-261.468,421.379h-13.999c-1.104,0-2.001,0.899-2.001,2.007v10.026l-0.002,5.134l4.29-3.128  h11.712c1.104,0,1.999-0.897,1.999-2.004v-10.028C-259.468,422.278-260.363,421.379-261.468,421.379z" fill="url(#XMLID_419_)"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 39.0229)" gradientUnits="userSpaceOnUse" id="XMLID_420_" x1="-268.4758" x2="-268.4758" y1="-386.0667" y2="-382.3967">
+<stop offset="0" style="stop-color:#FF7B00"/>
+<stop offset="1" style="stop-color:#FFE1B5"/>
+</linearGradient>
+<path d="M-259.454,423.256c0,1.014-0.767,1.834-1.711,1.834h-14.548c-0.943,0-1.71-0.821-1.71-1.834l0,0  c0-1.015,0.767-1.836,1.71-1.836h14.548C-260.219,421.42-259.454,422.241-259.454,423.256L-259.454,423.256z" fill="url(#XMLID_420_)"/>
+<path d="M-267.468,430.003" fill="#FFFFFF"/>
+<path d="M-267.468,432.41" fill="#FFFFFF"/>
+<ellipse cx="-262.967" cy="431.909" fill="#FFFFFF" rx="2.5" ry="2.507"/>
+<ellipse cx="-267.968" cy="432.911" fill="#FFFFFF" rx="1.505" ry="1.505"/>
+<path d="M-263.762,426.606c0,0-0.909-1.988-1.614-3.531c-0.705-1.542-2.276-0.947-2.276-0.947  s-5.945,2.53-7.647,3.255c-1.703,0.726-0.871,2.354-0.871,2.354s0.984,2.153,1.643,3.584c0.654,1.431,1.977,0.77,1.977,0.77  s6.632-2.822,8.116-3.453C-262.954,428.006-263.762,426.606-263.762,426.606z M-274.108,431.193l-0.777-1.693l10.078-4.28  l0.777,1.677L-274.108,431.193z" fill="#FFFFFF"/>
+</svg>

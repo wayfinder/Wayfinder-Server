@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE isab-mc2 SYSTEM 'isab-mc2.dtd'>
+
+<isab-mc2>
+
+   <auth>
+      <auth_user>user</auth_user>
+      <auth_passwd>pass</auth_passwd>
+   </auth>
+        
+   <route_request transaction_id="IDRoute1">
+      <route_request_header>
+         <route_preferences route_description_type="normal">
+            <route_settings route_vehicle="passengercar">
+              <language>Swedish</language>
+            </route_settings>
+         </route_preferences>
+      </route_request_header>
+
+      <routeable_item_list>
+         <position_item position_system="WGS84">
+            <lat>N 552312</lat>
+            <lon>E 131256</lon>
+         </position_item>
+      </routeable_item_list>
+
+      <routeable_item_list>
+         <position_item position_system="MC2">
+            <lat>707789806</lat>
+            <lon>215580176</lon>
+         </position_item>
+      </routeable_item_list>
+   </route_request>
+
+</isab-mc2>

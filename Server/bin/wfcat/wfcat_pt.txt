@@ -1,0 +1,15 @@
+Airport	Aeroporto
+Open Parking Area	Area de parqueamento aberto
+Petrol Station	Bomba de gasolina
+Shopping	Centro comercial
+City Centre	Centro da cidade
+Post Office	Correios
+Rent a car	Escritório de aluguer de automóveis
+Train Station	Estação de caminho de ferro
+Hotel	Hotel
+Museum	Museu
+Parking Garage	Parque de estacionamento
+Tourist information	Posto de turismo
+Restaurant	Restaurante
+Ferry Terminal	Terminal de barco/ferry
+Nightlife	Vida nocturna

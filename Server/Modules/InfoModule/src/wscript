@@ -1,0 +1,6 @@
+from waftools import servertool
+
+def build(bld):
+   prog = servertool.create_module(bld, 'InfoModule')
+   prog.uselib += ' DATABASE'
+   prog.linkflags = '-lpq'

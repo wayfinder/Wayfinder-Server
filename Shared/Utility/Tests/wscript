@@ -1,0 +1,16 @@
+from waftools import mc2test
+
+def build(bld):
+   mc2test.unit_test(bld, 'StringUtilityTest', 'StringUtilityTest.cpp',
+                     'SharedUtility Shared',
+                     'SHARED')
+   mc2test.unit_test(bld, 'MD5HashTest', 'MD5HashTest.cpp',
+                     'SharedUtility Shared',
+                     'SHARED')
+   mc2test.unit_test(bld, 'TypesTest', 'TypesTest.cpp',
+                     'SharedUtility Shared',
+                      'SHARED')
+   mc2test.unit_test(bld, 'ConcurrentQueueTest', 'ConcurrentQueueTest.cpp',
+                     'SharedUtility',
+                      'SHARED')
+

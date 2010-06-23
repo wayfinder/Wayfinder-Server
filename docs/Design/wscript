@@ -1,0 +1,17 @@
+def build(bld):
+   # Since the latex documentation needs the files in ../Misc and other related
+   # directories, we need to do this ugly hack to make sure it compiles in 
+   # correct directory.
+   # If you find a better way of doing it, please change this.
+   # The task gen code changes to the docs/Design directory and
+   # runs the normal make command.
+
+   targets = ['xml', 'xmlsummary', 'public_xml',
+              'navserver_prot', 'navserver_route_spec']
+
+   for pdf_target in targets:
+      pdf_target = pdf_target + '.pdf'
+      bld.new_task_gen( 'tex', type='latex',
+                        target=pdf_target,
+                        outs='pdf',
+                        rule='mkdir -p default/docs/Design; cd ../docs/Design && make %s && cp %s ../../output/default/docs/Design/'%(pdf_target,pdf_target))

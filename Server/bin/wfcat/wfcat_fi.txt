@@ -1,0 +1,15 @@
+Rent a car	Autovuokraamo
+Petrol Station	Bensiiniasema
+Hotel	Hotelli, motelli
+City Centre	Kaupungin keskusta
+Ferry Terminal	Lauttasatama
+Airport	Lentokenttä
+Tourist information	Matkailutoimisto
+Museum	Museo
+Shopping	Ostoskeskus
+Post Office	Postitoimisto
+Open Parking Area	Pysäköintialue
+Parking Garage	Pysäköintitalo
+Train Station	Rautatieasema
+Restaurant	Ravintola
+Nightlife	Yökerho

@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+if ( [ $# != 3 ] ) then
+    echo "usage $0 host port file"
+else
+    tmpfile=/tmp/`basename $0`_$$.tmp
+    length=$[ `wc -c $3 | awk '{ print $1 }'` ]
+
+    echo -n "POST /xmlfile HTTP/1.0\nContent-Length: ${length}\n\n" > $tmpfile
+    cat $3 >> $tmpfile
+    nc $1 $2 < $tmpfile
+    echo
+    rm -f $tmpfile
+fi

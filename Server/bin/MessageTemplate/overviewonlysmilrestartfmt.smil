@@ -1,0 +1,12 @@
+<smil>
+<head>
+  <layout>
+    <root-layout />
+  </layout>
+</head>
+<body>
+
+<par dur="7000ms">
+  <text src="%START_FILE%"/>
+</par>
+

@@ -1,0 +1,7 @@
+from waftools import servertool
+
+def build(bld):
+    prog = servertool.create_tool_gtk(bld, 'NGPMaker')
+    prog.uselib_local = 'Module ServersServers ServersShared \
+ ServersSharedNet ServersSharedNGP ' + prog.uselib_local
+    prog.uselib += ' SERVER MODULE'

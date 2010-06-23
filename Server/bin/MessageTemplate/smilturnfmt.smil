@@ -1,0 +1,4 @@
+<par dur="7000ms">
+<img src="%ROUTE_TURN_URI%"/>
+<text src="%ROUTE_TURN_FILE%"/>
+</par>

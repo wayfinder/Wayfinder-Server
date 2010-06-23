@@ -1,0 +1,20 @@
+import os
+
+def configure(conf):
+    conf.check_cfg(package='libmemcached',
+                   args='--cflags --libs')
+    if conf.env['HAVE_LIBMEMCACHED'] == 1:
+        conf.env.append_value( 'CXXFLAGS', '-DHAVE_MEMCACHED')
+
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.target = 'ServersShared'
+    staticlib.install_path = None
+    staticlib.includes = '../include'
+    staticlib.uselib_local='SharedUtility Shared ServersSharedDatabase \
+ServersSharedXML ServersSharedItems ServersSharedGfx ServersSharedDrawing \
+ServersSharedNet ServersSharedCommon'
+    staticlib.uselib="XERCES"
+    staticlib.export_incdirs='../include'
+

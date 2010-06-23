@@ -1,0 +1,15 @@
+Petrol Station	Bencinski servis
+Hotel	Hotel ali motel
+Airport	Letališče
+Museum	Muzej
+Shopping	Nakupovalno središče
+Nightlife	Nočno življenje
+Open Parking Area	Parkirišče
+Parking Garage	Parkirna hiša
+Post Office	Pošta
+Rent a car	Poslovalnica Rent A Car
+Ferry Terminal	Pristanišče trajektov",
+Restaurant	Restavracija
+City Centre	Središče mesta
+Tourist information	Turistične informacije
+Train Station	Železniška postaja

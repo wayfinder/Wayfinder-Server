@@ -1,0 +1,15 @@
+Airport	Aeroporto
+Rent a car	Autonoleggio
+City Centre	Centro città
+Shopping	Centro commerciale
+Parking Garage	Garage
+Hotel	Hotel, motel
+Tourist information	Informazioni turistiche
+Museum	Museo
+Nightlife	Night-club
+Open Parking Area	Parcheggio aperto
+Restaurant	Ristorante
+Petrol Station	Stazione di servizio
+Train Station	Stazione ferroviaria
+Ferry Terminal	Terminale traghetti
+Post Office	Ufficio postale

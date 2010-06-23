@@ -1,0 +1,15 @@
+Rent a car	Autókölcsonzö
+Petrol Station	Benzinkút
+Shopping	Bevásárlóközpont
+Nightlife	Éjszakai mulató
+Restaurant	Étterem
+Ferry Terminal	Komp kikötö
+Museum	Múzeum
+Parking Garage	Parkolóház
+Post Office	Postahivatal
+Airport	Repülötér
+Open Parking Area	Szabadtéri parkoló
+Hotel	Szálloda
+Tourist information	Turista iroda
+City Centre	Város központ
+Train Station	Vasútállomás

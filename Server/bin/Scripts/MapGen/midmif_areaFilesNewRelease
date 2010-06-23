@@ -1,0 +1,271 @@
+#!/bin/sh -x
+# Script to update/create areafiles for midmif map generation
+#
+
+
+
+# Script control.
+createMapDivisionFile="true";
+createAreafiles="true";
+
+
+
+# Print the commandline to the log.
+commandLine="$0";
+for i; do
+    commandLine="${commandLine} $i";
+done
+echo "Command line: ${commandLine}";
+echo `date +"%Y%m%d %T"`" Start"
+echo ""
+
+
+# Read input arguments.
+argNbr=0;      # Index of non-flagged parameter.
+pos=1;         # Corresponds to index of positional parameter.
+flaggedArg=""; #false
+for i; do
+   case $i in
+      -h) echo "Usage:"
+          echo " midmif_areaFilesNewRelease [OPTIONS]"
+          echo ""
+          echo "Will create a mapDivision.txt file from the areafiles of"
+          echo "the previous map release. That is a file mapping municipal"
+          echo "midmif id to municipal areafile name, thus defining which"
+          echo "areafile each municipal belongs to."
+          echo "Then MifTool will create the areafiles for the new"
+          echo "release based on this mapDivision.txt splitting the new"
+          echo "release WF municipal file according to map division."
+          echo "For any new municipal not included in previous release, "
+          echo "you then need to manually edit the mapDivision.txt to define"
+          echo "the areafile for each of the municipals, and run the"
+          echo "-onlyCreateMidMifAreaFiles toption until all municipals"
+          echo "in the new release has been included in a areafile"
+          echo ""
+          echo "Municipal ids must be consistent between map releases for"
+          echo "this script to work!" 
+          echo "If they are not, you need to create the mapDivision.txt"
+          echo "file manually and then run the -onlyCreateMidMifAreaFiles"
+          echo "option"
+          echo ""
+          echo ""
+          echo "Options:"
+          echo "-oldReleaseDir"
+          echo "      The country map release directory which contains "
+          echo "      the midmif areafiles and xml files for"
+          echo "      the previous map release e.g."
+          echo "        genfiles/countries/hungary/TM_2006_3/"
+          echo "      If not applicable give XXX"
+          echo "-munMidFile"
+          echo "      The Wayfinder municipal mid file with all "
+          echo "      municipals from the supplier."
+          echo "-munMifFile"
+          echo "      The Wayfinder municipal mif file with all "
+          echo "      municipals from the supplier."
+          echo "-mifTool"
+          echo "      Pointer to the MifTool binary, if not in this directory"
+          echo ""
+          echo "-onlyCreateMidMifAreaFiles"
+          echo "      Run only the MifTool part of the script creating"
+          echo "      the areafiles from the mapDivision.txt file."
+          echo "      The mapDivision.txt must be located in the current dir."
+          echo ""
+          echo "-varFile"
+          echo "      Variable file for the country for previous map release"
+          echo "      If not applicable give XXX"
+          echo ""
+          echo ""
+          exit;;
+      -oldReleaseDir) eval OLD_RELEASE_DIR_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -munMidFile) eval MUNMIDFILE_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -munMifFile) eval MUNMIFFILE_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -mifTool) eval MIFTOOL_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -onlyCreateMidMifAreaFiles) createMapDivisionFile="";
+                    createAreafiles="true";;
+      -varFile) eval VARFILE_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -*) echo "Invalid option $i"; exit;;
+      *) if [ ${flaggedArg} ]; then
+           flaggedArg=""; #false
+         else
+            eval arg${argNbr}="$i";
+            argNbr=$[argNbr+1]
+         fi;;
+   esac
+   pos=$[pos+1];
+done
+
+
+
+
+######################################################
+# Parse and check the script options
+#
+
+OLD_RELEASE_DIR="";
+if [ "$OLD_RELEASE_DIR_ARG" ]; then
+   OLD_RELEASE_DIR="$OLD_RELEASE_DIR_ARG";
+else
+   echo "No old release dir given - exit"
+   exit 33
+fi
+
+MUNMIDFILE="";
+if [ "$MUNMIDFILE_ARG" ]; then
+   MUNMIDFILE="$MUNMIDFILE_ARG";
+else
+   echo "No wf municipal mid file given - exit"
+   exit 33
+fi
+
+MUNMIFFILE="";
+if [ "$MUNMIFFILE_ARG" ]; then
+   MUNMIFFILE="$MUNMIFFILE_ARG";
+else
+   echo "No wf municipal mif file given - exit"
+   exit 33
+fi
+
+MIFTOOL="";
+if [ "$MIFTOOL_ARG" ]; then
+   MIFTOOL="$MIFTOOL_ARG";
+else
+   MIFTOOL="./MifTool";
+fi
+if [ -e $MIFTOOL ]; then
+   ok="ok";
+else 
+   echo "No path to MifTool given, and not present in this dir `pwd` - exit"
+   exit 33
+fi
+
+VARFILE="";
+if [ "$VARFILE_ARG" ]; then
+   VARFILE="$VARFILE_ARG";
+else
+   echo "No variable file given - exit"
+   exit 33
+fi
+
+
+echo "Old release dir:"
+echo "   $OLD_RELEASE_DIR"
+echo "Municipal mid/mif files:"
+echo "   $MUNMIDFILE"
+echo "   $MUNMIFFILE"
+echo "MifTool:"
+echo "   $MIFTOOL"
+echo "Variable file:"
+echo "   $VARFILE"
+echo ""
+
+if [ $VARFILE != "XXX" ]; then
+   source ${VARFILE}
+fi
+
+
+startDir="`pwd`";
+LOGPATH="$startDir/logpath"
+mkdir -p $LOGPATH
+cd $startDir
+
+
+
+######################################################
+# Create mapDivision.txt from prev map release municipal files
+#
+if [ "$createMapDivisionFile" ]; then
+   if [ $OLD_RELEASE_DIR = "XXX" ]; then
+      echo "You have to give the -oldReleaseDir!!! - else run with -onlyCreateMidMifAreaFiles option"
+      echo "exit"
+      exit 1;
+   fi
+   
+   echo `date +"%Y%m%d %T"`" Create mapDivision.txt from prev map release municipal files"
+   echo " $OLD_RELEASE_DIR/areafiles"
+
+   # IMPROVEMENT:
+   # perhaps there is a mapDivision.txt file in OLD_RELEASE_DIR/areafiles
+   # that we can re-use
+   
+   rm mapDivision.txt >& /dev/null
+   nbrOldMun=0;
+   for file in `ls $OLD_RELEASE_DIR/areafiles/*.mid`; do
+      fileName=`basename $file`
+      fileNoSuffix="`echo ${fileName} | sed -e 's/\.[^.]*$//'`";
+      echo " file $fileName"
+      i=0;
+      while read line; do
+         i=$[i+1];
+         munId=`echo $line| awk -F "," '{print $1}'`;
+         echo "$fileNoSuffix $munId" >> mapDivision.txt
+      done < $file
+      echo "  had $i municipals"
+      nbrOldMun=$[nbrOldMun+$i];
+   done
+   echo "Totally $nbrOldMun municipals in previous release"
+   echo ""
+
+   # compare with the new municipal file
+   nbrNewMun=`grep -c . $MUNMIDFILE`
+   echo "Totally $nbrNewMun municipals in the new release municipal file"
+   if [ $nbrNewMun -ne $nbrOldMun ]; then
+      echo "  The numbers do not match -> needs manual update of "
+      echo "  the mapDivision.txt"
+   fi
+   echo ""
+fi
+
+######################################################
+# Create the new areafiles
+#
+if [ "$createAreafiles" ]; then
+   cd $startDir
+   echo `date +"%Y%m%d %T"`" Create the new areafiles with MifTool"
+   echo "$MIFTOOL --createMidMifAreaFiles $MUNMIDFILE $MUNMIFFILE mapDivision.txt >& $LOGPATH/createAreafiles.log"
+   $MIFTOOL --createMidMifAreaFiles $MUNMIDFILE $MUNMIFFILE mapDivision.txt >& $LOGPATH/createAreafiles.log
+
+
+   echo "RESULT:"
+   result=`grep "RESULT" $LOGPATH/createAreafiles.log`;
+   grep "RESULT" $LOGPATH/createAreafiles.log >& createAreafilesResult.txt;
+
+   echo ""
+   echo "AREALIST $AREALIST"
+   echo ""
+
+   # Grep for the coordinates etc for the not included municipals
+   echo ""
+   echo "Print info abt new municipals that were not included in the areafile"
+   echo "(if nothing is printed, the mapDivision.txt was ok)"
+   while read line; do
+      munId=`echo $line| awk -F " coord0 = " '{print $1}'| awk -F "RESULT: " '{print $2}'`;
+      coord=`echo $line| awk -F " coord0 = " '{print $2}'`;
+      if [ "$munId" -a "$coord" ]; then
+         coord="`echo ${coord} | sed -e 's/(//'`";
+         coord="`echo ${coord} | sed -e 's/)//'`";
+         lat=`echo ${coord} |awk -F " " '{print $1}'`;
+         lon=`echo ${coord} |awk -F " " '{print $2}'`;
+         
+         echo " munId=$munId lat=$lat lon=$lon"
+      fi
+   done < createAreafilesResult.txt
+
+   echo ""
+   echo "Update the mapDivision.txt file to include all municipals"
+   echo "and run the script with -onlyCreateMidMifAreaFiles option until"
+   echo "we are satisfied with the result"
+   echo "Then copy the municipal area files to the areafiles dir"
+   echo "of the new map release"
+   
+
+fi
+
+
+echo ""
+echo `date +"%Y%m%d %T"`" Done"
+echo ""

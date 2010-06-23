@@ -1,0 +1,115 @@
+#!/bin/sh
+#
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Tries to detect if a set of mcm maps are OK or not.
+# Usage: verify [dir-with-maps]
+# 
+# If no parameter is specified then the current directory is used.
+# Will return 0 if everything seemed to be OK, otherwise return
+# the number of maps that failed / severe errors that were found.
+#
+# Note that the script only provides a hint as to if the maps are 
+# OK or not. Do not believe in the result to 100%.
+
+# Function that checks that there are no missing maps.
+# Note that we cannot detect if the last map is missing.
+#
+# First parameter is a list of all maps, each on a seperate line.
+# Second parameter is the first map id.
+# Third parameter is a string describing the maps.
+# Will return the number of errors or missing maps found.
+function chk_maps() {
+   maps=$1
+   lowestmapid=$2
+   map_string=$3
+   returnval=0
+
+   nbrmaps=`echo "$maps" | wc -w`
+   if [ $nbrmaps -eq 0 ]; then
+      echo "No $map_string maps found!"
+      returnval=$[ returnval + 1 ]
+      return $returnval
+   fi
+
+   highestmap=`echo "$maps" |tail -1`
+   highestmapid=$[0x`basename $highestmap .mcm`]
+   mapdiff=$[ highestmapid - lowestmapid + 1 ]
+   if [ $mapdiff -gt $nbrmaps ]; then
+      missingmaps=$[ mapdiff - nbrmaps ]
+      echo "$missingmaps maps are missing for ${map_string}."
+      returnval=$[ returnval + missingmaps ]
+   fi
+
+   return $returnval
+}
+
+retval=0
+
+BINPATH="`dirname $0`"
+
+if [ $# -eq 0 ]; then
+   path="./"
+else
+   path=$1
+   if [ ! -d $path ]; then
+      echo "Parameter is not a directory."
+      exit 1
+   fi
+fi
+
+no09="";
+for i; do
+    if [ "$i" = "-no09" ]; then
+        no09="true";
+    fi
+done
+
+echo "Only printing when error is found";
+echo "";
+
+underviews=`ls -1 $path/00*.mcm`
+chk_maps "$underviews" 0 "underview"
+retval=$[ retval + $? ]
+
+overviews1=`ls -1 $path/08*.mcm`
+chk_maps "$overviews1" $[0x80000000] "first overviews"
+retval=$[ retval + $? ]
+
+if [ ! "${no09}" ]; then
+    overviews2=`ls -1 $path/09*.mcm`
+    chk_maps "$overviews2" 2415919104 "second overviews"
+    retval=$[ retval + $? ]
+fi
+
+for i in $path/*.mcm; do 
+   $BINPATH/Verify $i >& tmp_verify.log
+   
+   result=$?
+   if [ $result -gt 0 ]; then
+      mapName=`grep "INFO : Map name" tmp_verify.log | sed -e 's/.*Map name: //'`
+      echo "$result errors detected in map `basename $i` $mapName:"
+      egrep "ERROR|WARN" tmp_verify.log 
+      echo
+      retval=$[retval + 1]
+   fi
+done
+
+rm -f tmp_verify.log
+
+if [ $retval -gt 0 ]; then
+   echo "$retval maps did not pass verification"
+else
+   echo "All maps passed verification."
+fi
+   
+exit $retval

@@ -1,0 +1,10 @@
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.includes = '../include ../../include \
+../../../../Shared/include ../../Drawing/include ../../Gfx/include \
+../../Net/include'
+    staticlib.target = 'ServersSharedItems'
+    staticlib.install_path = None
+    staticlib.uselib_local = 'SharedNet'
+    staticlib.export_incdirs='../include'

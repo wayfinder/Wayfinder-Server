@@ -1,0 +1,15 @@
+Airport	Airport
+City Centre	City Centre
+Ferry Terminal	Ferry Terminal
+Hotel	Hotel or Motel
+Museum	Museum
+Nightlife	Nightlife
+Open Parking Area	Parking Area
+Parking Garage	Parking Garage
+Petrol Station	Petrol Station
+Post Office	Post Office
+Train Station	Railway Station
+Rent a car	Rent-a-Car Facility
+Restaurant	Restaurant
+Shopping	Shopping Centre
+Tourist information	Tourist Information Office

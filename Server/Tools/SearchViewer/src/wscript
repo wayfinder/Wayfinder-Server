@@ -1,0 +1,6 @@
+from waftools import servertool
+
+def build(bld):
+   prog = servertool.create_tool_gtk(bld, 'SearchViewer')
+   prog.uselib_local = 'ServersServers ServersSharedNet ServersSharedNGP ' + prog.uselib_local
+   prog.uselib += ' SERVERS'

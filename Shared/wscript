@@ -1,0 +1,14 @@
+def configure(conf):
+    conf.sub_config( 'src' )
+    conf.sub_config( 'Net/src' )
+    conf.sub_config( 'Utility/src' )
+
+def build(bld):
+    bld.add_subdirs( 'src' )
+    bld.add_subdirs( 'Tests' )
+    bld.add_subdirs( 'FileSystem/src' )
+    bld.add_subdirs( 'Net/src' )
+    bld.add_subdirs( 'Net/Tests' )
+    bld.add_subdirs( 'Utility/src' )
+    bld.add_subdirs( 'Utility/Tests' )
+    bld.add_subdirs( 'UnitTest/src' )

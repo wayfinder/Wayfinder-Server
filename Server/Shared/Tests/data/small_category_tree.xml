@@ -1,0 +1,74 @@
+<category_data>
+
+<category_tree>
+   <cat_node cat_id='1' >
+      <cat_node cat_id='2' />
+   </cat_node>
+   <cat_node cat_id='3' />
+</category_tree>
+
+
+<categories>
+   <category id="1" desc="On The Move" >
+      <name language='czech'>Na cestě</name>
+      <name language='danish'>På farten</name>
+      <name language='german'>Unterwegs</name>
+      <name language='greek'>Εν κινήσει</name>
+      <name language='english'>On the move</name>
+      <name language='spanish'>En movimiento</name>
+      <name language='finnish'>Matkalla</name>
+      <name language='french'>À la mode</name>
+      <name language='hungarian'>Mozgásban</name>
+      <name language='italian'>In movimento</name>
+      <name language='dutch'>Onderweg</name>
+      <name language='norwegian'>På farten</name>
+      <name language='polish'>W drodze</name>
+      <name language='portuguese'>Em movimento</name>
+      <name language='russian'>В движении</name>
+      <name language='slovenian'>Na poti</name>
+      <name language='swedish'>På gång</name>
+      <name language='turkish'>Hareket halinde</name>
+   </category>
+   <category id="2" desc="By Car" >
+      <name language='czech'>Autem</name>
+      <name language='danish'>Med bil</name>
+      <name language='german'>Mit dem Auto</name>
+      <name language='greek'>Με αυτοκίνητο</name>
+      <name language='english'>By car</name>
+      <name language='spanish'>En coche</name>
+      <name language='finnish'>Autolla</name>
+      <name language='french'>En voiture</name>
+      <name language='hungarian'>Autóval</name>
+      <name language='italian'>In auto</name>
+      <name language='dutch'>Per auto</name>
+      <name language='norwegian'>Med bil</name>
+      <name language='polish'>Samochodem</name>
+      <name language='portuguese'>Por carro</name>
+      <name language='russian'>На машине</name>
+      <name language='slovenian'>Z avtom</name>
+      <name language='swedish'>Med bil</name>
+      <name language='turkish'>Araba ile</name>
+   </category>
+   <category id="3" desc="Food And Drink" >
+      <name language='czech'>Jídlo a nápoje</name>
+      <name language='danish'>Mad og drikke</name>
+      <name language='german'>Speisen und Getränke</name>
+      <name language='greek'>Φαγητό και ποτό</name>
+      <name language='english'>Food and drink</name>
+      <name language='spanish'>Comida y bebida</name>
+      <name language='finnish'>Ruoka ja juoma</name>
+      <name language='french'>Alimentation et boissons</name>
+      <name language='hungarian'>Étel-ital</name>
+      <name language='italian'>Cibo e bibite</name>
+      <name language='dutch'>Voedsel en drank</name>
+      <name language='norwegian'>Mat og drikke</name>
+      <name language='polish'>Jedzenie i picie</name>
+      <name language='portuguese'>Comidas e bebidas</name>
+      <name language='russian'>Еда и напитки</name>
+      <name language='slovenian'>Hrana in pijača</name>
+      <name language='swedish'>Mat och dryck</name>
+      <name language='turkish'>Yiyecek ve içecek</name>
+   </category>
+</categories>
+
+</category_data>

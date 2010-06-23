@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="20" version="1.1" viewBox="-278.467 420.392 20 20" width="20">
+<path d="M-261.465,420.388h-14.004c-1.657,0-3.001,1.345-3.001,3.002v10.004l-0.001,7.002l5.746-4.001h11.261  c1.657,0,3.001-1.345,3.001-3.001V423.39C-258.464,421.732-259.807,420.388-261.465,420.388z" fill="#004A00"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 38.998)" gradientUnits="userSpaceOnUse" id="XMLID_391_" x1="-268.5042" x2="-268.5042" y1="-382.3906" y2="-399.5156">
+<stop offset="0" style="stop-color:#007805"/>
+<stop offset="0.1364" style="stop-color:#047A05"/>
+<stop offset="0.2774" style="stop-color:#118104"/>
+<stop offset="0.4206" style="stop-color:#258C04"/>
+<stop offset="0.5651" style="stop-color:#429C03"/>
+<stop offset="0.7094" style="stop-color:#67B101"/>
+<stop offset="0.8146" style="stop-color:#87C200"/>
+<stop offset="1" style="stop-color:#87C200"/>
+</linearGradient>
+<path d="M-261.465,421.389h-14.004c-1.105,0-2,0.895-2,2v10.003l-0.001,5.122l4.291-3.121h11.716  c1.104,0,2-0.896,2-2V423.39C-259.465,422.283-260.36,421.389-261.465,421.389z" fill="url(#XMLID_391_)"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 38.998)" gradientUnits="userSpaceOnUse" id="XMLID_392_" x1="-268.4758" x2="-268.4758" y1="-386.0938" y2="-382.4316">
+<stop offset="0" style="stop-color:#007805"/>
+<stop offset="1" style="stop-color:#E2FFBD"/>
+</linearGradient>
+<path d="M-259.45,423.261c0,1.011-0.767,1.831-1.71,1.831h-14.555c-0.944,0-1.711-0.82-1.711-1.831l0,0  c0-1.011,0.767-1.831,1.711-1.831h14.555C-260.217,421.43-259.45,422.248-259.45,423.261L-259.45,423.261z" fill="url(#XMLID_392_)"/>
+<path d="M-267.466,429.992" fill="#FFFFFF"/>
+<path d="M-267.466,432.392" fill="#FFFFFF"/>
+<path d="M-262.465,422.389c0,0-1,1.001-1,3.001c0,2.001-0.001,5.002-0.001,5.002h-1.001c0,0-0.009-3.383-3.129-3.922  l-0.871-2.497l-0.871,2.497c-3.122,0.539-3.13,3.922-3.13,3.922h-1.001c0,0,0-3.002,0-5.002s-1.001-3.001-1.001-3.001  s-1,1.001-1,3.001c0,2.001,0,9.002,0,9.002h6.002v-2c0-0.552,0.449-1,1.001-1s1.001,0.448,1.001,1v2h6.001c0,0,0-7.002,0-9.002  S-262.465,422.389-262.465,422.389z" fill="#FFFFFF"/>
+</svg>

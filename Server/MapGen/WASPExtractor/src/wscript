@@ -1,0 +1,9 @@
+def build(bld):
+    prog = bld.new_task_gen( 'cxx', 'program' )
+    prog.source = bld.glob("*.cpp")
+    prog.includes = '../include'
+    prog.target = 'WASPExtractor'
+    prog.install_path = None
+    prog.uselib_local = 'MapGen ServersShared ServersSharedNet \
+ServersSharedItems ServersSharedGfx ServersSharedDatabase Shared SharedNet SharedUtility'
+    prog.uselib='SHARED DATABASE SERVERSSHARED MAPGEN'

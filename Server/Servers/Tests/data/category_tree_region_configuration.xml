@@ -1,0 +1,15 @@
+<category_data_region_configuration>
+   <region region_id="1">
+      <category id="1" isVisible="true" icon="new.ico"/>
+      <category id="2" isVisible="false" icon="new2.ico"/>
+      <category id="3" icon="new3.ico"/>
+      <category id="4" isVisible="1"/>
+      <category id="5" isVisible="0"/>
+   </region>
+   <region region_id="2">
+      <category id="1" isVisible="false" icon="new.ico"/>
+      <category id="2" isVisible="true" icon="new2.ico"/>
+      <category id="3" icon="new2.ico"/>
+   </region>
+</category_data_region_configuration>
+

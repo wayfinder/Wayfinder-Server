@@ -1,0 +1,24 @@
+from waftools import mc2test
+
+def unit_test(bld, target, source ):
+   # The test source file, with main in it
+   sources = [ source,
+               #"../src/OneSearchBinaryResult.cpp",
+               "../src/NavSearchHandler.cpp",
+               "../src/NavHandler.cpp",
+               "../src/NavUserHelp.cpp"
+               ]
+	
+   test = mc2test.unit_test(bld, target, sources,
+                            'ServersServers ServersShared ServersSharedNet \
+                            ServersSharedXML ServersSharedCommon Shared SharedNet \
+                            SharedUtility ServersSharedNGP',
+                            'SHARED SERVER SERVERSSHARED OPENSSL XERCES')
+   test.defines = 'USE_SSL USE_XML'
+   return test
+
+
+def build(bld):
+   unit_test(bld, 'OneSearchBinaryResultTest', 'OneSearchBinaryResultTest.cpp' )
+
+

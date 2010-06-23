@@ -1,0 +1,15 @@
+Airport	Aeropuerto
+Rent a car	Alquiler de Vehículos
+Open Parking Area	Parking Aire Libre
+Shopping	Centro Comercial
+City Centre	Centro de la Ciudad
+Nightlife	Vida Nocturna
+Post Office	Oficina de Correos
+Parking Garage	Parking subterráneo
+Petrol Station	Gasolinera
+Hotel	Hotel
+Tourist information	Información Turística
+Museum	Museo
+Train Station	Estación de trenes
+Restaurant	Restaurante
+Ferry Terminal	Terminal de Ferry

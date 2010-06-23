@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+
+   <search_reply transaction_id="ISSearch1">
+      <!-- Search reply -->
+      <search_area_list numberitems="1">
+         <search_area search_area_type="city">
+            <name>LUND</name>
+            <areaid>0;300A67EA;30</areaid>
+         </search_area>
+      </search_area_list>
+      <search_item_list numberitems="1">
+         <search_item search_item_type="pointofinterest">
+            <name>Itinerary Systems IS AB</name>
+            <itemid>0;280CB45;120</itemid>
+         </search_item>
+      </search_item_list>
+   </search_reply>
+
+   <search_reply transaction_id="ISSearch2">
+      <!-- Search reply -->
+      <search_area_list numberitems="1">
+         <search_area search_area_type="city">
+            <name>MALMÖ</name>
+            <areaid>0;300A67EF;31</areaid>
+         </search_area>
+      </search_area_list>
+      <search_item_list numberitems="2">
+         <search_item search_item_type="street">
+            <name>Brogatan</name>
+            <streetnbr>11</streetnbr>
+            <itemid>0;300CA57;20</itemid>
+         </search_item>
+         <search_item search_item_type="street">
+            <name>Brovägen</name>
+            <streetnbr>11</streetnbr>
+            <itemid>0;3005671;26</itemid>
+         </search_item>         
+      </search_item_list>
+   </search_reply>
+
+   <route_reply transaction_id="IDRoute1">
+      <route_reply_header>
+         <total_distance>21 km</total_distance>
+         <total_time>16 min 45 s</total_time>
+         <total_standstilltime>55 s</total_standstilltime>
+         <average_speed>75 km/h</average_speed>
+         <routing_vehicle>Passenger car</routing_vehicle>
+      </route_reply_header>
+
+      <route_origin>
+         <search_item>
+            <name>Amiralsgatan</name>
+            <streetnbr>56</streetnbr>
+            <itemid>0;3007643;75</itemid>
+         </search_item>
+      </route_origin>
+      <route_destination>
+         <search_item>
+            <name>Itinerary Systems IS AB</name>
+            <itemid>0;280CB45;120</itemid>
+         </search_item>      
+      </route_destination>
+
+      <route_reply_items>
+         <route_reply_item>
+            <description>Starta nordost vid Amiralsg</description>
+         </route_reply_item>
+         <route_reply_item>
+            <description>Kör 39 meter sväng sen vänster in på den 1:a vägen Amiralsg</description>
+         </route_reply_item>
+         <route_reply_item>
+            <description>Kör 280 meter sväng sen höger in på den 1:a vägen Drottningg</description>
+         </route_reply_item>
+         <route_reply_item>
+            <description>Kör 1.3 km kör sen in på E6</description>
+         </route_reply_item>
+         <route_reply_item>
+            <description>Kör 400 meter sväng sen vänster in på den 1:a vägen Barav</description>
+         </route_reply_item>
+         <route_reply_item>
+            <description>Kör slutligen 160 meter fram till Barav 1</description>
+         </route_reply_item>
+      </route_reply_items>
+   </route_reply>
+
+   <expand_reply transaction_id="IDExpand1">
+      <search_item_list numberitems="3">
+         <search_item search_item_type="company">
+            <name>Blue Diamond</name>
+            <itemid>0;220518;56</itemid>
+         </search_item>
+         <search_item search_item_type="company">
+            <name>Acapullo</name>
+            <itemid>0;220519;56</itemid>
+         </search_item>
+         <search_item search_item_type="company">
+            <name>Kaffehuset</name>
+            <itemid>0;220520;56</itemid>
+         </search_item>
+      </search_item_list>
+   </expand_reply>   
+
+</isab-mc2>

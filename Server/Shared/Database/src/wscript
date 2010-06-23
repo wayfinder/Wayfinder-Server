@@ -1,0 +1,25 @@
+import os
+
+def configure(conf):
+    # Setup mysql paths using mysql_config program.
+    conf.find_program('mysql_config')
+    libs_prog = os.popen('mysql_config --libs_r')
+    values = libs_prog.readline()
+    for line in values.split():
+        if line[0:2] == '-l':
+           conf.env.prepend_value('LIB_DATABASE', line[2:])
+        else:
+           conf.env.prepend_value('LINKFLAGS_DATABASE', line)
+    libs_prog = os.popen('mysql_config --include')
+    line = libs_prog.readline()
+    conf.env.prepend_value('CXXFLAGS_DATABASE', line)
+
+
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.includes = '../include ../../include'
+    staticlib.target = 'ServersSharedDatabase'
+    staticlib.install_path = None
+    staticlib.uselib_local='Shared'
+    staticlib.export_incdirs='../include'

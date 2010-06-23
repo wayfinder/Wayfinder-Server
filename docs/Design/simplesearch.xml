@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='iso-8859-1' ?>
+<!DOCTYPE isab-mc2 SYSTEM 'isab-mc2.dtd'>
+
+<isab-mc2>
+
+   <auth>
+      <auth_user>user</auth_user>
+      <auth_passwd>pass</auth_passwd>
+   </auth>
+        
+   <search_request transaction_id="IDSearch1">
+      <search_request_header>
+         <search_preferences>
+            <search_settings matchtype="close" 
+                             wordmatch="beginning" 
+                             sorttype="confidence_sort" >
+               <search_for_municipal/>
+               <search_for_city/>
+               <search_for_citypart/>
+               <search_for_street/>
+               <search_for_company/>
+	       <search_for_category/>
+	       <search_for_misc/>
+            </search_settings>
+         </search_preferences>
+      </search_request_header>
+      <search_query>
+         <search_area_query>Stockholm</search_area_query>
+         <search_item_query>Slottet</search_item_query>
+      </search_query>
+   </search_request>
+
+   <search_request transaction_id="IDSearch2">
+      <search_request_header>
+         <search_preferences>
+            <search_settings matchtype="close" 
+                             wordmatch="beginning" 
+                             sorttype="confidence_sort" >
+               <search_for_municipal/>
+               <search_for_city/>
+               <search_for_citypart/>
+               <search_for_street/>
+               <search_for_company/>
+	       <search_for_category/>
+	       <search_for_misc/>
+            </search_settings>
+         </search_preferences>
+      </search_request_header>
+      <search_query>
+         <search_area_query>Göteborg</search_area_query>
+         <search_item_query>station</search_item_query>
+      </search_query>
+   </search_request>
+
+</isab-mc2>

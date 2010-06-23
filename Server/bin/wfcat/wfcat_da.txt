@@ -1,0 +1,15 @@
+Petrol Station	Bensinstation
+City Centre	Bycenter
+Ferry Terminal	Färgehavn
+Hotel	Hotel
+Rent a car	Lejebils forretning
+Airport	Lufthavn
+Museum	Museum
+Nightlife	Natklub
+Parking Garage	Parkerings garage
+Post Office	Postkontor
+Restaurant	Restaurant
+Shopping	Shopping Center
+Train Station	Togstation
+Tourist information	Turistkontor
+Open Parking Area	Udendörs parkering

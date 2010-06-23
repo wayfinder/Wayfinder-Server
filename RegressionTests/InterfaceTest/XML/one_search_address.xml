@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+   <auth indentingandlinebreaks="true" client_type="wf-bb-demo">
+      <auth_user>%%%AUTH_USER%%%</auth_user>
+      <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+   </auth>
+
+   <one_search_request
+                   transaction_id = "test3" 
+                   version = "0"
+                   max_number_matches = "10"
+                   language = "%%%LANGUAGE%%%"
+                   round = "0"
+                   sorting="distance_sort"
+                   search_type="address"
+                   >
+
+   <search_match_query>Drottninggatan 5</search_match_query>
+   <query_location></query_location>
+   <top_region_id>1</top_region_id>
+
+ </one_search_request>
+
+</isab-mc2>

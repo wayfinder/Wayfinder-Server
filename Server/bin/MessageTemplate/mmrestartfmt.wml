@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN"
+                     "http://www.wapforum.org/DTD/wml_1.1.xml">
+<wml>
+<card id="Route" title="%DIRECTIONS% %FROM% %ORIGINSTRING% %ORIGINLOCATIONSTRING% %TO% %DESTINATIONSTRING% %DESTINATIONLOCATIONSTRING%">
+<p>
+<table columns="1">
+ <tr>
+  <td>%FROM%: %ORIGINSTRING% %ORIGINLOCATIONSTRING%</td>
+ </tr>
+ <tr>
+  <td>%TO%: %DESTINATIONSTRING% %DESTINATIONLOCATIONSTRING%</td>
+ </tr>
+ <tr>
+  <td>%ROUTE_INFO%:</td>
+ </tr>
+ <tr>
+  <td>%VEHICLE%: %ROUTE_VEHICLE%</td>
+ </tr>
+ <tr>
+  <td>%TOTAL_DISTANCE%: %ROUTE_TOTAL_DISTANCE%</td>
+ </tr>
+ <tr>
+  <td>%TOTAL_TIME%: %ROUTE_TOTAL_TIME%</td>
+ </tr>
+</table>
+<table columns="2">

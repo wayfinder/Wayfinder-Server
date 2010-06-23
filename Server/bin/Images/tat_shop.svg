@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   baseProfile="tiny"
+   height="40"
+   version="1.0"
+   viewBox="0 0 19.945 19.945"
+   width="40"
+   id="svg6214"
+   sodipodi:version="0.32"
+   inkscape:version="0.45pre1"
+   sodipodi:docname="tat_shop.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   sodipodi:docbase="H:\Images"
+   sodipodi:modified="true">
+  <metadata
+     id="metadata6245">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6243" />
+  <sodipodi:namedview
+     inkscape:window-height="708"
+     inkscape:window-width="1312"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     guidetolerance="10.0"
+     gridtolerance="10.0"
+     objecttolerance="10.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     width="40px"
+     height="40px"
+     inkscape:zoom="18.901981"
+     inkscape:cx="9.9724998"
+     inkscape:cy="29.674138"
+     inkscape:window-x="110"
+     inkscape:window-y="145"
+     inkscape:current-layer="svg6214" />
+  <path
+     d="M 17.577703,0.00052257783 L 10.598202,0.00052257783 C 9.7717033,0.00052257783 9.1017035,0.67002258 9.1017035,1.4960226 L 9.1017035,6.4830226 L 9.1017035,9.9730226 L 11.966203,7.9785226 L 17.578203,7.9785226 C 18.405203,7.9785226 19.074703,7.3085226 19.074703,6.4830226 L 19.074703,1.4960226 C 19.074203,0.67002258 18.404703,0.00052257783 17.577703,0.00052257783 z "
+     id="path6216" />
+  <linearGradient
+     gradientTransform="matrix(0.5,0,0,-0.5,9.1205035,9.4700226)"
+     gradientUnits="userSpaceOnUse"
+     id="XMLID_3_"
+     x1="9.9357996"
+     x2="9.9357996"
+     y1="17.942101"
+     y2="0.87040001">
+    <stop
+       offset="0"
+       style="stop-color:#8C8C8C"
+       id="stop6219" />
+    <stop
+       offset="0.1634"
+       style="stop-color:#909090"
+       id="stop6221" />
+    <stop
+       offset="0.3322"
+       style="stop-color:#9D9D9D"
+       id="stop6223" />
+    <stop
+       offset="0.5035"
+       style="stop-color:#B1B1B1"
+       id="stop6225" />
+    <stop
+       offset="0.6755"
+       style="stop-color:#CECECE"
+       id="stop6227" />
+    <stop
+       offset="0.8146"
+       style="stop-color:#EBEBEB"
+       id="stop6229" />
+    <stop
+       offset="1"
+       style="stop-color:#EBEBEB"
+       id="stop6231" />
+  </linearGradient>
+  <path
+     d="M 17.577703,0.49902258 L 10.598202,0.49902258 C 10.047203,0.49902258 9.6007031,0.94602258 9.6007031,1.4960226 L 9.6007031,6.4820226 L 9.6007031,9.0350226 L 11.739203,7.4795226 L 15.298203,7.4795226 L 17.578203,7.4795226 C 18.130203,7.4795226 18.576203,7.0330226 18.576203,6.4830226 L 18.576203,1.4960226 C 18.575703,0.94552258 18.129203,0.49902258 17.577703,0.49902258 z "
+     id="path6233"
+     style="fill:url(#XMLID_3_)" />
+  <linearGradient
+     gradientTransform="matrix(0.5,0,0,-0.5,9.1205035,9.4700226)"
+     gradientUnits="userSpaceOnUse"
+     id="XMLID_4_"
+     x1="9.9645996"
+     x2="9.9645996"
+     y1="14.2498"
+     y2="17.9011">
+    <stop
+       offset="0"
+       style="stop-color:#8F8F8F"
+       id="stop6236" />
+    <stop
+       offset="1"
+       style="stop-color:#D4D4D4"
+       id="stop6238" />
+  </linearGradient>
+  <path
+     d="M 18.582703,1.4320226 C 18.582703,1.9360226 18.201203,2.3450226 17.730203,2.3450226 L 10.475702,2.3450226 C 10.005703,2.3450226 9.6232033,1.9365226 9.6232033,1.4320226 L 9.6232033,1.4320226 C 9.6232033,0.92852258 10.005703,0.51952258 10.475702,0.51952258 L 17.730203,0.51952258 C 18.201203,0.51952258 18.582703,0.92802258 18.582703,1.4320226 L 18.582703,1.4320226 z "
+     id="path6240"
+     style="fill:url(#XMLID_4_)" />
+</svg>

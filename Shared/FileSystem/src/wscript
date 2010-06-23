@@ -1,0 +1,8 @@
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.includes = '../include'
+    staticlib.target = 'SharedFileSystem'
+    staticlib.install_path = None
+    staticlib.uselib_local = 'SharedUtility'
+    staticlib.export_incdirs='../include'

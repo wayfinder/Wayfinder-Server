@@ -1,0 +1,6 @@
+from waftools import mc2test
+
+def build(bld):
+    mc2test.unit_test(bld, 'PathTest', 'PathTest.cpp',
+                      'SharedUtility Shared \
+                       ServersSharedPath', 'SHARED')

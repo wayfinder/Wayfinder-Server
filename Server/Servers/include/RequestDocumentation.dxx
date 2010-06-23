@@ -1,0 +1,76 @@
+/*
+Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+/*
+ *    Main file for documenting the request in the MC2-servers
+ */
+
+/**
+   @name Request
+
+   \begin{center}
+      {\Huge{\bf Requests in the MapCentral Servers}}
+   \end{center}
+
+   This is a description of the Request that are used in the Servers in
+   the MapCentral 2 system. 
+   
+   A Request can be seen as a form where the empty fields is to be filled 
+   with data from the module. The modules are asked by using RequestPackets, 
+   and they replys with ReplyPackets.  One Request might send one or more 
+   RequestPackets, and they might depend on each other. E.g. to be able to 
+   calculate a route from two strings describing the origin and destination, 
+   both strings must be looked up in the SearchModule. When both answers 
+   (ReplyPackets) have come back to the Request, a check is performed to
+   make sure the answers are unique etc. If that is true a RouteRequestPacket
+   is send to the RouteModule and a RouteReplyPacket is returned to the
+   Request. After this the request is finished and will be returned to the
+   one who created it.
+
+*/
+//@{
+   //@Include: AllUserRequest.h
+   //@Include: BoundingBoxRequest.h
+   //@Include: CMateRequest.h
+   //@Include: CallerInfoRequest.h
+   //@Include: CountryRequest.h
+   //@Include: EditMapRequest.h
+   //@Include: ExpandCategoryRequest.h
+   //@Include: GfxRouteRequest.h
+   //@Include: HighlightRouteRequest.h
+   //@Include: ISAAllRulesRequest.h
+   //@Include: ISAFSUpdateVehiclesRequest.h
+   //@Include: ISAItemInfoRequest.h
+   //@Include: ISAItemUpdateRequest.h
+   //@Include: ISALockRequest.h
+   //@Include: ISAMapInfoRequest.h
+   //@Include: ISANavTalkerRequest.h
+   //@Include: ISASplitSegmentRequest.h
+   //@Include: ISASqlRequest.h
+   //@Include: ItemDeleteRequest.h
+   //@Include: ItemInfoRequest.h
+   //@Include: ItemUpdateRequest.h
+   //@Include: LocationAndStringSearchAndRouteRequest.h
+   //@Include: MapRequest.h
+   //@Include: MunicipalRequest.h
+   //@Include: OverviewSearchRequest.h
+   //@Include: PositionRequest.h
+   //@Include: ProximityRequest.h
+   //@Include: Request.h
+   //@Include: RouteRequest.h
+   //@Include: SMSListenRequest.h
+   //@Include: SMSSendRequest.h
+   //@Include: SearchAndRouteRequest.h
+   //@Include: SearchRequest.h
+   //@Include: SinglePacketRequest.h
+   //@Include: StringTableRequest.h
+//@}

@@ -1,0 +1,10 @@
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.includes = '../include ../../include \
+../../../../Shared/include ../../Net/include'
+    staticlib.target = 'ServersSharedXML'
+    staticlib.install_path = None
+    staticlib.export_incdirs='../include'
+    staticlib.uselib_local='SharedFileSystem SharedNet ServersSharedPath'
+    staticlib.uselib='XERCES'

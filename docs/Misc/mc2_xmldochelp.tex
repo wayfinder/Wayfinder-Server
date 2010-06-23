@@ -1,0 +1,64 @@
+
+% Table description for XML nodes and attributes
+% Use this when documenting XML.
+
+\newenvironment{xmltable}
+% begin xml table
+{
+\begin{flushleft}
+\begin{tabular}{ | l | l | m{7cm} |}
+\hline
+\rowcolor{black}\color{white}Name & \color{white}Type & \color{white}Description \\
+\hline
+}
+% end xml table
+{
+\end{tabular}
+\end{flushleft}
+}
+
+% \xmldesc command is used within xmltable to add a new row with 
+% xml description for a node or attribute
+\newcommand{\xmldesc}[3]{ #1 & #2 & #3 \\ \hline }
+
+% Description for status tables
+% Use this when describing statuses
+\newenvironment{statustable}
+% begin status table
+{
+\begin{flushleft}
+\begin{tabular}{ | c | m{12cm} | }
+\hline
+\rowcolor{black}\color{white}Code & \color{white}Description \\
+\hline
+}
+% end status table
+{
+\end{tabular}
+\end{flushleft}
+}
+
+% \statdesc command is used within a statustable to add a new row with
+% status value and description.
+\newcommand{\statusdesc}[2]{ #1 & #2 \\ \hline }
+
+% Description for enum tables
+% Use this when describing enums
+\newenvironment{valuetable}
+% begin status table
+{
+\begin{flushleft}
+\begin{tabular}{ | c | m{8cm} | }
+\hline
+\rowcolor{black}\color{white}Value & \color{white}Description \\
+\hline
+}
+% end status table
+{
+\end{tabular}
+\end{flushleft}
+}
+
+% \valuedesc command is used within a valuetable to add a new row with
+% enum value and description
+\newcommand{\valuedesc}[2]{ #1 & #2 \\ \hline }

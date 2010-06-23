@@ -1,0 +1,10 @@
+def build(bld):
+    prog = bld.new_task_gen( 'cxx', 'program' )
+    prog.source = bld.glob("*.cpp")
+    prog.includes = '../include'
+    prog.target = 'ExtradataExtractor'
+    prog.install_path = None
+    prog.uselib_local = 'MapGen ServersShared ServersSharedGfx \
+    ServersSharedItems ServersSharedNet ServersSharedDatabase Shared SharedNet'
+    prog.defines = 'USE_SSL USE_XML'
+    prog.uselib='MAPGEN SHARED SERVERSSHARED'

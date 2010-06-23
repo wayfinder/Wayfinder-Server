@@ -1,0 +1,256 @@
+<!--
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  
+      * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+      * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<tile_color_settings>
+
+  <text color="171717" />
+  <top_horizon color="b2adf4" />
+  <bottom_horizon color="ffffff" />
+
+  <setting primitive="line" type="street_class_0">
+    <scale border_color="ff9b00" color="ff9b00" font_size="7" font_type="0" name_type="on_line" value="1" width="11" width_meters="22"/>
+    <scale value="7" width="11"/>
+    <scale value="11" width="10"/>
+    <scale value="20" width="8"/>
+    <scale value="30" width="7"/>
+    <scale value="44" width="6" />
+    <scale value="170" width="4" />
+    <scale value="480" width="5" border_color="ffffffff" />
+    <scale value="65535" border_color="ffffffff" width="2"/>
+  </setting>
+
+  <setting primitive="line" type="street_class_1">
+    <scale border_color="f3b100" color="ffc200" font_size="7" font_type="0" name_type="on_line" value="1" width="10" width_meters="22"/>
+    <scale value="6" width="4" />
+    <scale value="30" width="5"/>
+    <scale value="44" width="3" />
+    <scale value="170" width="1" />
+    <scale value="65535" border_color="ffffffff" width="2"/>
+  </setting>
+
+  <setting primitive="line" type="street_class_2">
+    <scale border_color="d6ba00" color="f0da00" font_size="7" font_type="0" name_type="on_line" value="1" width="10" width_meters="18"/>
+    <scale value="6" width="4"/>
+    <scale value="7" width="3"/>
+    <scale value="30" width="3"/>
+    <scale value="44" width="2" />
+    <scale value="115" width="2" />
+    <scale value="65535" width="2" border_color="ffffffff" />
+  </setting>
+
+  <setting primitive="line" type="street_class_3">
+    <scale border_color="cccccc" color="ffffff" font_size="7" font_type="0" name_type="on_line" value="1" width="4" width_meters="12"/>
+
+    <scale value="7" width="2" />
+    <scale value="11" width="3" />
+    <scale value="20" width="3" border_color="ffffffff" />
+    <scale value="30" width="2" />
+    <scale value="44" width="1" border_color="ffffffff" />
+    <scale value="65535" />
+  </setting>
+
+  <setting primitive="line" type="street_class_4">
+    <scale border_color="cccccc" color="ffffff" font_size="7" font_type="0" name_type="on_line" value="1" width="4" width_meters="10"/>
+
+    <scale value="7" width="2" />
+    <scale value="11" width="3" border_color="ffffffff" />
+    <scale value="20" width="2" border_color="ffffffff" />
+
+    <scale value="65535" />
+  </setting>
+
+  <setting primitive="line" type="street_class_0_level_0">
+    <scale border_color="ff9b00" color="ff9b00" font_size="7" font_type="0" level="8" level1="8" name_type="on_line" value="1" width="11" width_meters="22"/>
+    <scale value="7" width="11"/>
+    <scale value="11" width="10"/>
+    <scale value="20" width="8"/>
+    <scale value="30" width="7"/>
+    <scale value="44" width="6" />
+    <scale value="170" width="4" />
+    <scale value="480" width="5" border_color="ffffffff" />
+    <scale value="65535" border_color="ffffffff" width="2"/>
+  </setting>
+
+  <setting primitive="line" type="street_class_1_level_0">
+    <scale border_color="f3b100" color="ffc200" font_size="7" font_type="0" level="8" level1="8" name_type="on_line" value="1" width="10" width_meters="22"/>
+    <scale value="6" width="4" />
+    <scale value="30" width="5"/>
+    <scale value="44" width="3" />
+    <scale value="170" width="1" />
+    <scale value="65535" border_color="ffffffff" width="1"/>
+  </setting>
+
+  <setting primitive="line" type="street_class_2_level_0">
+    <scale border_color="d6ba00" color="f0da00" font_size="7" font_type="0" level="8" level1="8" name_type="on_line" value="1" width="10" width_meters="18"/>
+    <scale value="6" width="4"/>
+    <scale value="7" width="3"/>
+    <scale value="30" width="3"/>
+    <scale value="44" width="2" />
+    <scale value="115" width="2" />
+    <scale value="65535" width="2" border_color="ffffffff" />
+  </setting>
+
+  <setting primitive="line" type="street_class_3_level_0">
+    <scale border_color="cccccc" color="ffffff" font_size="7" font_type="0" level="8" level1="8" name_type="on_line" value="1" width="4" width_meters="12"/>
+    <scale value="7" width="2" />
+    <scale value="11" width="3" />
+    <scale value="20" width="3" border_color="ffffffff" />
+    <scale value="30" width="2" />
+    <scale value="44" width="1" border_color="ffffffff" />   
+    <scale value="65535" />
+  </setting>
+
+  <setting primitive="line" type="street_class_4_level_0">
+    <scale border_color="cccccc" color="ffffff" font_size="7" font_type="0" level="8" level1="8" name_type="on_line" value="1" width="4" width_meters="10"/>
+    <scale value="7" width="2" />
+    <scale value="11" width="3" border_color="ffffffff" />
+    <scale value="20" width="2" border_color="ffffffff" />
+    <scale value="65535" />
+  </setting>
+
+  <setting primitive="polygon" type="water">
+    <scale color="33afe1" level="3" name_type="" value="30"/>
+    <scale value="100"/>
+    <scale value="600"/>
+    <scale value="1000"/>
+    <scale value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="park">
+    <scale color="589e60" level="5" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="land">
+    <scale color="f2f2f2" level="1" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="building_area">
+    <scale color="cccccc" level="5" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="building_outline">
+    <scale color="adadad" level="6" name_type="" value="65535"/>
+
+  </setting>
+
+  <setting primitive="polygon" type="bua">
+    <scale color="e2e2e2" level="1" name_type="" value="30"/>
+    <scale value="65535" color="d6d6d6"/>
+  </setting>
+
+  <setting primitive="line" type="railway">
+    <scale color="9c9697" level="7" name_type="" value="4" width="1"/>
+    <scale value="20" width="1" />
+    <scale value="100" width="1" />
+    <scale value="65535" width="0" />
+  </setting>
+
+  <setting primitive="polygon" type="ocean">
+    <scale color="33afe1" level="0" name_type="" value="30"/>
+    <scale value="100"/>
+    <scale value="600"/>
+    <scale value="1000"/>
+    <scale value="65535"/>
+  </setting>
+
+  <setting primitive="line" type="route">
+    <scale color="ff0000" level="14" name_type="" value="2" width="10"/>
+    <scale value="3" width="8"/>
+    <scale value="4" width="7"/>
+    <scale value="12" width="6"/>
+    <scale value="100" width="4"/>
+    <scale value="1000" width="3"/>
+    <scale value="65535" width="2"/>
+  </setting>
+
+  <setting primitive="polygon" type="island">
+    <scale color="f3f2f2" level="4" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="line" type="border">
+    <scale color="bcbcbc" level="1" name_type="" value="20000" width="1"/>
+    <scale value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="airport_ground">
+    <scale color="cccccc" level="5" name_type="" value="100"/>
+    <scale value="65535"/>
+  </setting>
+
+  <setting primitive="line" type="street_class_0_ramp">
+    <scale border_color="f3b100" color="ffc200" font_size="7" font_type="0" name_type="on_line" value="1" width="11" width_meters="18"/>
+    <scale value="5" width="3"/>
+    <scale value="11" width="2" />
+    <scale value="44" width="2" border_color="ffffffff" />
+    <scale value="65535" border_color="ffffffff" width="1" />
+  </setting>
+
+  <setting primitive="line" type="street_class_1_ramp">
+    <scale border_color="f3b100" color="ffc200" font_size="7" font_type="0" name_type="on_line" value="1" width="10" width_meters="15"/>
+    <scale value="11" width="2"/>
+    <scale value="20" width="2" border_color="ffffffff" />
+    <scale value="30" width="2"/>
+    <scale value="44" width="2" />
+    <scale value="65535" border_color="ffffffff" width="1" />
+  </setting>
+
+  <setting primitive="line" type="street_class_2_ramp">
+    <scale border_color="d6ba00" color="f0da00" font_size="7" font_type="0" name_type="on_line" value="1" width="10" width_meters="15"/>
+    <scale value="11" width="2"/>
+    <scale value="20" width="2" border_color="ffffffff" />
+    <scale value="30" width="2"/>
+    <scale value="44" width="2" />
+    <scale value="65535" border_color="ffffffff" width="1" />
+  </setting>
+
+  <setting primitive="polygon" type="cartographic_green_area">
+    <scale color="589e60" level="5" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="cartographic_ground">
+    <scale color="cccccc" level="5" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="forest">
+    <scale color="589e60" level="1" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="aircraftroad">
+    <scale color="9c9697" level="6" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="line" type="walkway">
+    <scale level="7" border_color="cccccc" color="d5dd9c" font_size="7" font_type="0" name_type="on_line" value="1" width="3" width_meters="3"/>
+    <scale value="2" width="2"/>
+    <scale value="3" width="1"/>
+    <scale value="65535" width="1"/>
+  </setting>
+
+  <setting primitive="polygon" type="water_in_park">
+    <scale color="33afe1" level="6" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="island_in_bua">
+    <scale color="e2e2e2" level="6" name_type="" value="30"/>
+    <scale value="65535" color="d6d6d6"/>
+  </setting>
+
+  <setting primitive="polygon" type="island_in_water_in_park">
+    <scale color="f3f2f2" level="7" name_type="" value="65535"/>
+  </setting>
+
+  <setting primitive="polygon" type="bua_on_island">
+    <scale color="e2e2e2" level="5" name_type="" value="30"/>
+    <scale value="65535" color="d6d6d6"/>
+  </setting>
+
+</tile_color_settings>

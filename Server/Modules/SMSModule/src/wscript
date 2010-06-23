@@ -1,0 +1,6 @@
+from waftools import servertool
+
+def build(bld):
+   prog = servertool.create_module(bld, 'SMSModule')
+   prog.uselib_local += ' SharedNet'
+   prog.defines += ' USE_SSL'

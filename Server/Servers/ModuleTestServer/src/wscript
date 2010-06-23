@@ -1,0 +1,11 @@
+def build(bld):
+    prog = bld.new_task_gen( 'cxx', 'program' )
+    prog.source = bld.glob("*.cpp")
+    prog.includes = '../include'
+    prog.target = 'ModuleTestServer'
+    prog.install_path = None
+    prog.uselib_local = 'ServersServers ServersShared ServersSharedNet \
+    ServersSharedDrawing ServersSharedGfx ServersSharedXML \
+ServersSharedCommon ServersSharedItems ServersSharedDatabase Shared SharedNet'
+    prog.defines = 'USE_SSL USE_XML'
+    prog.uselib='SHARED SERVER DRAWING SERVERSSHARED'

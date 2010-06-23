@@ -1,0 +1,5 @@
+<Add new changes here>
+*  External provider Qype integrated in round 1 search for all top regions.
+   - Qype only enabled for One Search requests.
+   - To request more details, POI Details request is used.
+   - POI Details for Qype may include reviews and and images. 

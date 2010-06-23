@@ -1,0 +1,6 @@
+from waftools import servertool
+
+def build(bld):
+   prog = servertool.create_tool(bld, 'Supervisor')
+   prog.uselib_local = 'Module ServersServers ServersShared ServersSharedNet ' + prog.uselib_local
+   prog.uselib += ' SERVER MODULE TECLA'

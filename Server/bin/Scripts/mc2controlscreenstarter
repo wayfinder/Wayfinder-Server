@@ -1,0 +1,9 @@
+#!/bin/zsh
+if ( [ $# != 3 ] ) then
+	echo "3 args please"
+	exit(1)
+else 
+	dir=`dirname $0`
+	cd $3
+	/usr/bin/screen -S $1 -m -d -c $2
+fi

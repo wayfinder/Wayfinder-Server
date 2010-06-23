@@ -1,0 +1,32 @@
+% Included from externalapi.tex and public_xml.tex
+\index{favorite, element}
+\begin{verbatim}
+<!ELEMENT favorite ( position_item, fav_info* )>
+<!ATTLIST favorite
+                    id                CDATA  #REQUIRED
+                    name              CDATA  #REQUIRED
+                    short_name        CDATA  #REQUIRED
+                    description       CDATA  #REQUIRED
+                    category          CDATA  #REQUIRED
+                    map_icon_name     CDATA  #REQUIRED >
+<!ELEMENT fav_info EMPTY >
+<!ATTLIST fav_info  type  %poi_info_t; #REQUIRED
+                    key   CDATA        #REQUIRED
+                    value CDATA        #REQUIRED >
+\end{verbatim}
+\label{favorite}
+Favorite describes a special place that the user commonly wants to
+go to.
+\begin{description}
+\item[\emph{favorite}] A favorite place for the user.
+\item[\emph{id}] The id that is used to identify the favorite. See also Section \ref{favoriteid} \emph{favorite\_id}.
+\item[\emph{name}] The name of the favorite to show in selection list.
+\item[\emph{short\_name}] A short name of the favorite for quick selection.
+  Might not be available on all interfaces.
+\item[\emph{description}] A text describing the favorite and/or additional
+  information.
+\item[\emph{category}] Used to group favorites together. Currently not used.
+\item[\emph{map\_icon\_name}] The symbol to use for the favorite when drawn on
+  maps. Currently not used.
+\item[\emph{fav\_info}] The list of information elements for the favorite.
+\end{description}

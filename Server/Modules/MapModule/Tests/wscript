@@ -1,0 +1,18 @@
+from waftools import mc2test
+
+def unit_test(bld, target, source):
+   # add all files in ../src/ except MapModule.cpp
+   sources = [ source ]
+   sources.extend(mc2test.create_sources(bld, '../src/', '*.cpp',
+                                         'MapModule.cpp'))
+   test = mc2test.unit_test(bld, target,
+                            sources,
+                            'Module ServersShared ServersSharedNet \
+   ServersSharedDrawing ServersSharedGfx ServersSharedXML \
+ServersSharedCommon ServersSharedItems ServersSharedDatabase Shared SharedNet',
+                            'MODULE DATABASE SHARED SERVERSSHARED' )
+   test.defines = 'USE_XML'
+
+def build(bld):
+   unit_test(bld, 'StreetSplitTest', 'StreetSplitTest.cpp')
+   unit_test(bld, 'CentroidCalculationTest', 'CentroidCalculationTest.cpp')

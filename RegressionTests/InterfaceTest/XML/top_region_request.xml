@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+   <auth indentingandlinebreaks="true">
+      <auth_user>%%%AUTH_USER%%%</auth_user>
+      <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+   </auth>
+
+   <top_region_request transaction_id="Top1">
+      <top_region_request_header position_system="WGS84Rad"
+                                 country = "true"
+                                 state = "true"
+                                 internationalRegion = "true" >
+         <language>%%%LANGUAGE%%%</language>
+      </top_region_request_header>
+   </top_region_request>
+
+</isab-mc2>

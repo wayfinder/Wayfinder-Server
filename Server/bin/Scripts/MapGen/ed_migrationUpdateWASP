@@ -1,0 +1,177 @@
+#!/bin/sh -x
+# Script that updates WASP ed records validToVersion from the
+# result of a ed migration validity check
+#
+
+# BASEGENFILESPATH 
+# genfiles is the base directory where all setting files for map generation
+# is stored.
+# Update it to point to the full path of where you create the BASEGENFILESPATH
+#BASEGENFILESPATH="fullpath/genfiles";
+BASEGENFILESPATH=".";
+source ${BASEGENFILESPATH}/script/mfunctions.sh
+
+
+function countNbrRecordsInEDFile() {
+   file="$1";
+   #nbrLines=`cat $file | wc -l`
+   nbrRecords=`grep -c "# [0-9]" $file`
+   echo "$nbrRecords"
+}
+
+scriptDir="${BASEGENFILESPATH}/script";
+
+
+
+# Print the commandline to the log.
+commandLine="$0";
+for i; do
+    commandLine="${commandLine} $i";
+done
+echo "Command line: ${commandLine}";
+echo `date +"%Y%m%d %T"`" Start"
+echo ""
+
+
+# Read input arguments.
+argNbr=0;      # Index of non-flagged parameter.
+pos=1;         # Corresponds to index of positional parameter.
+flaggedArg=""; #false
+for i; do
+   case $i in
+      -h) echo "Usage:"
+          echo " ed_migrationUpdateWASP [OPTIONS]"
+          echo ""
+          echo ""
+          echo "Options:"
+          echo "-newMapRelease"
+          echo "    The map release we migrate ED TO,"
+          echo "    e.g. OpenStreetMap_201005"
+          echo "-oldMapRelease"
+          echo "    The old map release = the release previous to"
+          echo "    the newMapRelease"
+          echo "-validityResultDir"
+          echo "    The directory where the result of the validity"
+          echo "    check of a specific country is stored."
+          echo "    Example "
+          echo "      edCheckFileStoreBasePath/"
+          echo "      OpenStreetMap_201005_eu/sweden/validityResult"
+          echo ""
+          echo ""
+          exit;;
+      -newMapRelease) eval NEW_MAP_RELEASE_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -oldMapRelease) eval OLD_MAP_RELEASE_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -validityResultDir) eval VALIDITY_RES_DIR_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -*) echo "Invalid option $i"; exit;;
+      *) if [ ${flaggedArg} ]; then
+           flaggedArg=""; #false
+         else
+            eval arg${argNbr}="$i";
+            argNbr=$[argNbr+1]
+         fi;;
+   esac
+   pos=$[pos+1];
+done
+
+
+######################################################
+# Parse and check the script options
+#
+
+
+validityResultDir="";
+if [ "$VALIDITY_RES_DIR_ARG" ]; then
+   validityResultDir=$VALIDITY_RES_DIR_ARG;
+   echo "Validity result dir: $validityResultDir"
+   if [ -e $validityResultDir ]; then
+      ok=1;
+   else
+      echo "The given validity result dir does not exist - exit"
+      exit 1;
+   fi
+else
+   echo "No validity result directory given - exit"
+   exit 1;
+fi
+
+newMapRelease="";
+if [ "$NEW_MAP_RELEASE_ARG" ]; then
+   newMapRelease=$NEW_MAP_RELEASE_ARG;
+   echo "New map release:    $newMapRelease"
+else
+   echo "No NEW map release given - exit"
+   exit 1;
+fi
+
+oldMapRelease="";
+if [ "$OLD_MAP_RELEASE_ARG" ]; then
+   oldMapRelease=$OLD_MAP_RELEASE_ARG;
+   echo "Old map release:    $oldMapRelease"
+else
+   echo "No OLD map release given - exit"
+   exit 1;
+fi
+
+
+echo ""
+
+
+
+
+
+#########################################################
+# Goto the validityResultDir
+# 1. cat and update use+nocheck files
+# 2. cat and update nouse+missing files
+
+
+pushd ${validityResultDir}
+chk_res
+nbrFiles=`ls *EDCheck*|wc -l`;
+if [ $nbrFiles -eq 0 ]; then
+   echo "No result files in validity result dir - exit "
+   exit 1;
+fi
+nbrMissingFiles=`ls missing*|grep -c missing`;
+if [ $nbrMissingFiles -eq 0 ]; then
+   echo "No validity check result missing-files in this dir - exit "
+   exit 1;
+fi
+echo "There are $nbrFiles files in validity result dir"
+echo "  of which $nbrMissingFiles missing-files"
+
+
+echo ""
+echo `date +"%Y%m%d %T"`" Update use + nocheck files"
+cat found_use_* nocheck_* >& all_useRecords.txt
+chk_res
+nbrRec=`countNbrRecordsInEDFile all_useRecords.txt`;
+echo "  nbr records: $nbrRec"
+${scriptDir}/addED.pl -f updateValidToVersion -u use -t $newMapRelease all_useRecords.txt >& all_useRecords.log
+chk_res
+result=`grep "handleUpdateValidToVersion: updated validToVersion for " all_useRecords.log`;
+echo "  $result"
+
+echo ""
+echo `date +"%Y%m%d %T"`" Update nouse + missing files"
+cat found_nouse_* missing_* >& all_nouseRecords.txt
+chk_res
+nbrRec=`countNbrRecordsInEDFile all_nouseRecords.txt`;
+echo "  nbr records: $nbrRec"
+${scriptDir}/addED.pl -f updateValidToVersion -u nouse -t $oldMapRelease all_nouseRecords.txt >& all_nouseRecords.log
+chk_res
+result=`grep "handleUpdateValidToVersion: updated validToVersion for " all_nouseRecords.log`;
+echo "  $result"
+
+
+popd
+
+#   print "handleUpdateValidToVersion: " .
+#         "updated validToVersion for $nbrUpdates ed records\n";
+
+echo ""
+echo `date +"%Y%m%d %T"`" ED migration WASP update finished"
+

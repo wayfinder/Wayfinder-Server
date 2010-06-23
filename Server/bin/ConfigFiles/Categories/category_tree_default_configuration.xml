@@ -1,0 +1,69 @@
+<category_data_default_configuration>
+  <category id="18"    icon="tat_airport" />               <!-- Airport -->
+  <category id="272"   icon="tat_bank" />                  <!-- ATMs & Banks -->
+  <category id="152"   icon="tat_atm" />                   <!-- Atm -->
+  <category id="290"   icon="tat_touristattraction" />     <!-- Attractions -->
+  <category id="54"    icon="tat_amusementpark" />         <!-- Amusement Park -->
+  <category id="30"    icon="tat_shop" />                  <!-- Art Galleries -->
+  <category id="22"    icon="tat_historicalmonument" />    <!-- Museum -->
+  <category id="36"    icon="tat_shop" />                  <!-- Stadium -->
+  <category id="88"    icon="tat_theatre" />               <!-- Theaters -->
+  <category id="20"    icon="tat_touristattraction" />     <!-- Tourist Attraction -->
+  <category id="86"    icon="cafe" />                      <!-- Cafe -->
+  <category id="98"    icon="tat_cinema" />                <!-- Cinemas -->
+  <category id="118"   icon="tat_hotel" />                 <!-- Hotels -->
+  <category id="111"   icon="tat_hospital" />              <!-- Health & Medical -->
+  <category id="249"   icon="tat_shop" />                  <!-- Dentist -->
+  <category id="248"   icon="tat_shop" />                  <!-- Doctor -->
+  <category id="246"   icon="tat_hospital" />              <!-- Hospital -->
+  <category id="245"   icon="tat_hospital" />              <!-- Pharmacy -->
+  <category id="278"   icon="tat_nightlife" />             <!-- Nightlife -->
+  <category id="100"   icon="tat_nightlife" />             <!-- Bars -->
+  <category id="99"    icon="tat_casino" />                <!-- Casinos -->
+  <category id="232"   icon="tat_nightlife" />             <!-- Pubs -->
+  <category id="90"    icon="tat_nightlife" />             <!-- Night club -->
+  <category id="267"   icon="tat_openparkingarea" />       <!-- Parking -->
+  <category id="237"   icon="tat_openparkingarea" />       <!-- Open Parking Area -->
+  <category id="236"   icon="tat_parkinggarage" />         <!-- Parking Garage -->
+  <category id="103"   icon="tat_petrolstation" />         <!-- Petrol Stations -->
+  <category id="107"   icon="tat_postoffice" />            <!-- Post Office -->
+  <category id="5"     icon="tat_shop" />                  <!-- Public transportation -->
+  <category id="126"   icon="tat_busstation" />            <!-- Bus Station -->
+  <category id="123"   icon="tat_commutertrain" />         <!-- Commuter rail station -->
+  <category id="122"   icon="tat_railwaystation" />        <!-- Railway station -->
+  <category id="121"   icon="subway_station" />            <!-- Subway -->
+  <category id="124"   icon="tat_tramway" />               <!-- Tram Stop -->
+  <category id="85"    icon="tat_restaurant" />            <!-- Restaurants -->
+  <category id="216"   icon="tat_restaurant" />            <!-- Bistro -->
+  <category id="214"   icon="tat_restaurant" />            <!-- British Kitchen -->
+  <category id="208"   icon="tat_restaurant" />            <!-- Chinese Kitchen -->
+  <category id="202"   icon="tat_restaurant" />            <!-- Fast Food -->
+  <category id="198"   icon="tat_restaurant" />            <!-- French Kitchen -->
+  <category id="197"   icon="tat_restaurant" />            <!-- German Kitchen -->
+  <category id="196"   icon="tat_restaurant" />            <!-- Greek Kitchen -->
+  <category id="195"   icon="tat_restaurant" />            <!-- Grill -->
+  <category id="192"   icon="tat_restaurant" />            <!-- Indian Kitchen -->
+  <category id="190"   icon="tat_restaurant" />            <!-- Italian Kitchen -->
+  <category id="189"   icon="tat_restaurant" />            <!-- Japanese Kitchen -->
+  <category id="175"   icon="tat_restaurant" />            <!-- Pizzeria -->
+  <category id="173"   icon="tat_restaurant" />            <!-- Portugese Kitchen -->
+  <category id="168"   icon="tat_restaurant" />            <!-- Sea Food -->
+  <category id="165"   icon="tat_restaurant" />            <!-- Spanish Kitchen -->
+  <category id="164"   icon="tat_restaurant" />            <!-- Steak House -->
+  <category id="159"   icon="tat_restaurant" />            <!-- Thai Kitchen -->
+  <category id="158"   icon="tat_restaurant" />            <!-- Turkish Kitchen -->
+  <category id="9"     icon="tat_grocerystore" />          <!-- Shopping -->
+  <category id="78"    icon="tat_shop" />                  <!-- Bookshops -->
+  <category id="75"    icon="tat_shop" />                  <!-- Clothing and Accessories -->
+  <category id="74"    icon="tat_shop" />                  <!-- Convenience Stores -->
+  <category id="70"    icon="tat_shop" />                  <!-- Florists -->
+  <category id="69"    icon="tat_shop" />                  <!-- Food and drink shop -->
+  <category id="68"    icon="tat_touristattraction" />     <!-- Gifts and souvenirs -->
+  <category id="67"    icon="tat_grocerystore" />          <!-- Grocery store -->
+  <category id="64"    icon="tat_shop" />                  <!-- Jewelry clocks and watches -->
+  <category id="62"    icon="tat_shop" />                  <!--  Newsagents and tobaccconists -->
+  <category id="61"    icon="tat_shop" />                  <!-- Opticians -->
+  <category id="59"    icon="tat_grocerystore" />          <!-- Shopping centre -->
+  <category id="58"    icon="tat_shop" />                  <!-- Sports equipment and clothing -->
+  <category id="56"    icon="tat_shop" />                  <!-- Toys and games -->
+</category_data_default_configuration>

@@ -1,0 +1,68 @@
+#!/bin/zsh
+#
+#
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#    Rotate MC2 logs, by moving, kill -HUPing runBin, optionally moves the 
+#    old log files to the log archive and compresses them.
+#
+
+# default config:
+# these should be valid for a normal production cluster
+# should be overriden by specifying different values on the command
+# line, eg:
+# LOG_PATH=/usr/local/mc2/var/log LOG_ARCHIVE=/home/mc2/logs ./rotate_logs
+LOG_PATH=${LOG_PATH:-/usr/local/mc2/bin}
+TEMP_DIR=${TEMP_DIR:-old_logs_$$} # only dir, should be on same fs as $LOG_PATH
+LOG_ARCHIVE=${LOG_ARCHIVE:-$LOG_PATH}
+
+# nothing configurable below
+
+# checks
+if [[ ! -d ${LOG_PATH} ]] then
+   echo "The log path: ${LOG_PATH} does not exist. Exiting."
+   exit 1
+fi
+if [[ ! -d ${LOG_ARCHIVE} ]]
+then
+   echo "The archive path: ${LOG_ARCHIVE} does not exist. Exiting."
+   exit 1
+fi
+if [[ -e ${LOG_PATH}/${TEMP_DIR} ]]
+then
+   echo "The temp dir: ${LOG_PATH}/${TEMP_DIR} already exists. Exiting."
+   exit 1
+fi
+
+# set up
+mkdir ${LOG_PATH}/${TEMP_DIR}
+
+# move the logs to temp dir
+# make sure to move only runBin logs
+mv ${LOG_PATH}/*_*_*.log ${LOG_PATH}/${TEMP_DIR}
+
+# kill the tees of the corresponding runBins
+for log in ${LOG_PATH}/${TEMP_DIR}/*.log
+do
+   RBPID=`echo $log | sed -e 's/\_......-.....log//g' -e 's/.*_//g'`
+   TPID=`ps -e --format "%p;%P;%c" | grep ";[ ]*${RBPID};"| grep tee | sed -e 's/;.*$//g'`
+   kill $[TPID]
+done
+
+sleep 2
+
+# compress the logs (*.log) with bzip2
+bzip2 ${LOG_PATH}/${TEMP_DIR}/*.log
+
+# move the logs to the archive
+mv ${LOG_PATH}/${TEMP_DIR}/*.bz2 $LOG_ARCHIVE
+rmdir ${LOG_PATH}/${TEMP_DIR}

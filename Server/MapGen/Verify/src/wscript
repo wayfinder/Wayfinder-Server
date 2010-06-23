@@ -1,0 +1,9 @@
+def build(bld):
+    prog = bld.new_task_gen( 'cxx', 'program' )
+    prog.source = bld.glob("*.cpp")
+    prog.includes = '../include'
+    prog.target = 'Verify'
+    prog.install_path = None
+    prog.uselib_local = 'MapGen ServersShared ServersSharedGfx \
+ServersSharedDatabase Shared'
+    prog.uselib='SHARED SERVERSSHARED MAPGEN'

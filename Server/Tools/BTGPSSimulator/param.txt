@@ -1,0 +1,1 @@
+This file has moved to a user directory, e.g. C:\Documents and Settings\<username>\param.txt

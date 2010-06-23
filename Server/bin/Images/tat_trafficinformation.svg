@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd" [
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" baseProfile="tiny" id="Layer_1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="40.076" height="40"
+	 viewBox="0 0 40.076 40" xml:space="preserve">
+<path fill="#A10300" d="M37.072,0.027h-14.02c-1.658,0-3.003,1.339-3.003,2.991v9.973l-0.001,6.981l5.752-3.989h11.271
+	c1.662,0,3.004-1.339,3.004-2.992V3.019C40.076,1.366,38.734,0.027,37.072,0.027z"/>
+<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="30.0625" y1="1.0244" x2="30.0625" y2="18.0977">
+	<stop  offset="0" style="stop-color:#E0291C"/>
+	<stop  offset="0.2143" style="stop-color:#E22D1D"/>
+	<stop  offset="0.4357" style="stop-color:#E93A20"/>
+	<stop  offset="0.6596" style="stop-color:#F54E25"/>
+	<stop  offset="0.8146" style="stop-color:#FF6129"/>
+</linearGradient>
+<path fill="url(#XMLID_3_)" d="M37.072,1.024h-14.02c-1.105,0-2.002,0.893-2.002,1.994v9.972l-0.001,5.107l4.295-3.111h11.728
+	c1.105,0,2.004-0.893,2.004-1.995V3.019C39.076,1.917,38.178,1.024,37.072,1.024z"/>
+<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="30.0918" y1="4.7158" x2="30.0918" y2="1.0654">
+	<stop  offset="0" style="stop-color:#ED2B0C"/>
+	<stop  offset="1" style="stop-color:#FFA68C"/>
+</linearGradient>
+<path fill="url(#XMLID_4_)" d="M39.09,2.89c0,1.01-0.768,1.826-1.713,1.826H22.808c-0.945,0-1.713-0.816-1.713-1.826l0,0
+	c0-1.008,0.768-1.824,1.713-1.824h14.569C38.322,1.065,39.09,1.882,39.09,2.89L39.09,2.89z"/>
+<path fill="#FFFFFF" d="M31.064,9.601"/>
+<path fill="#FFFFFF" d="M31.064,11.993"/>
+<path fill="#FFFFFF" d="M37.072,11.993c-0.762-1.162-5.348-7.99-6.008-8.975c-0.661-0.983-1.385-1-2.004,0
+	c-0.619,1.002-5.006,7.48-6.008,8.975c-1,1.497-0.703,1.996,1.094,1.996c2.204,0,9.654,0,11.805,0
+	C37.836,13.989,37.836,13.159,37.072,11.993z M30.063,12.991c-0.554,0-1.003-0.445-1.003-0.998c0-0.55,0.449-0.996,1.003-0.996
+	c0.552,0,1.001,0.446,1.001,0.996C31.064,12.546,30.615,12.991,30.063,12.991z M31.064,10h-2.004V5.014h2.004V10z"/>
+<rect fill="none" width="40.063" height="40"/>
+</svg>

@@ -1,0 +1,18 @@
+from waftools import mc2test
+
+def unit_test(bld, target, source):
+   test = mc2test.unit_test(bld, target, source,
+                          'ServersShared ServersSharedXML Shared\
+                           SharedUtility',
+                           'SHARED SERVERSSHARED XERCES')
+   test.defines = 'USE_SSL USE_XML'
+   return test
+
+def create_unit_tests(bld):
+   # create a unit test for each .cpp file
+   for source in bld.glob('*.cpp'):
+      unit_test(bld, source[:-4], source)
+
+def build(bld):
+   create_unit_tests(bld)
+

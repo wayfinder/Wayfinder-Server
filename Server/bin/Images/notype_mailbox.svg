@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="20.004px" version="1.1" viewBox="0 0 20.001 20.004" width="20.001px" x="0px" y="0px">
+<path d="M17.002,0h-14c-1.658,0-3,1.344-3,3v10.003l-0.001,7l5.744-4.001h11.258c1.657,0,2.999-1.344,2.999-2.999V3  C20.001,1.343,18.659,0,17.002,0z" fill="#612900"/>
+<linearGradient gradientUnits="userSpaceOnUse" id="SVGID_1_" x1="10.0005" x2="10.0005" y1="1.0015" y2="18.123">
+<stop offset="0" style="stop-color:#FF5E00"/>
+<stop offset="0.1643" style="stop-color:#FF6201"/>
+<stop offset="0.334" style="stop-color:#FF6F04"/>
+<stop offset="0.5062" style="stop-color:#FF8308"/>
+<stop offset="0.6792" style="stop-color:#FFA00E"/>
+<stop offset="0.8146" style="stop-color:#FFBC14"/>
+<stop offset="1" style="stop-color:#FFBC14"/>
+</linearGradient>
+<path d="M17.002,1.001h-14c-1.104,0-2,0.894-2,1.999v10.002L1,18.123l4.289-3.121h11.713  c1.104,0,1.999-0.895,1.999-1.998V3C19.001,1.896,18.105,1.001,17.002,1.001z" fill="url(#SVGID_1_)"/>
+<linearGradient gradientUnits="userSpaceOnUse" id="SVGID_2_" x1="10.0298" x2="10.0298" y1="4.7017" y2="1.041">
+<stop offset="0" style="stop-color:#FF7B00"/>
+<stop offset="1" style="stop-color:#FFE1B5"/>
+</linearGradient>
+<path d="M19.015,2.872c0,1.012-0.766,1.83-1.71,1.83H2.755c-0.944,0-1.711-0.818-1.711-1.83l0,0  c0-1.01,0.767-1.831,1.711-1.831h14.549C18.249,1.041,19.015,1.861,19.015,2.872L19.015,2.872z" fill="url(#SVGID_2_)"/>
+<path d="M11,9.603" fill="#FFFFFF"/>
+<path d="M11,12.002" fill="#FFFFFF"/>
+<path d="M15.171,13.297c0,0.553-0.447,1-1,1H5.654c-0.553,0-1-0.447-1-1V2.961c0-0.552,0.447-1,1-1h8.517  c0.553,0,1,0.448,1,1V13.297z M14.268,4.025c0-0.461-0.374-0.835-0.835-0.835h-6.93c-0.461,0-0.835,0.374-0.835,0.835l0,0  c0,0.461,0.374,0.835,0.835,0.835h6.93C13.894,4.861,14.268,4.487,14.268,4.025L14.268,4.025z" fill="#FFFFFF"/>
+</svg>

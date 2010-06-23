@@ -1,0 +1,4 @@
+from waftools import servertool
+
+def build(bld):
+   servertool.create_module(bld, 'TileModule')

@@ -1,0 +1,86 @@
+<!--
+
+MapCentral 2 (MC2) public API Document Type Definition.
+
+Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+
+Typical usage:
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE request>
+
+<request>
+  <auth login="mylogin" password="mypass"/>
+  <user_favorites_request transaction_id="U1"/>
+</request>
+
+-->
+
+<!-- General entities -->
+<!ENTITY % bool    "(true|false)"> <!-- true or false -->
+<!ENTITY % position_system_t "(WGS84|WGS84Rad|WGS84Deg|MC2)">
+
+<!-- Request with authentication and then the request -->
+<!ELEMENT request ( auth, ( user_favorites_request )+ ) >
+
+<!-- Reply with the reply or status saying why not -->
+<!ELEMENT reply ( ( user_favorites_reply )+ | 
+                  (status_code, status_message ) ) >
+
+<!-- Authenticate the request -->
+<!ELEMENT auth EMPTY >
+<!ATTLIST auth login    CDATA #IMPLIED 
+               password CDATA #IMPLIED >
+
+
+<!-- Common elements -->
+<!ELEMENT status_code (#PCDATA)>
+<!ELEMENT status_message (#PCDATA)>
+
+
+<!-- Favorite -->
+<!ELEMENT favorite ( position_item )>
+<!ATTLIST favorite
+                    id                CDATA  #REQUIRED
+                    name              CDATA  #REQUIRED
+                    short_name        CDATA  #REQUIRED
+                    description       CDATA  #REQUIRED
+                    category          CDATA  #REQUIRED
+                    map_icon_name     CDATA  #REQUIRED >
+
+
+<!-- Position Item -->
+<!ELEMENT position_item ( lat, lon )>
+<!ATTLIST position_item position_system %position_system_t; #REQUIRED >
+<!ELEMENT lat ( #PCDATA )>
+<!ELEMENT lon ( #PCDATA )>
+
+
+<!-- User favorites request -->
+<!ELEMENT user_favorites_request ( favorite_id_list?,
+                                   delete_favorite_id_list?,
+                                   add_favorite_list? )>
+<!ATTLIST user_favorites_request 
+               transaction_id ID #REQUIRED
+               sync_favorites    %bool; "true"
+               position_system   %position_system_t; "WGS84Rad" >
+<!ELEMENT favorite_id_list ( favorite_id* )>
+<!ELEMENT favorite_id ( #PCDATA )>
+<!ELEMENT delete_favorite_id_list ( favorite_id+ )>
+<!ELEMENT add_favorite_list ( favorite+ )>
+
+
+<!-- User favorites reply -->
+<!ELEMENT user_favorites_reply ( delete_favorite_id_list?,
+                                 add_favorite_list? )>
+<!ATTLIST user_favorites_reply transaction_id ID #REQUIRED>

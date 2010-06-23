@@ -1,0 +1,38 @@
+ifdef DOCFILE
+html::
+	FILES="$(shell find include -name *.h)" ; \
+	if test -n "$$FILES"; then \
+	mkdir -p docs ; \
+	$(DOCPP) $(DOCFLAGS) $(DOCHTMLFLAGS) \
+	-d ./docs/html \
+	$$FILES ; \
+	fi
+
+tex::
+	if test -a ./docs/$(DOCFILE).tex; then \
+	$(DOCPP) $(DOCFLAGS) $(DOCHTMLFLAGS) \
+        -o ./docs/$(DOCFILE).tex \
+        $(shell find include -name *.h) ; \
+        fi
+
+docs::   html tex
+endif
+
+ifdef DOCDIRS
+html::
+	@for subdir in $(DOCSUBDIRS); do \
+		if test -d $$subdir; then \
+			(unset CDIR; cd $$subdir && $(MAKE) html $@ ) || exit 1; \
+		fi; \
+	done
+
+tex::
+	@for subdir in $(DOCSUBDIRS); do \
+		if test -d $$subdir; then \
+			(unset CDIR; cd $$subdir && $(MAKE) tex $@ ) || exit 1; \
+		fi; \
+	done
+
+docs::	html tex
+
+endif

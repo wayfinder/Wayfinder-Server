@@ -1,0 +1,194 @@
+<!--
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  
+      * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+      * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<?xml version="1.0" encoding="utf-8" standalone="no" ?><!DOCTYPE isab-mc2><isab-mc2>
+   <search_reply transaction_id="IDSearch1">
+      <search_area_list ending_index="0" numberitems="0" starting_index="0" total_numberitems="0"/><search_item_list ending_index="24" numberitems="25" starting_index="0" total_numberitems="321">
+         <search_item search_item_type="pointofinterest">
+            <name>Lai Wa, Storgatan 11</name>
+            <itemid>c:70001E11:9:0:E</itemid>
+            <location_name>Vasastaden, Gothenburg</location_name>
+            <lat>688380861</lat>
+            <lon>142757062</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wä bil AB, Estrids Väg 5</name>
+            <itemid>c:70000C3F:1:0:E</itemid>
+            <location_name>Öllsjö, Kristianstad</location_name>
+            <lat>668210027</lat>
+            <lon>168282882</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Waldermarsudde, Prins Eugens Väg 6</name>
+            <itemid>c:70003B64:D:0:E</itemid>
+            <location_name>Stockholm</location_name>
+            <lat>707748547</lat>
+            <lon>216129841</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wallmans Nöjen, Teatergatan 21</name>
+            <itemid>c:70003BDE:D:0:E</itemid>
+            <location_name>Norrmalm, Stockholm</location_name>
+            <lat>707839513</lat>
+            <lon>215668759</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wallmans Salonger, Teatergatan 3</name>
+            <itemid>c:70003BDD:D:0:E</itemid>
+            <location_name>Norrmalm, Stockholm</location_name>
+            <lat>707839513</lat>
+            <lon>215668759</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Walpurgis Night, Djurgårdsslätten 51</name>
+            <itemid>c:70003B7D:D:0:E</itemid>
+            <location_name>Stockholm</location_name>
+            <lat>707765573</lat>
+            <lon>215934468</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Warehouse, Götgatan 16</name>
+            <itemid>c:70001EE9:9:0:E</itemid>
+            <location_name>Nordstan, Gothenburg</location_name>
+            <lat>688478268</lat>
+            <lon>142802367</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wasahof, Dalagatan 46</name>
+            <itemid>c:70003D2F:D:0:E</itemid>
+            <location_name>Stockholm</location_name>
+            <lat>707964513</lat>
+            <lon>215303131</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wayne's Coffee, Kungsgatan 14</name>
+            <itemid>c:70003CA6:D:0:E</itemid>
+            <location_name>Norrmalm, Stockholm</location_name>
+            <lat>707906651</lat>
+            <lon>215566854</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Best Western Wallin Hotel, Wallingatan 15</name>
+            <itemid>c:70003CC9:D:0:E</itemid>
+            <location_name>Norrmalm, Stockholm</location_name>
+            <lat>707916899</lat>
+            <lon>215421983</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Cajsa Warg, Renstiernas Gata 20</name>
+            <itemid>c:70003B05:D:0:E</itemid>
+            <location_name>Stockholm</location_name>
+            <lat>707656421</lat>
+            <lon>215752564</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Half Way Inn, Tyssgrytestigen 6</name>
+            <itemid>c:70003AA8:D:0:E</itemid>
+            <location_name>Rådalen, Värmdö</location_name>
+            <lat>706996953</lat>
+            <lon>222383862</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Ai-Wa restaurang, Lundavägen 44</name>
+            <itemid>c:70001376:0:0:E</itemid>
+            <location_name>Malmö</location_name>
+            <lat>663454562</lat>
+            <lon>155494937</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Hing Wa restaurang, Hornsgatan 12</name>
+            <itemid>c:70001A9F:9:0:E</itemid>
+            <location_name>Gamlestaden, Gothenburg</location_name>
+            <lat>688736877</lat>
+            <lon>143304029</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Lai Wa restaurang, Storgatan 11</name>
+            <itemid>c:700015CF:9:0:E</itemid>
+            <location_name>Vasastaden, Gothenburg</location_name>
+            <lat>688379851</lat>
+            <lon>142750326</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wachtmeisters väg, Wachtmeisters Väg</name>
+            <itemid>c:70001133:0:0:E</itemid>
+            <location_name>Rosengård, Malmö</location_name>
+            <lat>663172003</lat>
+            <lon>155656584</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wafab bil AB, Bodalsvägen</name>
+            <itemid>c:7000056C:11:0:E</itemid>
+            <location_name>Kristinehamn</location_name>
+            <lat>707636523</lat>
+            <lon>168819048</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wafab bil AB, Ramgatan 1</name>
+            <itemid>c:70000663:11:0:E</itemid>
+            <location_name>Karlstad</location_name>
+            <lat>708487397</lat>
+            <lon>160811341</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wafab bil AB, Storgatan 57</name>
+            <itemid>c:70000442:12:0:E</itemid>
+            <location_name>Sunne</location_name>
+            <lat>713889005</lat>
+            <lon>156643224</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wahlstedts bil AB, Drakvägen 17</name>
+            <itemid>c:700009F4:B:0:E</itemid>
+            <location_name>Motala</location_name>
+            <lat>698413684</lat>
+            <lon>179129900</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wahlstedts bil AB, Drakvägen 17</name>
+            <itemid>c:700009F5:B:0:E</itemid>
+            <location_name>Motala</location_name>
+            <lat>698413684</lat>
+            <lon>179129900</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wahlström Nielsen Bil AB, Murmästarvägen 33</name>
+            <itemid>c:7000257A:D:0:E</itemid>
+            <location_name>Bredäng, Stockholm</location_name>
+            <lat>707325652</lat>
+            <lon>214078781</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wahlströms bil AB, Södra Industrigatan 13</name>
+            <itemid>c:70000CC8:2:0:E</itemid>
+            <location_name>Hylte</location_name>
+            <lat>679892625</lat>
+            <lon>157861561</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Waiters Bar &amp; Restaurang, Klara Vattugränd 4</name>
+            <itemid>c:70002C61:D:0:E</itemid>
+            <location_name>Norrmalm, Stockholm</location_name>
+            <lat>707848478</lat>
+            <lon>215459808</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Waldenströmsgatan, Waldenströmsgatan 2</name>
+            <itemid>c:70000C11:13:0:E</itemid>
+            <location_name>Brynäs, Gävle</location_name>
+            <lat>723860283</lat>
+            <lon>204675675</lon>
+         </search_item>
+      </search_item_list>
+      
+   </search_reply>
+</isab-mc2>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="20" version="1.1" viewBox="-278.469 420.394 20 20" width="20">
+<font horiz-adv-x="2048">
+<font-face font-family="ArialMT" underline-position="-217" underline-thickness="150" units-per-em="2048"/>
+<missing-glyph d="M256,0l0,1280l1024,0l0,-1280M288,32l960,0l0,1216l-960,0z" horiz-adv-x="1536"/>
+<glyph d="M158,0l0,1466l553,0C808,1466 883,1461 934,1452C1006,1440 1066,1417 1115,1384C1164,1350 1203,1303 1233,1242C1262,1181 1277,1115 1277,1042C1277,917 1237,812 1158,726C1079,639 935,596 728,596l-376,0l0,-596M352,769l379,0C856,769 945,792 998,839C1051,886 1077,951 1077,1036C1077,1097 1062,1150 1031,1194C1000,1237 959,1266 908,1280C875,1289 815,1293 727,1293l-375,0z" horiz-adv-x="1366" unicode="P"/>
+</font>
+<g>
+<path d="M-261.468,420.385h-14c-1.657,0-3,1.344-3,3.002v10.009l-0.001,7.007l5.745-4.005h11.256   c1.658,0,3-1.344,3-3.002v-10.009C-258.468,421.729-259.81,420.385-261.468,420.385z" fill="#002B7A"/>
+</g>
+<g>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 39.0029)" gradientUnits="userSpaceOnUse" id="XMLID_337_" x1="-268.5066" x2="-268.5066" y1="-382.3823" y2="-399.5181">
+<stop offset="0" style="stop-color:#292BFF"/>
+<stop offset="0.1349" style="stop-color:#2B2FFF"/>
+<stop offset="0.2743" style="stop-color:#303CFF"/>
+<stop offset="0.4159" style="stop-color:#3850FF"/>
+<stop offset="0.5588" style="stop-color:#446DFF"/>
+<stop offset="0.7015" style="stop-color:#5392FF"/>
+<stop offset="0.8146" style="stop-color:#61B5FF"/>
+<stop offset="1" style="stop-color:#61B5FF"/>
+</linearGradient>
+<path d="M-261.468,421.385h-14c-1.104,0-2,0.896-2,2.002v10.008l-0.001,5.126l4.289-3.122h7.137h4.574   c1.105,0,2-0.896,2-2.003v-10.009C-259.468,422.282-260.363,421.385-261.468,421.385z" fill="url(#XMLID_337_)"/>
+</g>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 39.0029)" gradientUnits="userSpaceOnUse" id="XMLID_338_" x1="-268.4768" x2="-268.4768" y1="-386.0884" y2="-382.4243">
+<stop offset="0" style="stop-color:#292BFF"/>
+<stop offset="1" style="stop-color:#BDE7FF"/>
+</linearGradient>
+<path d="M-259.454,423.259c0,1.011-0.767,1.832-1.711,1.832h-14.548c-0.944,0-1.711-0.821-1.711-1.832l0,0  c0-1.013,0.767-1.832,1.711-1.832h14.548C-260.22,421.427-259.454,422.246-259.454,423.259L-259.454,423.259z" fill="url(#XMLID_338_)"/>
+<path d="M-267.468,429.994" fill="#FFFFFF"/>
+<path d="M-267.468,432.396" fill="#FFFFFF"/>
+<text fill="#FFFFFF" font-family="'ArialMT'" font-size="12.8271" transform="matrix(0.999 0 0 1 -272.2664 431.5552)">P</text>
+<polygon fill="#FFFFFF" points="-272.943,432.346 -272.943,434.376 -267.454,434.376 -267.454,435.454 -263.952,433.333   -267.454,431.19 -267.454,432.346 "/>
+</svg>

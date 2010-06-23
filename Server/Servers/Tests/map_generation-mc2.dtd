@@ -1,0 +1,201 @@
+<!--
+
+MapCentral 2 (MC2) Map generation Document Type Definition.
+
+
+Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+map_generation-mc2 is an XML language. Typical usage:
+
+   <?xml version="1.0"?>
+
+   <!DOCTYPE map_generation-mc2 SYSTEM "map_generation-mc2.dtd">
+
+   <map_generation-mc2>
+
+   ...
+
+   </map_generation-mc2>
+
+-->
+<!ELEMENT map_generation-mc2 ( create_overviewmap | 
+                               add_region |
+                               region_ids |
+                               region_group_list |
+                               region_lists |
+                               map_supplier_coverage|
+                               map_supplier_name  )* >
+
+
+<!-- General entities -->
+<!ENTITY % number  "NMTOKEN">      <!-- a number, format [0-9]+ -->
+<!ENTITY % bool    "(true|false)"> <!-- true or false -->
+<!ENTITY % vdata   "CDATA">        <!-- attribute value -->
+<!ENTITY % HREF    "%vdata;">      <!-- URI, URL or URN designating a 
+                                        hypertext node. -->
+<!ENTITY % size_t  "%number;">     <!-- a number but inf is allowed -->
+<!-- position_system_t WGS84(GPS) -->
+<!ENTITY % position_system_t "(WGS84|MC2|WGS84Rad|WGS84Deg)">
+
+<!ENTITY % image_display_type "(std|wap)">
+<!ENTITY % route_image_format_t "(png|gif|wbmp)">
+<!ENTITY % message_t "(html|wml|smil)">
+<!ENTITY % route_turn_image_t "(map|pictogram)">
+<!ENTITY % sort_distance_t "(radius|route)">
+<!ENTITY % route_cost_t "(distance|time|time_with_disturbances)">
+<!ENTITY % road_side_t "(left_side|right_side|unknown_side|undefined_side|
+                         side_does_not_matter|left_side_exit|
+                         right_side_exit)">
+<!ENTITY % landmarklocation_t "(after|before|in|at|pass|inBua|
+                                undefinedlocation)">
+<!ENTITY % landmark_t "(builtUpArea|railway|area|poi|signPost)">
+<!ENTITY % top_region_t "(country|state|internationalRegion)">
+<!ENTITY % language_t "(swedish|english|german|danish|italian|dutch|
+                        spanish|french|welch|finnish|norwegian|portuguese|
+                        czech|hungarian|polish|greek|american|albanian|
+                        basque|catalan|frisian|irish|galician|
+                        letzeburgesch|raetoRomance|serboCroatian|slovenian|
+                        valencian|slovak|russian|turkish|arabic|
+                        chinese|chinese_traditional|bulgarian|estonian|farsi|
+                        croatian|indonesian|hebrew|lithuanian|latvian|malay|
+                        romanian|serbo_croatian|tagalog|ukrainian|
+                        eng|swe|ger|dan|ita|dut|spa|fre|wel|fin|nor|por|
+                        eng_usa|cze|alb|baq|cat|fry|gle|glg|ltz|roh|scr|
+                        slv|hun|gre|pol|slo|rus|tur|ara|chi|est|lav|lit|
+                        zht)">
+<!ENTITY % name_t "(officialName|alternativeName)">
+<!ENTITY % item_type "(builtUpAreaItem|municipalItem)" >
+
+<!-- Common elements -->
+<!ELEMENT status_code (#PCDATA)>
+<!ELEMENT status_message (#PCDATA)>
+<!ELEMENT name ( #PCDATA ) >
+<!ATTLIST name language %language_t; #REQUIRED
+               type     %name_t; "officialName" > 
+
+<!-- Position Item -->
+<!ELEMENT position_item ( lat, lon )>
+<!ATTLIST position_item position_system %position_system_t; #REQUIRED>
+<!-- latitude and longitude WSG84 format: (N|S|E|W) D(D*)MMSS[.ddd] -->
+<!ELEMENT lat ( #PCDATA )>
+<!ELEMENT lon ( #PCDATA )>
+
+<!-- Bounding Box -->
+<!ELEMENT bounding_box EMPTY>
+<!ATTLIST bounding_box 
+             north_lat CDATA #REQUIRED
+             west_lon  CDATA #REQUIRED
+             south_lat CDATA #REQUIRED
+             east_lon  CDATA #REQUIRED >
+
+
+<!-- item_ident -->
+<!ELEMENT item_ident (position_item | inside_name ) >
+<!ATTLIST item_ident name CDATA #REQUIRED 
+                     type %item_type; #REQUIRED >
+<!ELEMENT inside_name ( #PCDATA ) >
+
+
+<!-- create_overviewmap -->
+<!ELEMENT create_overviewmap ( map+ ) >
+<!ATTLIST create_overviewmap overview_ident CDATA #REQUIRED >
+<!ELEMENT map EMPTY>
+<!ATTLIST map map_ident CDATA #REQUIRED >
+
+
+<!-- add_region -->
+<!ELEMENT add_region ( name+, content+, inside_region* ) >
+<!ATTLIST add_region region_ident CDATA #REQUIRED 
+                     type %top_region_t; "country" >
+<!ELEMENT content ( (item_ident+) | whole_map ) > 
+<!ATTLIST content map_ident CDATA #REQUIRED >
+<!ELEMENT whole_map EMPTY>
+<!ELEMENT inside_region EMPTY>
+<!ATTLIST inside_region ident CDATA #REQUIRED >
+
+
+<!-- region_ids -->
+<!ELEMENT region_ids ( region* ) >
+<!ELEMENT region ( region_group_id* ) >
+<!ATTLIST region  ident CDATA    #REQUIRED
+                  id    %number; #REQUIRED 
+                  mcc   CDATA    #IMPLIED
+                  iso_name CDATA #IMPLIED >
+<!ELEMENT region_group_id EMPTY >
+<!ATTLIST region_group_id id %number; #REQUIRED >
+
+
+<!-- region_group_list -->
+<!ELEMENT region_group_list ( region_group* ) >
+<!ELEMENT region_group EMPTY >
+<!ATTLIST region_group ident         CDATA    #REQUIRED
+                       id            %number; #REQUIRED
+                       mc2stringcodes CDATA   #IMPLIED >
+
+<!-- region_lists -->
+<!ELEMENT region_lists ( region_list* ) >
+<!ELEMENT region_list ( (region_group_id|region_id)* ) >
+<!ATTLIST region_list ident          CDATA    #REQUIRED
+                      mc2stringcodes CDATA    #IMPLIED >
+<!ELEMENT region_id EMPTY >
+<!ATTLIST region_id id %number; #REQUIRED >
+
+
+
+<!ELEMENT country EMPTY>
+<!ATTLIST country id_string CDATA #REQUIRED>
+<!-- id_string value: The GMS name of the country, defined by a set of 
+                      if statements in mc2:Server/MapGen/MapGenerator/src/
+                      GenerateMapServer.cpp::commandLineSemantics
+-->
+
+
+<!-- map supplier coverage -->
+<!ELEMENT map_supplier_coverage (bounding_box, map_supplier_coverage* ) >
+<!ATTLIST map_supplier_coverage map_supplier CDATA #REQUIRED >
+
+<!ELEMENT map_supplier_name ( name+ )>
+<!ATTLIST map_supplier_name map_supplier CDATA #REQUIRED>
+
+<!-- Attribute: map_supplier value should be the string used to identify a map 
+     supplier in MapGenUtil::initMapSupMapping
+-->
+
+
+
+<!--category tree and list-->
+<!ELEMENT category_data (category_tree, categories ) >
+<!ELEMENT category_tree (cat_node* ) >
+<!ELEMENT cat_node (cat_node* ) >
+<!ATTLIST cat_node cat_id %number; #REQUIRED
+                   cat_link %bool; 'false'
+>
+<!-- Attributes:
+     cat_id   One of the numbers used in a category element included in a 
+              categories elemet
+     cat_link This element describes that a part of the category tree defined
+              elsewhere also is accessible from this point.
+
+ --> 
+
+<!ELEMENT categories (category* ) >
+<!ELEMENT category (name* ) >
+<!ATTLIST category id       %number; #REQUIRED
+                   cat_list %bool;   'false'
+                   desc     CDATA    #REQUIRED >
+
+<!-- Attributes
+     cat_list Tells whether this category should be included in the
+              standard flat category list used when searching
+     desc     Something describing the category.
+ -->

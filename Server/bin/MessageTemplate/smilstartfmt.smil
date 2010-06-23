@@ -1,0 +1,8 @@
+<smil><head><layout><root-layout />
+</layout>
+</head>
+<body>
+<par dur="7000ms">
+<img src="%ROUTEOVERVIEW_URI%"/>
+<text src="%START_FILE%"/>
+</par>

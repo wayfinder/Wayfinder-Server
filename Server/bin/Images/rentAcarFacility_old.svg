@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="20" version="1.1" viewBox="-288.5 410.421 20 20" width="20">
+<g>
+<path d="M-271.498,410.39H-285.5c-1.656,0-2.998,1.348-2.998,3.01v10.031l-0.002,7.021l5.744-4.013h11.258   c1.656,0,2.998-1.348,2.998-3.009V413.4C-268.5,411.738-269.839,410.39-271.498,410.39z" fill="#612900"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 19.0571)" gradientUnits="userSpaceOnUse" id="XMLID_461_" x1="-278.5361" x2="-278.5361" y1="-392.3357" y2="-409.5085">
+<stop offset="0" style="stop-color:#FF5E00"/>
+<stop offset="0.1643" style="stop-color:#FF6201"/>
+<stop offset="0.334" style="stop-color:#FF6F04"/>
+<stop offset="0.5062" style="stop-color:#FF8308"/>
+<stop offset="0.6792" style="stop-color:#FFA00E"/>
+<stop offset="0.8146" style="stop-color:#FFBC14"/>
+<stop offset="1" style="stop-color:#FFBC14"/>
+</linearGradient>
+<path d="M-271.498,411.393H-285.5c-1.104,0-1.999,0.896-1.999,2.007v10.031l-0.001,5.135l4.29-3.129   h11.712c1.104,0,2-0.896,2-2.006V413.4C-269.498,412.29-270.392,411.393-271.498,411.393z" fill="url(#XMLID_461_)"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 19.0571)" gradientUnits="userSpaceOnUse" id="XMLID_462_" x1="-278.5054" x2="-278.5054" y1="-396.0496" y2="-392.3777">
+<stop offset="0" style="stop-color:#FF7B00"/>
+<stop offset="1" style="stop-color:#FFE1B5"/>
+</linearGradient>
+<path d="M-269.482,413.27c0,1.015-0.766,1.837-1.713,1.837h-14.548c-0.945,0-1.711-0.822-1.711-1.837l0,0   c0-1.013,0.767-1.835,1.711-1.835h14.548C-270.248,411.435-269.482,412.257-269.482,413.27L-269.482,413.27z" fill="url(#XMLID_462_)"/>
+<path d="M-277.5,420.02" fill="#FFFFFF"/>
+<path d="M-277.5,422.428" fill="#FFFFFF"/>
+<path d="M-274.951,418.447" fill="#CA00FF"/>
+</g>
+<g>
+<path d="M-274.582,413.432h-7.75c-0.552,0-3.167,4-3.167,5v3c0,0.553,0.448,1,1,1l0,0v2   c0,0.139,0.111,0.25,0.25,0.25h1.5c0.138,0,0.25-0.111,0.25-0.25v-2h7.999v2c0,0.139,0.111,0.25,0.25,0.25h1.5   c0.14,0,0.25-0.111,0.25-0.25v-2l0,0c0.554,0,1-0.447,1-1v-3C-271.5,417.432-274.029,413.432-274.582,413.432z M-273.779,417.827   h-9.44c-1,0,0.918-3.396,1.305-3.396s6.407,0,6.771,0C-274.78,414.432-272.779,417.827-273.779,417.827z M-281.499,420.432   c0,0.552-0.448,1-1,1s-1-0.447-1-1c0-0.554,0.448-1,1-1S-281.499,419.878-281.499,420.432z M-273.477,420.432c0,0.552-0.446,1-1,1   c-0.553,0-1-0.447-1-1c0-0.554,0.447-1,1-1C-273.923,419.432-273.477,419.878-273.477,420.432z" fill="#FFFFFF"/>
+</g>
+</svg>

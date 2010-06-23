@@ -1,0 +1,4 @@
+ <tr>
+  <td>%ROUTE_PRE_LANDMARKS%%ROUTE_DESCRIPTION%%ROUTE_POST_LANDMARKS%</td>
+  <td><img src="%ROUTE_TURN_URI%" width="%ROUTE_TURN_WIDTH%" height="%ROUTE_TURN_HEIGHT%" alt="&#x5B;%ROUTE_TURN_ALT%&#x5B;"/></td>
+ </tr>

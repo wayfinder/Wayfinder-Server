@@ -1,0 +1,5 @@
+                      <tr> 
+                        <td width="34">&nbsp;</td>
+                        <td width="455" class="normal"><span class="landmark_text"><img src="info_sign.gif" alt="">&nbsp;%ROUTE_LANDMARK_DESCRIPTION%</span></td>
+                      </tr>
+

@@ -1,0 +1,116 @@
+%
+% Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+% All rights reserved.
+% 
+% Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+% 
+%     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+%     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+%     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+% 
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+%
+
+\subsection{NAV\_SERVER\_INFO\_REQ v.1}
+
+Request to get the parameters that holds information for the client.
+
+\subsection{NAV\_SERVER\_INFO\_REQ v.2}
+
+In this version of the request parameter 4308 may be included to get
+a category list specific for the area the client is in.
+
+\begin{list}{\textbf{ParamID}}{}
+\label{Category position}
+\item \textbf{4308} \textbf{Type} int32,int32 \textbf{Name} Pos for categories \textbf{Default~value} - \\
+\end{list}
+
+\subsection{NAV\_SERVER\_INFO\_REPLY v.1}
+
+Server sends all infos it know to client.
+
+\begin{list}{\textbf{ParamID}}{}
+\item \textbf{4300} \textbf{Type} uint32 \textbf{Name} TopRegionChecksum
+                 \textbf{Default~value} - \\
+  \index{TopRegionChecksum, Parameter}
+  \index{4300, ParamID}
+  \label{TopRegionChecksum}
+  \textbf{Description} The current checksum of the top region list either in
+                       server or client.
+\item \textbf{4301} \textbf{Type} uint32 \textbf{Name} Subscription time left
+                 \textbf{Default~value} - \\
+  \index{Subscription time left, Parameter}
+  \index{4301, ParamID}
+  \textbf{Description} Uint32 parameter sent from the server to the client 
+                       detailing how many seconds of the user's subscription
+                       remains. See also Transactions left. XXX:
+\item \textbf{4302} \textbf{Type} uint32 \textbf{Name}  Latest news crc
+                 \textbf{Default~value} - \\
+  \index{Latest news crc, Parameter}
+  \index{4302, ParamID}
+  \label{Latest news crc}
+  \textbf{Description} A uint32 checksum for the clients Latest News.
+\item \textbf{4303} \textbf{Type} uint32 \textbf{Name} Categories crc
+                 \textbf{Default~value} - \\
+  \index{Categories crc, Parameter}
+  \index{4303, ParamID}
+  \label{Categories crc}
+  \textbf{Description} A uint32 checksum for the last downloaded Categories 
+  file sent from client to server and from server to client.
+\item \textbf{4305} \textbf{Type} uint32 \textbf{Name} CallCenter Checksum 
+                 \textbf{Default~value} - \\
+  \index{CallCenter Checksum, Parameter}
+  \index{4305, ParamID}
+  \label{CallCenter Checksum}
+  \textbf{Description} Uint32 parameter sent from client to server and from 
+  server to client containing the checksum of the latest received CallCenter
+  List parameter.
+\item \textbf{4306} \textbf{Type} string \textbf{Name} Public User Name 
+                 \textbf{Default~value} - \\
+  \index{Public User Name, Parameter}
+  \index{4306, ParamID}
+  \textbf{Description} String parameter sent from server with the text user 
+  name to login with on webpages.
+\item \textbf{4307} \textbf{Type} uint32 \textbf{Name} Server List Checksum 
+                 \textbf{Default~value} - \\
+  \index{Server List Checksum, Parameter}
+  \index{4307, ParamID}
+  \label{Server List Checksum}
+  \textbf{Description} Uint32 parameter containing the servers list checksum.
+  Sent from client to server and from server to client.
+\end{list}
+
+The following are also sent in reply:\\
+5204 - PIN crc \\
+21 - Bit rights \\
+23 - New version \\
+25 - UTC time \\
+
+
+\subsection{NAV\_SERVER\_INFO\_REPLY v.2}
+
+The following are also sent in reply:\\
+4903 - Fav crc \\
+27 - News string \\
+
+\subsection{NAV\_SERVER\_INFO\_REPLY v.3}
+
+The following is also sent in reply:\\
+28 - Search desc crc \\
+
+\subsection{NAV\_SERVER\_INFO\_REPLY v.4}
+The following is also sent in reply:
+\begin{list}{\textbf{ParamID}}{}
+\item \textbf{4308} \textbf{Type} bool \textbf{Name} Force client upgrade
+                 \textbf{Default~value} - \\
+  \index{Force client upgrade, Parameter}
+  \index{4308, ParamID}
+  \textbf{Description} True if upgrade to new client version should be forced.
+\item \textbf{4309} \textbf{Type} string \textbf{Name} Upgrade id
+                 \textbf{Default~value} - \\
+  \index{Upgrade id, Parameter}
+  \index{4309, ParamID}
+  \textbf{Description} String identifying the latest version in the platform 
+  market. May be an URI, a package name, an id etc.
+\end{list}
+

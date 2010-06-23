@@ -1,0 +1,109 @@
+#-------------------------------------------------------------------------------
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#-------------------------------------------------------------------------------
+# Lines starting with # are comments
+# Strings are in utf-8 (ascii is valid utf-8).
+#
+# Client-Type , Client-Type-Options , MatrixOfDoom
+# , notAutoUpgradeToSilver, silverRegionID
+# , SilverTimeYear , SilverTimeMonth , SilverTimeDay 
+# , explicitSilverTime
+# , BlockDate , notCreateWLUser , createLevel , createRegionID 
+# , createRegionTimeYear , createRegionTimeMonth , createRegionTimeDay
+# , explicitCreateRegionTime, createTransactionDays
+# , phoneModel, imageExtension, noLatestNews, callCenterList, brand
+# , categoryPrefix
+# % CommentText NL
+#
+# Client-Type         String identifing type of client
+# Client-Type-Options String with additional info about client
+# MatrixOfDoom        Int    Level of Doom, 1 or 2.
+# notAutoUpgradeToSilver Bool No autoupgrade to silver even if 
+#                             Matrix I.
+# silverRegionID      Uint32 Region ID to set when autoupdating to
+#                            silver.
+# SilverTimeYear      Int    The number of years to set for silver 
+#                            region.
+# SilverTimeMonth     Int    The number of months to set for silver 
+#                            region
+# SilverTimeDay       Int    The number of days to set for silver
+#                            region
+# explicitSilverTime  Date   The explicit date when silver expires.
+#                            Empty string if not explicit date. In UTC.
+# BlockDate           Date   The date to start blocking client.
+# notCreateWLUser     Bool   If not to auto create WL-user.
+# createLevel         Uint32 The WFSubscription level to create.
+#                            0 = Trial, 1 = Silver, 2 = Gold, 3 = Iron
+# createRegionID      Uint32 Region ID to set when autocreating WL-user
+# createRegionTimeYear Int   The number of years to set for WL-user's
+#                            region.
+# createRegionTimeMonth Int  The number of months to set for WL-user's
+#                            region.
+# createRegionTimeDay   Int  The number of days to set for WL-user's
+#                            region.
+# explicitCreateRegionTime Date The explicit date when WL-user's 
+#                               expire. Empty string if no explicit
+#                               date. In UTC.
+# createTransactionDays Int  The number of transactions days for 
+#                            create. User set to be transaction days
+#                            based if createTransactionDays > 0.
+# phoneModel          String The default phonemodel for this client 
+#                            type.
+# imageExtension      String The image type extension, gif.
+# noLatestNews        Bool   If no latest news for client type.
+# callCenterList      String The call center list.
+# brand               String The brand type, empty if not branded.
+# categoryPrefix      String The prefix of category files. If empty
+#                            string then default "wfcat" is used.
+# imageSet            String The image set to use, e.g. default or iphone.
+#                            If empty then the default image set is used.
+# version             String The version we recommend to use. Example:
+#                            4.64.0:4.9.0:0 If ! is first version the
+#                            clients are forced to upgrade to this version.
+# lockedVersion       String The latest version for clients locked to
+#                            major version. Example: 
+#                            4.50.0|4.64.0:4.9.0:0;5.1.0|5.1.0:4.9.0:0
+# serverlistname      String The name of the serverlist that should be
+#                            used with this client. Serverlists
+#                            are defined in the serverlist
+#                            file. The empty string is interpreted
+#                            as "default" which is specified as a
+#                            command line argument.
+# marketId            String Identifier in the platform market for 
+#                            downloading new client version
+# extraRights         String additional rights for the user.
+#                            Example: "GOLD(1m,2097152)"
+#                            Will give the user GOLD rights for 1 month
+
+# this is a comma separated string that can be copied and then
+#  replaced field by field 
+# Client-Type, Client-Type-Options, MatrixOfDoom, notAutoUpgradeToSilver, silverRegionID, SilverTimeYear, SilverTimeMonth, SilverTimeDay, explicitSilverTime, BlockDate, notCreateWLUser, createLevel, createRegionID, createRegionTimeYear, createRegionTimeMonth, createRegionTimeDay, explicitCreateRegionTime, createTransactionDays, phoneModel, imageExtension, noLatestNews, callCenterList, brand, categoryPrefix, imageSet, version, lockedVersion, serverlistname, extraRights              
+  
+# When finding client setting first all rows with same Client-Type are
+# searched for one with the same Client-Type-Options. If no row
+# with same Client-Type-Options the row with empty Client-Type-Options
+# is selected. If no empty Client-Type-Options then first best row is 
+# used.
+# If no rows with same Client-Type exists a default setting is used:
+# "default","", 2, false,1,0,0,0,"", "2038-01-01",true, 1,0,0,0,"",0, 
+# "7650", "gif", false, "", "", "", "", ""
+#
+# If TimeYear,TimeMonth and TimeDay all are zero(0) it means inf time.
+# If explicitTime is set it is used in favour of Time(Year,Month,Day)
+#
+
+#Unit test client
+wf10-UnitTest1-br,"Client-Type-Options",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,9,0,"",0, "K750i","png",false,"", "TEST", "test","default", "4.64.0:4.9.0:0","", "","marketId55",""%     
+wf10-UnitTest2-br,"Client-Type-Options",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,9,0,"",0, "iPhone","png",false,"", "TEST", "test","default", "!4.65.0:5.9.0:0","", "","http://market.place.com/download/1",""%                       
+
+
+# EOF

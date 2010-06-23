@@ -1,0 +1,6 @@
+from waftools import servertool
+
+def build(bld):
+   prog = servertool.create_module(bld, 'UserModule')
+   prog.linkflags = '-lpq'
+   prog.uselib += ' MEMCACHED LIBMEMCACHED DATABASE'

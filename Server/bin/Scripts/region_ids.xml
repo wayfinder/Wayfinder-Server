@@ -1,0 +1,1406 @@
+<?xml version="1.0"?>
+<!--
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  
+      * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+      * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<!DOCTYPE map_generation-mc2 SYSTEM "map_generation-mc2.dtd">
+<map_generation-mc2>
+   <region_group_list>
+      <region_group ident="Europe"                           id="2097152" mc2stringcodes="1259"/>
+      <!-- There is a region USA below, not used, the states are used -->
+      <region_group ident="USA"                              id="2097153" mc2stringcodes="337"/>
+      <region_group ident="Nordic countries"                 id="2097154"/>
+      <region_group ident="BeNeLux"                          id="2097155" mc2stringcodes="1260"/>
+      <region_group ident="United Kingdom &amp; Ireland"     id="2097156" mc2stringcodes="397, 405, 392"/>
+      <region_group ident="France, BeNeLux &amp; Monaco" id="2097159"/>
+      <region_group ident="Italy, Austria, Switzerland &amp; Liechtenstein" id="2097160"/>
+      <region_group ident="Spain, Portugal &amp; Andorra"    id="2097161" mc2stringcodes="387, 1264, 393, 405, 388"/>
+      <region_group ident="North America"                    id="2097162" mc2stringcodes="1261"/>
+      <region_group ident="Empty region"                     id="2097172"/>
+      <region_group ident="Trial"                            id="2097173"/>
+      <region_group ident="Scandinavia"                      id="2097177" mc2stringcodes="1262"/>
+      <region_group ident="The Alps"                         id="2097178" mc2stringcodes="1263"/>
+      <region_group ident="Czech republic &amp; Slovakia"    id="2097179" mc2stringcodes="396, 405, 479"/>
+      <region_group ident="France"                           id="2097180" mc2stringcodes="383"/>
+      <region_group ident="World"                            id="2097181"/>
+      <region_group ident="Baltic countries"                 id="2097190"/>
+      <region_group ident="South East Asia"                  id="2097198"/>
+      <region_group ident="Hong Kong &amp; Macao"            id="2097199"/>
+      <region_group ident="Southern Africa"                  id="2097200"/>
+      <region_group ident="Germany &amp; The Alps"           id="2097203" mc2stringcodes="55, 405, 1263"/>
+      <region_group ident="Australia &amp; New Zealand"      id="2097204" mc2stringcodes="523, 405, 636"/>
+      <region_group ident="India"                            id="2097205" mc2stringcodes="595"/>
+      <region_group ident="India country"                    id="164" mc2stringcodes="595"/>
+   </region_group_list>
+
+   <region_ids>
+      <region ident = "england" id = "0" mcc="234,235" iso_name="GBR">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097156"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "sweden" id = "1" mcc="240" iso_name="SWE">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097154"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097177"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "germany" id = "2" mcc="262" iso_name="DEU">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097203"/>
+      </region>
+      <region ident = "denmark" id = "3" mcc="238" iso_name="DNK">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097154"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097177"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "finland" id = "4" mcc="244" iso_name="FIN">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097154"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097177"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "norway" id = "5" mcc="242" iso_name="NOR">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097154"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097177"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "belgium" id = "6" mcc="206" iso_name="BEL">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097155"/>
+         <region_group_id id="2097159"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "netherlands" id = "7" mcc="204" iso_name="NLD">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097155"/>
+         <region_group_id id="2097159"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "luxembourg" id = "8" mcc="270" iso_name="LUX">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097155"/>
+         <region_group_id id="2097159"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <!-- If you use the usa region then remove the region_group usa 
+           and all the states should be states not countries -->
+      <region ident="usa" id="9">
+      </region>
+      <!-- US states -->
+      <region ident = "alaska" id = "10">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "arizona" id = "11">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "arkansas" id = "12">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "california" id = "13">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "colorado" id = "14">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "connecticut" id = "15">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "delaware" id = "16">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "district_of_columbia" id = "17">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "florida" id = "18">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "georgia" id = "19">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "hawaii" id = "20">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "idaho" id = "21">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "illinois" id = "22">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "indiana" id = "23">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "iowa" id = "24">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "kansas" id = "25">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "kentucky" id = "26">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "louisiana" id = "27">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "maine" id = "28">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "maryland" id = "29">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "massachusetts" id = "30">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "michigan" id = "31">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "minnesota" id = "32">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "mississippi" id = "33">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "missouri" id = "34">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "montana" id = "35">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "nebraska" id = "36">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "nevada" id = "37">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "new_hampshire" id = "38">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "new_jersey" id = "39">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "new_mexico" id = "40">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "new_york" id = "41">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "north_carolina" id = "42">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "north_dakota" id = "43">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "ohio" id = "44">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "oklahoma" id = "45">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "oregon" id = "46">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "pennsylvania" id = "47">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "rhode_island" id = "48">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "south_carolina" id = "49">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "south_dakota" id = "50">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "tennessee" id = "51">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "texas" id = "52">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "utah" id = "53">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "vermont" id = "54">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "virginia" id = "55">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "washington" id = "56">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "west_virginia" id = "57">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "wisconsin" id = "58">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "wyoming" id = "59">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "alabama" id = "60">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <!-- End USA states-->
+      <region ident = "ireland" id = "61" mcc="272" iso_name="IRL">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097156"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "switzerland" id = "62" mcc="228" iso_name="CHE">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097160"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097178"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097203"/>
+      </region>
+      <region ident = "austria" id = "63" mcc="232" iso_name="AUT">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097160"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097178"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097203"/>
+      </region>
+      <region ident = "france" id = "64" mcc="208" iso_name="FRA">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097159"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097180"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "spain" id = "65" mcc="214" iso_name="ESP">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097161"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "liechtenstein" id = "66" mcc="295" iso_name="LIE">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097160"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097178"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097203"/>
+      </region>
+      <region ident = "italy" id = "67" mcc="222" iso_name="ITA">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097160"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "andorra" id = "68" mcc="213" iso_name="AND">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097161"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097180"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "monaco" id = "69" mcc="212" iso_name="MCO">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097159"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097180"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "portugal" id = "70" mcc="268" iso_name="PRT">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097161"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <!-- Some more USA states -->
+      <region ident = "guam" id = "71">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "puerto_rico" id = "72" mcc="330" iso_name="PRI">
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <!-- End some more USA states -->
+      <region ident = "canada" id = "73" mcc="302" iso_name="CAN">
+         <region_group_id id="2097162"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "hungary" id = "74" mcc="216" iso_name="HUN">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "czech_republic" id = "75" mcc="230" iso_name="CZE">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097179"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "poland" id = "76" mcc="260" iso_name="POL">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "greece" id = "77" mcc="202" iso_name="GRC">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "israel" id = "78" mcc="425" iso_name="ISR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "brazil" id = "79" mcc="724" iso_name="BRA">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "slovakia" id = "80" mcc="231" iso_name="SVK">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097179"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "russia" id = "81" mcc="250" iso_name="RUS">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "turkey" id = "82" mcc="286" iso_name="TUR">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "hong_kong" id = "83" mcc="454" iso_name="HKG">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097199"/>
+      </region>
+      <region ident = "singapore" id = "84" mcc="525" iso_name="SGP">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097198"/>
+      </region>
+      <region ident = "croatia" id = "85" mcc="219" iso_name="HRV">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "slovenia" id = "86" mcc="293" iso_name="SVN">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "australia" id = "87" mcc="505" iso_name="AUS">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097204"/>
+      </region>
+      <region ident = "uae" id = "88" mcc="424,430,431" iso_name="ARE">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "bahrain" id = "89" mcc="426" iso_name="BHR">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "afghanistan" id = "90" mcc="412" iso_name="AFG">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "albania" id = "91" mcc="276" iso_name="ALB">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "algeria" id = "92" mcc="603" iso_name="DZA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "american_samoa" id = "93" mcc="544" iso_name="ASM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "angola" id = "94" mcc="631" iso_name="AGO">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "anguilla" id = "95" mcc="365" iso_name="AIA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "antarctica" id = "96" iso_name="ATA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "antigua_and_barbuda" id = "97" mcc="344" iso_name="ATG">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "argentina" id = "98" mcc="722" iso_name="ARG">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "armenia" id = "99" mcc="283" iso_name="ARM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "aruba" id = "100" mcc="363" iso_name="ABW">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "azerbaijan" id = "101" mcc="400" iso_name="AZE">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "bahamas" id = "102" mcc="364" iso_name="BHS">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "bangladesh" id = "103" mcc="470" iso_name="BGD">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "barbados" id = "104" mcc="342" iso_name="BRB">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "belarus" id = "105" mcc="257" iso_name="BLR">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "belize" id = "106" mcc="702" iso_name="BLZ">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "benin" id = "107" mcc="616" iso_name="BEN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "bermuda" id = "108" mcc="350" iso_name="BMU">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "bhutan" id = "109" mcc="402" iso_name="BTN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "bolivia" id = "110" mcc="736" iso_name="BOL">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "bosnia" id = "111" mcc="218" iso_name="BIH">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "botswana" id = "112" mcc="652" iso_name="BWA">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+      <region ident = "british_virgin_islands" id = "113" mcc="348" iso_name="VGB">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "brunei_darussalam" id = "114" mcc="528" iso_name="BRN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "bulgaria" id = "115" mcc="284" iso_name="BGR">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "burkina_faso" id = "116" mcc="613" iso_name="BFA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "burundi" id = "117" mcc="642" iso_name="BDI">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "cambodia" id = "118" mcc="456" iso_name="KHM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "cameroon" id = "119" mcc="624" iso_name="CMR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "cape_verde" id = "120" mcc="625" iso_name="CPV">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "cayman_islands" id = "121" mcc="346" iso_name="CYM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "central_african_republic" id = "122" mcc="623" iso_name="CAF">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "chad" id = "123" mcc="622" iso_name="TCD">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "chile" id = "124" mcc="730" iso_name="CHL">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "china" id = "125" mcc="460,461" iso_name="CHN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "colombia" id = "126" mcc="732" iso_name="COL">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "comoros" id = "127" mcc="654" iso_name="COM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "congo" id = "128" mcc="629" iso_name="COG">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "cook_islands" id = "129" mcc="548" iso_name="COK">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "costa_rica" id = "130" mcc="712" iso_name="CRI">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "cuba" id = "131" mcc="368" iso_name="CUB">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "cyprus" id = "132" mcc="280" iso_name="CYP">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "djibouti" id = "133" mcc="638" iso_name="DJI">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "dominica" id = "134" mcc="366" iso_name="DMA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "dominican_republic" id = "135" mcc="370" iso_name="DOM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "dr_congo" id = "136" mcc="630" iso_name="COD">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "ecuador" id = "137" mcc="740" iso_name="ECU">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "egypt" id = "138" mcc="602" iso_name="EGY">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "el_salvador" id = "139" mcc="706" iso_name="SLV">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "equatorial_guinea" id = "140" mcc="627" iso_name="GNQ">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "eritrea" id = "141" mcc="657" iso_name="ERI">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "estonia" id = "142" mcc="248" iso_name="EST">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097190"/>
+      </region>
+      <region ident = "ethiopia" id = "143" mcc="636" iso_name="ETH">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "faeroe_islands" id = "144" mcc="288" iso_name="FRO">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "falkland_islands" id = "145" mcc="750" iso_name="FLK">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "fiji" id = "146" mcc="542" iso_name="FJI">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "french_guiana" id = "147" mcc="742" iso_name="GUF">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "french_polynesia" id = "148" mcc="547" iso_name="PYF">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "gabon" id = "149" mcc="628" iso_name="GAB">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "gambia" id = "150" mcc="607" iso_name="GMB">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "georgia_country" id = "151" mcc="282" iso_name="GEO">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "ghana" id = "152" mcc="620" iso_name="GHA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "greenland" id = "153" mcc="290" iso_name="GRL">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "grenada" id = "154" mcc="352" iso_name="GRD">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "guadeloupe" id = "155" mcc="340" iso_name="GLP">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "guam" id = "156" iso_name="GUM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "guatemala" id = "157" mcc="704" iso_name="GTM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "guinea" id = "158" mcc="611" iso_name="GIN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "guinea_bissau" id = "159" mcc="632" iso_name="GNB">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "guyana" id = "160" mcc="738" iso_name="GUY">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "haiti" id = "161" mcc="372" iso_name="HTI">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "honduras" id = "162" mcc="708" iso_name="HND">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "iceland" id = "163" mcc="274" iso_name="ISL">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "india" id = "164" mcc="404,405" iso_name="IND">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident = "indonesia" id = "165" mcc="510" iso_name="IDN">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097198"/>
+      </region>
+      <region ident = "iran" id = "166" mcc="432" iso_name="IRN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "iraq" id = "167" mcc="418" iso_name="IRQ">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "ivory_coast" id = "168" mcc="612" iso_name="CIV">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "jamaica" id = "169" mcc="338" iso_name="JAM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "japan" id = "170" mcc="440,441" iso_name="JPN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "jordan" id = "171" mcc="416" iso_name="JOR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "kazakhstan" id = "172" mcc="401" iso_name="KAZ">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "kenya" id = "173" mcc="639" iso_name="KEN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "kiribati" id = "174" mcc="545" iso_name="KIR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "kuwait" id = "175" mcc="419" iso_name="KWT">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "kyrgyzstan" id = "176" mcc="437" iso_name="KGZ">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "laos" id = "177" mcc="457" iso_name="LAO">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "latvia" id = "178" mcc="247" iso_name="LVA">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097190"/>
+      </region>
+      <region ident = "lebanon" id = "179" mcc="415" iso_name="LBN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "lesotho" id = "180" mcc="651" iso_name="LSO">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+      <region ident = "liberia" id = "181" mcc="618" iso_name="LBR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "libya" id = "182" mcc="606" iso_name="LBY">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "lithuania" id = "183" mcc="246" iso_name="LTU">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097190"/>
+      </region>
+      <region ident = "macao" id = "184" mcc="455" iso_name="MAC">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097199"/>
+      </region>
+      <region ident = "macedonia" id = "185" mcc="294" iso_name="MKD">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "madagascar" id = "186" mcc="646" iso_name="MDG">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "malawi" id = "187" mcc="650" iso_name="MWI">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+      <region ident = "malaysia" id = "188" mcc="502" iso_name="MYS">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097198"/>
+      </region>
+      <region ident = "maldives" id = "189" mcc="472" iso_name="MDV">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "mali" id = "190" mcc="610" iso_name="MLI">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "malta" id = "191" mcc="278" iso_name="MLT">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "marshall_islands" id = "192" mcc="551" iso_name="MHL">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "martinique" id = "193" mcc="340" iso_name="MTQ">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "mauritania" id = "194" mcc="609" iso_name="MRT">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "mauritius" id = "195" mcc="617" iso_name="MUS">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "mayotte" id = "196" iso_name="MYT">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "mexico" id = "197" mcc="334" iso_name="MEX">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "micronesia" id = "198" mcc="550" iso_name="FSM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "moldova" id = "199" mcc="259" iso_name="MDA">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "mongolia" id = "200" mcc="428" iso_name="MNG">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "montserrat" id = "201" mcc="354" iso_name="MSR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "morocco" id = "202" mcc="604" iso_name="MAR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "mozambique" id = "203" mcc="643" iso_name="MOZ">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+      <region ident = "myanmar" id = "204" mcc="414" iso_name="MMR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "namibia" id = "205" mcc="649" iso_name="NAM">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+      <region ident = "nauru" id = "206" mcc="536" iso_name="NRU">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "nepal" id = "207" mcc="429" iso_name="NPL">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "netherlands_antilles" id = "208" mcc="362" iso_name="ANT">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "new_caledonia" id = "209" mcc="546" iso_name="NCL">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "new_zealand" id = "210" mcc="530" iso_name="NZL">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097204"/>
+      </region>
+      <region ident = "nicaragua" id = "211" mcc="710" iso_name="NIC">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "niger" id = "212" mcc="614" iso_name="NER">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "nigeria" id = "213" mcc="621" iso_name="NGA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "niue" id = "214" iso_name="NIU">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "northern_mariana_islands" id = "215" iso_name="MNP">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "north_korea" id = "216" mcc="467" iso_name="PRK">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "occupied_palestinian_territory" id = "217" iso_name="PSE">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "oman" id = "218" mcc="422" iso_name="OMN">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "pakistan" id = "219" mcc="410" iso_name="PAK">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "palau" id = "220" mcc="552" iso_name="PLW">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "panama" id = "221" mcc="714" iso_name="PAN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "papua_new_guinea" id = "222" mcc="537" iso_name="PNG">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "paraguay" id = "223" mcc="744" iso_name="PRY">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "peru" id = "224" mcc="716" iso_name="PER">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "philippines" id = "225" mcc="515" iso_name="PHL">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "pitcairn" id = "226" iso_name="PCN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "qatar" id = "227" mcc="427" iso_name="QAT">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "reunion" id = "228" iso_name="REU">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "romania" id = "229" mcc="226" iso_name="ROU">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "rwanda" id = "230" mcc="635" iso_name="RWA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "saint_helena" id = "231" iso_name="SHN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "saint_kitts_and_nevis" id = "232" mcc="356" iso_name="KNA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "saint_lucia" id = "233" mcc="358" iso_name="LCA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "saint_pierre_and_miquelon" id = "234" mcc="308" iso_name="SPM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "saint_vincent_and_the_grenadines" id = "235" mcc="360" iso_name="VCT">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "samoa" id = "236" mcc="549" iso_name="WSM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "sao_tome_and_principe" id = "237" mcc="626" iso_name="STP">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "saudi_arabia" id = "238" mcc="420" iso_name="SAU">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "senegal" id = "239" mcc="608" iso_name="SEN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "serbia_montenegro" id = "240" mcc="220,297" iso_name="SCG">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "seychelles" id = "241" mcc="633" iso_name="SYC">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "sierra_leone" id = "242" mcc="619" iso_name="SLE">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "solomon_islands" id = "243" mcc="540" iso_name="SLB">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "somalia" id = "244" mcc="637" iso_name="SOM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "south_africa" id = "245" mcc="655" iso_name="ZAF">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+      <region ident = "south_korea" id = "246" mcc="450" iso_name="KOR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "sri_lanka" id = "247" mcc="413" iso_name="LKA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "sudan" id = "248" mcc="634" iso_name="SDN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "suriname" id = "249" mcc="746" iso_name="SUR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "svalbard_and_jan_mayen" id = "250" iso_name="SJM">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "swaziland" id = "251" mcc="653" iso_name="SWZ">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+      <region ident = "syria" id = "252" mcc="417" iso_name="SYR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "taiwan" id = "253" mcc="466" iso_name="TWN">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "tajikistan" id = "254" mcc="436" iso_name="TJK">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "tanzania" id = "255" mcc="640" iso_name="TZA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "thailand" id = "256" mcc="520" iso_name="THA">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097198"/>
+      </region>
+      <region ident = "timor_leste" id = "257" mcc="514" iso_name="TLS">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "togo" id = "258" mcc="615" iso_name="TGO">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "tokelau" id = "259" iso_name="TKL">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "tonga" id = "260" mcc="539" iso_name="TON">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "trinidad_and_tobago" id = "261" mcc="374" iso_name="TTO">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "tunisia" id = "262" mcc="605" iso_name="TUN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "turkmenistan" id = "263" mcc="438" iso_name="TKM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "turks_and_caicos_islands" id = "264" mcc="376" iso_name="TCA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "tuvalu" id = "265" iso_name="TUV">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "uganda" id = "266" mcc="641" iso_name="UGA">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "ukraine" id = "267" mcc="255" iso_name="UKR">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "united_states_minor_outlying_islands" id = "268" iso_name="UMI">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "united_states_virgin_islands" id = "269" mcc="332" iso_name="VIR">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "uruguay" id = "270" mcc="748" iso_name="URY">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "uzbekistan" id = "271" mcc="434" iso_name="UZB">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "vanuatu" id = "272" mcc="541" iso_name="VUT">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "venezuela" id = "273" mcc="734" iso_name="VEN">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "vietnam" id = "274" mcc="452" iso_name="VNM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "wallis_and_futuna_islands" id = "275" mcc="543" iso_name="WLF">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "western_sahara" id = "276" iso_name="ESH">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "yemen" id = "277" mcc="421" iso_name="YEM">
+         <region_group_id id="2097181"/>
+      </region>
+      <region ident = "zambia" id = "278" mcc="645" iso_name="ZMB">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+      <region ident = "zimbabwe" id = "279" mcc="648" iso_name="ZWE">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097200"/>
+      </region>
+
+      <!-- Chinese provinces -->
+      <region ident="beijing" id="280">
+         <region_group_id id="2097181"/>
+      </region>
+
+      <!-- Indian states -->
+      <region ident="india_andhra_pradesh" id="281">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_arunachal_pradesh" id="282">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_assam" id="283">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_bihar" id="284">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_chandigarh" id="285">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_chhattisgarh" id="286">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_delhi_ncr" id="287">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_goa" id="288">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_gujarat" id="289">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_haryana" id="290">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_himachal_pradesh" id="291">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_jammu_kashmir" id="292">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_jharkhand" id="293">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_karnataka" id="294">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_kerala" id="295">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_madhya_pradesh" id="296">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_maharashtra" id="297">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_manipur" id="298">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_meghalaya" id="299">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_mizoram" id="300">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_nagaland" id="301">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_orissa" id="302">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_punjab" id="303">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_rajasthan" id="304">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_sikkim" id="305">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_tamil_nadu" id="306">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_tripura" id="307">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_uttar_pradesh" id="308">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_uttaranchal" id="309">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_west_bengal" id="310">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_dadra_nagar_haveli" id="311">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+      <region ident="india_pondicherry" id="312">
+         <region_group_id id="2097173"/>
+         <region_group_id id="2097181"/>
+         <region_group_id id="2097205"/>
+      </region>
+
+   </region_ids>
+
+   <region_lists>
+      <region_list ident="EUNASelecable">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097162"/>
+      </region_list>
+   </region_lists>
+</map_generation-mc2>

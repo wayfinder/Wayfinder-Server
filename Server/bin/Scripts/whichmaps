@@ -1,0 +1,75 @@
+#!/bin/sh 
+#
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#  Print outs the name of the specified maps.
+#  The script needs to be updated if the position of the name will
+#  change in the map format (in OldGenericMapHeader)
+#
+#  Specify the maps to examine as parameter or
+#  if no parameters is passed, all maps in the current
+#  directory will be examined.
+
+if [ "$1" = "-h" ]; then
+    echo "OPTIONS:
+-h Show this help
+
+Print outs the name of the specified maps.
+The script needs to be updated if the position of the mcm map name will
+change in the map format (in OldGenericMapHeader)
+
+Specify the mcm maps to examine as parameter or
+if no parameters is passed, all mcm maps in the current
+directory will be examined.
+"
+exit 0;
+
+fi
+
+
+if [ $# -eq 0 ]; then
+   maps=`ls *.mcm`
+else
+   maps=$*
+fi
+
+#Name starts at this position
+nameoffset=28
+
+for i in $maps; do
+    mcmFile="`echo $i| grep '\.mcm$'`";
+    bzMcmFile="`echo $i| grep '\.mcm.bz2$'`";
+    gzMcmFile="`echo $i| grep '\.mcm.gz$'`";
+    #echo "$bzMcmFile:$mcmFile";
+
+    # Used for gz and bz2 files.
+    tmpFileName=`mktemp "/tmp/tmpMcmFile.mcm.XXXXXXXXX"`;
+
+    fileToTest=$i;
+
+    if [ "$bzMcmFile" ]; then
+        bzcat -q $i  | head -c 1000 > $tmpFileName;
+        fileToTest=$tmpFileName;
+    elif [ "$gzMcmFile" ]; then
+        zcat -q $i  | head -c 1000 > $tmpFileName;
+        fileToTest=$tmpFileName;
+    elif [ "$mcmFile" ]; then
+        ok=$ok; # Nothing to do.
+    fi
+
+    echo "`basename $i`   `head -c $[100+$nameoffset] $fileToTest | tail -c 100 \
+            | strings -n 3 | head -n 1`"
+
+    # Clean up tmp file if any.
+    rm $tmpFileName;
+
+done

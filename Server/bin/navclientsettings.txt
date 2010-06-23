@@ -1,0 +1,216 @@
+#------------------------------------------------------------------------------
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#------------------------------------------------------------------------------
+# Lines starting with # are comments
+# Strings are in utf-8 (ascii is valid utf-8).
+#
+# Client-Type , Client-Type-Options , MatrixOfDoom
+# , notAutoUpgradeToSilver, silverRegionID
+# , SilverTimeYear , SilverTimeMonth , SilverTimeDay 
+# , explicitSilverTime
+# , BlockDate , notCreateWLUser , createLevel , createRegionID 
+# , createRegionTimeYear , createRegionTimeMonth , createRegionTimeDay
+# , explicitCreateRegionTime, createTransactionDays
+# , phoneModel, imageExtension, noLatestNews, callCenterList, brand
+# , categoryPrefix
+# % CommentText NL
+#
+# Client-Type         String identifing type of client
+# Client-Type-Options String with additional info about client
+# MatrixOfDoom        Int    Level of Doom, 1 or 2. 2 is normally used.
+# notAutoUpgradeToSilver Bool No autoupgrade to silver even if 
+#                             Matrix of Doom level 1. See navserver_prot 
+#                             documenatation section Matrix of Doom.
+# silverRegionID      Uint32 Region ID to set when autoupdating to
+#                            silver. Only for Matrix of Doom level 1.
+# SilverTimeYear      Int    The number of years to set for silver 
+#                            region. Only for Matrix of Doom level 1.
+# SilverTimeMonth     Int    The number of months to set for silver 
+#                            region. Only for Matrix of Doom level 1.
+# SilverTimeDay       Int    The number of days to set for silver
+#                            region. Only for Matrix of Doom level 1.
+# explicitSilverTime  Date   The explicit date when silver expires.
+#                            Empty string if not explicit date. In UTC.
+#                            This replaces Year, Month and Day.
+#                            Only for Matrix of Doom level 1.
+# BlockDate           Date   The date to start blocking client. Set this for
+#                            client types that should be blocked from 
+#                            accessing the server.
+# notCreateWLUser     Bool   If not to auto create WL-user. Normally the 
+#                            server creates a user when a new hardware key
+#                            not connected to an existing user is presented by
+#                            the client. Here that can be turned off to allow
+#                            for other ways to create users. Or to not allow
+#                            any more new users for a client type.
+# createLevel         Uint32 The WFSubscription level to create.
+#                            0 = Trial, 1 = Silver, 2 = Gold, 3 = Iron
+#                            Gold is the normal for a full navigation client.
+#                            Trial is the same as Gold but indicating a trial.
+#                            Silver is the same as Gold but no turn-by-turn
+#                            instructions.
+# createRegionID      Uint32 Region ID to set when autocreating WL-user.
+#                            See region_ids.xml for possible ids.
+# createRegionTimeYear Int   The number of years to set for WL-user's
+#                            region.
+# createRegionTimeMonth Int  The number of months to set for WL-user's
+#                            region.
+# createRegionTimeDay   Int  The number of days to set for WL-user's
+#                            region.
+# explicitCreateRegionTime Date The explicit date when WL-user's 
+#                               expire. Empty string if no explicit date. 
+#                               In UTC. This replaces Year, Month and Day.
+# createTransactionDays Int  The number of transactions days for 
+#                            create. User set to be transaction days
+#                            based if createTransactionDays > 0.
+# phoneModel          String The default phonemodel for this client 
+#                            type.
+# imageExtension      String The image type extension, example png, mif or gif.
+# noLatestNews        Bool   If no latest news for client type.
+# callCenterList      String The call center list. List of numbers and names
+#                            of call centers that the client can call.
+#                            Example "+4612345678;Help,+4612345679;Chat"
+# brand               String The brand type, empty if not branded.
+# categoryPrefix      String The prefix of category files. If empty
+#                            string then default "wfcat" is used.
+# imageSet            String The image set to use, e.g. default or iphone.
+#                            If empty then the default image set is used.
+# version             String The version we recommend to use. Example:
+#                            4.64.0:4.9.0:0 If ! is first version the
+#                            clients are forced to upgrade to this version.
+#                            ProgramVersion ':' ResourceVersion ':' MLFWVersion
+#                            For the current clients only the first version,
+#                            is used. The second version is the resource
+#                            (sound) version, can be used if the sound is a 
+#                            separate installation. MLFW is Mobile Location 
+#                            FrameWork.
+# lockedVersion       String The latest version for clients locked to
+#                            major version. Example: 
+#                            4.50.0|4.64.0:4.9.0:0;5.1.0|5.1.0:4.9.0:0
+# serverlistname      String The name of the serverlist that should be
+#                            used with this client. Serverlists
+#                            are defined in the namedservers.txt
+#                            file. The empty string is interpreted
+#                            as "default" which is specified as a
+#                            command line argument.
+# upgradeId           String Identifier in the platform market for 
+#                            downloading new client version, for client types
+#                            with a platform market such as iPhone and Android.
+# extraRights         String Additional rights for the user.
+#                            Example: "GOLD(1m,2097152)"
+#                            Will give the user GOLD rights for Europe for 1 
+#                            month.
+#
+# The Client-Type and Client-Type-Options must be set to identify the
+# type of client.
+# Then the most commonly used fields are brand, categoryPrefix, imageSet and
+# the create* series of initial access settings.
+#
+# this is a comma separated string that can be copied and then
+#  replaced field by field 
+# Client-Type, Client-Type-Options, MatrixOfDoom, notAutoUpgradeToSilver, silverRegionID, SilverTimeYear, SilverTimeMonth, SilverTimeDay, explicitSilverTime, BlockDate, notCreateWLUser, createLevel, createRegionID, createRegionTimeYear, createRegionTimeMonth, createRegionTimeDay, explicitCreateRegionTime, createTransactionDays, phoneModel, imageExtension, noLatestNews, callCenterList, brand, categoryPrefix, imageSet, version, lockedVersion, serverlistname, upgradeId, extraRights              
+  
+# When finding client setting first all rows with same Client-Type are
+# searched for one with the same Client-Type-Options. If no row
+# with same Client-Type-Options the row with empty Client-Type-Options
+# is selected. If no empty Client-Type-Options then first best row is 
+# used.
+#
+# If TimeYear,TimeMonth and TimeDay all are zero(0) it means inf time.
+# If explicitTime is set it is used in favour of Time(Year,Month,Day)
+#
+
+# Symbian s60v5 demo client type.
+wf-s-60-v5-demo,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "N71","mif",false,"", "DEMO", "","", "","", "","",""% 
+# Symbian s60v3 demo client type.
+wf-s-60-v3-demo,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "N71","mif",false,"", "DEMO", "","", "","", "","",""% 
+
+# Linux testing client type
+wf-linux-demo,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "6600","png",false,"", "DEMO", "","","","", "","",""%
+
+# Maemo client type
+wf-maemo-demo,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "6600","png",false,"", "DEMO", "","","","", "","",""%
+
+# iPhone demo client type.
+wf-iphone-demo,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "N71","gif",false,"", "DEMO", "","", "","", "","",""% 
+
+# iPhone App Store test client type.
+wf-iphone-apps,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "N71","gif",false,"", "APPS", "","", "","", "","",""% 
+
+# Android demo client type.
+wf-android-demo,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "K750i","png",false,"", "DEMO", "","", "","", "","",""% 
+
+# BlackBerry demo client type.
+wf-bb-demo,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "8800","png",false,"", "DEMO", "","", "","", "","",""% 
+
+# Windows mobile demo client type.
+wf-ppc-5-demo,"",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,0,5,"",0, "K750i","png",false,"", "DEMO", "","", "","", "","",""% 
+
+
+# Server internal client type used only for regression test of "Prompt new version"
+NoUse-UnitTest1-br,"Client-Type-Options",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,9,0,"",0, "K750i","png",false,"", "", "","", "4.64.0:4.9.0:0","", "","marketId55",""%     
+NoUse-UnitTest2-br,"Client-Type-Options",2, false,2097173,0,6,0,"", "2038-01-01",false, 0, 2097173,0,9,0,"",0, "iPhone","png",false,"", "", "","", "!4.65.0:5.9.0:0","", "","market://search?q=pname:|com.android.navigation",""%
+
+
+#------ VERSION LOCK SETTINGS ----------------
+#"VersionLock:" [Major version * 1000],[client type regexp](,[client type regexp])*
+#VersionLock:2000,wf2-.*-br
+#------ END OF VERSION LOCK ------------------
+
+
+#**************** Wayfinder ID Clients ************
+# Clients that uses login password at first startup.
+WFID:wf8-.*
+# But not these, if matched in WFID: and here then no WFID
+WFID_EXCEPTION:
+# Not using WFID but services
+NotWFIDButUsesServices:
+
+#**************** Wayfinder Product ************
+# If client is separate product from navigator.
+# This makes the server create a different account for the same
+# hardware key.
+# Example:
+# Product:Earth;.*-earth
+
+
+#**************** Draw Setting Version *************
+# Whether or not the matched clients handles the new colors 
+# and settings for tile map format desc.
+
+# Draw version 1 has new color and no provider ids in copyright data.
+# This means that these clients does _not_ handle provider id in copyright data
+# properly.
+DrawVersion:1;
+
+# Draw version 3 has new _new_ colors AND new line widths, and scale levels.
+DrawVersion:3;^wf-.*-demo$
+
+# Draw version 2 has new colors and provider ids in copyright data.
+DrawVersion:2;wf8-.*
+
+
+#******************** Server Prefix *****************
+# The server prefix is our way of differentiating vector map content
+# based on client type. See ServerTileMapFormatDesc for more information.
+#
+# Server prefix 10 is for phones that can handle more content than what we
+# put in by default.
+ServerPrefix:10;
+
+#**************** Wayfinder 8 Licence Model Clients ************
+# The wf8 licence model without Gold lifetime.
+# E.i. Wf8 Clients shouldn't be allowed to use Gold lifetime rights
+NoGoldLifeTime:wf8-.*
+# But not these, if matched by NoGoldLifeTime: but also here then no nogold
+NoGoldLifeTime_Exception:
+
+# EOF

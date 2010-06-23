@@ -1,0 +1,10 @@
+def build(bld):
+    prog = bld.new_task_gen( 'cxx', 'program' )
+    prog.source = bld.glob("*.cpp")
+    prog.includes = '../include'
+    prog.target = 'MapTool'
+    prog.install_path = None
+    prog.uselib_local = 'MapGen ServersShared ServersSharedDatabase \
+ServersSharedGfx ServersSharedNet ServersSharedItems Shared SharedNet'
+    prog.defines = 'USE_XML'
+    prog.uselib='SHARED SERVERSSHARED MAPGEN'

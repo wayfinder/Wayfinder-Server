@@ -1,0 +1,15 @@
+Airport	Aéroport
+Post Office	Bureau de poste
+Shopping	Centre commercial
+City Centre	Centre-ville
+Nightlife	Discothèque
+Petrol Station	Essence
+Parking Garage	Garage
+Train Station	Gare ferroviaire
+Hotel	Hôtel, motel
+Rent a car	Location de voitures
+Museum	Musée
+Open Parking Area	Parc de stationnement non couvert
+Tourist information	Point d'information touristes
+Restaurant	Restaurant
+Ferry Terminal	Terminal de ferry

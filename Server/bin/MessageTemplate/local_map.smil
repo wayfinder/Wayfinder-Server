@@ -1,0 +1,20 @@
+<smil>
+<head>
+  <layout>
+    <root-layout />
+  </layout>
+</head>
+<body>
+
+<par dur="10000ms">
+  <img src="%LOCAL_MAP_URI%"/>
+  <text src="%START_FILE%"/>
+</par>
+
+<par dur="10000ms">
+  <text src="%END_FILE%"/>
+  <img src="logga.gif"/>
+</par>
+
+</body>
+</smil>

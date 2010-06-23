@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+
+   <auth indentingandlinebreaks="true">
+      <auth_user>%%%AUTH_USER%%%</auth_user>
+      <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+   </auth>
+
+   <route_request transaction_id="IDRoute3">
+      <route_request_header>
+         <route_preferences route_description_type="normal"
+	                    route_image_links="true"
+			    route_overview_image_width="500"
+			    route_overview_image_height="500"
+			    route_turn_image_width="200"
+			    route_turn_image_height="200"
+			    route_image_default_format="gif"
+			    route_turn_data="true"
+                            route_road_data="true"
+                            route_items="true"
+			    route_boundingbox_position_sytem = "MC2"
+			    route_turn_boundingbox = "true"
+                            abbreviate_route_names = "false"
+                            route_landmarks = "true" >
+            <route_settings route_vehicle="passengercar">
+               <route_costA>0</route_costA>
+               <route_costB>1</route_costB>
+               <route_costC>0</route_costC>
+               <language>english</language>
+            </route_settings>
+         </route_preferences>
+      </route_request_header>
+      <!-- Origin -->
+      <routeable_item_list>
+          <position_item position_system="MC2">
+            <lat>%%%ORIG_MC2_LAT%%%</lat>
+            <lon>%%%ORIG_MC2_LON%%%</lon>
+          </position_item>
+      </routeable_item_list>
+
+      <!-- Destination -->
+      <routeable_item_list>
+          <position_item position_system="MC2">
+            <lat>%%%DEST_MC2_LAT%%%</lat>
+            <lon>%%%DEST_MC2_LON%%%</lon>
+          </position_item>
+      </routeable_item_list>
+
+   </route_request>
+
+</isab-mc2>

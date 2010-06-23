@@ -1,0 +1,12 @@
+from waftools import mc2test
+
+def build(bld):
+   mc2test.unit_test(bld, 'PropertyHelperTest', 'PropertyHelperTest.cpp',
+                     'Shared',
+                     'SHARED')
+   mc2test.unit_test(bld, 'StringIndexTest', 'StringIndexTest.cpp',
+                     'Shared',
+                     'SHARED')
+   mc2test.unit_test(bld, 'GfxUtilityTest', 'GfxUtilityTest.cpp',
+                     'Shared',
+                     'SHARED')

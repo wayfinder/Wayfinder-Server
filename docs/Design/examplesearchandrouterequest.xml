@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+
+   <auth>
+      <auth_user>login</auth_user>
+      <auth_passwd>pass</auth_passwd>
+   </auth>
+
+   <search_request transaction_id="IDSearch1">
+      <search_request_header>
+         <search_preferences>
+            <search_settings matchtype="close" 
+                             wordmatch="beginning" 
+                             sorttype="confidence_sort" >
+               <search_for_municipal/>
+               <search_for_city/>
+               <search_for_citypart/>
+               <search_for_street/>
+               <search_for_company/>
+            </search_settings>
+         </search_preferences>
+      </search_request_header>
+
+      <!-- Search query -->
+      <search_query>
+         <search_area_query>Lund</search_area_query>
+         <search_item_query>itine</search_item_query>
+      </search_query>
+   </search_request>
+
+   
+   <search_request transaction_id="IDSearch2">
+      <search_request_header>
+         <search_preferences>
+	    <user_id>testuser</user_id>
+         </search_preferences>
+      </search_request_header>
+
+      <!-- Search query -->
+      <search_query>
+         <search_area search_area_type="city">
+            <name>MALMÖ</name>
+            <areaid>0;33;33000034</areaid>
+         </search_area>
+         <search_item_query>Brog11</search_item_query>
+      </search_query>
+   </search_request>
+
+   <route_request transaction_id="IDRoute1">
+      <route_request_header>
+         <route_preferences route_description_type="normal">
+            <user_id>testuser</user_id>
+         </route_preferences>
+      </route_request_header>
+      <!-- Origin -->
+      <routeable_item_list>
+         <position_item position_system="WGS84">
+            <lat>N 552312</lat>
+            <lon>E 131256</lon>
+         </position_item>
+      </routeable_item_list>
+
+      <!-- Destination -->
+      <routeable_item_list>
+         <search_item search_item_type="pointofinterest">
+            <name>Itinerary Systems IS AB</name>
+            <itemid>0;70007D86;0</itemid>
+         </search_item>
+      </routeable_item_list>
+   </route_request>
+
+
+   <expand_request transaction_id="IDExpand1">
+      <expand_request_header>
+         <search_preferences>
+            <user_id>testuser</user_id>
+         </search_preferences>
+      </expand_request_header>
+      <expand_request_query>
+         <search_area search_area_type="city">
+            <name>MALMÖ</name>
+            <areaid>0;33;33000034</areaid>
+         </search_area>
+         <search_item search_item_type="category">
+            <name>Restauranger</name>
+            <itemid>0;78000015;0</itemid>
+         </search_item>
+      </expand_request_query>
+   </expand_request>
+</isab-mc2>

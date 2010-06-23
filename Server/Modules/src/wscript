@@ -1,0 +1,17 @@
+def configure(conf):
+    conf.env.prepend_value( 'LINKFLAGS_MODULE', '-lJTC' )
+    conf.env.prepend_value( 'LINKFLAGS_MODULE', '-lz' )
+    conf.env.prepend_value( 'LINKFLAGS_MODULE', '-lssl' )
+
+def build(bld):
+    prog = bld.new_task_gen( 'cxx', 'staticlib' )
+    prog.source = bld.glob("*.cpp")
+    prog.includes = '../include'
+    prog.target = 'Module'
+    prog.install_path = None
+    prog.uselib_local = 'ServersShared ServersSharedNet \
+    ServersSharedDrawing ServersSharedGfx ServersSharedXML \
+ServersSharedCommon ServersSharedItems ServersSharedDatabase Shared'
+    prog.defines = 'USE_XML'
+    prog.uselib = 'TECLA MODULE DRAWING SHARED SERVERSSHARED XERCES'
+    prog.export_incdirs='../include'

@@ -1,0 +1,30 @@
+def configure(conf):
+    conf.check_cfg(package='cairo',
+                   args='--cflags --libs')
+    conf.check_cfg(package='ImageMagick', args='--cflags --libs')
+    conf.check_cfg(package='librsvg-2.0', args='--cflags --libs')
+
+    # For image magick
+    conf.env.prepend_value( 'LIB_DRAWING', 'bz2' )
+    conf.env.prepend_value( 'LIB_DRAWING', 'z' )
+    conf.env.prepend_value( 'LIB_DRAWING', 'xml2' )
+    #conf.env.prepend_value( 'LIB_DRAWING', 'dpstk' )
+    conf.env.prepend_value( 'LIB_DRAWING', 'tiff' )
+
+    conf.env.append_value( 'CXXFLAGS_DRAWING', '-I/usr/include/freetype2' )
+    #conf.env.prepend_value( 'LIB_DRAWING', 'ttf' )
+    conf.env.prepend_value( 'LIB_DRAWING', 'gd' )
+
+    if conf.env['HAVE_CAIRO'] == 1:
+        conf.env.append_value( 'CXXFLAGS_DRAWING', '-DHAVE_CAIRO' )
+
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.includes = '../include ../../include ../../../../Shared/include \
+ ../../Gfx/include'
+    staticlib.target = 'ServersSharedDrawing'
+    staticlib.install_path = None
+    staticlib.uselib_local='SharedFileSystem'
+    staticlib.uselib="DRAWING CAIRO IMAGEMAGICK LIBRSVG-2.0"
+    staticlib.export_incdirs='../include'

@@ -1,0 +1,117 @@
+#!/bin/zsh
+#
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Add error checks!!
+BIN=${BIN:-bin-centos4-x86_64}
+DIR=${1:-${HOME}/head/}
+if ( ! [ -d $DIR/mc2 ] || ! [ -d $DIR/bin ] )
+then
+   echo The directory $DIR is not a instance dir
+   exit 1;
+fi
+StartTime=`date`
+echo $StartTime
+pushd $DIR
+
+# Check out and compile
+pushd mc2
+echo "Updating mc2"
+$HOME/script/hgup
+hg_tip=`hg head | grep "^changeset:"`
+
+echo "Compiling mc2"
+if [ -z $MAKECMD ]; then
+    MAKECMD=make
+    MAKEARG=-j4
+fi
+
+COMPILETARGETS=CommunicationModule,EmailModule,ExtServiceModule,GfxModule,InfoModule,MapModule,NavigatorServer,RouteModule,SearchModule,SMSModule,Supervisor,TileModule,TrafficServer,UserModule,XMLServer
+
+if [[ "$MAKECMD" == *waf* ]]; then
+   ${MAKECMD} ${=MAKEARG} --targets=${COMPILETARGETS}
+else
+   ${MAKECMD} ${MAKEARG} ONLY=${COMPILETARGETS}
+fi
+
+if ( [ $? != 0 ] ) then
+   echo "Make failed, bailing out."
+   exit 1
+fi
+
+popd
+
+# Copy new binaries to new dir
+echo "Copying new binaries"
+mkdir `pwd`/${BIN}-new >& /dev/null
+if [[ "$MAKECMD" == *waf* ]]; then
+   # Waf puts binaries all over the place and you have to go find them
+   FILES=
+   for file in ${(s.,.)COMPILETARGETS}; do
+       # The output/default is the default output path for waf, this
+       # should actually be fetched from the first wscript in the ${SOURCE_PATH}
+       # but this have to do for now.
+       binary=$(find $DIR/mc2/output/default -name ${file} -type f -perm 0755)
+       if [[ -z ${binary} ]]; then
+           echo "Missing target binary: \""${file}"\""
+       else
+           FILES="${FILES} ${binary}"
+       fi
+   done
+   # Sync the files
+   rsync -e ssh -avP --inplace ${=FILES} ${BIN}-new
+else
+   rsync -e ssh -avP --inplace mc2/Server/$BIN/ ${BIN}-new
+fi
+
+# Update other files
+INSTDIR=`pwd`/bin
+CVSDIR=`pwd`/mc2
+RHOST=seld-usr
+CONF_FILES="$CVSDIR/Server/bin/isab-mc2.dtd $CVSDIR/Server/bin/public.dtd $CVSDIR/Server/bin/navclientsettings.txt $CVSDIR/Server/bin/namedservers.txt $CVSDIR/Server/bin/mc2.prop $CVSDIR/Server/bin/Scripts/region_ids.xml $CVSDIR/Server/bin/poi_category_tree.xml $CVSDIR/Server/bin/runBin $CVSDIR/Server/bin/Scripts/mc2control $CVSDIR/Server/bin/map_generation-mc2.dtd $CVSDIR/Server/bin/Scripts/mc2controlscreenstarter $CVSDIR/Server/bin/httpd.pem $CVSDIR/Server/bin/KeyedData $CVSDIR/Server/bin/tile_map_colors.xml $CVSDIR/Server/bin/tile_map_night_colors.xml $CVSDIR/Server/bin/tile_map_colors_v2.xml $CVSDIR/Server/bin/tile_map_night_colors_v2.xml $CVSDIR/Server/bin/poi_scale_ranges.xml"
+LIBDIRS="$CVSDIR/Server/bin/Images $CVSDIR/Server/bin/MessageTemplate $CVSDIR/Server/bin/HtmlFiles $CVSDIR/Server/bin/Fonts $CVSDIR/Server/bin/wfcat $CVSDIR/Server/bin/ConfigFiles"
+ok=1
+pushd $INSTDIR || exit 1
+echo "Updating other files"
+rsync -e ssh -avP --inplace ${=CONF_FILES} ${=LIBDIRS} ${INSTDIR} && ok=0
+
+ln -s ${HOME}/wcimg HtmlFiles >& /dev/null
+popd
+
+echo "Restarting..."
+# Stop running and save logs
+pushd bin
+./mc2control stop
+./mc2control shiftlogs
+popd
+# Use new binaries
+rm -rf ${BIN}-old
+mv -f $BIN ${BIN}-old
+mv -f ${BIN}-new $BIN
+# Reuse old binaries for sync
+mv ${BIN}-old ${BIN}-new
+# Start
+pushd bin
+./mc2control start
+popd
+echo "Restart done"
+date
+
+# Made last update time file
+update_time_file=/home/mc2dev/public_html/`basename $DIR`_last_update_time.txt
+echo $StartTime > $update_time_file
+echo $hg_tip >> $update_time_file
+
+# Make new -new
+rsync -e ssh -qaP --inplace ${BIN}/ ${BIN}-new
+
+popd

@@ -1,0 +1,152 @@
+#!/bin/zsh
+# # Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice,
+#     this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright
+#     notice, this list of conditions and the following disclaimer in the
+#     documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of
+#     its contributors may be used to endorse or promote products derived from
+#     this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+#    Script that runs a component and both displays the output
+#    and redirects it to a log file.
+#    Keeps track of any crashes/exits of the component by logging details
+#    in an 'exitlog'.
+#    Kill the tee with the runBin instance as PPID from an outside
+#    script to rotate logs.
+#
+#    The TRAPHUP function that is commented out makes it possible to
+#    send a SIGHUP to the runBin process to make it rotate the logs 
+#    (closes the current log file and starts logging to a new file).
+#    This is disabled since it does not play well with the current
+#    mc2control/screen system.
+#    Instead there is another TRAPHUP that was needed to work with
+#    screen after the rewrite, otherwise the children were not killed.
+#    For log rotation wftee is the recommended tool to use, and it will
+#    by default be used automatically if it's in the path.
+#
+
+# configuration section
+SLEEP=1
+# path to wftee, if available it will be used instead of tee
+WFTEE="/usr/local/bin/wftee"
+
+# nothing configurable below 
+if [[ $# == 0 ]]
+then
+	echo "$0 usage:"
+	echo '[-n log filename | -p log prefix] appname [app params]'
+	exit 1
+fi
+NODE=`hostname -s`
+DATE_CMD='date +%a_%Y-%m-%d_%T'
+LOGDATE_CMD='date +%y%m%d-%H%M'
+LOGFILE_BASE=""
+LOGFILE_PATH=${LOGFILE_PATH:-.}
+TEE="tee"
+TEEPARAMS="-a"
+
+if [[ -x $WFTEE ]]; then
+   TEE=$WFTEE
+   TEEPARAMS="-v -m ${LOGFILE_PATH}/old"
+fi
+
+# param '-n'
+if test -n "${1}" -a "${1}" = "-n" 
+then
+   shift
+   LOGFILE_BASE="$1"
+   shift
+fi
+
+# param '-p'
+if test -n "${1}" -a "${1}" = "-p" 
+then
+   shift
+   LOGFILE_BASE="$1-`basename $2`"
+   shift
+fi
+
+if [[ "${LOGFILE_BASE}" == "" ]]
+then
+   LOGFILE_BASE="`basename $1`"
+fi
+
+TARGET=${=1}
+LOGFILE_BASE="${LOGFILE_BASE}_${NODE}_${$}"
+PARAMS=${*[2,-1]}
+
+if [[ ! -f ${TARGET} || ! -x ${TARGET} ]]
+then
+	echo "${TARGET} is not an executable file"
+	exit 1
+fi
+
+#TRAPHUP() {
+#	echo "Got SIGHUP, rotating log"
+#	kill `ps --format "%p;%P;%c" | grep $$| grep tee | sed -e 's/;.*$//g'`
+#}
+
+TRAPHUP() {
+	CHILD_PIDS=`ps --format "%p;%P;%c" | grep ";[ ]*${$};"| sed -e 's/;.*$//g'`
+	for cpid in ${=CHILD_PIDS}
+	do
+	   kill -INT $cpid
+	done
+	kill $$
+}
+
+while ( ! [ -f runBin.${$}.shutdown ] )
+do
+   echo "`basename $0` starting `basename ${TARGET}` at `${=DATE_CMD}`"
+   ${TARGET} ${=PARAMS}
+   EXITSTATUS=$?
+   EXITLOGDATE=`date +"%y%m"`
+   EXITLOG=${LOGFILE_PATH}/exitlog_${NODE}_${EXITLOGDATE}.txt
+   echo
+   (
+      EXITTIME=`date +"%y%m%d-%H%M"`
+      LOGFILE_CUR=`/bin/ls -tr ${LOGFILE_PATH}/${LOGFILE_BASE}* | tail -1`
+      echo "!!${EXITTIME};${NODE};${EXITSTATUS};${TARGET};${PARAMS};${LOGFILE_CUR}"
+      tail -40 ${LOGFILE_CUR}
+   ) >> ${EXITLOG}
+   echo `basename $0` checking for core file to gdb where at `${=DATE_CMD}`
+   if ( [ -f core ] ); then
+      mv core ${TARGET}_core
+      gdb ${TARGET} ${TARGET}_core -command=corewhere -n -batch 2&>1
+      #rm ${TARGET}_core
+   fi
+   echo `basename $0` sleeping $SLEEP seconds
+   sleep $SLEEP 
+done |& while ( ! [ -f runBin.${$}.shutdown ] )
+do
+   if [[ "$TEE" = "tee" ]]; then
+      LOGFILE="${LOGFILE_PATH}/${LOGFILE_BASE}_`${=LOGDATE_CMD}`.log"
+   else
+      # for wftee
+      LOGFILE="${LOGFILE_PATH}/${LOGFILE_BASE}_%y%m%d-%%H%%M.log"
+   fi
+   $TEE ${=TEEPARAMS} ${LOGFILE}
+done
+
+echo "`basename $0` about to end" >> ${LOGFILE}
+rm runBin.${$}.shutdown
+mv ${LOGFILE} `basename ${LOGFILE} .log`_log

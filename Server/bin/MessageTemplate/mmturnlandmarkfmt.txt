@@ -1,0 +1,1 @@
+<img src="info_sign.wbmp" width="16" height="16" alt=""><i>%ROUTE_LANDMARK_DESCRIPTION%</i>

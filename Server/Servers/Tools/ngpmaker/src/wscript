@@ -1,0 +1,8 @@
+from waftools import servertool
+
+def build(bld):
+    prog = servertool.create_server_tool(bld, 'ngpmaker')
+    prog.uselib_local = 'ServersSharedNGP ServersServers ServersShared ServersSharedNet \
+    ServersSharedDrawing ServersSharedGfx ServersSharedXML \
+ServersSharedCommon ServersSharedItems ServersSharedDatabase Shared SharedNet \
+   SharedFileSystem SharedUtility'

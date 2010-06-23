@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<category_data_region_configuration>
+  <!-- Default region -->
+  <region region_id="Default">
+    <category id="18"    isVisible="true"  />   <!-- Airport -->
+    <category id="272"   isVisible="false" />   <!-- ATMs & Banks -->
+    <category id="152"   isVisible="true"  />   <!-- Atm -->
+    <category id="290"   isVisible="true"  />   <!-- Attractions -->
+    <category id="54"    isVisible="true"  />   <!-- Amusement Park -->
+    <category id="30"    isVisible="true"  />   <!-- Art Galleries -->
+    <category id="22"    isVisible="true"  />   <!-- Museum -->
+    <category id="36"    isVisible="true"  />   <!-- Stadium -->
+    <category id="88"    isVisible="true"  />   <!-- Theaters -->
+    <category id="20"    isVisible="true"  />   <!-- Tourist Attraction -->
+    <category id="86"    isVisible="true"  />   <!-- Cafe -->
+    <category id="98"    isVisible="true"  />   <!-- Cinemas -->
+    <category id="118"   isVisible="true"  />   <!-- Hotels -->
+    <category id="111"   isVisible="true"  />   <!-- Health & Medical -->
+    <category id="249"   isVisible="true"  />   <!-- Dentist -->
+    <category id="248"   isVisible="true"  />   <!-- Doctor -->
+    <category id="246"   isVisible="true"  />   <!-- Hospital -->
+    <category id="245"   isVisible="true"  />   <!-- Pharmacy -->
+    <category id="278"   isVisible="true"  />   <!-- Nightlife -->
+    <category id="100"   isVisible="false" />   <!-- Bars -->
+    <category id="99"    isVisible="false" />   <!-- Casinos -->
+    <category id="232"   isVisible="false" />   <!-- Pubs -->
+    <category id="90"    isVisible="false" />   <!-- Night club -->
+    <category id="267"   isVisible="true"  />   <!-- Parking -->
+    <category id="237"   isVisible="true"  />   <!-- Open Parking Area -->
+    <category id="236"   isVisible="true"  />   <!-- Parking Garage -->
+    <category id="103"   isVisible="true"  />   <!-- Petrol Stations -->
+    <category id="107"   isVisible="true"  />   <!-- Post Office -->
+    <category id="5"     isVisible="true"  />   <!-- Public transportation -->
+    <category id="126"   isVisible="false" />   <!-- Bus Station -->
+    <category id="123"   isVisible="false" />   <!-- Commuter rail station -->
+    <category id="122"   isVisible="false" />   <!-- Railway station -->
+    <category id="121"   isVisible="false" />   <!-- Subway -->
+    <category id="124"   isVisible="false" />   <!-- Tram Stop -->
+    <category id="85"    isVisible="true"  />   <!-- Restaurants -->
+    <category id="216"   isVisible="true"  />   <!-- Bistro -->
+    <category id="214"   isVisible="false" />   <!-- British Kitchen -->
+    <category id="208"   isVisible="true"  />   <!-- Chinese Kitchen -->
+    <category id="202"   isVisible="true"  />   <!-- Fast Food -->
+    <category id="198"   isVisible="false" />   <!-- French Kitchen -->
+    <category id="197"   isVisible="false" />   <!-- German Kitchen -->
+    <category id="196"   isVisible="true"  />   <!-- Greek Kitchen -->
+    <category id="195"   isVisible="true"  />   <!-- Grill -->
+    <category id="192"   isVisible="true"  />   <!-- Indian Kitchen -->
+    <category id="190"   isVisible="true"  />   <!-- Italian Kitchen -->
+    <category id="189"   isVisible="true"  />   <!-- Japanese Kitchen -->
+    <category id="175"   isVisible="true"  />   <!-- Pizzeria -->
+    <category id="173"   isVisible="false" />   <!-- Portugese Kitchen -->
+    <category id="168"   isVisible="true"  />   <!-- Sea Food -->
+    <category id="165"   isVisible="false" />   <!-- Spanish Kitchen -->
+    <category id="164"   isVisible="false" />   <!-- Steak House -->
+    <category id="159"   isVisible="true"  />   <!-- Thai Kitchen -->
+    <category id="158"   isVisible="true"  />   <!-- Turkish Kitchen -->
+    <category id="10004" isVisible="false" />   <!-- SFR Stores -->
+    <category id="9"     isVisible="true"  />   <!-- Shopping -->
+    <category id="78"    isVisible="true"  />   <!-- Bookshops -->
+    <category id="75"    isVisible="true"  />   <!-- Clothing and Accessories -->
+    <category id="74"    isVisible="false" />   <!-- Convenience Stores -->
+    <category id="70"    isVisible="true"  />   <!-- Florists -->
+    <category id="69"    isVisible="true"  />   <!-- Food and drink shop -->
+    <category id="68"    isVisible="false" />   <!-- Gifts and souvenirs -->
+    <category id="67"    isVisible="true"  />   <!-- Grocery store -->
+    <category id="64"    isVisible="true"  />   <!-- Jewelry clocks and watches -->
+    <category id="62"    isVisible="true"  />   <!-- Newsagents and tobaccconists -->
+    <category id="61"    isVisible="true"  />   <!-- Opticians -->
+    <category id="59"    isVisible="true"  />   <!-- Shopping centre -->
+    <category id="58"    isVisible="true"  />   <!-- Sports equipment and clothing -->
+    <category id="56"    isVisible="true"  />   <!-- Toys and games -->
+  </region>
+</category_data_region_configuration>

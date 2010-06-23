@@ -1,0 +1,11 @@
+from waftools import mc2test
+
+def unit_test(bld, target, source ):
+   test = mc2test.unit_test(bld, target, source,
+                            'SharedNet SharedUtility Shared',
+                            'SHARED')
+   return test
+
+def build(bld):
+    unit_test(bld, 'URLParamsTest', 'URLParamsTest.cpp' )
+    unit_test(bld, 'IPTests', 'IPTests.cpp' )

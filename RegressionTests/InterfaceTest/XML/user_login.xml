@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+
+   <auth indentingandlinebreaks="true">
+      <auth_user>%%%AUTH_USER%%%</auth_user>
+      <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+   </auth>
+
+   <user_login_request transaction_id="Login1" user_create_session="false" client_type="wf-bb-demo">
+      <user_name>%%%LOGIN%%%</user_name>
+      <user_password>%%%PASS%%%</user_password>
+   </user_login_request>
+
+</isab-mc2>

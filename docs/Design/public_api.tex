@@ -1,0 +1,303 @@
+% 
+% 
+% Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+% All rights reserved.
+% 
+% Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+% 
+%     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+%     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+%     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+% 
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+%
+%  A description of the API that will be used by users
+%  to communicate with MC2
+%
+%  Please note that this appendix is supposed to be a technical
+%  specification.
+%
+
+
+\chapter{Public API --- XML} \label{publicxmlapi}
+
+
+This is a description of the public XML interface to the \mc-system 
+developed at Wayfinder Systems AB. The interface allows users to 
+retrieve and modify user data stored in the \mc-system.
+In addition to the formal definition of the Application Programming 
+Interface (API) some examples of the usage are also included in 
+this document. 
+It is assumed that the reader has some knowledge of XML and HTTP. 
+More information about XML can be found at the World Wide Web 
+Consortium (W3C) web site at http://www.w3.org/XML/ and more about HTTP
+at http://www.w3.org/Protocols/\#Specs.
+
+
+\section{Sending Request to the Server}
+
+The request should be sent as an XML-document in the body of an POST
+request to the URI \verb$/xmlfile$. The Content-Type should be 
+\texttt{text/xml}.
+
+
+\subsection{Authenticate}
+
+The login and password for the user of the request are sent in an 
+\texttt{auth} element as \texttt{login} and \texttt{password} attribute.
+
+\index{auth, element}
+\index{login, attribute}
+\index{password, attribute}
+\begin{verbatim}
+<!ELEMENT auth EMPTY >
+<!ATTLIST auth login    CDATA #IMPLIED 
+               password CDATA #IMPLIED >
+\end{verbatim}
+
+
+\subsection{If something is wrong}
+
+
+Status-code and status-message can be returned in the reply if something 
+is wrong with the request or the \mc-system had an internal error. The
+Status-code contains a number and the status-message a string describing
+the error.
+
+\begin{description}
+\item[0] The request succeeded.
+\item[-1] The general error code. There was a problem with the request.
+\item[-2] The request was malformed, see \emph{status\_message}
+          for detailed error.
+\item[-3] The request timed out. There was an internal timeout while 
+          processing the request.
+\item[-201] Access denied. The user does not have access to the requested 
+  service or data. 
+\item[-202] Unknown user. The user does not exist.
+\item[-203] Invalid login. The login and password does not match.
+\item[-206] Expired user. The user no longer has access to the service.
+\end{description}
+
+
+
+\section{Positions}
+
+The supported coordinate systems and formats.
+\input{xml_wgs_position_system}
+An example of a \texttt{position\_item} in the \emph{WGS84} format.\\
+~\\
+\hspace*{6mm}\texttt{<position\_item position\_system="WGS84">}\\
+\hspace*{12mm}\texttt{<lat>N 55$^{\circ}$ 43' 01.9561"</lat>}\\
+\hspace*{12mm}\texttt{<lon>E 13$^{\circ}$ 11' 20.1477"</lon>}\\
+\hspace*{6mm}\texttt{</position\_item>}\\
+
+The WGS84Rad format is a radian angle using the WGS84 coordinate system.
+
+An example of a \texttt{position\_item} in the \emph{WGS84Rad} format.
+\begin{verbatim}
+   <position_item position_system="WGS84Rad">
+      <lat>0.9724487650</lat>
+      <lon>0.2301902519</lon>
+   </position_item>
+\end{verbatim}
+
+The WGS84Deg format is a degree angle using the WGS84 coordinate system.
+
+An example of a \texttt{position\_item} in the \emph{WGS84Deg} format.
+\begin{verbatim}
+   <position_item position_system="WGS84Deg">
+      <lat>55.71721002</lat>
+      <lon>13.18892992</lon>
+   </position_item>
+\end{verbatim}
+
+The MC2 format is a number, digits only.
+
+An example of a \texttt{position\_item} in the \emph{MC2} format.
+\begin{verbatim}
+   <position_item position_system="MC2">
+      <lat>664732208</lat>
+      <lon>157350063</lon>
+   </position_item>
+\end{verbatim}
+
+
+\subsection{Position item}
+
+\index{position\_item, element}
+\index{position\_system\_t, entity}
+\index{lat, element}
+\index{lon, element}
+\begin{verbatim}
+<!ENTITY % position_system_t "(WGS84|WGS84Rad|WGS84Deg|MC2)">
+<!ELEMENT position_item ( lat, lon )>
+<!ATTLIST position_item position_system %position_system_t; #REQUIRED >
+<!ELEMENT lat ( #PCDATA )>
+<!ELEMENT lon ( #PCDATA )>
+\end{verbatim}
+
+
+\section{User Favorites}
+
+Request for add, delete and synchronize user's favorites. 
+~\\
+\input{xml_api_favorite}
+
+
+\subsection{User Favorites Request}
+
+Used to sync a client with the \mc-system.
+
+\index{user\_favorites\_request, element}
+\begin{verbatim}
+<!ELEMENT user_favorites_request ( favorite_id_list?,
+                                   delete_favorite_id_list?,
+                                   add_favorite_list? )>
+<!ATTLIST user_favorites_request 
+                              transaction_id ID #REQUIRED
+                              sync_favorites    %bool; "true"
+                              position_system   %position_system_t; "MC2" >
+<!ELEMENT favorite_id_list ( favorite_id* )>
+<!ELEMENT favorite_id ( #PCDATA )>
+<!ELEMENT delete_favorite_id_list ( favorite_id+ )>
+<!ELEMENT add_favorite_list ( favorite+ )>
+\end{verbatim}
+\begin{description}
+\item[\emph{favorite\_id\_list}] The id's of the favorites that the user
+  has.
+  \index{favorite\_id\_list, element}
+\item[\emph{delete\_favorite\_id\_list}] The id's of the favorites that the
+  user has deleted.
+  \index{delete\_favorite\_id\_list, element}
+\item[\emph{add\_favorite\_list}] The favorites that the user has added.
+  \index{add\_favorite\_list, element}
+\item[\emph{sync\_favorites}] If the reply should contain the add and 
+  delete favorites that is needed to synchronize the user, uses
+  \emph{favorite\_id\_list}. Otherwise the reply only contains the added
+  and deleted favorites in the request.
+\item[\emph{position\_system}] The position\_system to use in the favorites
+  in the reply.
+\item[\emph{favorite\_id}] \label{favoriteid} An id of a favorite. Value is from an \emph{id} in a \emph{favorite} described in Section 
+  \ref{favorite}.
+  \index{favorite\_id, element}
+\end{description}
+
+
+\subsection{User Favorites Reply}
+
+This is a reply with a list of the favorites that the user has, the 
+\texttt{favorite\_id\_list} in the request, but is no longer present on
+the server, sent in the \texttt{delete\_favorite\_id\_list}, and
+a list of favorites that is new to the user, sent in the 
+\texttt{add\_favorite\_list}.
+
+\index{user\_favorites\_reply, element}
+\begin{verbatim}
+<!ELEMENT user_favorites_reply ( delete_favorite_id_list?,
+                                 add_favorite_list? )>
+<!ATTLIST user_favorites_reply transaction_id ID #REQUIRED>
+\end{verbatim}
+\begin{description}
+\item[\emph{delete\_favorite\_id\_list}] The id's of the favorites that the
+  user should remove.
+  \index{delete\_favorite\_id\_list, element}
+\item[\emph{add\_favorite\_list}] The favorites that the user should
+  add.
+  \index{add\_favorite\_list, element}
+\end{description}
+
+
+\newpage
+\section{Examples}
+
+Some examples of the API described above.
+To use the examples simply replace \texttt{mylogin} with your login and
+\texttt{mypassword} with your password.
+
+\subsection{Get all the favorites}
+
+This example is a request for all the favorites stored in the \mc-system.
+
+\begin{verbatim}
+<request>
+  <auth login="mylogin" password="mypassword"/>
+  <user_favorites_request transaction_id="U1"/>
+</request>
+\end{verbatim}
+
+\subsection{Add a favorite}
+
+This example adds a favorite and returns all the favorites stored in the 
+\mc-system. The ``id'' of the favorite to add should be ``0''.
+
+\begin{verbatim}
+<request>
+  <auth login="mylogin" password="mypassword"/>
+  <user_favorites_request transaction_id="U1">
+     <add_favorite_list>
+        <favorite id="0" 
+                  name="The favorite"
+                  short_name="Fav"
+                  description="The favorite favorite"
+                  category=""
+                  map_icon_name="" >
+           <position_item position_system="WGS84Rad">
+              <lat>0.9717091809</lat>
+              <lon>0.2193076014</lon>
+           </position_item>
+        </favorite>
+     </add_favorite_list>
+  </user_favorites_request>
+</request>
+\end{verbatim}
+
+\subsection{Delete a favorite}
+
+This example deletes a favorite, identified by the ``id'', from the
+\mc-system and returns all the favorites stored in the 
+\mc-system.
+
+\begin{verbatim}
+<request>
+  <auth login="mylogin" password="mypassword"/>
+  <user_favorites_request transaction_id="U1">
+     <delete_favorite_id_list>
+        <favorite_id>1205963691</favorite_id> 
+     </delete_favorite_id_list>
+  </user_favorites_request>
+</request>
+\end{verbatim}
+
+
+\subsection{Synchronize favorites}
+
+This example shows a request to update, synchronize, your own list of 
+favorites with the \mc-system{s}. The reply contains the favorites in
+the \mc-system that is not in the \texttt{favorite\_id\_list}.
+
+
+\begin{verbatim}
+<request>
+  <auth login="mylogin" password="mypassword"/>
+  <user_favorites_request transaction_id="U1">
+     <favorite_id_list>
+        <favorite_id>2104799423</favorite_id>
+        <favorite_id>830684142</favorite_id>
+        <favorite_id>1596509004</favorite_id>
+        <favorite_id>610826900</favorite_id>
+        <favorite_id>12</favorite_id>
+     </favorite_id_list>
+  </user_favorites_request>
+</request>
+\end{verbatim}
+
+
+\clearemptydoublepage
+% xxx add index entries into the examples as well
+% and the public.dtd if they were not verbatim-input
+\section{Document Type Definition}
+\label{DTD}
+\index{Public DTD, Document Type Definition}
+The formal definition of the XML documents that are sent to and from
+the \mc-system.
+\verbatiminput{../../Server/bin/public.dtd}

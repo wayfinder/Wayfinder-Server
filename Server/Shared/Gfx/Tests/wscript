@@ -1,0 +1,24 @@
+from waftools import mc2test
+from waftools import servertool
+
+def unit_test(bld, target, source):
+   return mc2test.unit_test(bld, target, source,
+                            'ServersSharedGfx Shared SharedUtility',
+                            'SHARED SERVERSSHARED')
+def build(bld):
+   unit_test(bld, 'GfxFeatureTest', 'GfxFeatureTest.cpp')
+
+   unit_test(bld, 'GfxCoordinatesTest', 'GfxCoordinatesTest.cpp')
+   gfx = unit_test(bld, 'ConvexHullTest', 'GfxDataTest.cpp')
+   gfx.uselib_local = gfx.uselib_local + ' MapGen'
+
+   tp_test = bld.new_task_gen( 'cxx', 'program' )
+   tp_test.target = 'TextPlacementTest'
+   tp_test.source = 'TextPlacementTest.cpp'
+   tp_test.install_path = None
+   tp_test.uselib_local = 'MC2Gtk ServersShared ServersSharedNet \
+    ServersSharedDrawing ServersSharedGfx ServersSharedXML \
+ServersSharedCommon ServersSharedItems ServersSharedDatabase Shared SharedNet'
+
+   tp_test.uselib = 'SHARED SERVERSSHARED DRAWING CAIRO IMAGEMAGICK GTK'
+

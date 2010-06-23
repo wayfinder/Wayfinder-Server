@@ -1,0 +1,15 @@
+Airport	Lotnisko
+City Centre	Centrum miasta
+Ferry Terminal	Terminal promowy
+Hotel	Hotel
+Museum	Muzeum
+Nightlife	Życie nocne
+Open Parking Area	Parking na świeżym powietrzu
+Parking Garage	Parking zadaszony
+Petrol Station	Stacja benzynowa
+Post Office	Poczta
+Train Station	Dworzec klejowy
+Rent a car	Wynajem samochodów
+Restaurant	Restauracja
+Shopping	Centrum handlowe
+Tourist information	Biuro turystyczne

@@ -1,0 +1,135 @@
+/*
+ *    This file contains the source code for a non-Recursive 
+ *    implementation of the QuickSort-algorithm. The only assumption
+ *    done is that all elements uniquely can be accessed by their
+ *    position (e.g. "element number 5" is uniquely defined).
+ *
+ *    Usage:
+ *    *  A method or macro called "COMP(int a, int b)" must
+ *       be in scope. This method/macro must return an integer 
+ *       -  greater than 0 if element at pos a is greater than element
+ *          at position b, 
+ *       -  less than 0 if element at position a is less than the 
+ *          element at position b
+ *       -  equal to 0 if element at position a is equal to the element 
+ *          at position b.
+ *    *  A method or macro called "SWAP(int a, int b) that changes
+ *       places of the elements in position a and b.
+ *    *  This source-code must be included into a method that contans
+ *       a (constant) variable called "SORTING_END".
+ *
+ *    Example:
+ *
+ *    // Method that changes places of elements at position a and b.
+ *    void SWAP(int a, int b) {
+ *       uint32 foo=buf[a];
+ *       buf[a]=buf[b];
+ *       buf[b]=foo;
+ *    }
+ *
+ *    // @return -1 if buf[a] < buf[b], 1 if buf[a] > buf[b] and
+ *    //         0 if buf[a] == buf[b].
+ *    int COMP(int a, int b) {
+ *       if (buf[a] < buf[b])
+ *          return (-1);
+ *       else if (buf[a] > buf[b])
+ *          return (1);
+ *       else
+ *          return (0);
+ *    }
+ *
+ *    // Implementation of the quicksort.
+ *    void quickSort() {
+ *       const int SORTING_END = getLength();
+ *       #include"nonrecursivequicksort.src"
+ *    }
+ */
+
+   const int thresh = 7;      // Use insertion sort for subarrays with
+                              // <= thresh number of element
+
+   int stack[46];             // 2 * ln(2^32) < 46 
+   uint32 sp = 0;
+   int base = 0;
+   int i, j;
+   int limit = (int) SORTING_END;
+   for ( ;; ) {                        // repeat until break...          
+      if ( limit - base > thresh ) {   // if more than T elements 
+                                       //   swap base with middle 
+         SWAP(((limit-base)/2)+base, base);
+         i = base + 1;                 // i scans left to right
+         j = limit - 1;                // j scans right to left
+         if ( COMP(i, j) > 0 )         // Sedgewick's
+            SWAP(i, j);                //    three-element sort
+         if ( COMP(base, j) > 0 )      //        sets things up
+            SWAP(base, j);             //            so that
+         if ( COMP(i, base) > 0)       //      *i <= *base <= *j
+            SWAP(i, base);             // *base is pivot element
+         for ( ;; ) {                  // loop until break
+            do                         // move i right
+               i++;                    //        until *i >= pivot
+            while ( COMP(i, base) < 0 );
+            do                         // move j left
+               j--;                    //        until *j <= pivot
+            while ( COMP(j, base) > 0);
+            if ( i > j )               // if indeces crossed
+               break;                  //     break loop
+            SWAP(i, j);                // else swap elements, keep scanning
+         }
+         SWAP(base, j);                // move pivot into correct place
+         if ( j - base > limit - i ) { // if left subfile larger
+            stack[sp] = base;          //   stack left subfile base
+            sp++;
+            stack[sp] = j;             //     and limit
+            sp++;
+            base = i;                  // sort the right subfile
+         } else {                      // else right subfile larger
+            stack[sp] = i;             //    stack right subfile base
+            sp++;
+            stack[sp] = limit;         //        and limit
+            sp++;
+            limit = j;                 // sort the left subfile
+         }
+      } else {                         // else subfile is small, 
+                                       // use insertion sort
+         for ( j = base, i = j+1; i < limit; j = i, i++ )
+            for ( ; COMP(j, j+1) > 0; j-- ) {
+               SWAP(j, j+1);
+               if ( j == base )
+                 break;
+            }
+
+         if ( sp != 0 ) {              // if any entries on stack
+            sp--;                      // pop the base and limit
+            limit = stack[sp];
+            sp--;
+            base = stack[sp];
+         } else                        // else stack empty, done
+            break;
+      }
+   }
+
+
+
+// The algorithm above comes from 
+// http://www.strangecreations.com/library/snippets/Rg_Qsort.C
+/* ************************************************************** */
+/* qsort.c  --  Non-Recursive ANSI Quicksort function             */
+/*                                                                */
+/* Public domain by Raymond Gardner, Englewood CO  February 1991  */
+/*                                                                */
+/* Usage:                                                         */
+/*     qsort(base, nbr_elements, width_bytes, compare_function);  */
+/*        void *base;                                             */
+/*        size_t nbr_elements, width_bytes;                       */
+/*        int (*compare_function)(const void *, const void *);    */
+/*                                                                */
+/* Sorts an array starting at base, of length nbr_elements, each  */
+/* element of size width_bytes, ordered via compare_function,     */
+/* which is called as  (*compare_function)(ptr_to_element1,       */
+/* ptr_to_element2) and returns < 0 if element1 < element2,       */
+/* 0 if element1 = element2, > 0 if element1 > element2.          */
+/* Most refinements are due to R. Sedgewick. See "Implementing    */
+/* Quicksort Programs", Comm. ACM, Oct. 1978, and Corrigendum,    */
+/* Comm. ACM, June 1979.                                          */
+/* ************************************************************** */

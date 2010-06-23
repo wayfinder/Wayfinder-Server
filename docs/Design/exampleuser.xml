@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+
+   <auth>
+      <auth_user>login</auth_user>
+      <auth_passwd>password</auth_passwd>
+   </auth>
+
+   <user_request transaction_id="ID1">
+      <!-- Example showing the addition of user testuser -->
+      <user>
+         <user_id>testuser</user_id>
+         <first_name>User</first_name>
+         <last_name>Test</last_name>
+         <initials>UB</initials>
+         <default_transportation>Passenger car</default_transportation>
+         <language>Swedish</language>
+         <measurement_system>Metric</measurement_system>
+         <service>
+            <service_type>Route</service_type>
+            <service_method>SMS</service_method>
+         </service>
+         <service>
+            <service_type>Route</service_type>
+            <service_method>WAP</service_method>
+         </service>
+         <phone>
+            <phone_number>4623456789</phone_number>
+            <phone_manufacturer>Ericsson</phone_manufacturer>
+            <phone_model>R320S</phone_model>
+         </phone>
+      </user>
+   </user_request>
+
+   <user_request transaction_id="ID2">
+      <!-- Example showing the addition of user test1 -->
+      <user>
+         <user_id>test1</user_id>
+         <first_name>Test</first_name>
+         <last_name>Name</last_name>
+         <initials>TN</initials>
+         <default_transportation>Pedestrian</default_transportation>
+         <language>Swedish</language>
+         <measurement_system>Metric</measurement_system>
+         <service>
+            <service_type>Route</service_type>
+            <service_method>SMS</service_method>
+         </service>
+         <phone>
+            <phone_number>46123456789</phone_number>
+            <phone_manufacturer>Ericsson</phone_manufacturer>
+            <phone_model>A1018S</phone_model>
+         </phone>
+      </user>
+   </user_request>
+
+   <user_request transaction_id="ID3">
+      <!-- Example showing that the SMS-access for user test1
+           is removed, and that the WAP-access is added -->
+      <user>
+         <user_id>test1</user_id>
+         <service>
+            <service_type>Route</service_type>
+            <service_method>SMS</service_method>
+            <service_delete />
+         </service>
+         <service>
+            <service_type>Route</service_type>
+            <service_method>WAP</service_method>
+         </service>
+      </user>
+   </user_request>
+
+   <user_request transaction_id="ID4">
+      <!-- Example showing that user test1 has changed 
+           phone manufacturer and model -->
+      <user>
+         <user_id>test1</user_id>
+         <phone>
+            <phone_number>46123456789</phone_number>
+            <phone_manufacturer>Nokia</phone_manufacturer>
+            <phone_model>7110</phone_model>
+         </phone>
+      </user>
+   </user_request>
+
+   <user_request transaction_id="ID5">
+      <!-- Example showing the change of language for user test1 -->
+      <user>
+         <user_id>test1</user_id>
+         <language>English</language>
+      </user>
+   </user_request>
+
+   <user_request transaction_id="ID6">
+      <!-- Adding SMS-access for user testuser -->
+      <user>
+         <user_id>testuser</user_id>
+         <service>
+            <service_type>Route</service_type>
+            <service_method>SMS</service_method>
+         </service>
+      </user>
+   </user_request>
+
+   <user_request transaction_id="ID7">
+      <!-- Adding Cellular 46123456789 to testuser -->
+      <user>
+         <user_id>testuser</user_id>
+	 <phone>
+            <phone_number>46123456789</phone_number>
+         </phone>
+      </user>
+   </user_request>
+
+</isab-mc2>

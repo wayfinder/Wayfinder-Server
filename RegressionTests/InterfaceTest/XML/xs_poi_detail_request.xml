@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+<isab-mc2>
+  <auth indentingandlinebreaks="true" development="false" >
+      <auth_user>%%%AUTH_USER%%%</auth_user>
+      <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+  </auth>
+  <poi_detail_request transaction_id="detail_test" language="%%%LANGUAGE%%%">
+    %%%ITEMID%%%
+  </poi_detail_request>
+</isab-mc2>

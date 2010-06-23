@@ -1,0 +1,33 @@
+ifndef FULLPATH
+fpath = 
+else
+fpath = $(CURDIR)/
+endif
+
+.objects-$(ARCH)/%.o: %.cpp
+	@mkdir -p .objects-$(ARCH)
+	@echo Compiling $<
+	$(CXX) -c $(CXXFLAGS) $(fpath)$< -o $@
+
+INCLUDES = $(filter -I%, $(CXXFLAGS))
+DEFINES = $(filter -D%, $(CXXFLAGS))
+
+FASTDEP = $(shell /bin/ls /usr/bin/fastdep 2>/dev/null)
+
+ifeq ($(ARCH_SYSX), centos4)
+   # fastdep segfault for unknown reasons for most of the files
+   FASTDEP = disabled
+endif
+
+ifeq ($(FASTDEP), /usr/bin/fastdep)
+.depend-$(ARCH)/%.d: %.cpp
+	@echo Creating dependencies for $<
+	$(SHELL) -ec 'mkdir -p .depend-$(ARCH); $(FASTDEP) $(INCLUDES) $(DEFINES) $< | sed -e '\''s#\($*\)\.o[ :]*#.objects-$(ARCH)/\1.o $@ : #g'\'' -e '\''s#$(MC2DIR)#$$(MC2DIR)#g'\'' > $@;  [ -s $@ ] || rm -f $@'
+else
+.depend-$(ARCH)/%.d: %.cpp
+	@echo Creating dependencies for $<
+	$(SHELL) -ec 'mkdir -p .depend-$(ARCH); $(CXX) -MM $(INCLUDES) $(DEFINES) $< -MT .objects-$(ARCH)/$*.o | sed -e '\''s#$(MC2DIR)#$$(MC2DIR)#g'\'' > $@; [ -s $@ ] || rm -f $@'
+endif
+%.class: %.java
+	$(JAVAC) $(JAVACFLAGS) $(shell echo *.java) 
+

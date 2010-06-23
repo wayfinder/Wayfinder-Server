@@ -1,0 +1,17 @@
+def configure(conf):
+    conf.env.prepend_value( 'LINKFLAGS_MAPGEN', '-lJTC' )
+    conf.env.prepend_value( 'LINKFLAGS_MAPGEN', '-lz' )
+    conf.env.prepend_value( 'LINKFLAGS_MAPGEN', '-lssl' )
+    conf.env.prepend_value( 'LINKFLAGS_MAPGEN', '-ltecla' )
+    conf.env[ 'CXXFLAGS_MAPGEN' ] = '-I' + conf.cwd + "/../include"
+
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.includes = '../include'
+    staticlib.target = 'MapGen'
+    staticlib.install_path = None
+    staticlib.defines = 'USE_XML'
+    staticlib.uselib_local="ServersShared ServersSharedItems Shared"
+    staticlib.uselib="SHARED SERVERSSHARED DATABASE XERCES"
+    staticlib.export_incdirs='../include'

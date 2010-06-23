@@ -1,0 +1,9 @@
+mc2screenprefix=mytest
+mc2Dir="${HOME}/MC2/mc2"
+mc2BinDir="${HOME}/MC2/install/bin"
+sourceMapDir=""
+mapDir="${HOME}/MC2/Maps/Sverige"
+tmpNewMapDir=""
+tmpOldMapDir=""
+logDir="${HOME}/MC2/install/var/log"
+installDir=${HOME}/MC2/install

@@ -1,0 +1,8 @@
+from waftools import mc2test
+def unit_test(bld, target, source):
+   return mc2test.unit_test(bld, target, source,
+                            'ServersSharedNet Shared SharedNet SharedUtility',
+                            'SHARED')
+def build(bld):
+   unit_test(bld, 'URLFetcherNoSSLTest', 'URLFetcherNoSSLTest.cpp')
+

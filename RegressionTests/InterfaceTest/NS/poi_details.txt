@@ -1,0 +1,1 @@
+NavRequest protoVer 0xc type 0x54 reqID 0x2 reqVer 0x2 NParamBlock 18 params 3:cvswdsqehofjlid 3:bapgfbsosnjnwbn 3:cvswdsqehofjlid 4:wf-linux-demo. 6:0x0000; 7:0x02; 11:0x000000000000000900000003; 29:imei. 29:imsi. 29:imei. 7000:0x58703a32373942413042323a393637303533333a303a453a7065725f31323132393932333a3100;

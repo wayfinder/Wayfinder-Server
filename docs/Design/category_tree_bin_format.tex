@@ -1,0 +1,79 @@
+%
+% Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+% All rights reserved.
+% 
+% Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+% 
+%     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+%     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+%     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+% 
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+%
+\textbf{Binary format specification}
+
+Version 1 of the binary format of the local category tree has the following 
+ABNF-grammar:
+
+\begin{verbatim}
+category tree = category_table
+                lookup_table
+                string_table
+; actually sent as 3 different entities
+
+string_table = 1*string
+string       = uint16      ; length indicator
+               [1*nonnull] ; UTF8-sequence with contraints, see below. 
+               %x00        ; C string terminator
+nonnull      = %x01-%xFF
+
+category_table = top_level_list ; virtual root - user never sees this.
+                 1*category
+
+top_level_list = number_of_subcategories
+                 0*int32      ; the sub categories as byte offsets into
+                              ; category_table
+
+category = category_id
+           string_table_byte_index ; category name in used language
+           string_table_byte_index ; image name as used in TMap-interface
+           number_of_subcategories
+           0*int32            ; the sub categories as byte offsets into
+                              ; category_table
+
+lookup_table = 1*lookup_entry    ; sorted on category_id
+lookup_entry = category_id
+               int32         ; byte offset of this category in category_table
+
+category_id = int32
+number_of_subcategories = uint16
+string_table_byte_index = int32
+\end{verbatim}
+
+\begin{itemize}
+\item The list of sub categories are sorted in the order they should appear in the UI, 
+i.e. sorted according to the rules of the language requested.
+\item Network byte order is used.
+\item Indices and offsets are absolute and never less than zero even if they have type 
+int32 and not uint32.
+\end{itemize}
+
+\textbf{The string format}
+\begin{itemize}
+\item The string format is compatible both with C stdlib functions for manipulating 
+zero-byte terminated strings and using java.io.DataInput.readUTF() to read 
+strings on java.
+
+\item All string indexes are byte indices into the string table. The byte pointed to
+is the first byte after the length indicator. Thus the offset to start reading 
+the length indicator is index-2.
+
+\item The length indicator does not count the terminating zero byte.
+\item The allowed Unicode code points is limited to U+0001-U+FFFF (Basic Multilingual 
+Plane (BMP)). 
+
+\item The code point U+0000 is not allowed as it would result in a 0x00-byte which 
+would terminate the string.
+
+\item Only UTF-8 sequences that are valid and results in valid code points are allowed.
+\end{itemize}

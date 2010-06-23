@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+   <auth indentingandlinebreaks="true">
+      <auth_user>%%%AUTH_USER%%%</auth_user>
+      <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+   </auth>
+
+
+ <local_category_tree_request transaction_id="ABC123" 
+                              crc="%%%ATTR_CRC%%%" language="%%%ATTR_LANGUAGE%%%"
+                              version="1">
+
+<position_item position_system="MC2">
+      <lat>%%%LAT%%%</lat>
+      <lon>%%%LON%%%</lon>
+</position_item>
+
+</local_category_tree_request>
+
+</isab-mc2>

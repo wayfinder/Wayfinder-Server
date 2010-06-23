@@ -1,0 +1,782 @@
+%
+%
+\documentclass[a4paper]{article}
+%
+\usepackage{epsfig}
+\usepackage{t1enc}
+\usepackage{times}
+% \usepackage[swedish]{babel}
+
+\title{Route data V1.08}
+\author{Wayfinder Systems}
+
+% \frenchspacing
+
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+
+This document specifies the layout for route data in the Navigator Protocol.
+
+\section{Needed Data}
+
+The following data could be relevant for each route point:
+
+\begin{itemize}
+
+  \item Action to be performed at this point.
+  \item Position of current point.
+  \item Streetname to be displayed at this point.
+  \item Crossing type.
+
+  \item Distance to next point.
+  \item Angle to next point.
+  \item Speed limit used between this point and the next.
+
+  \item Exit number (in a roundabout)
+  \item Roadsign text to be displayed.
+
+  \item Roadclass?
+\end{itemize}
+
+All data will need to fit into a structure that holds 6 {\tt uint16}
+pieces of data.
+
+\newpage
+
+\section{Route data layout}
+
+The route data starts with a start and ends with an end. If the route is
+trunkated and protoVer >= 0x05 then there is a WPT after end that contains
+the turn data for the next WPT.
+
+For truncated routes with protoVer >= 0x07 a number of WPT,TDE pairs follow 
+after the end instead of the single WPT. 
+
+After the SPT an origo+scale combination is output. For protoVer >= 0x07 
+a left\_right\_traffic may be output after the scale. If it is missing 
+right is assumed.
+
+After this preamble comes the first nav\_route\_point.
+
+\subsection{Route datum structure layout}
+
+The route datum structure contains two elements,
+the action element which describes the function
+of this datum, and the relevant structure for this
+type of datum.
+
+\begin{verbatim}
+
+typedef struct nav_route_datum {
+  uint16 action;    /* Type of structure. */
+  union {
+    struct nav_route_point              rp;
+    struct nav_route_meta_point_origo   ro;
+    struct nav_route_meta_point_scale   rs;
+    struct nav_route_point_mini_delta_points rd;
+    struct nav_route_point_micro_delta_points rdm;
+    struct nav_route_point_meta         rm;
+  } u;
+} nav_route_datum_t;
+typedef nav_route_datum_t* nav_route_datum_p;
+
+\end{verbatim}
+
+
+
+\subsection{Action field}
+
+The action field determines which kind of route datum for the
+current structure.
+
+The action field is further subdivided by the following:
+
+\begin{itemize}
+\item Point Descriptions
+\item Meta Data structures
+\item Reserved values
+\end{itemize}
+
+\subsubsection{Point Descriptions}
+
+
+\begin{verbatim}
+  16             0
+  0cceeexxxxxxxxxx
+\end{verbatim}
+
+The lower bits describe the action to be performed at this point.
+
+The current values are defined at the moment.
+\begin{itemize}
+\item  0x0000 - {\tt nav\_route\_point\_end}
+\item  0x0001 - {\tt nav\_route\_point\_start}
+\item  0x0002 - {\tt  nav\_route\_point\_ahead     }
+\item  0x0003 - {\tt  nav\_route\_point\_left      }
+\item  0x0004 - {\tt  nav\_route\_point\_right     }
+\item  0x0005 - {\tt  nav\_route\_point\_uturn     }
+\item  0x0006 - {\tt  nav\_route\_point\_startat   }
+\item  0x0007 - {\tt  nav\_route\_point\_finally   }
+\item  0x0008 - {\tt  nav\_route\_point\_enter\_rdbt}
+\item  0x0009 - {\tt  nav\_route\_point\_exit\_rdbt }
+\item  0x000a - {\tt  nav\_route\_point\_ahead\_rdbt}
+\item  0x000b - {\tt  nav\_route\_point\_left\_rdbt }
+\item  0x000c - {\tt  nav\_route\_point\_right\_rdbt}
+\item  0x000d - {\tt  nav\_route\_point\_exitat    }
+\item  0x000e - {\tt  nav\_route\_point\_on        }
+\item  0x000f - {\tt  nav\_route\_point\_park\_car  }
+\item  0x0010 - {\tt  nav\_route\_point\_keep\_left }
+\item  0x0011 - {\tt  nav\_route\_point\_keep\_right}
+\item  0x0012 - {\tt  nav\_route\_point\_start\_with\_uturn}
+\item  0x0013 - {\tt  nav\_rotue\_point\_uturn\_rdbt}
+\item  0x0014 - {\tt  nav\_route\_point\_follow\_road}
+\item  0x0015 - {\tt  nav\_route\_point\_enter\_ferry}
+\item  0x0016 - {\tt  nav\_route\_point\_exit\_ferry}
+\item  0x0017 - {\tt  nav\_route\_point\_change\_ferry}
+\item  0x0018 - {\tt  nav\_route\_point\_endofroad\_left}
+\item  0x0019 - {\tt  nav\_route\_point\_endofroad\_right}
+\item  0x001A - {\tt  nav\_route\_point\_off\_ramp\_left}
+\item  0x001B - {\tt  nav\_route\_point\_off\_ramp\_right}
+\item  0x001C - {\tt  nav\_route\_point\_exit\_rdbt\_8}
+\item  0x001D - {\tt  nav\_route\_point\_exit\_rdbt\_16}
+\item  0x03fe - {\tt  nav\_route\_point\_delta      }
+\item  0x03ff - {\tt  nav\_route\_point\_max       }
+
+\end{itemize}
+
+All these values mean that the rest of the structure
+is filled as a nav\_route\_point.
+
+The point description also includes information about the
+crossing type for this point, if any.
+
+The following values could be needed for crossing type:
+
+\begin{itemize}
+
+\item UNDEFINED\_CROSSING
+\item NO\_CROSSING
+\item CROSSING\_3WAYS\_T
+\item CROSSING\_3WAYS\_Y
+\item CROSSING\_4WAYS
+\item CROSSING\_4WAYS\_ASYMMETRIC
+\item CROSSING\_4WAYS\_X
+\item CROSSING\_5WAYS
+\item CROSSING\_6WAYS
+\item CROSSING\_7WAYS
+\item CROSSING\_8WAYS
+\item CROSSING\_9WAYS
+\item CROSSING\_10WAYS
+\item CROSSING\_2ROUNDABOUT
+\item CROSSING\_3ROUNDABOUT
+\item CROSSING\_4ROUNDABOUT
+\item CROSSING\_4ROUNDABOUT\_ASYMMETRIC
+\item CROSSING\_5ROUNDABOUT
+\item CROSSING\_6ROUNDABOUT
+\item CROSSING\_7ROUNDABOUT
+
+\end{itemize}
+
+However, this would take too much space in the action member
+to describe, so we instead define the following:
+
+The most often occurring crossing types are defined in the
+action member, and the rest can be described with another meta
+structure.
+
+These crossing types are defined in the action member.
+
+\begin{itemize}
+\item NO\_CROSSING
+\item CROSSING\_3WAYS
+\item CROSSING\_4WAYS
+\item CROSSING\_MULTIWAY
+\end{itemize}
+
+This means that we need to use 2 bits for crossing type.
+
+The middle bits, indicated with {\tt eee} are used for exit count.
+The exitcount is used for roundabouts and turndescriptions to
+allow commands such as ''Drive 530 meters then turn left
+into the 5:th street S:t Petri Kyrkog''.
+
+This means that we can describe up to 7 exits if the value zero
+is reserved for ''unknown''.
+
+There are two special turns {\tt  nav\_route\_point\_exit\_rdbt\_8} and
+{\tt  nav\_route\_point\_exit\_rdbt\_16} they adds 8 and 16 to the exitcount.
+
+\subsubsection{Meta data structure}
+
+\begin{verbatim}
+  16             0
+  100000000zzzzzzz
+\end{verbatim}
+
+This gives us 127 possible metastructures.
+
+\begin{itemize}
+
+ \item Origo 0x8000
+    \begin{verbatim}
+    1000000000000000
+    \end{verbatim}
+
+ \item Scale 0x8001
+    \begin{verbatim}
+    1000000000000001
+    \end{verbatim}
+
+ \item Compressed trackpoints 0x8002-0x8003
+    \begin{verbatim}
+    1000000000000010   - Mini 2 x 2 x int16 plus speed limits
+    1000000000000011   - Micro 5 x 2 x int8 (delta coded - currently unused).
+    \end{verbatim}
+
+ \item Reserved 0x8004
+
+ \item Meta point 0x8005
+    \begin{verbatim}
+    1000000000000101   - Meta point, uint16 type + 4 x uint16
+    \end{verbatim}
+
+
+ \item TimeDistLeft 0x8006
+    \begin{verbatim}
+    1000000000000110   - Time, uint32,  and distance left, uint32
+    \end{verbatim}
+ 
+Tell the total time and distance left from the preseding trackpoint point.
+The data is, after the uint16 type is a reserved uint16, a uint32 time left, ETG, 
+and then an uint32 distance left to goal.
+
+This packet is output for protoVer >= 0x07. It {\em must} be output 
+after all nav\_route\_points and after some nav\_route\_point\_tracks.
+Additionally it is output whenever it has been a long time since it was
+last output.
+
+ \item Landmark 0x8007
+    \begin{verbatim}
+    1000000000000111   - Text, type and distance.
+    \end{verbatim}
+    See \ref{Landmark}.
+
+\item Lane Info 0x8008
+    \begin{verbatim}
+    1000000000001000   - Start of lanes group, or stop showing lanes.
+    \end{verbatim}
+    See \ref{Lane Info}.
+
+\item Lane Data 0x8009
+    \begin{verbatim}
+    1000000000001001   - Several lanes in this, is after a Lane Info.
+    \end{verbatim}
+    See \ref{Lane Data}.
+
+\item Signpost 0x800a
+    \begin{verbatim}
+    1000000000001010   - Text, background, text and front color.
+    \end{verbatim}
+    See \ref{Signpost}.
+ 
+\end{itemize}
+
+\subsubsection{Reserved values}
+
+\begin{verbatim}
+  16             0
+  1wwwwwwwxxxxxxxx
+\end{verbatim}
+
+Where one of w is non-zero.
+
+\subsection{nav\_route\_point}
+
+This structure includes the following values:
+
+\begin{verbatim}
+  uint8 flags; /*   General flags. */
+  uint8 speed_limit; /* Speedlimit to use for this segment. */
+               /* The following speed limits have special values: */
+               /* 0   -- No speed restriction (not in map or autobahn) */
+               /* 254 -- No throughfare. */
+               /* 255 -- No entry. */
+
+  int16 x;     /* X position in 1 meters from local origo. */
+  int16 y;     /* Y position in 1 meters from local origo. */
+               /* We restrict ourselves to simple routes */
+               /* of maximum 28 x 28 km ( +/- 14 km) before we need a */
+               /* new origo and scale. */
+
+  uint16 meters; /* Meters left to the next full trackpoint. I.e. */
+                 /* distance left to the next waypoint or full */
+                 /* trackpoint. Unused for protoVer >= 0x07 since */
+                 /* the introduction of the TDE datum. */
+
+  uint16 street_name_index; /* Index into the street name file. */
+               /* The streetname index is an offset from a known */
+               /* memory position to the correct string. */
+               /* The strings are zero terminated and may */
+               /* be divided by an 0xf7 character. */
+               /* The text before the 0xf7 character is taken as */
+               /* street name, and the text after as signpost text. */
+\end{verbatim}
+
+The flag field can be used to store additional data for the point. It 
+is unused for protoVer < 0x07.
+
+For protover 0x07 the flags field contains.
+
+\begin{centering}
+\begin{tabular}{|l|c|l|}
+\hline
+Name  & Size     & Description \\
+      & (bits)   &             \\\hline
+      & 6        & Unused      \\\hline
+isLeftTraffic     & 1        & 0 - False, 1 - True \\\hline
+ControlledAccess  & 1        & 1 - True, 0 - False  \\\hline
+\end{tabular}
+\end{centering}
+
+In route with protoVer >= 0x07 a nav\_route\_point that is not a 
+nav\_route\_point\_track {\em must} 
+be followed by a TDE packet. This eases the task of calculating distances
+between route points that imply direction. In addition some 
+nav\_route\_point\_track datums must also be followed by TDEs, see below
+(\ref{navroutepointtrack}).
+
+\subsubsection{Start - SPT}
+
+The startpoint is the first datum in the route. Since it is never referenced 
+as a waypoint most fields are unused and undefined. The flags field however 
+is special. One flag is defined, the start-with-uturn flag (0x01). It
+indicates that the first segment may be traversed in the wrong direction and
+that the driver in that case must turn around as soon as possible.
+
+\subsection{nav\_route\_point\_track}
+\label{navroutepointtrack}
+
+This is a subtype of the nav\_route\_point which is used as a full
+trackpoint, i.e. the point contains almost the same information as
+the waypoints, but the point will never be presented to the user
+other than indirectly (such as used for drawing the route etc).
+
+In routes with protoVer < 0x07 the street\_name\_index is not used 
+in this structure wheras in routes with protoVer >= 0x07 
+street\_name\_index is used as normal.
+
+In routes with protoVer >= 0x07 a nav\_route\_point\_track that 
+constitutes a change in speedlimit, flags or streetname must
+be followed by a TDE datum.
+
+  
+\subsection{Origo}
+
+  The route origo point describes a point which is to be
+  used as origo when calculating the local coordinates
+  from the GPS-data (WGS-84)
+
+\begin{verbatim}
+  uint16 next_origo;   /* Index of the next origo point. */
+
+  int32 origo_x;
+                       /* X offset for center of the "map" */
+                       /* that is used to translate to local */
+                       /* coordinates. */
+  int32 origo_y;
+                       /* Y offset for center of the "map" */
+                       /* that is used to translate to local */
+                       /* coordinates. */
+\end{verbatim}
+
+\subsection{Scale}
+
+  The route scale datum contains the scale factor to
+  be used in the conversion of the GPS-data (WGS-84)
+  to local coordinates.
+
+  Observe that the Latitude scale factor is constant
+  where ever on the globe we are.
+
+  Fixed point value, scale\_x1 is integer part and
+  scale\_x2 describes the fraction in 1/65536 parts.
+  That is, scale\_x2 is calculated by
+  scale\_x2 = (scale - scale\_x1)*65536
+  Since (scale - scale\_x1) is between 1 and zero,
+  scale\_x2 will be between 65536 and zero.
+
+
+\begin{verbatim}
+  int16 ref_x;            /* Reference to the last trackpoint. */
+  int16 ref_y;            /* Reference to the last trackpoint. */
+
+  uint32 scale_x1;        /* Scale factor in Longitude. */
+                          /* Least significant 16 bits. */
+  uint16 scale_x2;        /* Scale factor in Longitude. */
+                          /* Most significant 32 bits. */
+\end{verbatim}
+
+  The ref\_* variables can be used as the coordinates of the previous
+  route point in the new minimap.
+  The ref\_* variables are defined as meters from the origo $ (0,0) $.
+
+\subsection{Meta}
+
+  The meta point can be used for any kind of values
+  which need data in 16-bit units.
+
+\begin{verbatim}
+  uint16 type;
+  uint16 a;
+  uint16 b;
+  uint16 c;
+  uint16 d;
+\end{verbatim}
+
+The following types are defined:
+
+\begin{itemize}
+
+\item 0x1 Additional Text Information
+
+
+\item 0x2 Additional Sound Information
+
+Additional sound to be played at this point
+More detailed sound information, Half way reached, Commercial etc.
+
+\item 0x3 Additional Trackpoint Information
+
+This is not used. DrivingOnRightSide is in attribute flags in WPT/TPT.
+%Additional information needed for next trackpoint. Currently the
+%first uint16 holds an extended flags section. Only two extended 
+%flag is defined to describe left-hand/right-hand side driving. The 
+%two least significant bits are 0=no change, 1=change to left-hand,
+%2=change to right-hand driving and 3=unused.
+
+\item 0x4 Segmented Route And End Is Near
+
+Advise that new phonecall is made to Navigator Server to download
+next part of a segmented route.
+
+If a route is too large to transfer to the Navigator in one piece,
+the route can be sent in a number of smaller segments with automatic
+routing at the end of the segment.
+
+\item 0x5 Report Point Reached
+
+Instructs the Navigator to initiate contact with server to
+report when the point is passed.
+
+Can be used for vehicle tracking, automatic road pricing etc.
+
+\end{itemize}
+
+\subsection{Compressed trackpoints}
+
+Full trackpoints are very often wasteful since only the position
+and possibly speed values need to be updated. Therefore, we define 
+{\em compressed trackpoints}
+as multiple points that are packed into one structure.
+
+There is two possible ways to pack multiple values into a structure:
+
+\subsubsection{Micro points}
+
+  This can be used to pack five trackpoints
+  into a one compressed structure. The x and y offsets
+  are in units from the last trackpoint, which can be any
+  of a waypoint, a full trackpoint, a mini trackpoint or 
+  another micro trackpoint.
+
+  The last speed is given by a full or mini trackpoint is used.
+  NB This may be suboptimal, it may be more efficient to keep
+  all speed changes in full trackpoints and not in mini trackpoints.
+  That way we do not have to scan for more than full trackpoints.
+
+  Using 1 meters as the unit, we can describe points
+  that lie within a square of 127 meters from the
+  last point. Note that we must not accumulate a position outside
+  of what is allowed in the minimap specified by origo and scale.
+
+\begin{verbatim}
+
+typedef struct nav_micro_delta_point {
+  int8 x;
+  int8 y;
+} nav_micro_delta_point_t;
+typedef nav_micro_delta_point_t *nav_micro_delta_point_p;
+
+typedef struct nav_route_point_micro_delta_points {
+  nav_micro_delta_point_t p1;
+  nav_micro_delta_point_t p2;
+  nav_micro_delta_point_t p3;
+  nav_micro_delta_point_t p4;
+  nav_micro_delta_point_t p5;
+} nav_route_point_micro_delta_points_t;
+typedef nav_route_point_micro_delta_points_t
+    *nav_route_point_micro_delta_points_p;
+
+\end{verbatim}
+
+By definition, a nav\_route\_point\_micro\_track\_points\_t should
+atleast contain one delta point and preferably not less than three.
+(Since we otherwise could have used the
+nav\_route\_point\_mini\_delta\_points\_t)
+
+A point where both X and Y components are zero is invalid and
+considered unused. All nav\_micro\_track\_point\_t after the
+invalid one is also considered invalid.
+
+NB. Micro track points are not implemented fully yet. {\em Do not use.}
+
+\subsubsection{Mini points}
+
+  X and Y offsets are the same as the one in nav\_route\_point\_track 
+  (\ref{navroutepointtrack}).
+
+\begin{verbatim}
+typedef struct nav_mini_track_point {
+  int16 x;
+  int16 y;
+} nav_mini_track_point_t;
+typedef nav_mini_track_point_t *nav_mini_track_point_p;
+
+typedef struct nav_route_point_mini_track_points {
+  nav_mini_track_point_t p1;
+  nav_mini_track_point_t p2;
+  uint8 speed_limit1;
+  uint8 speed_limit2;
+} nav_route_point_mini_track_points_t;
+typedef nav_route_point_mini_track_points_t
+    *nav_route_point_mini_track_points_p;
+
+\end{verbatim}
+
+A nav\_route\_point\_mini\_track\_points\_t always
+contains two track points. 
+
+\subsection{Landmark}
+\label{Landmark}
+
+This datum may be appended once or several times after a 
+wpt+tde combo. The wpt refered to is the one with the coordinate
+of the first segment.
+
+All extended landmarks that are active after 
+a minimap change must be re-added after the Scale with 
+start=stop=0. This allows a quick scanning of minimaps
+without having to pay attention to the active landmarks.
+
+Additional text information to be displayed between that point
+in the route and the next crossing (the one the waypoint describes).
+
+\begin{verbatim}
+  uint16 flags;        /* Bit-mapped flags */
+
+  uint16 street_name_index; /* Index into the street name file. */
+                       /* The streetname index is an offset from a known */
+                       /* memory position to the correct string. */
+                       /* The strings are zero terminated. */
+  uint16 id_and_startstop;
+                       /* The least significant 14 bits are an id number
+                          used to group starts/stops. 
+                          The two most significant bits (0xc000) are the 
+                          startstop bits. See below.
+                              start    stop     meaning
+                                0        0      Reminder of an extended landmark 
+                                                placed after a Scale
+                                1        0      Beginning of an extended landmark
+                                0        1      End of an extended landmark
+                                1        1      Point-like landmark
+  int32 distance;
+                       /* Distance from the landmark to 
+                          the next crossing. */
+\end{verbatim}
+
+An extended landmark may have two data between the same 
+waypoints if it both begins and ends between them. The
+landmark datum with the start bit must come before the
+one with the stop bit.
+
+The flags field is bit coded as follows:
+
+\begin{centering}
+\begin{tabular}{|l|c|p{7cm}|}
+\hline
+Name  & Size     & Description \\
+      & (bits)   &             \\\hline
+Type  & 3        & 0 - Disturbed route, 1 - Landmark, 2-7 Reserved. \\\hline
+Side  & 3        & 0 - Left, 1 - Right, 2 - Undefined. \\\hline
+Landmark\_t &  5 & 0 - builtUpAreaLM \\
+      &          & 1 - railwayLM \\
+      &          & 2 - areaLM \\
+      &          & 3 - poiLM \\
+      &          & 4 - signPostLM \\
+      &          & 5 - countryLM \\
+      &          & 6 - countryAndBuiltUpAreaLM \\
+      &          & 7 -  passedStreetLM \\
+      &          & 8 -  accidentLM \\
+      &          & 9 - roadWorkLM \\
+      &          & 10 - cameraLM \\
+      &          & 11 - speedTrapLM \\
+      &          & 12 - policeLM \\
+      &          & 13 - weatherLM \\
+      &          & 14 - trafficOtherLM \\
+      &          & 15 - userDefinedCameraLM \\
+      &          & 16-31 - Reserved \\\hline
+Landmark\_location\_t & 5 & 0 - after Indicates that the crossing is after the
+                                landmark (you  should turn after the landmark)\\
+      &          & 1 - before Indicates that the crossing is before the 
+                              landmark.\\
+      &          & 2 - in Indicates that the crossing is in the landmark 
+                          (e.g. a park).\\
+      &          & 3 - at Indicates that the crossing is at the landmark (if 
+                          after, before or in does not fit the location).\\
+      &          & 4 - pass Indicates that you should pass the landmark (when 
+                            you drive ahead in a crossing or when the landmark 
+                            is located just beside a road).\\
+      &          & 5 - into Indicates that the crossing is in the landmark, and
+                            you want description "after xx meters go into..". 
+                            The landmark culd be e.g. a built-up area or a
+                            country.\\
+      &          & 6 - arrive  Indicates that the crossing is where you arrive 
+                               at the landmark (from e.g. ferryitem).\\
+      &          & 7 - 31 Reserved \\\hline
+\end{tabular}
+\end{centering}
+
+
+\subsection{Lane Info}
+\label{Lane Info}
+
+This datum may be appended once or several times after a after a 
+wpt+tde combo, after any landmarks. The wpt refered to is the one 
+with the coordinate of the first segment.
+
+The Lane Info may be followed by any number of Lane Data.
+The Lane Infos are order in distance order with highest distance first.
+
+If a Lane info is active after a mimimap change it must be re-added after the
+Scale with Reminder of lanes = 1 and with all the Lane datas too.
+
+The Lane Info contains the following.
+\begin{verbatim}
+  uint8 flags;        /* Bit-mapped flags */
+
+  uint8 nbrLanes;     /* The number of lanes. */
+  uint8 lane;         /* A lane. */
+  uint8 lane;         /* A lane. */
+  uint8 lane;         /* A lane. */
+  uint8 lane;         /* A lane. */
+
+  int32 distance;  /* Distance from the lanes to 
+                      the next crossing. */
+\end{verbatim}
+
+\ \\
+The flags field is bit coded as follows:
+
+\begin{centering}
+\begin{tabular}{|l|c|p{7cm}|}
+\hline
+Name  & Size     & Description \\
+      & (bits)   &             \\\hline
+Stop of lanes    & 1         & 0 - There be lanes here, 1 - Turn of Lanes until new Lane Info. \\\hline
+Reminder of lanes    & 1         & 0 - Not a reminder, 1 - Reminder of lanes. \\\hline
+      &          & Bit 2 - 15 Reserved \\\hline
+\end{tabular}
+\end{centering}
+
+\ \\
+\ \\
+The lane uint8s contains the following. 
+The lanes are ordered from left to right regardless of DrivingOnRightSide.
+The lane's uint8 bit 7 is preferred lane or not and bit 6 is not allowed to
+drive in with current vehicle and finally the 0-5 bits form a index into this
+table.
+%   1 - sharp left (135 degrees)
+%  7 - sharp right (135 degrees)
+%  8 - U-Turn Left (180 degrees)
+%  9 - U-Turn Right (180 degrees)
+
+\begin{verbatim}
+  // Lane direction
+  0 - no direction indicated
+  1 - Reserved
+  2 - left (90 degrees)
+  3 - half left (45 degrees)
+  4 - ahead  
+  5 - half right (45 degrees)
+  6 - right (90 degrees)
+  7 - Reserved
+  8 - Reserved
+  9 - Reserved
+ 10-31 - Reserved
+ 32-63 - Reserved for client use (bit 5)
+\end{verbatim}
+
+\subsection{Lane Data}
+\label{Lane Data}
+
+This datum may be appended once or several times after a 
+wpt+tde combo, after any landmarks and a lane info. The wpt referred to 
+is the one with the coordinate of the first segment.
+A Lane Data has 10 uint8s, where each uint8 represents a lane.
+
+See Section \ref{Lane Info} for content of lane uint8s.
+
+
+\subsection{Signpost}
+\label{Signpost}
+
+This datum may be appended once or several times after a 
+wpt+tde combo, after any landmarks and lanes. The wpt referred to is the one 
+with the coordinate of the first segment.
+A Signpost is valid until the next wpt. The Signposts are in importance order
+so the first one is more important than the next one.
+If a mimimap change occurs any Signpost must be re-added after the
+Scale.
+
+The Signpost contains the following: Text, background, text and front
+color (byte color index), dist. 
+
+\begin{verbatim}
+  uint16 signpost_text_index; /* Index into the string table. */
+
+  byte textColor; /* The color of the text in the signpost. */
+  byte backgroundColor; /* The color of the background of the signpost. */
+  byte frontColor; /* The color of the front of the signpost. */
+
+  byte reserved; /* Not used right now. */
+
+  int32 distance;  /* Distance from the signpost to 
+                      the next crossing. */
+\end{verbatim}
+
+The colors are indexes into the ngp param Route Color Table in the 
+route reply.
+
+\end{document}
+
+%                latex2html -split 4 \
+%                           -link 1 \
+%                           -toc_depth 8 \
+%                           -mkdir \
+%                           -dir route_spec \
+%                           -image_type gif \
+%                           -antialias \
+%                           -show_section_numbers \
+%                           -auto_navigation \
+%                           -index_in_navigation \
+%                           -nocontents_in_navigation \
+%                           -next_page_in_navigation \
+%                           -previous_page_in_navigation \
+%                           -local_icons \
+%                           -transparent \
+%                           -title "Route Specification" \
+%                           -html_version 4.0,table,math \
+%                           route.tex

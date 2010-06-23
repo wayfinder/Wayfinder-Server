@@ -1,0 +1,12 @@
+def configure(conf):
+    conf.sub_config('src')
+
+def build(bld):
+    bld.add_subdirs('src')
+    bld.add_subdirs('ExtradataExtractor/src')
+    bld.add_subdirs('MapGenerator/src')
+    bld.add_subdirs('MapHttpServer/src')
+    bld.add_subdirs('MapTool/src')
+    bld.add_subdirs('QualTool/src')
+    bld.add_subdirs('Verify/src')
+    bld.add_subdirs('WASPExtractor/src')

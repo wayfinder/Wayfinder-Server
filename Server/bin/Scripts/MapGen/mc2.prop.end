@@ -1,0 +1,14 @@
+
+
+#############################################
+
+# POI SQL database settings
+POI_SQL_DATABASE = poi
+POI_SQL_HOST = poihost
+POI_SQL_USER = poi
+POI_SQL_PASSWORD = UghTre6S
+POI_SQL_CHARENCODING = UTF-8
+
+# Number of pois to read at a time when reading many
+#POI_SQL_MAX_PRECACHE = 1000
+

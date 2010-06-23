@@ -1,0 +1,16 @@
+def configure(conf):
+    conf.env.prepend_value( 'LIB_SERVER', 'JTC' )
+    conf.env.prepend_value( 'LIB_SERVER', 'z' )
+
+
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.includes = '../include'
+    staticlib.target = 'ServersServers'
+    staticlib.install_path = None
+    staticlib.defines = 'USE_SSL USE_XML'
+    staticlib.uselib_local='ServersShared ServersSharedJSON ServersSharedDrawing \
+    ServersSharedDatabase Shared SharedNet SharedUtility ServersSharedNGP'
+    staticlib.uselib="SHARED DRAWING SERVERSSHARED XERCES TECLA BOOST_REGEX"
+    staticlib.export_incdirs='../include'

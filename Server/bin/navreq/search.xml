@@ -1,0 +1,77 @@
+<!--
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  
+      * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+      * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<mc2ngp>
+<!--
+Usage: 
+#NGPMaker search.xml /dev/stdout|nc server port > /dev/null
+-->
+
+  <request protocolVersion="0xc" type="0x07" 
+           id="0" version="1" useGzip="true" >
+     <desc>Search</desc>
+     <name>NAV_SEARCH_REQ</name>
+     <param id="8" type="string">
+         <value>iphpuser</value>
+         <desc>User Login</desc>
+     </param>
+     <param id="2" type="string">
+         <value>password</value>
+         <desc>User password</desc>
+     </param>
+<!-- optional
+
+     <param id="1200" type="uint16_array">
+        <value>0,0</value>
+        <desc>Index of the first match. areas, item</desc>
+     </param>
+-->
+     <param id="1201" type="string">
+        <value>Lund</value>
+        <desc>Search area</desc>
+     </param>
+     <param id="1203" type="string">
+        <value>Restaurant</value>
+        <desc>Search item</desc>
+     </param>
+<!-- category optional
+     <param id="1204" type="string>
+        <value></value>
+        <desc>Category string</desc>
+     </param>
+-->
+     <param id="1205" type="uint32">
+        <value>1</value>
+        <desc>Top region ID</desc>
+     </param>
+     <param id="6" type="uint16">
+        <value>1</value>
+        <desc>Top region ID</desc>
+     </param>
+<!-- Position coordinate 
+     <param id="1206" type="int32_array" >
+        <value>0,0</value>
+        <desc>Position coordinate</desc>
+     </param>
+-->
+     <param id="1207" type="uint16" >
+        <value>10</value>
+        <desc>Max number search matches</desc>
+     </param>
+     <param id="1208" type="byte_array" >
+        <value>2,2</value>
+        <desc>Sort order for areas and items</desc>
+     </param>
+
+  </request>
+
+</mc2ngp>

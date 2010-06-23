@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+   <auth>
+      <auth_user>%%%AUTH_USER%%%</auth_user>
+      <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+   </auth>
+
+   <search_request transaction_id="IDSearch1">
+      <search_request_header>
+         <search_preferences>
+            <search_settings matchtype="close" 
+                             wordmatch="beginning" 
+                             sorttype="confidence_sort" >
+               <search_for_municipal/>
+               <search_for_city/>
+               <search_for_citypart/>
+               <search_for_street/>
+               <search_for_company/>
+	       <search_for_category/>
+	       <search_for_misc/>
+
+               <show_search_area_municipal/>
+               <show_search_area_city/>
+               <show_search_area_city_part/>
+               <show_search_item_municipal/>
+               <show_search_item_city/>
+               <show_search_item_city_part/>
+
+            </search_settings>
+         </search_preferences>
+      </search_request_header>
+      <search_query>
+         <!-- When Java Simple XML API supports top_regions replace hardcoded one -->
+         <top_region top_region_type="country">
+            <top_region_id>1</top_region_id>
+            <boundingbox east_lon="0.4217822003" west_lon="0.1916652508" north_lat="1.2053233341" south_lat="0.9658105781" position_sytem="WGS84Rad"/>
+            <name_node language="swedish">Sverige</name_node>
+         </top_region>
+         <search_area_query>Malmö</search_area_query>
+         <search_item_query>Bang 2</search_item_query>
+      </search_query>
+   </search_request>
+
+</isab-mc2>

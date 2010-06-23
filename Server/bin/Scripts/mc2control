@@ -1,0 +1,561 @@
+#!/bin/zsh
+#
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+# Starts, stops mc2.
+# Uses .mc2control.hosts, .mc2control.settings and for
+# each hostname in .mc2control.hosts a .mc2control.[hostname] file
+
+sethosts () {
+        while [ $# -ge 1 ] ; do
+                shift
+                hostlist="$hostlist $1"
+        done
+
+        if [ "$hostlist" = "" -o "$hostlist" = " " ]; then
+                hostlist=`cat $hosts`
+        fi
+}
+
+update () {
+	echo "Updating MC2"
+   if ( [ -d ${mc2Dir} ] &&
+        [ -r ${mc2Dir}/Makefile.common ] )
+   then
+      # Ok as is
+   elif ( [ -d ${mc2Dir}/mc2 ] &&
+          [ -r ${mc2Dir}/mc2/Makefile.common ] )
+   then
+      # Add mc2 to path
+      mc2Dir=${mc2Dir}/mc2
+   else 
+      echo "Could not find mc2 tree at ${mc2Dir}, aborting..."
+      exit 1
+   fi
+           
+	if ( [ -d ${mc2Dir}/.hg ] ) then
+	    echo "Updating in ${mc2Dir}"
+	    cd $mc2Dir
+	    hg pull -u >& /dev/null
+	    if ( [ $? != 0 ] ) then
+	        echo "hg pull failed, quiting"
+	        exit 1
+	    fi
+	else 
+	    echo "'${mc2Dir}' does not contain repository information, aborting..."
+	    exit 1
+	fi
+	
+	# make
+   for host in ${=makeHost}
+   do
+	   echo "Making in ${mc2Dir} on ${host}"
+	   ssh ${host} "cd ${mc2Dir} ; nice make -j3 -s"
+	   if ( [ $? != 0 ] ) then
+	      echo "Make of MC2 failed, aborting..."
+	      exit 1
+	   fi
+   done
+}
+
+install() {
+   # Install new code
+   mkdir -p ${installDir}
+   if ( [ -d ${installDir} ] ) then
+      # Get BMC
+      BMC=`grep -v "^#" ${mc2Dir}/Server/bin/mc2.prop | grep "^BMC" | sed -e 's/BMC.*= *//' -e 's/ *#.*//' -e 's/"//g' -e 's/\/$//'`
+      # Get PPM
+      PPM=`grep -v "^#" ${mc2Dir}/Server/bin/mc2.prop | grep "^PPM" | sed -e 's/PPM.*= *//' -e 's/ *#.*//' -e 's/"//g' -e 's/\/$//'`
+      # Get SQL_HOST
+      SQLHost=`grep -v "^#" ${mc2Dir}/Server/bin/mc2.prop | grep "^DEFAULT_SQL_HOST" | sed -e 's/DEFAULT_SQL_HOST.*= *//' -e 's/ *#.*//' -e 's/"//g' -e 's/\/$//'`
+
+      # Install
+      cd ${mc2Dir} ; MC2BASEDIR=${installDir} MC2BMC=\"${BMC}\" MC2PPM=\"${PPM}\" DEFAULT_SQL_HOST=\"${SQLHost}\" MC2MC2SCREENPREFIX=${mc2screenprefix} make install
+      if ( [ $? != 0 ] ) then
+         echo "Install of MC2 failed, aborting..."
+         exit 1
+      fi
+   else
+      echo "Problem with install directory \"${installDir}\" could not be created."
+      exit 1
+   fi
+}
+
+newmaps1 () {
+	echo "Updating maps, part one copy maps."
+	if [ $# -gt 1 ]; then
+	    sourceMapDir=$2
+        fi
+	if (  [ -d ${sourceMapDir} ] && 
+         [ -r ${sourceMapDir}/index.db ] &&
+         [ -r ${sourceMapDir}/000000000.mcm(.gz|.bz2|) ] &&
+         [ -r ${sourceMapDir}/080000000.mcm(.gz|.bz2|) ] ) 
+        then
+           echo "Getting maps from ${sourceMapDir}"
+           rm -rf ${tmpNewMapDir} >& /dev/null
+           mkdir -p ${tmpNewMapDir}
+           cp ${sourceMapDir}/*.(mcm(.gz|.bz2|)|db) ${tmpNewMapDir}
+           if ( [ $? != 0 ] ) then
+              echo "copy of maps falied"
+              exit 1
+           fi
+        else
+           echo "ERROR: No such map dir ${sourceMapDir}"
+           if ( ! [ -d ${sourceMapDir} ] ) then
+		        echo "\"${sourceMapDir}\" is not a dir"
+           fi
+           if ( ! [ -r ${sourceMapDir}/index.db ] ) then
+              echo "No \"index.db\" present!"
+           fi
+           if ( ! [ -r ${sourceMapDir}/000000000.mcm(.gz|.bz2|) ] ) then
+              echo "No \"000000000.mcm\" present!"
+           fi
+           if ( ! [ -r ${sourceMapDir}/080000000.mcm(.gz|.bz2|) ] ) then
+              echo "No \"080000000.mcm\" present!"
+           fi
+           exit 1
+        fi
+}
+
+newmaps2 () {
+    # New maps part 2 (Use new maps)
+	echo "Updating maps, part two use new maps."
+        mv -f ${mapDir} ${tmpOldMapDir}
+	rm -rf ${tmpOldMapDir}
+	mv -f ${tmpNewMapDir} ${mapDir}
+}
+
+start () {
+    # Start
+	echo "Starting MC2"
+	for host in ${=hostlist}
+   do
+      notrunning=1
+      pids=`ssh ${host} screen -ls | grep ${mc2screenprefix}.${host} | awk -v ORS=" " '{ match( $1, /\..+/ ) ; print substr( $1, 0, length( $1 ) - RLENGTH ) ; }'`
+      if ( test -n "${pids}" ) then
+         ssh ${host} ps ${=pids} | grep -i screen >& /dev/null
+         if ( [ $? = 0 ] ) then
+            notrunning=0
+         else
+            echo "Could not verify running process on ${host}, perhaps dead screen."
+         fi
+      fi
+      
+      if test -n $notrunning -a $notrunning = "1"
+      then # If no running screen
+         ssh ${host} ${screenstartup} ${mc2screenprefix}.${host} ${screenmc2progs}.${host} ${mc2BinDir}
+         if ( [ $? != 0 ] ) then
+            echo "WARNING: failed to start MC2 on ${host}!"
+         else
+            echo "MC2 started on $host"
+         fi
+      else
+         echo "MC2 screen already running on ${host}!"
+      fi
+   done
+} 
+
+stop () {
+   echo "Stopping MC2"
+   for host in ${=hostlist}
+   do 
+	    # After greping out the relevant lines the PID is 
+	    # the string up to the first '.'.
+	    pids=`ssh ${host} screen -ls | grep ${mc2screenprefix}.${host} | awk -v ORS=" " '{ match( $1, /\..+/ ) ; print substr( $1, 0, length( $1 ) - RLENGTH ) ; }'`
+	    echo "kill ${=pids} on ${host}"
+	    ssh ${host} "kill ${=pids}"
+	    if ( [ $? != 0 ] ) then
+		echo "WARNING: failed to stop mc2 on ${host}!"
+	    else
+		echo "MC2 stopped on $host"
+	    fi
+	done
+	# Rename all logs by changing .log to _log
+   # Check if no log files
+   ls ${mc2BinDir}/*(Server|Module|java|plexor|trissmon|trafmon_client|ts_)*_${^${=hostlist}}*.log >& /dev/null
+   if ( [ $? = 0 ] ) then
+	   for logFile in `ls ${mc2BinDir}/*(Server|Module|java|plexor|trissmon|trafmon_client|ts_)*_${^${=hostlist}}*.log` ; do
+	       mv -f ${logFile} `dirname ${logFile}`/`basename ${logFile} .log`_log
+	   done
+   fi
+}
+
+shiftlogs () {
+    # New version move old version's logs to own directory
+       LogsDir=${logDir}/Logs_`date +%Y%m%d.%H%M`
+       mkdir -p ${LogsDir}
+       if ( [ $? != 0 ] ) then
+          echo "WARNING: failed to create ${LogsDir} dir!"
+       else
+          mv ${mc2BinDir}/*(Server|Module|java|plexor|trissmon|trafmon_client|ts_|*http|exitlog)*_log ${LogsDir}
+       fi
+}
+
+status () {
+   nbronly=0;
+   nbrrunning=0;
+   while [ $# -ge 1 ] ; do
+      if [ $1 -eq "-q" ] ; then
+         nbronly=1;
+      fi
+      shift
+   done
+
+	if ( [ $nbronly -eq 0 ] ) ; then
+      echo "Status of MC2"
+   fi
+	for host in ${=hostlist} ; do
+	    # After greping out the relevant lines the PID is 
+	    # the string up to the first '.'.
+	    pids=`ssh ${host} screen -ls | grep ${mc2screenprefix}.${host} | awk -v ORS=" " '{ match( $1, /\..+/ ) ; print substr( $1, 0, length( $1 ) - RLENGTH ) ; }'`
+	    if ( test -n "${pids}" ) then
+          ssh ${host} ps ${=pids} | grep -i screen >& /dev/null
+          if ( [ $? = 0 ] ) then
+             if ( [ $nbronly -eq 0 ] ) ; then
+                echo "MC2 PID ${pids} on ${host}"
+             else
+                nbrrunning=$[ $nbrrunning + 1 ]
+             fi
+          else
+             if ( [ $nbronly -eq 0 ] ) ; then
+                echo "Could not verify running process on ${host}, perhaps dead screen."
+             fi
+          fi
+	    else
+          if ( [ $nbronly -eq 0 ] ) ; then
+             echo "No running MC2 found on ${host}"
+          fi
+	    fi
+	done
+
+   if ( [ $nbronly -ne 0 ] ) ; then
+      echo $nbrrunning
+   fi
+}
+
+inscreenrestart () {
+   echo "inscreenrestart is disabled, missing shutdown scripts"
+   if [ $# -ge 3 ] ; then
+      shift # 'inscreenrestart'
+      host=$1
+      shift # the host
+      while [ $# -ge 1 ] ; do
+         if ( [[ -n "$pattern" && -n "$1" ]] ) then
+           pattern="$pattern.*" 
+         fi
+         pattern="$pattern$1"
+         shift
+      done
+      if [ -f ${screenmc2progs}.${host} ]; then
+         startcmd=`grep "^[^#]*$pattern" ${screenmc2progs}.${host}`
+         # Trim startcmd of trailing spaces (Service Delivery has this in 
+         # their generated configs)
+         startcmd=`echo ${startcmd} | awk '{sub(/ *$/,"",$0); print $0 ;}'`
+         matches=`grep -c "^[^#]*$pattern" ${screenmc2progs}.${host}`
+         nbrrunningbefore=`ssh ${host} ps auxwww | grep "$USER.*${${startcmd/*runBin/runBin}//"/\\\"}" | grep -vc grep`
+         if ( [ $matches -eq 1 ] && ( [ $nbrrunningbefore -eq 0 ] || 
+		                      [ $nbrrunningbefore -eq 2 ] ) )
+         then
+            echo "Restarting $host $startcmd"
+
+            # Get type of Server NS,HNS,XS and port
+	    port=7855
+	    type=ns
+	    name=NavigatorServer
+
+            if [[ "${startcmd}" = *NavigatorServer* ]]; then
+	       type=ns
+	       name=NavigatorServer
+	       port=
+		if [[ "${startcmd}" = *--plexor-plexor_data_ports=* ]]; then
+		    port=`echo ${startcmd} | sed -e 's/.*--plexor-plexor_data_ports=\([^ ]*\).*/\1/'`
+		elif [[ "${startcmd}" = *--httpport=* ]]; then
+		    type=nshttp
+		    port=`echo ${startcmd} | sed -e 's/.*--httpport=\([^ ]*\).*/\1/'`
+		elif [[ "${startcmd}" = *-d\ * ]]; then
+		    port=`echo ${startcmd} | sed -e 's/.*-d \([^ ]*\).*/\1/'`
+		else
+		    type=
+		    port=
+		    name=
+		    echo "Unknown type of NavigatorServer"
+		fi
+	    elif [[ "${startcmd}" = *XMLServer* ]]; then
+	       type=xs
+	       port=12211
+	       name=XMLServer
+	       if [[ "${startcmd}" = *-u\ * ]]; then
+		  port=`echo ${startcmd} | sed -e 's/.*-u \([^ ]*\).*/\1/'`
+	       elif [[ "${startcmd}" = *--unsecport=* ]]; then
+		  port=`echo ${startcmd} | sed -e 's/.*--unsecport=\([^ ]*\).*/\1/'`
+	       fi
+	    else
+	       type=
+	       port=
+	       name=
+	       echo "Unknown startcommand. Just starting and killing. This is not as safe as known components."
+               # Example: MapModule in both burger and head instances on dev-3 and we
+               # restarts burger MapModule, which runBin to kill?
+	    fi
+
+	    echo "type $type port $port name $name"
+
+
+	    if [ "$type" != "" ]; then
+          # TODO / DISABLED
+          # This does not work since there are no shutdown scripts available in the OSS version
+	       shutdown="${scriptdir}/shutdown${type} $host $port"
+
+	       runBin=`ssh ${host} ps auxwww | grep "$USER.*${${startcmd/*runBin/runBin}//"/\\\"}" | grep -v grep | grep -v $0 | awk '{print $2}'`
+
+               # Start new
+	       echo "Starting new"
+	       ssh ${host} screen -S ${mc2screenprefix}.${host} -p zsh -X ${=startcmd}
+	       startres=$?
+	       if ( [ $startres != 0 ] ) then
+		  echo "Start failed! $startres"
+	       fi
+
+               # Shutdown
+	       if ( [[ -n $runBin ]] ) then
+		  echo "Shutting down current"
+		  ssh ${host} "cd ${mc2BinDir} ; touch ./runBin.${runBin[(w)1]}.shutdown"
+		  ${=shutdown}
+
+		  echo "Waiting for ${name} to stop"
+#    while ( [ -f ./runBin.${runBin[(w)1]}.shutdown ] )
+                  ssh ${host} "cd ${mc2BinDir} ; ls ./runBin.${runBin[(w)1]}.shutdown >& /dev/null"
+		  shutres=$?
+		  while ( [ $shutres = 0 ] ) 
+                  do
+		    sleep 1
+		    ssh ${host} "cd ${mc2BinDir} ; ls ./runBin.${runBin[(w)1]}.shutdown >& /dev/null"
+		    shutres=$?
+		  done
+	       else
+		  echo "No old screen to shutdown"
+		  sleep 1
+	       fi
+	    else
+               runBin=`ssh ${host} ps auxwww | grep "$USER.*${${startcmd/*runBin/runBin}//"/\\\"}" | grep -v grep | grep -v $0 | awk '{print $2}'`
+	       if ( [[ -n $runBin ]] ) then
+		   echo "Kill ${host} ${runBin[(w)1]}"
+		   ssh ${host} kill ${runBin[(w)1]}
+		   sleep 3
+		   ssh ${host} kill -9 ${runBin[(w)1]}
+	       else 
+		   echo "No old screen to shutdown"
+	       fi
+	       echo "Starting new"
+	       ssh ${host} screen -S ${mc2screenprefix}.${host} -p zsh -X ${=startcmd}
+	       startres=$?
+	       if ( [ $startres != 0 ] ) then
+		  echo "Start failed! $startres"
+	       fi
+	    fi
+
+	    echo "Done"
+
+            if ( [ $startres = 0 ] ) then
+               sleep 3
+               nbrrunning=`ssh ${host} ps auxwww | grep "$USER.*${${startcmd/*runBin/runBin}//"/\\\"}" | grep -vc grep`
+               echo "Number running is now $nbrrunning, before $nbrrunningbefore (A runBin has two threads)"
+            else
+	       echo "In screen restart failed."
+            fi
+         elif ( ! ( [ $nbrrunningbefore -eq 0 ] || 
+		    [ $nbrrunningbefore -eq 2 ] ) ) 
+	 then
+	     echo "Bad number running runBins: $nbrrunningbefore"
+             res=`ssh ${host} ps auxwww | grep "$USER.*${${startcmd/*runBin/runBin}//"/\\\"}" | grep -v grep`
+	     echo $res
+         elif [ $matches -ge 2 ]; then
+            echo "More than one matching screen entry. Be more specific."
+         else 
+            echo "No matching screen entry."
+         fi
+      else
+         echo "host not found ${host}."
+      fi
+
+   else
+      echo "inscreenrestart not enough parameters $[ $# -1 ]."
+   fi
+}
+
+loadmaps () {
+   # Loadmaps
+	echo "Loadmaps"
+	ssh ${commandHost} "cd ${mc2BinDir} ; time ${loadmapcommand} ${mapDir}"
+	if ( [ $? != 0 ] ) then
+	    echo "WARNING: loadmaps for MC2 failed."
+	fi
+}
+
+pack () {
+     # Pack
+	echo "Packing old MC2 logs, this might take several minutes."
+        for dir in `nice ls -d ${logDir}/Logs_*/` ; do
+            for logFile in `nice find ${dir} -mtime +1 -maxdepth 1 -name '*_log'` ; do
+                echo "Packing log: $logFile"
+                nice -20 bzip2 -v $logFile
+            done
+        done
+}
+
+if ( [[ $# = 0 ]] ) then
+    echo "Usage: `basename $0` command"
+    echo "   where command is one of:"
+    echo "      status  - print status of mc2 on hosts."
+    echo "      start   - start mc2 on hosts."
+    echo "      stop    - stop mc2 on hosts."
+    echo "      restart - stop then start."
+    echo "      new     - cvs update mc2 then make then stop then install then start."
+    echo "                requires source mc2 tree."
+    echo "      newmaps - stop then get new maps then start. Uses argument "
+    echo "                string as path or default path if no argument string."
+    echo "      newall  - new and newmaps."
+    echo "      inscreenrestart - host [pattern]+ Restarts a screen window"
+    echo "                        matching pattern on host."
+    echo "      loadmaps"
+    echo "      lm      - load maps for mc2 cluster"
+    echo "      pack    - Packs old logs that are older than 7 days."
+    echo "      rotate  - Rotate logs, stop, shift logs and start."
+    echo "      shiftlogs - Move unused logs in bin dir to a new log dir."
+    echo "      make    - cvs update mc2 then make."
+    echo "      install - install mc2 programs and support files, do not stop"
+    echo "                and start. Requires source mc2 tree."
+    echo "      installmaps - install new maps, do not stop and start, uses "
+    echo "                    argument string as path or default path if no "
+    echo "                    argument string."
+    echo "      statusq  - print only number of hosts running."
+    exit 2
+else
+    # Where are we
+    cd `dirname $0`
+    scriptdir=`pwd`
+    configdir=`pwd`
+    scriptname=`basename $0`
+
+    # Settings
+    mc2screenprefix="mc2"
+    commandHost="localhost" 
+    makeHost="localhost"
+    fileHost="localhost"
+    loadmapcommand="${scriptdir}/loadmaps"
+    hosts="${configdir}/${scriptname}.hosts"
+    screenstartup="${scriptdir}/mc2controlscreenstarter"
+    screenmc2progs="${configdir}/${scriptname}"
+    mc2Dir="${HOME}/source/mc2/"
+    mc2BinDir="${mc2Dir}/Server/bin"
+    sourceMapDir="/mc2/Maps/Sverige"
+    mapDir="${HOME}/MC2/Maps/"
+    tmpNewMapDir="${HOME}/MC2/Maps.new/"
+    tmpOldMapDir="${HOME}/MC2/Maps.old/"
+    logDir="${mc2BinDir}/Logs"
+    installDir="${HOME}/MC2/install"
+
+    # Read user values
+    source $configdir/${scriptname}.settings
+
+    case $1 in
+	   status)
+         sethosts $*
+         status
+	   ;;
+	   start)
+         sethosts $*
+         start
+	   ;;
+	   stop)
+         sethosts $*
+         stop
+	   ;;
+	   restart)
+         sethosts $*
+         stop
+         start
+	   ;;
+	   new)
+         sethosts
+         update
+         stop
+         install
+         shiftlogs
+         start
+	   ;;
+	   newmaps)
+         sethosts
+         newmaps1 $*
+         stop
+         shiftlogs
+         newmaps2
+         start
+	   ;;
+	   newall)
+         sethosts
+         update
+         newmaps1 $*
+         stop
+         install
+         shiftlogs
+         newmaps2
+         start
+	   ;;
+      inscreenrestart)
+         inscreenrestart $*
+         ;;
+      loadmaps|lm)
+         loadmaps
+	   ;;
+	   pack)
+         pack
+	   ;;
+      rotate)
+         sethosts $*
+         stop
+         shiftlogs
+         start
+      ;;
+      shiftlogs)
+         shiftlogs
+      ;;
+      make)
+         update
+      ;;
+      install)
+         sethosts $*
+         if ( [ `status -q` -eq 0 ] ) then
+            install
+         else
+            echo "Running mc2 found, install aborted."
+         fi
+      ;;
+      installmaps)
+         sethosts $*
+         if ( [ `status -q` -eq 0 ] ) then
+            newmaps1 $*
+            newmaps2
+         else
+            echo "Running mc2 found, installmaps aborted."
+         fi
+      ;;
+      statusq)
+         sethosts $*
+         status -q
+      ;; 
+	   *) echo "Invalid command $1" ; exit 1
+	   ;;
+    esac
+
+fi
+

@@ -1,0 +1,33 @@
+<!--
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  
+      * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+      * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<?xml version="1.0" encoding="utf-8" standalone="no" ?><!DOCTYPE isab-mc2><isab-mc2>
+   <search_reply transaction_id="IDSearch1">
+      <search_area_list ending_index="0" numberitems="0" starting_index="0" total_numberitems="0"/><search_item_list ending_index="1" numberitems="2" starting_index="0" total_numberitems="2">
+         <search_item search_item_type="pointofinterest">
+            <name>Wayfinder Systems AB, Baravägen 1</name>
+            <itemid>c:7000154F:0:0:E</itemid>
+            <location_name>Möllevången, Lund</location_name>
+            <lat>664748447</lat>
+            <lon>157366099</lon>
+         </search_item>
+         <search_item search_item_type="pointofinterest">
+            <name>Wayfinder Systems AB, Kungsgatan 5</name>
+            <itemid>c:70002FB6:D:0:E</itemid>
+            <location_name>Norrmalm, Stockholm</location_name>
+            <lat>707905707</lat>
+            <lon>215589018</lon>
+         </search_item>
+      </search_item_list>
+      
+   </search_reply>
+</isab-mc2>

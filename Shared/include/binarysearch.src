@@ -1,0 +1,71 @@
+/*
+ *    This file contains the source code for a binary-search
+ *    algorithm. The only assumption done is that all elements 
+ *    uniquely can be accessed by their position (e.g. "element 
+ *    number 5" is uniquely defined).
+ *
+ *    Usage:
+ *    *  A method or macro called "SEARCH_COMP(keyType KEY, int pos)" must
+ *       be in scope. This method/macro must return an integer 
+ *       -  greater than 0 if KEY is greater than the element at position 
+ *          pos, 
+ *       -  less than 0 if KEY a is less than the element at position b
+ *       -  equal to 0 if KEY is equal to the element at position b.
+ *    *  This source-code must be included into a method that contains
+ *       two (constant) variables called "SEARCH_START_INDEX" and
+ *       "SEARCH_STOP_INDEX".
+ *    *  One variable KEY that defines the key must be in scope.
+ *    *  One variable RESULT_INDEX, that is set to the position of 
+ *       the match must be defined. If no match, RESULT_INDEX is set
+ *       to -1.
+ *
+ *    Example:
+ *
+ *    // @return -1 if key < buf[val], 1 if key > buf[val] and
+ *    //         0 if key == buf[val].
+ *    int SEARCH_COMP(uint32 key, uint32 val) {
+ *       if (key < buf[val])
+ *          return (-1);
+ *       else if (key > buf[val])
+ *          return (1);
+ *       else
+ *          return (0);
+ *    }
+ *
+ *    // Implementation of the binarysearch.
+ *    uint32 binarySearch(uint32 KEY) {
+ *       const uint32 SEARCH_START_INDEX = 0;
+ *       const uint32 SEARCH_STOP_INDEX = getNbrElements()-1;
+ *
+ *       #include "binarysearch.src"
+ *
+ *       return RESULT_INDEX;
+ *    }
+ */
+
+   int RESULT_INDEX = -1;
+   if (SEARCH_STOP_INDEX-SEARCH_START_INDEX > 0) {
+      int32 left = SEARCH_START_INDEX;
+      int32 right = SEARCH_STOP_INDEX;
+      int32 mid = (left + right) / 2;
+
+      while (left < right) {
+
+         if (SEARCH_COMP(KEY, mid) < 0) {
+            right = mid - 1;
+         } else if (SEARCH_COMP(KEY, mid) > 0) {
+            left = mid+1;
+         } else {  // key found
+            left = right = mid;
+         }
+         mid = (left + right) / 2;
+      }
+      if ( (left == right) && (SEARCH_COMP(KEY, left) == 0)) {
+         RESULT_INDEX = left;
+      }
+   } else if (SEARCH_STOP_INDEX-SEARCH_START_INDEX == 0) { 
+      // One element in array
+      if (SEARCH_COMP(KEY, 0) == 0) {
+         RESULT_INDEX = 0;
+      }
+   } // Empty array

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+
+   <!-- User testuser added alright-->
+   <user_reply transaction_id="ID1">
+      <status_code>0</status_code>
+      <status_message>OK</status_message>
+   </user_reply>
+
+   <!-- User test1 added alright-->
+   <user_reply transaction_id="ID2">
+      <status_code>0</status_code>
+      <status_message>OK</status_message>
+   </user_reply>
+
+   <!-- SMS-access for user test1 is removed, and WAP-access 
+           is added -->
+   <user_reply transaction_id="ID3">
+      <status_code>0</status_code>
+      <status_message>OK</status_message>
+   </user_reply>
+
+   <!-- Manufacturer for user test1 changed alright -->
+   <user_reply transaction_id="ID4">
+      <status_code>0</status_code>
+      <status_message>OK</status_message>
+   </user_reply>
+
+   <!-- Language for user test1 changed alright -->
+   <user_reply transaction_id="ID5">
+      <status_code>0</status_code>
+      <status_message>OK</status_message>
+   </user_reply>
+
+   <!-- User testuser already had SMS-access -->
+   <user_reply transaction_id="ID6">
+      <status_code>0</status_code>
+      <status_message>OK</status_message>
+   </user_reply>
+
+   <!-- User testuser couldn't add cellular 46123456789 -->
+   <user_reply transaction_id="ID7">
+      <status_code>-1</status_code>
+      <status_message>Failed to change user.</status_message>
+   </user_reply>
+
+</isab-mc2>

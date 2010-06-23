@@ -1,0 +1,5 @@
+from waftools import servertool
+
+def build(bld):
+   prog = servertool.create_tool(bld, 'GSystemTest')
+   prog.uselib_local += ' ServersSharedDrawing'

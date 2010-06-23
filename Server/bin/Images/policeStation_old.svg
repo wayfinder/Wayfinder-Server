@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="20" version="1.1" viewBox="-288.5 410.4 20 20" width="20">
+<g>
+<g>
+<path d="M-271.5,410.389h-14c-1.655,0-3,1.346-3,3.003v17.019l5.744-4.005h11.256c1.656,0,3-1.345,3-3.003v-10.011    C-268.5,411.735-269.844,410.389-271.5,410.389z" fill="#002B7A"/>
+</g>
+</g>
+<g>
+<g>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 19.0151)" gradientUnits="userSpaceOnUse" id="XMLID_465_" x1="-278.5371" x2="-278.5371" y1="-392.3752" y2="-409.512">
+<stop offset="0" style="stop-color:#292BFF"/>
+<stop offset="0.1349" style="stop-color:#2B2FFF"/>
+<stop offset="0.2743" style="stop-color:#303CFF"/>
+<stop offset="0.4159" style="stop-color:#3850FF"/>
+<stop offset="0.5588" style="stop-color:#446DFF"/>
+<stop offset="0.7015" style="stop-color:#5392FF"/>
+<stop offset="0.8146" style="stop-color:#61B5FF"/>
+<stop offset="1" style="stop-color:#61B5FF"/>
+</linearGradient>
+<path d="M-271.5,411.39h-14c-1.104,0-2,0.896-2,2.002v15.135l4.289-3.122h11.711    c1.104,0,2.001-0.896,2.001-2.002v-10.011C-269.499,412.287-270.396,411.39-271.5,411.39z" fill="url(#XMLID_465_)"/>
+</g>
+</g>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 19.0151)" gradientUnits="userSpaceOnUse" id="XMLID_466_" x1="-278.5078" x2="-278.5078" y1="-396.0803" y2="-392.4153">
+<stop offset="0" style="stop-color:#292BFF"/>
+<stop offset="1" style="stop-color:#BDE7FF"/>
+</linearGradient>
+<path d="M-269.484,413.263c0,1.013-0.768,1.832-1.711,1.832h-14.55c-0.944,0-1.711-0.819-1.711-1.832l0,0  c0-1.011,0.767-1.833,1.711-1.833h14.548C-270.252,411.43-269.484,412.252-269.484,413.263L-269.484,413.263z" fill="url(#XMLID_466_)"/>
+<path d="M-277.5,420.001" fill="#FFFFFF"/>
+<path d="M-277.5,422.404" fill="#FFFFFF"/>
+<polygon fill="#FFFFFF" points="-278.449,412.314 -276.501,416.264 -272.143,416.897 -275.295,419.973 -274.549,424.314   -278.449,422.264 -282.348,424.314 -281.603,419.973 -284.758,416.897 -280.399,416.264 "/>
+<circle cx="-278.426" cy="413.064" fill="#FFFFFF" r="0.75"/>
+<circle cx="-272.82" cy="417.135" fill="#FFFFFF" r="0.75"/>
+<circle cx="-274.936" cy="423.77" fill="#FFFFFF" r="0.75"/>
+<circle cx="-281.973" cy="423.728" fill="#FFFFFF" r="0.75"/>
+<circle cx="-284.056" cy="417.147" fill="#FFFFFF" r="0.75"/>
+<rect fill="#0000FF" height="6" width="1" x="-280.249" y="416.389"/>
+<g>
+<path d="M-277.959,416.389h-2v1h2c0.552,0,1,0.449,1,1c0,0.552-0.448,1-1,1h-2v1h2c1.104,0,2-0.896,2-2   C-275.959,417.287-276.855,416.389-277.959,416.389z" fill="#0000FF"/>
+</g>
+</svg>

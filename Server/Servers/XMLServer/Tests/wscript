@@ -1,0 +1,18 @@
+from waftools import mc2test
+def unit_test(bld, target, source):
+   # setup sources
+   sources = [ source ]
+   sources.extend(mc2test.create_sources(bld, '../src/', '*.cpp',
+                                          'XMLServer.cpp') )
+
+   test = mc2test.unit_test(bld, target, sources,
+                            'ServersServers ServersShared ServersSharedNet \
+                            ServersSharedXML ServersSharedCommon Shared SharedNet \
+                            SharedUtility',
+                            'SHARED SERVER SERVERSSHARED OPENSSL XERCES')
+   test.defines = 'USE_XML'
+
+   return test
+
+def build(bld):
+   tst = unit_test(bld, 'XMLItemDetailUtilityTest', 'XMLItemDetailUtilityTest.cpp' )

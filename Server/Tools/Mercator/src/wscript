@@ -1,0 +1,5 @@
+from waftools import servertool
+
+def build(bld):
+    prog = servertool.create_tool(bld, 'Mercator')
+    prog.uselib_local = 'ServersSharedNet ' + prog.uselib_local

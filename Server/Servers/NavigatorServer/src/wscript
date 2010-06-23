@@ -1,0 +1,5 @@
+from waftools import servertool
+
+def build(bld):
+    prog = servertool.create_server(bld, 'NavigatorServer')
+

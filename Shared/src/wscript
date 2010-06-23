@@ -1,0 +1,14 @@
+
+def configure(conf):
+    conf.env.prepend_value( 'LINKFLAGS_SHARED', '-lJTC' )
+    conf.env.prepend_value( 'LINKFLAGS_SHARED', '-lpthread' )
+
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob("*.cpp")
+    staticlib.includes = '../include'
+    staticlib.target = 'Shared'
+    staticlib.defines='USE_SSL'
+    staticlib.uselib_local='SharedFileSystem SharedNet SharedUtility'
+    staticlib.install_path = None
+    staticlib.export_incdirs='../include'

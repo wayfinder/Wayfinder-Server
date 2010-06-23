@@ -1,0 +1,711 @@
+#!/bin/sh -x
+# Script which helps to migrate ed corrections to a new map release
+#
+
+
+# BASEGENFILESPATH 
+# genfiles is the base directory where all setting files for map generation
+# is stored
+# Update it to point to the full path of where you create the BASEGENFILESPATH
+#BASEGENFILESPATH="fullpath/genfiles";
+BASEGENFILESPATH=".";
+source ${BASEGENFILESPATH}/script/mfunctions.sh
+
+function countNbrRecordsInEDFile() {
+   file="$1";
+   #nbrLines=`cat $file | wc -l`
+   nbrRecords=`grep -c "# [0-9]" $file`
+   echo "$nbrRecords"
+}
+
+scriptDir="$BASEGENFILESPATH/script";
+
+
+
+# Print the commandline to the log.
+commandLine="$0";
+for i; do
+    commandLine="${commandLine} $i";
+done
+echo "Command line: ${commandLine}";
+echo `date +"%Y%m%d %T"`" Start"
+echo ""
+
+
+# Read input arguments.
+argNbr=0;      # Index of non-flagged parameter.
+pos=1;         # Corresponds to index of positional parameter.
+flaggedArg=""; #false
+for i; do
+   case $i in
+      -h) echo "Usage:"
+          echo " ed_migration [OPTIONS]"
+          echo ""
+          echo ""
+          echo "Options:"
+          echo "-country"
+          echo "      The country to migrate ED in."
+          echo "-mapProduct"
+          echo "      The map product which we migrate ED in"
+          echo "      e.g. OpenStreetMap_201005_eu"
+          echo "-mapRelease"
+          echo "      The map release we migrate ED TO,"
+          echo "      e.g. OpenStreetMap_201005"
+          echo "      Must be the long version of the map supplier string"
+          echo "-prevMapRelease"
+          echo "      The map release we migrate ED FROM,"
+          echo "      e.g. OpenStreetMap_201002"
+          echo "      Must be the long version of the map supplier string"
+          echo "      Used for checking any mapssicoord files validity"
+          echo "-firstGenDir"
+          echo "      The firstGen directory of the country of mapRelease."
+          echo "      This is where to run the auto validity check"
+          echo "      in after_mapDataExtr and before_merge directories"
+          echo "-varFile"
+          echo "      The variable file that was used for"
+          echo "      generating the mcm maps in the firstGen dir"
+          echo "-gmsBin"
+          echo "      The GenerateMapServer binary to use."
+          echo "      If not given, the GMS of the mcm map first gen dir"
+          echo "      will be used, linked to the checkED dirs"
+          echo "-mapToolBin"
+          echo "      The MapTool binary to use."
+          echo "-edCheckFileStoreBasePath"
+          echo "      Base directory where to run the extradata check."
+          echo "      A sub dir for the mapProduct will be created, in which"
+          echo "      sub dirs for all countries will be created "
+          echo "      where to store the extracted ed files."
+          echo ""
+          echo ""
+          exit;;
+      -country) eval COUNTRY_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -mapProduct) eval MAP_PRODUCT_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -mapRelease) eval MAP_RELEASE_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -prevMapRelease) eval PREV_MAP_RELEASE_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -firstGenDir) eval FIRSTGENDIR_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -varFile) eval VARFILE_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -gmsBin) eval GMSBIN_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -mapToolBin) eval MAPTOOLBIN_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -edCheckFileStoreBasePath) eval EDCHECKFILESTOREBASEPATH_ARG=$\{`echo $[pos+1]`\};
+            flaggedArg="true";;
+      -*) echo "Invalid option $i"; exit;;
+      *) if [ ${flaggedArg} ]; then
+           flaggedArg=""; #false
+         else
+            eval arg${argNbr}="$i";
+            argNbr=$[argNbr+1]
+         fi;;
+   esac
+   pos=$[pos+1];
+done
+
+
+######################################################
+# Parse and check the script options
+#
+
+countryName="";
+countryNameNoSpace="";
+if [ "$COUNTRY_ARG" ]; then
+   countryName=$COUNTRY_ARG;
+   countryNameNoSpace=`echo "${COUNTRY_ARG}" | sed -e 's/ /_/g'`;
+   echo "Migrate ed for country $countryName"
+   echo " country: $countryName -> countryNameNoSpace: $countryNameNoSpace"
+else
+   echo "No country given - exit"
+   exit 1;
+fi
+# Check that the given country can be interpretted by the functions
+# in this script uk-england etc
+countryID="`${scriptDir}/maps_countryInfo.pl -I "${countryNameNoSpace}"`";
+if [ "$countryID" ]; then
+   echo " country id: $countryID"
+else
+   echo "The country-string given cannot be handled - change it!"
+   exit 1;
+fi
+
+prevMapRelease="";
+if [ "$PREV_MAP_RELEASE_ARG" ]; then
+   prevMapRelease=$PREV_MAP_RELEASE_ARG;
+   echo "Prev map release: $prevMapRelease"
+else
+   echo "No prev map release given - exit"
+   exit 1;
+fi
+
+mapRelease="";
+if [ "$MAP_RELEASE_ARG" ]; then
+   mapRelease=$MAP_RELEASE_ARG;
+   echo "Map release:      $mapRelease"
+else
+   echo "No map release given - exit"
+   exit 1;
+fi
+
+mapProduct="";
+if [ "$MAP_PRODUCT_ARG" ]; then
+   mapProduct=$MAP_PRODUCT_ARG;
+   echo "Map product:      $mapProduct"
+else
+   echo "No map product given - exit"
+   exit 1;
+fi
+
+firstGenDir="";
+if [ "$FIRSTGENDIR_ARG" ]; then
+   firstGenDir=$FIRSTGENDIR_ARG;
+   echo "First gen maps:   $firstGenDir"
+   if [ -d $firstGenDir ]; then
+      ok=1;
+   else
+      echo "The given first gen dir does not exist - exit"
+      exit 1;
+   fi
+else
+   echo "No first gen directory given - exit"
+   exit 1;
+fi
+
+varFile="";
+if [ "$VARFILE_ARG" ]; then
+   varFile=$VARFILE_ARG;
+   echo "Variable file:    $varFile"
+   if [ -e $varFile ]; then
+      ok=1;
+   else
+      echo "The given variable file does not exist - exit"
+      exit 1;
+   fi
+else
+   echo "No variable file given - exit"
+   exit 1;
+fi
+
+gmsBin="";
+if [ "$GMSBIN_ARG" ]; then
+   gmsBin=$GMSBIN_ARG;
+   echo "GenerateMapServer bin:  $gmsBin"
+   if [ -e $gmsBin ]; then
+      ok=1;
+   else
+      echo "The given gms bin does not exist - exit"
+      exit 1;
+   fi
+else
+   echo "Will use (link) the GenerateMapServer from the mcm map gen dir"
+fi
+
+mapToolBin="";
+if [ "$MAPTOOLBIN_ARG" ]; then
+   mapToolBin=$MAPTOOLBIN_ARG;
+   echo "MapTool bin:  $mapToolBin"
+   if [ -e $maptollBin ]; then
+      ok=1;
+   else
+      echo "The given MapTool bin does not exist - exit"
+      exit 1;
+   fi
+else
+   echo "No MapTool bin given - exit"
+   exit 1;
+fi
+
+edCheckFileStoreBasePath="";
+if [ "$EDCHECKFILESTOREBASEPATH_ARG" ]; then
+   edCheckFileStoreBasePath=$EDCHECKFILESTOREBASEPATH_ARG;
+   echo "Check file store base path:   $edCheckFileStoreBasePath"
+   if [ -d $edCheckFileStoreBasePath ]; then
+      ok=1;
+   else
+      echo "The given first gen dir does not exist - exit"
+      exit 1;
+   fi
+else
+   echo "No check file store base path given - exit"
+   exit 1;
+fi
+
+echo ""
+
+
+
+
+
+#########################################################
+# Extract the extra data records to check
+# - country
+# - new mapRelease
+# - edCheckFileStoreDir
+
+
+# Create directory where to store the extracted ed files
+edCheckFileStorePath="${edCheckFileStoreBasePath}/${mapProduct}";
+edCheckFileCountryStorePath="${edCheckFileStorePath}/${countryNameNoSpace}";
+echo "edCheckFileCountryStorePath $edCheckFileCountryStorePath";
+if [ -e ${edCheckFileCountryStorePath} ]; then
+    echo " dir exists";
+else
+   if [ ! -e $edCheckFileStorePath ]; then
+     mkdir ${edCheckFileStorePath}
+     chk_res
+      pushd ${edCheckFileStorePath}
+      chgrp maps . -R
+      chmod g+rws . -R
+      chmod a+r . -R
+      popd
+   fi
+   mkdir ${edCheckFileCountryStorePath}
+   chk_res
+   echo "created dir";
+fi
+echo ""
+
+
+# The insertType = 1 = beforeInternalConnections
+# Creates ED file EDList_${countryID}_it1.txt
+insertType="beforeInternalConnections";
+echo `date +"%Y%m%d %T"`" Extract ed for insertType 1 $insertType"
+edCheck1FileName="EDCheck_${mapRelease}_${countryNameNoSpace}_it1.txt"
+pushd ${edCheckFileCountryStorePath}
+  ${scriptDir}/addED.pl -r $mapRelease -t $mapRelease -c $countryNameNoSpace -i $insertType -f extractED >& extractED_${countryNameNoSpace}_it1.log
+  chk_res
+  # count nbr records in this file, needs countryID
+  countryID="`${scriptDir}/maps_countryInfo.pl -I "${countryNameNoSpace}"`";
+  chk_res
+  mv EDList_${countryID}_it1.txt $edCheck1FileName
+  dos2unix $edCheck1FileName
+  chmod g+rw $edCheck1FileName
+popd
+echo " created file $edCheck1FileName"
+nbrRecordsInsertType1=`countNbrRecordsInEDFile ${edCheckFileCountryStorePath}/$edCheck1FileName`;
+chk_res
+
+
+# The insertType = 2 = beforeGenerateStreets
+# The insertType = 3 = beforeGenerateTurndescriptions
+# The insertType = 4 = afterGenerateTurndescriptions
+echo `date +"%Y%m%d %T"`" Extract ed for insertType 2+3+4"
+edCheck234FileName="EDCheck_${mapRelease}_${countryNameNoSpace}_it234.txt"
+pushd ${edCheckFileCountryStorePath}
+  insertType="beforeGenerateStreets";
+  echo `date +"%Y%m%d %T"`" Extract ed for insertType $insertType"
+  ${scriptDir}/addED.pl -r $mapRelease -t $mapRelease -c $countryNameNoSpace -i $insertType -f extractED >& extractED_${countryNameNoSpace}_it2.log
+  chk_res
+
+  insertType="beforeGenerateTurndescriptions";
+  echo `date +"%Y%m%d %T"`" Extract ed for insertType $insertType"
+  ${scriptDir}/addED.pl -r $mapRelease -t $mapRelease -c $countryNameNoSpace -i $insertType -f extractED >& extractED_${countryNameNoSpace}_it3.log
+  chk_res
+
+  insertType="afterGenerateTurndescriptions";
+  echo `date +"%Y%m%d %T"`" Extract ed for insertType $insertType"
+  ${scriptDir}/addED.pl -r $mapRelease -t $mapRelease -c $countryNameNoSpace -i $insertType -f extractED >& extractED_${countryNameNoSpace}_it4.log
+  chk_res
+  
+  # cat the files into one ED file
+  countryID="`${scriptDir}/maps_countryInfo.pl -I "${countryNameNoSpace}"`";
+  cat EDList_${countryID}_it2.txt EDList_${countryID}_it3.txt EDList_${countryID}_it4.txt  >& $edCheck234FileName
+  chk_res
+  dos2unix $edCheck234FileName
+  chmod g+rw $edCheck234FileName
+
+popd
+echo " created file $edCheck234FileName";
+nbrRecordsInsertType234=`countNbrRecordsInEDFile ${edCheckFileCountryStorePath}/$edCheck234FileName`;
+chk_res
+
+echo ""
+echo `date +"%Y%m%d %T"`" Extracted ed for migration"
+echo "  insert type 1:   $nbrRecordsInsertType1 records"
+echo "  insert type 234: $nbrRecordsInsertType234 records"
+
+
+runValidityCheck="true";
+if [ $nbrRecordsInsertType1 -eq 0 -a $nbrRecordsInsertType234 -eq 0 ]; then
+   echo "Both files are empty - not running auto validity check"
+   runValidityCheck="";
+fi
+echo ""
+
+#########################################################
+#        AUTO VALIDITY CHECK
+#########################################################
+#
+# Run the auto validity check
+#  check insert type 1 in $firstGenDir/after_mapDataExtr backup dir
+#  check insert type 234 in $firstGenDir/before_merge backup dir
+#  copy result files to country/validityResult
+
+
+if [ "$runValidityCheck" ]; then
+echo ""
+echo ""
+# Create directory where to store the validity check result files
+edCountryStorePath="${edCheckFileStorePath}/${countryNameNoSpace}"
+edValidityResultCountryStorePath="${edCountryStorePath}/validityResult";
+edValidityResultCountryStorePathOrig="${edValidityResultCountryStorePath}/origResult"
+echo "Store validity result in $edValidityResultCountryStorePath";
+if [ -e ${edValidityResultCountryStorePath} ]; then
+    echo " dir exists";
+   if [ ! -e ${edValidityResultCountryStorePathOrig} ]; then
+     mkdir ${edValidityResultCountryStorePathOrig}
+   fi
+else
+   if [ ! -e $edCountryStorePath ]; then
+     mkdir ${edCountryStorePath}
+     chk_res
+   fi
+   mkdir ${edValidityResultCountryStorePath}
+   chk_res
+   echo " created dir";
+   mkdir ${edValidityResultCountryStorePathOrig}
+fi
+echo ""
+
+
+# Check ED insert type 1 in the after_mapDataExtr backup dir
+dir="$firstGenDir/after_mapDataExtr";
+echo `date +"%Y%m%d %T"`" Auto validity check 1 after_mapDataExtr"
+echo "dir $dir"
+if [ $nbrRecordsInsertType1 -eq 0 ]; then
+   echo "ED check file empty - will not run any validity check"
+else
+   echo "Nbr ed records in check file:       $nbrRecordsInsertType1"
+   if [ -e $dir ]; then
+      pushd $dir
+      ln -s ../GenerateMapServer .
+      ln -s ../mc2.prop .
+      gmsToUse="./GenerateMapServer";
+      if [ "$gmsBin" ]; then
+         gmsToUse="$gmsBin";
+      fi
+      $gmsToUse --checkextradata -x ${edCheckFileCountryStorePath}/$edCheck1FileName >& gms_checkextradata_it1.log
+      chk_res
+
+      # result of validity check
+      nbrFoundUseRecs=0; nbrFoundNoUseRecs=0;
+      nbrMissingRecs=0; nbrNoCheckRecs=0;
+      nbrMissingNoPrioRecs=0;
+      missingFile="missing_$edCheck1FileName";
+      if [ -e $missingFile ];then
+         nbrMissingRecs=`countNbrRecordsInEDFile $missingFile`;
+      fi
+      missingNoPrioFile="missing_noprio_$edCheck1FileName";
+      if [ -e $missingNoPrioFile ];then
+         nbrMissingNoPrioRecs=`countNbrRecordsInEDFile $missingNoPrioFile`;
+      fi
+      foundUseFile="found_use_$edCheck1FileName";
+      if [ -e $foundUseFile ];then
+         nbrFoundUseRecs=`countNbrRecordsInEDFile $foundUseFile`;
+      fi
+      foundNoUseFile="found_nouse_$edCheck1FileName";
+      if [ -e $foundNoUseFile ];then
+         nbrFoundNoUseRecs=`countNbrRecordsInEDFile $foundNoUseFile`;
+      fi
+      noCheckFile="nocheck_$edCheck1FileName";
+      if [ -e $noCheckFile ];then
+         nbrNoCheckRecs=`countNbrRecordsInEDFile $noCheckFile`;
+      fi
+      echo "Result of auto validity check"
+      echo "Nbr ed records in missing file:          $nbrMissingRecs"
+      echo "Nbr ed records in missing no-prio file:  $nbrMissingNoPrioRecs"
+      echo "Nbr ed records in found-use file:        $nbrFoundUseRecs"
+      echo "Nbr ed records in found-nouse file:      $nbrFoundNoUseRecs"
+      echo "Nbr ed records in no-check file:         $nbrNoCheckRecs"
+      sum=$nbrMissingRecs;
+      sum=$[sum+$nbrMissingNoPrioRecs];
+      sum=$[sum+$nbrFoundUseRecs];
+      sum=$[sum+$nbrFoundNoUseRecs];
+      sum=$[sum+$nbrNoCheckRecs];
+      echo "Total nbr ed records in result files:    $sum"
+      if [ $nbrRecordsInsertType1 -ne $sum ]; then
+         # something wrong in the check?
+         echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+         echo "Nbr records in check file and total nbr records in result files differ"
+         echo " - take action!!!"
+         echo " (might be one record that fits 2 maps)"
+         echo " (check with ed_countEdRecsDuplicates.pl)"
+         echo "--------------------------------------------"
+      fi
+      cp *$edCheck1FileName $edValidityResultCountryStorePath
+      cp *$edCheck1FileName $edValidityResultCountryStorePathOrig
+      popd
+   else
+      echo "No after_mapDataExtr dir in firstGen dir - exit"
+      echo "Did not find $dir"
+      exit 1;
+   fi
+fi
+echo ""
+echo ""
+
+
+# Check ED insert type 234 in the before_merge backup dir
+dir="$firstGenDir/before_merge";
+echo `date +"%Y%m%d %T"`" Auto validity check 234 before_merge"
+echo "dir $dir"
+if [ $nbrRecordsInsertType234 -eq 0 ]; then
+   echo "ED check file empty - will not run any validity check"
+else
+   echo "Nbr ed records in check file:       $nbrRecordsInsertType234"
+   if [ -e $dir ]; then
+      pushd $dir
+      ln -s ../GenerateMapServer .
+      ln -s ../mc2.prop .
+      gmsToUse="./GenerateMapServer";
+      if [ "$gmsBin" ]; then
+         gmsToUse="$gmsBin";
+      fi
+      $gmsToUse --checkextradata -x ${edCheckFileCountryStorePath}/$edCheck234FileName >& gms_checkextradata_it234.log
+      chk_res
+
+      # result of validity check
+      nbrFoundUseRecs=0; nbrFoundNoUseRecs=0;
+      nbrMissingRecs=0; nbrNoCheckRecs=0;
+      missingFile="missing_$edCheck234FileName";
+      nbrMissingNoPrioRecs=0;
+      if [ -e $missingFile ];then
+         nbrMissingRecs=`countNbrRecordsInEDFile $missingFile`;
+      fi
+      missingNoPrioFile="missing_noprio_$edCheck234FileName";
+      if [ -e $missingNoPrioFile ];then
+         nbrMissingNoPrioRecs=`countNbrRecordsInEDFile $missingNoPrioFile`;
+      fi
+      foundUseFile="found_use_$edCheck234FileName";
+      if [ -e $foundUseFile ];then
+         nbrFoundUseRecs=`countNbrRecordsInEDFile $foundUseFile`;
+      fi
+      foundNoUseFile="found_nouse_$edCheck234FileName";
+      if [ -e $foundNoUseFile ];then
+         nbrFoundNoUseRecs=`countNbrRecordsInEDFile $foundNoUseFile`;
+      fi
+      noCheckFile="nocheck_$edCheck234FileName";
+      if [ -e $noCheckFile ];then
+         nbrNoCheckRecs=`countNbrRecordsInEDFile $noCheckFile`;
+      fi
+      echo "Result of auto validity check"
+      echo "Nbr ed records in missing file:         $nbrMissingRecs"
+      echo "Nbr ed records in missing no-prio file: $nbrMissingNoPrioRecs"
+      echo "Nbr ed records in found-use file:       $nbrFoundUseRecs"
+      echo "Nbr ed records in found-nouse file:     $nbrFoundNoUseRecs"
+      echo "Nbr ed records in no-check file:        $nbrNoCheckRecs"
+      sum=$nbrMissingRecs;
+      sum=$[sum+$nbrMissingNoPrioRecs];
+      sum=$[sum+$nbrFoundUseRecs];
+      sum=$[sum+$nbrFoundNoUseRecs];
+      sum=$[sum+$nbrNoCheckRecs];
+      echo "Total nbr ed records in result files:    $sum"
+      if [ $nbrRecordsInsertType234 -ne $sum ]; then
+         # something wrong in the check?
+         echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+         echo "Nbr records in check file and total nbr records in result files differ"
+         echo " - take action!!!"
+         echo " (might be one record that fits 2 maps)"
+         echo "--------------------------------------------"
+      fi
+      cp *$edCheck234FileName $edValidityResultCountryStorePath
+      cp *$edCheck234FileName $edValidityResultCountryStorePathOrig
+      popd
+   else
+      echo "No before_merge dir in firstGen dir - exit"
+      echo "Did not find $dir"
+      exit 1;
+   fi
+fi
+echo ""
+echo ""
+
+
+##########################################################
+# Create AREALIST for 1st-and-a-half-gen variable file
+# It is wanted to check the result of insertType 1 corrections
+#
+
+# skip this section, only confusing
+createArealist="";
+if [ "$createArealist" ]; then
+echo `date +"%Y%m%d %T"`" Creating AREALIST for 1st-and-a-half-gen variable file (checking insertType 1 extradata)"
+foundUseFile="$firstGenDir/after_mapDataExtr/found_use_$edCheck1FileName";
+foundNoUseFile="$firstGenDir/after_mapDataExtr/found_nouse_$edCheck1FileName";
+missingFile="$firstGenDir/after_mapDataExtr/missing_$edCheck1FileName";
+missingNoPrioFile="$firstGenDir/after_mapDataExtr/missing_noprio_$edCheck1FileName";
+if [ -e $foundUseFile ]; then
+   # find out in which mcm maps the insert type 1 records are located
+   cat $foundUseFile $foundNoUseFile $missingFile $missingNoPrioFile >& tmpEDfile.txt
+   ${scriptDir}/ed_countEdRecsInMissingFile.pl tmpEDfile.txt |grep "nbr edRecords " >& edInMaps.txt
+   while read line; do
+      tmpStr=`echo $line | awk -F "In map " '{print $2}'`
+      decMapID=`echo $tmpStr | awk -F " nbr edRecords" '{print $1}'`
+      if [ "$decMapID" != "$tmpStr" ]; then
+         hexMapID=`printf "%.9x" $decMapID`
+         $firstGenDir/whichmaps $firstGenDir/${hexMapID}.mcm >> mapNames.txt
+      fi
+   done < edInMaps.txt
+   
+   # sort the mapNames.txt to get maps in the correct order
+   cat mapNames.txt|sort >& mapNames_sorted.txt
+   nbrInMapNames=`grep -c "." mapNames_sorted.txt`;
+
+   # find the areafile names by looking in the given variable file
+   coCodePrefix=`grep "^CO_CODE=" $varFile| sed -e 's/^CO_CODE=\"//' | sed -e 's/\"$//'`;
+   while read line; do
+      mapNameLastPart=`echo $line| awk -F "$coCodePrefix" '{print $2}'`;
+      nbrTimesInVarFile=`grep -c "\.$mapNameLastPart" $varFile`;
+      if [ $nbrTimesInVarFile -eq 1 ]; then
+         areafileName=`grep "\.$mapNameLastPart" $varFile| sed -e 's/^AREALIST=\"//' | sed -e 's/"$//' | sed -e 's/ *//'`;
+         echo "$areafileName" >> newAreaList.txt
+      else
+         echo "Problems getting areafile name for map $line"
+      fi
+   done < mapNames_sorted.txt
+   nbrInNewAreaFile=`grep -c "." newAreaList.txt`
+   
+   # print a AREALIST which can be copied into a new variable file
+   if [ $nbrInMapNames -ne $nbrInNewAreaFile ]; then
+      echo "Manually add areafile names for the $[nbrInMapNames-nbrInNewAreaFile] problem map(s)"
+   fi
+   i=1;
+   while read line; do
+      if [ $i -eq 1 ]; then
+         if [ $i -eq $nbrInNewAreaFile ]; then
+            echo "AREALIST=\"$line\"";
+         else
+            echo "AREALIST=\"$line";
+         fi
+      else
+         if [ $i -eq $nbrInNewAreaFile ]; then
+            echo "      $line\"";
+         else
+            echo "      $line";
+         fi
+      fi
+      i=$[i+1];
+   done < newAreaList.txt
+   
+   rm tmpEDfile.txt
+   rm edInMaps.txt
+   rm mapNames.txt
+   rm mapNames_sorted.txt
+   rm newAreaList.txt
+else
+   echo "No need for 1st-and-a-half gen for insertType 1 extradata"
+fi
+echo ""
+echo ""
+fi  # createArealist
+
+
+
+fi # $runValidityCheck
+
+
+#############################################################
+# Check map ssi coord validity 
+# (if this country has some mapssicoords directory)
+#############################################################
+echo ""
+echo `date +"%Y%m%d %T"`" Check map ssi coord validity"
+# find if this country has a mapssicoord file for prev release
+hasMapssicoordFile="";
+prevMapssicoordFile="";
+genfilesDir="${BASEGENFILESPATH}/countries";
+countryDir="$genfilesDir/$countryNameNoSpace";
+echo "country dir $countryDir"
+if [ ! -d $countryDir ]; then
+   echo "problem finding country dir - skip"
+else
+   mapssicoordDir="$countryDir/mapssicoords";
+   if [ ! -d $mapssicoordDir ]; then
+      echo "country has no mapssicoords dir - skip"
+   else
+      echo "country has mapssicoords dir $mapssicoordDir"
+      # find file from $mapRelease, 
+      # use only the 2008_01 in "TeleAtlas_2008_01"
+      tempPrevRelease=`echo "$prevMapRelease" | sed -e 's/^[A-Za-z]*_//'`;
+      echo " find file with $tempPrevRelease"
+      find $mapssicoordDir -type f -name "*$tempPrevRelease*" >& _tmp_file.txt
+      nbrFilesMatching=`grep -c "." _tmp_file.txt`
+      if [ $nbrFilesMatching -eq 1 ]; then
+         prevMapssicoordFile=`head -n 1 _tmp_file.txt`
+         if [ -e $prevMapssicoordFile ]; then
+            hasMapssicoordFile="yes";
+            echo "Has map ssi coord file to check:"
+            echo "  $prevMapssicoordFile"
+         fi
+      fi
+      rm _tmp_file.txt >& /dev/null
+   
+   fi
+fi
+
+# copy mapssi file to the new release
+newMapssicoordFile="";
+if [ "$hasMapssicoordFile" ]; then 
+   tempRelease=`echo "$mapRelease" | sed -e 's/^[A-Za-z]*_//'`;
+   tempPrevRelease=`echo "$prevMapRelease" | sed -e 's/^[A-Za-z]*_//'`;
+
+   newMapssicoordFile=`echo $prevMapssicoordFile | sed -e "s/${tempPrevRelease}/${tempRelease}/"`;
+   # do not override if already copied
+   if [ -e $newMapssicoordFile ]; then
+      echo "New map ssi coord file already exists"
+      echo "  $newMapssicoordFile"
+   else
+      echo "Copy to new map ssi coord file:"
+      echo "  $newMapssicoordFile"
+      cp $prevMapssicoordFile $newMapssicoordFile
+   fi
+fi
+
+# Run check in before_merge
+if [ ! "$hasMapssicoordFile" ]; then
+   echo "Has no map ssi coord file to check"
+else
+   echo "Start check with MapTool"
+   mapToolToUse="$mapToolBin";
+   dir="$firstGenDir/before_merge";
+   echo "checkdir $dir"
+   if [ -e $dir ]; then
+      pushd $dir
+      ln -s ../mc2.prop . >& /dev/null
+      $mapToolToUse --checkmapssicoordFile=$newMapssicoordFile 00* >& checkmapssicoord.log
+      chk_res
+
+      # result of check
+      nbrValidCoords=`grep -c "The coordinate is valid " checkmapssicoord.log`
+      nbrInvalidCoords=`grep -c "The coordinate is invalid " checkmapssicoord.log`
+      if [ $nbrInvalidCoords -eq 0 ]; then
+         echo "Result:"
+         echo " - all $nbrValidCoords coords are valid"
+      else
+         echo "Result:"
+         echo " We have $nbrInvalidCoords invalid coords ($nbrValidCoords coords are valid)"
+         echo " You need to handle this!!"
+      fi
+      
+      popd
+   else
+      echo "No before_merge dir in firstGen dir - exit"
+      echo "Did not find $dir"
+      exit 1;
+   fi
+   echo "Check map ssi coord validity ends"
+fi
+echo ""
+
+
+echo ""
+echo `date +"%Y%m%d %T"`" ED auto migration finished"
+echo ""
+
+
+exit 0;
+

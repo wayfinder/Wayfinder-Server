@@ -1,0 +1,11 @@
+def build(bld):
+    bld.add_subdirs( 'src' )
+    bld.add_subdirs( 'XMLServer/src' )
+    bld.add_subdirs( 'XMLServer/Tests' )
+    bld.add_subdirs( 'NavigatorServer/src' )
+    bld.add_subdirs( 'NavigatorServer/Tests' )
+    bld.add_subdirs( 'TrafficServer/src' )
+    bld.add_subdirs( 'TrafficServer/Tests' )
+    bld.add_subdirs( 'ModuleTestServer/src' )
+    bld.add_subdirs( 'Tools' )
+    bld.add_subdirs( 'Tests' )

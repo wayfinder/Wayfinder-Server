@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="20px" version="1.1" viewBox="0 0 20 20" width="20px" x="0px" y="0px">
+<circle cx="10" cy="10" fill="#DF0028" r="10"/>
+<g>
+<g>
+<circle cx="10" cy="10.002" fill="#FFFFFF" r="3.57"/>
+</g>
+<g>
+<path d="M2.084,9.998c0-4.371,3.542-7.916,7.917-7.916l0,0c4.37,0,7.912,3.545,7.915,7.916l0,0    c-0.003,4.372-3.545,7.917-7.915,7.919l0,0C5.626,17.915,2.084,14.37,2.084,9.998L2.084,9.998z M3.431,9.998    c0.006,3.629,2.941,6.563,6.57,6.57l0,0c3.625-0.007,6.56-2.941,6.564-6.57l0,0c-0.005-3.625-2.939-6.561-6.564-6.566l0,0    C6.372,3.438,3.437,6.373,3.431,9.998L3.431,9.998z" fill="#FFFFFF"/>
+</g>
+</g>
+</svg>

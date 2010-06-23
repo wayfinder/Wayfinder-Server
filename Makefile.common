@@ -1,0 +1,62 @@
+#
+# Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+# 
+#     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+#     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#  
+SHELL		=	/bin/sh
+
+.SUFFIXES:
+.SUFFIXES:	.cpp .h .o .d
+
+.PHONY:		all install docs clean alldocs
+
+ifndef MC2_VERBOSE
+ifndef MC2V
+.SILENT:
+endif
+endif
+
+ifndef MC2DIR
+   export MC2DIR := $(shell echo $(CURDIR) | sed -e 's/\(^.*mc2[^/]*\)\/.*$$/\1/')
+   CHECKMC2ARG := $(MC2DIR)/docs $(MC2DIR)/Makefile.common $(MC2DIR)/Server $(MC2DIR)/Shared
+   CHECKMC2RES := $(shell /bin/ls -1d $(CHECKMC2ARG) 2>/dev/null)
+   ifneq "$(CHECKMC2RES)" "$(CHECKMC2ARG)"
+         export MC2DIR := $(CURDIR)
+         CHECKMC2ARG := $(MC2DIR)/docs $(MC2DIR)/Makefile.common $(MC2DIR)/Server $(MC2DIR)/Shared
+         CHECKMC2RES := $(shell /bin/ls -1d $(CHECKMC2ARG) 2>/dev/null)
+         ifneq "$(CHECKMC2RES)" "$(CHECKMC2ARG)"
+            $(error Fatal error, MC2DIR: $(MC2DIR) isn\'t correctly set, the automagical way has failed, please specify the correct path on the command line.)
+         endif
+   endif
+   $(shell echo ***INFO*** Setting MC2DIR to: $(MC2DIR) 1>&2)
+endif # MC2DIR
+
+include ${MC2DIR}/Makefile.variables
+
+# we don't want any .so:s automagically found
+.LIBPATTERNS = lib%.a
+
+ifdef LIBNAME
+include ${MC2DIR}/Makefile.lib
+endif # LIBNAME
+
+ifdef TARGET
+include ${MC2DIR}/Makefile.bin
+endif # TARGET
+
+ifdef SUBDIRS
+include ${MC2DIR}/Makefile.subdirs
+endif
+
+include ${MC2DIR}/Makefile.docs
+
+# shared rules
+include ${MC2DIR}/Makefile.shared
+

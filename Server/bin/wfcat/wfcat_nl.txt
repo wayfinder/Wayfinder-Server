@@ -1,0 +1,15 @@
+Rent a car	Autoverhuur
+Petrol Station	Benzine
+City Centre	Gemeentecentrum
+Hotel	Hotel, motel
+Airport	Luchthaven
+Museum	Museo
+Nightlife	Nachtclub
+Parking Garage	Parkeergarage
+Open Parking Area	Parkeerterrein
+Post Office	Postkantoor
+Restaurant	Restaurant
+Tourist information	Toeristische informatie
+Train Station	Treinstation
+Ferry Terminal	Veerbootterminal
+Shopping	Winkelcentrum

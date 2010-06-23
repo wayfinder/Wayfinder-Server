@@ -1,0 +1,2003 @@
+<!--
+
+MapCentral 2 (MC2) external API Document Type Definition.
+
+
+Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+
+
+isab-mc2 is an XML language. Typical usage:
+
+   <?xml version="1.0"?>
+   <!DOCTYPE isab-mc2>
+
+   <isab-mc2>
+
+   ...
+
+   </isab-mc2>
+
+
+-->
+<!ELEMENT isab-mc2 ( ( auth, ( user_request | route_request | 
+                               search_request | search_desc_request |
+                               search_position_desc_request |
+                               expand_request |
+                               compact_search_request |
+                               one_search_request |
+                               poi_search_request |
+                               send_sms_request |
+                               user_login_request | user_verify_request |
+                               user_logout_request | user_show_request |
+                               user_cap_request |
+                               user_favorites_request |
+                               user_favorites_crc_request |
+                               map_request |
+                               poi_info_request | poi_detail_request |
+                               email_request |
+                               sms_format_request | sort_dist_request |
+                               top_region_request |
+                               phone_manufacturer_request | 
+                               phone_model_request | user_track_request |
+                               user_track_add_request | 
+                               user_debit_log_request | 
+                               user_find_request | transactions_request |
+                               transaction_days_request | 
+                               activate_request |
+                               ext_services_request |
+                               ext_search_request |
+                               simple_poi_desc_request |
+                               tunnel_request |
+                               zoom_settings_request |
+                               error_report |
+                               poi_review_requests|
+                               show_activationcode_request |
+                               expand_top_region_request|
+                               category_list_request |
+                               copyright_strings_request |
+                               ad_debit_request |
+                               category_tree_request |
+                               client_type_info_request |
+                               server_list_for_client_type_request |
+                               create_wayfinder_user_request |
+                               update_hardware_keys_request |
+                               get_stored_user_data_request |
+                               set_stored_user_data_request |
+                               friend_finder_request |
+                               friend_finder_info_request |
+                               cell_id_request |
+                               local_category_tree_request |
+                               server_info_request )+ ) |
+                     ( ( user_reply | route_reply | 
+                         search_reply | search_desc_reply |
+                         search_position_desc_reply |
+                         expand_reply |
+                         compact_search_reply |
+                         one_search_reply |
+                         poi_search_reply |
+                         send_sms_reply |
+                         user_login_reply | user_verify_reply |
+                         user_logout_reply | user_show_reply |
+                         user_cap_reply |
+                         user_favorites_reply |
+                         user_favorites_crc_reply |
+                         map_reply |
+                         poi_info_reply | poi_detail_reply | 
+                         email_reply |
+                         sms_format_reply | sort_dist_reply |
+                         top_region_reply |
+                         phone_manufacturer_reply |
+                         phone_model_reply| user_track_reply |
+                         user_track_add_reply |
+                         user_debit_log_reply | 
+                         user_find_reply | transactions_reply |
+                         transaction_days_reply |
+                         activate_reply |
+                         ext_services_reply |
+                         simple_poi_desc_reply |
+                         tunnel_reply |
+                         zoom_settings_reply |
+                         error_report_reply |
+                         poi_review_replies |
+                         show_activationcode_reply |
+                         expand_top_region_reply|
+                         category_list_reply |
+                         copyright_strings_reply |
+                         ad_debit_reply |
+                         category_tree_reply |
+                         client_type_info_reply |
+                         server_list_for_client_type_reply |
+                         create_wayfinder_user_reply |
+                         update_hardware_keys_reply | 
+                         get_stored_user_data_reply |
+                         set_stored_user_data_reply |
+                         friend_finder_reply |
+                         friend_finder_info_reply |
+                         cell_id_reply |
+                         local_category_tree_reply |
+                         server_info_reply )+ |
+                       ( status_code, status_message, status_uri?,
+                         status_code_extended?, auth_token?, uin?,
+                         server_list?, server_auth_bob? ) ) ) >
+
+
+<!-- General entities -->
+<!ENTITY % number  "NMTOKEN">      <!-- a number, format [0-9]+ -->
+<!ENTITY % bool    "(true|false)"> <!-- true or false -->
+<!ENTITY % vdata   "CDATA">        <!-- attribute value -->
+<!ENTITY % HREF    "%vdata;">      <!-- URI, URL or URN designating a 
+                                        hypertext node. -->
+<!ENTITY % size_t  "%number;">     <!-- a number but inf is allowed -->
+<!ENTITY % time_t  "CDATA">        <!-- Time since the Epoch 
+                                        (00:00:00 UTC, January 1, 1970), 
+                                        measured in seconds. -->
+<!ENTITY % coordinate_t "CDATA">    <!-- A Latitude or longitude -->
+<!ENTITY % hex_t "CDATA">           <!-- A hexadecimal number    -->
+<!-- position_system_t WGS84(GPS) -->
+<!ENTITY % position_system_t "(WGS84|MC2|WGS84Rad|WGS84Deg)">
+
+<!ENTITY % image_display_type "(std|wap)">
+<!ENTITY % route_image_format_t "(png|gif|wbmp)">
+<!ENTITY % message_t "(html|wml|smil)">
+<!ENTITY % route_turn_image_t "(map|pictogram|pictogram_set_1|
+                                pictogram_set_2|pictogram_set_3|
+                                pictogram_set_4|pictogram_set_5)">
+<!ENTITY % overview_image_t "(image|applet|none)">
+<!ENTITY % sort_distance_t "(radius|route)">
+<!ENTITY % route_cost_t "(distance|time|time_with_disturbances)">
+<!ENTITY % road_side_t "(left_side|right_side|unknown_side|undefined_side|
+                         side_does_not_matter|left_side_exit|
+                         right_side_exit)">
+<!ENTITY % landmarklocation_t "(after|before|in|at|pass|into|arrive|
+                                undefinedlocation)">
+<!ENTITY % landmark_t "(builtUpArea|railway|area|poi|signPost|country|
+                        countryAndBuiltUpArea|passedStreet|accident|
+                        roadwork|camera|speedTrap|police|weather|
+                        trafficGen)">
+<!ENTITY % top_region_t "(country|state|internationalRegion|metaregion)">
+<!ENTITY % language_t "(swedish|english|german|danish|italian|dutch|
+                        spanish|french|welch|finnish|norwegian|portuguese|
+                        czech|hungarian|polish|greek|american|albanian|
+                        basque|catalan|frisian|irish|galician|
+                        letzeburgesch|raetoRomance|serboCroatian|slovenian|
+                        valencian|slovak|russian|turkish|arabic|
+                        eng|swe|ger|dan|ita|dut|spa|fre|wel|fin|nor|por|
+                        eng_usa|cze|alb|baq|cat|fry|gle|glg|ltz|roh|scr|
+                        slv|hun|gre|pol|slo|rus|tur|ara|chi|est|lav|lit|
+                        tha|bul|ind|may|isl|jpa|amh|hye|tgl|bel|ben|mya|
+                        hrv|fas|gla|kat|guj|heb|hin|kan|kaz|khm|kor|lao|
+                        mkd|mal|mar|mol|mon|pan|ron|srp|sin|som|swa|tam|
+                        tel|bod|tir|tuk|ukr|urd|vie|zul|sot|bun|bos|sla|
+                        bet|mat|scc|ukl|mlt|zh-hant|zh-hant-hk)">
+<!ENTITY % route_vehicle_t "(passengercar|pedestrian|taxi)">
+<!ENTITY % matchtype_t "(close|full|exact|
+                         closefull|wildcard|allwords|
+                         phonetic|editdistance)">
+<!ENTITY % wordmatch_t "(beginning|anywhere|wildcardpart|beginningofword)">
+<!ENTITY % sorttype_t "(no_sort|alfa_sort|confidence_sort)">
+<!ENTITY % transactionBased_t "(no_transactions|transactions|
+                                transaction_days)">
+<!ENTITY % poi_info_t "(dont_show|text|url|wap_url|email|phone_number|
+                        mobile_phone|fax_number|contact_info|short_info|
+                        vis_address|vis_house_nbr|vis_zip_code|
+                        vis_complete_zip|vis_zip_area|vis_full_address|
+                        brandname|short_description|long_description|
+                        citypart|state|neighborhood|open_hours|
+                        nearest_train|start_date|end_date|start_time|
+                        end_time|accommodation_type|check_in|check_out|
+                        nbr_of_rooms|single_room_from|double_room_from|
+                        triple_room_from|suite_from|extra_bed_from|
+                        weekend_rate|nonhotel_cost|breakfast|
+                        hotel_services|credit_card|special_feature|
+                        conferences|average_cost|booking_advisable|
+                        admission_charge|home_delivery|disabled_access|
+                        takeaway_available|allowed_to_bring_alcohol|
+                        type_food|decor|image_url|supplier|owner|
+                        price_petrol_superplus|price_petrol_super|
+                        price_petrol_normal|price_diesel|
+                        price_biodiesel|free_of_charge|
+                        tracking_data|post_address|post_zip_area|
+                        post_zip_code|open_for_season|
+                        ski_mountain_min_max_height|
+                        snow_depth_valley_mountain|
+                        snow_quality|lifts_open_total|ski_slopes_open_total|
+                        cross_country_skiing_km|glacier_area|last_snowfall|
+                        booking_url|booking_phone_number|
+                        special_flag)" >
+<!ENTITY % server_group_t "(backup|config|server|map|tmap)" >
+<!ENTITY % poi_detail_t "(dont_show|text|street_address|full_address|phone_number|
+                          url|email|poi_url|poi_thumb|average_rating|
+                          description|open_hours|provider_info)" >
+<!ENTITY % poi_detail_content_t "(text|phone_number|url|email_address|
+                                  integer|float)" >
+
+
+
+<!ENTITY % measurement_system_t "(meters|imperial|feet|yards)"> 
+
+<!-- Common elements -->
+<!ELEMENT status_code (#PCDATA)>
+<!ELEMENT status_message (#PCDATA)>
+<!ELEMENT status_uri EMPTY>
+<!ATTLIST status_uri href %HREF; #REQUIRED >
+<!ELEMENT status_code_extended (#PCDATA)>
+<!ELEMENT name_node ( #PCDATA ) >
+<!ATTLIST name_node language %language_t; #REQUIRED >
+
+
+<!-- TopRegion -->
+<!ELEMENT top_region ( top_region_id, boundingbox?, name_node? ) >
+<!ATTLIST top_region top_region_type %top_region_t; #REQUIRED >
+<!ELEMENT top_region_id ( #PCDATA ) >
+
+
+
+<!-- Authenticate the isab-mc2 request -->
+<!ELEMENT auth ( ( (auth_user, auth_passwd, user_service?, want_uin?) | 
+                   (user_session_id, user_session_key, user_service) |
+                    auth_activate_request |
+                   (uin, auth_token) |
+                   (uin?, hardware_key+) ),
+		              pp* )>
+<!ATTLIST auth indentingandlinebreaks %bool; "true"
+               development %bool; "false"
+               client_type CDATA #IMPLIED
+               client_lang %language_t; #IMPLIED
+               server_list_crc     CDATA #IMPLIED
+               server_auth_bob_crc CDATA #IMPLIED
+               client_source       CDATA #IMPLIED >
+<!ELEMENT want_uin (#PCDATA) >
+<!ELEMENT auth_user (#PCDATA)>
+<!ELEMENT auth_passwd (#PCDATA)>
+<!ENTITY % user_service_t "(ROUTE)">
+<!ENTITY % user_method_t "(WAP|HTML|NAV|XML|SMS|OPERATOR)">
+<!ELEMENT user_service (#PCDATA)>
+<!ELEMENT auth_activate_request EMPTY>
+<!ELEMENT server_list ( server_group+ ) >
+<!ATTLIST server_list crc         CDATA    #REQUIRED
+                      numberitems %number; #REQUIRED >
+<!ELEMENT server_group (server+)>
+<!ATTLIST server_group  type           %server_group_t; #REQUIRED
+                        numberitems            %number; #REQUIRED
+                        switch_group_threshold %number; #REQUIRED>
+<!ELEMENT server (#PCDATA) >
+<!ELEMENT server_auth_bob (#PCDATA) >
+<!ATTLIST server_auth_bob crc  CDATA #REQUIRED >
+<!ELEMENT pp ( #PCDATA ) >
+<!ATTLIST pp key CDATA #REQUIRED >
+             
+
+<!-- User request -->
+<!ELEMENT user_request (user)>
+<!ATTLIST user_request transaction_id ID #REQUIRED
+                       new_user %bool; #IMPLIED >
+
+
+<!ELEMENT user ( user_id?, first_name?, last_name?, initials?, 
+                 language?, measurement_system?, 
+                 email_address?, operator_comment?,
+                 search_for_municipal?, search_for_city?,
+                 search_for_citypart?, search_for_zipcode?,
+                 search_for_ziparea?,
+                 search_for_street?,
+                 search_for_company?, search_for_category?,
+                 search_for_misc?,
+                 new_password?, old_password?,
+                 service*, phone*, user_licence_key*, 
+                 binary_key*, region_access*,
+                 wayfinder_subscription?, right*, token*, pin*, 
+                 id_key*, last_client* ) >
+<!ATTLIST user uin CDATA #IMPLIED
+               birth_date CDATA #IMPLIED
+               route_cost %route_cost_t; #IMPLIED
+               route_vehicle %route_vehicle_t; #IMPLIED
+               search_match_type %matchtype_t; #IMPLIED
+               search_word_match_type %wordmatch_t; #IMPLIED
+               search_sort_type %sorttype_t; #IMPLIED
+               valid_date %time_t; #IMPLIED
+               edit_user_right %bool; #IMPLIED
+               address1 CDATA #IMPLIED
+               address2 CDATA #IMPLIED
+               address3 CDATA #IMPLIED
+               address4 CDATA #IMPLIED
+               address5 CDATA #IMPLIED
+               route_turn_image %route_turn_image_t; #IMPLIED
+               overview_image_type %overview_image_t; #IMPLIED
+               transactionBased %transactionBased_t; #IMPLIED
+               deviceChanges %number; #IMPLIED
+               supportComment CDATA #IMPLIED
+               postalCity CDATA #IMPLIED
+               zipCode CDATA #IMPLIED
+               companyName CDATA #IMPLIED
+               companyReference CDATA #IMPLIED
+               companyVATNbr CDATA #IMPLIED
+               emailBounces %number; #IMPLIED
+               addressBounces %number; #IMPLIED
+               customerContactInfo CDATA #IMPLIED
+               brand_origin CDATA #IMPLIED
+               brand CDATA #IMPLIED >
+
+<!ELEMENT user_id (#PCDATA)>
+<!ELEMENT first_name (#PCDATA)>
+<!ELEMENT last_name (#PCDATA)>
+<!ELEMENT initials (#PCDATA)>
+<!ELEMENT default_transportation (#PCDATA)>
+<!ELEMENT language (#PCDATA)>
+<!ELEMENT measurement_system (#PCDATA)>
+<!ELEMENT email_address (#PCDATA)>
+<!ELEMENT operator_comment ( #PCDATA ) >
+<!ELEMENT new_password (#PCDATA)>
+<!ELEMENT old_password (#PCDATA)>
+
+<!ELEMENT service (service_type, service_method, service_delete?)>
+<!ELEMENT service_type (#PCDATA)>
+<!ELEMENT service_method (#PCDATA)>
+<!ELEMENT service_delete EMPTY>
+
+<!ELEMENT phone (phone_number, phone_manufacturer?, phone_model?, 
+                 phone_delete?)>
+<!ELEMENT phone_number (#PCDATA)>
+<!ELEMENT phone_manufacturer (#PCDATA)>
+<!ELEMENT phone_model (#PCDATA)>
+<!ELEMENT phone_delete EMPTY>
+
+<!ELEMENT binary_key ( key_data, key_delete? ) >
+<!ATTLIST binary_key id CDATA #REQUIRED >
+<!ELEMENT key_data ( #PCDATA ) >
+<!ELEMENT key_delete EMPTY >
+
+<!ENTITY % hardware_key_type_t "(imei|btmac|bbpin|imsi|esn|
+                                 phone_msisdn|iphone_dev_id|
+                                 customer_msisdn)">
+<!ELEMENT user_licence_key EMPTY >
+<!ATTLIST user_licence_key id       CDATA                 #REQUIRED
+                           key      CDATA                 #REQUIRED
+                           key_type %hardware_key_type_t; #IMPLIED
+                           product  CDATA                 #IMPLIED
+                           delete   %bool;                #IMPLIED >
+
+<!ELEMENT region_access ( region_access_delete? ) >
+<!ATTLIST region_access id            %number; #REQUIRED  
+                        top_region_id %number; #REQUIRED 
+                        start_time    %time_t; #REQUIRED
+                        end_time      %time_t; #REQUIRED >
+<!ELEMENT region_access_delete EMPTY>
+
+<!ELEMENT wayfinder_subscription ( wayfinder_subscription_delete? )>
+<!ATTLIST wayfinder_subscription id      %number; #REQUIRED  
+                                 type    %number; #REQUIRED >
+<!ELEMENT wayfinder_subscription_delete EMPTY>
+
+<!ELEMENT right EMPTY >
+<!ATTLIST right         id            %number; #REQUIRED
+                        add_time      %time_t; #IMPLIED
+                        type          %number; #IMPLIED
+                        top_region_id %number; #IMPLIED
+                        start_time    %time_t; #IMPLIED
+                        end_time      %time_t; #IMPLIED
+                        deleted       %bool;   #IMPLIED
+                        origin        CDATA    #IMPLIED >  
+
+<!ELEMENT token ( delete? ) >
+<!ATTLIST token id            %number; #REQUIRED
+                create_time   %time_t; #IMPLIED
+                age           %number; #IMPLIED
+                token         CDATA    #IMPLIED
+                group         CDATA    #IMPLIED > 
+
+<!ELEMENT pin ( delete? ) >
+<!ATTLIST pin id            %number; #REQUIRED
+              PIN           CDATA    #IMPLIED
+              comment       CDATA    #IMPLIED > 
+<!ELEMENT delete EMPTY >
+
+<!ELEMENT id_key ( delete? ) >
+<!ENTITY % id_key_t "(account|hardware|hardware_and_time|
+                      service_id_and_time|client_type_and_time)">
+<!ATTLIST id_key id            %number;      #REQUIRED
+                 type          %id_key_t;    #IMPLIED
+                 key           CDATA         #IMPLIED > 
+
+<!ELEMENT last_client EMPTY >
+<!ATTLIST last_client id                  %number; #REQUIRED
+                      client_type         CDATA    #IMPLIED
+                      client_type_options CDATA    #IMPLIED
+                      version             CDATA    #IMPLIED
+                      extra               CDATA    #IMPLIED
+                      origin              CDATA    #IMPLIED
+                      history             %bool;   #IMPLIED
+                      changer_uin         CDATA    #IMPLIED
+                      change_time         %time_t; #IMPLIED > 
+
+
+<!ELEMENT favorite ( position_item, fav_info* )>
+<!ATTLIST favorite
+                    id                CDATA  #REQUIRED
+                    name              CDATA  #REQUIRED
+                    short_name        CDATA  #REQUIRED
+                    description       CDATA  #REQUIRED
+                    category          CDATA  #REQUIRED
+                    map_icon_name     CDATA  #REQUIRED >
+
+<!ELEMENT fav_info EMPTY >
+<!ATTLIST fav_info  type  %poi_info_t; #REQUIRED
+                    key   CDATA        #REQUIRED
+                    value CDATA        #REQUIRED >
+
+<!-- User reply -->
+<!ELEMENT user_reply (status_code, status_message, status_code_extended?)>
+<!ATTLIST user_reply transaction_id ID #REQUIRED>
+
+
+<!-- User show request -->
+<!ELEMENT user_show_request ( (user_id | 
+                               (user_session_id, user_session_key))? ) >
+<!ENTITY % user_show_t "(all|active)">
+<!ATTLIST user_show_request transaction_id ID #REQUIRED
+                            uin CDATA #IMPLIED
+                            cached_data %bool; #IMPLIED
+                            show        %user_show_t; "all" >
+
+
+<!-- User show reply -->
+<!ELEMENT user_show_reply ( ( user ) |
+                            ( status_code, status_message, 
+                              status_code_extended? ) )>
+<!ATTLIST user_show_reply transaction_id ID #REQUIRED>
+
+<!--- User cap request -->
+<!ELEMENT user_cap_request EMPTY >
+<!ATTLIST user_cap_request transaction_id ID #REQUIRED >
+
+<!--- User cap reply -->
+<!ELEMENT user_cap_reply (user_id, cap*, pin*, popup*) >
+<!ATTLIST user_cap_reply transaction_id ID #REQUIRED >
+<!ENTITY % cap_name_type "(gps|locator|route|fleet|traffic)">
+<!ELEMENT cap EMPTY >
+<!ATTLIST cap name %cap_name_type; #REQUIRED >
+<!ELEMENT popup (popup_message, popup_once?, popup_url?)>
+<!-- Yes No if url and attr for if to exit if no on url. -->
+<!ENTITY % popup_url_t "(yes_no|goto_or_exit)">
+<!ELEMENT popup_message ( #PCDATA )>
+<!ELEMENT popup_once ( #PCDATA )>
+<!ELEMENT popup_url ( #PCDATA )>
+<!ATTLIST popup_url url_type %popup_url_t; "yes_no" >
+
+
+<!-- User favorites request -->
+<!ELEMENT user_favorites_request ( (user_id | uin |
+                                    (user_session_id, user_session_key) )?,
+                                   favorite_id_list?,
+                                   delete_favorite_id_list?,
+                                   add_favorite_list?,
+                                   auto_dest_favorite? )>
+<!ATTLIST user_favorites_request 
+                              transaction_id ID #REQUIRED
+                              fetch_auto_dest   %bool; "false"
+                              sync_favorites    %bool; "true"
+                              position_system   %position_system_t; "MC2"
+                              fav_info_in_desc  %bool; "true" >
+<!ELEMENT favorite_id_list ( favorite_id* )>
+<!ELEMENT favorite_id ( #PCDATA )>
+<!ELEMENT delete_favorite_id_list ( favorite_id+ )>
+<!ELEMENT add_favorite_list ( favorite+ )>
+<!ELEMENT auto_dest_favorite ( favorite? )>
+
+
+<!-- User favorites reply -->
+<!ELEMENT user_favorites_reply ( (delete_favorite_id_list?,
+                                  add_favorite_list?,
+                                  auto_dest_favorite?) |
+                                 ( status_code, status_message, 
+                                   status_code_extended? ) )>
+<!ATTLIST user_favorites_reply transaction_id ID #REQUIRED
+                               crc CDATA #REQUIRED >
+
+<!-- user_favorites_crc_request -->
+<!ELEMENT user_favorites_crc_request EMPTY >
+<!ATTLIST user_favorites_crc_request transaction_id ID #REQUIRED
+                                     crc CDATA #REQUIRED >
+
+<!-- user_favorites_crc_reply -->
+<!ELEMENT user_favorites_crc_reply EMPTY >
+<!ATTLIST user_favorites_crc_reply transaction_id ID #REQUIRED
+                                   crc_match %bool; #REQUIRED >
+
+<!-- Route Request -->
+<!ELEMENT route_request ( route_request_header, 
+                          routeable_item_list, 
+                          routeable_item_list )>
+<!ATTLIST route_request transaction_id ID #REQUIRED>
+
+<!ELEMENT route_request_header ( route_preferences )>
+<!ENTITY % reroute_reason_t "(unknown|truncated_route|off_track|
+                              traffic_info_update|user_request)" >
+<!ATTLIST route_request_header 
+          previous_route_id CDATA 		#IMPLIED
+          reroute_reason    %reroute_reason_t; 	#IMPLIED>
+          
+
+<!ELEMENT route_preferences ( ( user_id  | route_settings | uin |
+                                (user_session_id, user_session_key) ), 
+                              image_settings? )>
+<!ENTITY % route_description_type_t "(normal|compact)">
+<!ATTLIST route_preferences 
+          route_description_type %route_description_type_t; #REQUIRED
+          route_image_links %bool; "false"
+          route_overview_image_width %number; "256"
+          route_overview_image_height %number; "256"
+          route_turn_image_width %number; "256"
+          route_turn_image_height %number; "256"
+          route_image_default_format %route_image_format_t; "png"
+          route_image_display_type %image_display_type; "std"
+          route_turn_data %bool; "false"
+          route_boundingbox_position_sytem %position_system_t; "MC2"
+          route_turn_boundingbox %bool; "false"
+          route_road_data %bool; "false"
+          route_items %bool; "true"
+          abbreviate_route_names %bool; "true"
+          route_landmarks %bool; "false" 
+          route_measurment_system %measurement_system_t; "meters">
+<!ELEMENT route_settings ( route_costA?, 
+                           route_costB?, 
+                           route_costC?,
+                           language )>
+<!ATTLIST route_settings route_vehicle %route_vehicle_t; #REQUIRED
+                         avoid_toll_road %bool; #IMPLIED
+                         avoid_highway   %bool; #IMPLIED >
+<!ELEMENT route_costA ( #PCDATA )>
+<!ELEMENT route_costB ( #PCDATA )>
+<!ELEMENT route_costC ( #PCDATA )>
+<!ELEMENT routeable_item_list ( (position_item | search_item)+ )>
+
+
+<!-- Route Reply -->
+<!ELEMENT route_reply ( ( route_reply_header, 
+                          route_origin, route_destination,
+                          route_reply_items ) |
+                        ( status_code, status_message, status_uri?,
+                          status_code_extended? ) )>
+<!ATTLIST route_reply transaction_id ID        #REQUIRED
+                      route_id       CDATA     #REQUIRED
+                      ptui           %number;  #IMPLIED >
+
+<!ELEMENT boundingbox EMPTY>
+<!ATTLIST boundingbox 
+             position_sytem %position_system_t; #REQUIRED
+             north_lat CDATA #REQUIRED
+             west_lon  CDATA #REQUIRED
+             south_lat CDATA #REQUIRED
+             east_lon  CDATA #REQUIRED >
+
+<!ELEMENT route_reply_header ( total_distance,
+                               total_distance_nbr,
+                               total_time,
+                               total_time_nbr,
+                               total_standstilltime,
+                               total_standstilltime_nbr,
+                               average_speed,
+                               average_speed_nbr,
+                               routing_vehicle,
+                               routing_vehicle_type,
+                               boundingbox,
+                               route_overview_link?,
+                               route_overview_width?,
+                               route_overview_height? )>
+<!ELEMENT total_distance ( #PCDATA )>
+<!ELEMENT total_distance_nbr ( #PCDATA )>
+<!ELEMENT total_time ( #PCDATA )>
+<!ELEMENT total_time_nbr ( #PCDATA )>
+<!ELEMENT total_standstilltime ( #PCDATA )>
+<!ELEMENT total_standstilltime_nbr ( #PCDATA )>
+<!ELEMENT average_speed ( #PCDATA )>
+<!ELEMENT average_speed_nbr ( #PCDATA )>
+<!ELEMENT routing_vehicle ( #PCDATA )>
+<!ELEMENT routing_vehicle_type ( #PCDATA )>
+<!ELEMENT route_overview_link ( #PCDATA )>
+<!ELEMENT route_overview_width ( #PCDATA )>
+<!ELEMENT route_overview_height ( #PCDATA )>
+<!ELEMENT route_origin ( search_item+ )>
+<!ELEMENT route_destination ( search_item+ )>
+<!ELEMENT route_reply_items ( route_reply_item* )>
+<!ELEMENT route_reply_item ( description?,
+                             turn?,
+                             distance?,
+                             time?,
+                             roadname?,
+                             exitcount?,
+                             signposttext?,
+                             signpostexitnbr?,
+                             signpostroutenbr?,
+                             start_dir?,
+                             route_housenumber_start_direction?,
+                             transporation_type?,
+                             crossing_type?,
+                             route_turn_link?,
+                             route_turn_width?,
+                             route_turn_height?,
+                             boundingbox?,
+                             position_item?,
+                             route_road_item*,
+                             route_landmark_item* )>
+<!ATTLIST route_reply_item   controlled_access   %bool; #IMPLIED
+                             ramp                %bool; #IMPLIED
+                             roundabout          %bool; #IMPLIED
+                             drive_on_right_side %bool; #IMPLIED >
+<!ELEMENT description ( #PCDATA )>
+<!ENTITY % route_turn_t "(left|right|ahead|u_turn|followroad|
+                          enter_roundabout|exit_roundabout|
+                          ahead_roundabout|right_roundabout|
+                          left_roundabout|off_ramp|on_ramp|
+                          enter_bus|exit_bus|change_bus|
+                          park_car|start|finally|exit|
+                          keep_left|keep_right|
+                          enter_ferry|exit_ferry|change_ferry|
+                          start_with_u_turn|u_turn_roundabout|
+                          endofroad_left_turn|endofroad_right_turn|
+                          off_ramp_left|off_ramp_right|
+                          on_main|off_main|
+                          no_turn)">
+<!ENTITY % crossing_t "undefined_crossing|no_crossing|
+                       crossing_3ways_t|crossing_3ways_y|crossing_4ways|
+                       crossing_5ways|crossing_6ways|crossing_7ways|
+                       crossing_8ways|crossing_2roundabout|
+                       crossing_3roundabout|crossing_4roundabout|
+                       crossing_4roundabout_asymmetric|
+                       crossing_5roundabout|crossing_6roundabout|
+                       crossing_7roundabout" >
+<!ENTITY % route_start_dir_t "(north|northnortheast|northeast|
+                               eastnortheast|east|eastsoutheast|
+                               southeast|southsoutheast|south|
+                               southsouthwest|southwestwestsouthwest|
+                               west|westnorthwest|northwest|
+                               northnorthwest)" >
+<!ENTITY % route_housenumber_start_direction_t "(leftodd|rightodd|
+                                                 increasing|decreasing|
+                                                 unknown)">
+<!ENTITY % route_transportation_t "(drive|walk|bus)">
+<!ELEMENT turn ( #PCDATA )>
+<!ELEMENT distance ( #PCDATA )>
+<!ELEMENT time ( #PCDATA )>
+<!ELEMENT roadname ( #PCDATA )>
+<!ELEMENT exitcount ( #PCDATA )>
+<!ELEMENT signposttext ( #PCDATA )>
+<!ELEMENT signpostexitnbr ( #PCDATA )>
+<!ELEMENT signpostroutenbr ( #PCDATA )>
+<!ELEMENT start_dir ( #PCDATA )>
+<!ELEMENT route_housenumber_start_direction ( #PCDATA )>
+<!ELEMENT transporation_type ( #PCDATA )>
+<!ELEMENT crossing_type ( #PCDATA )>
+<!ELEMENT route_turn_link ( #PCDATA )>
+<!ELEMENT route_turn_width ( #PCDATA )>
+<!ELEMENT route_turn_height ( #PCDATA )>
+<!ELEMENT route_road_item ( (lat, lon)+ ) >
+<!ATTLIST route_road_item 
+                            speedLimit %number; #REQUIRED
+                            is_turn %bool;      #IMPLIED
+                            controlled_access   %bool; #IMPLIED
+                            ramp                %bool; #IMPLIED
+                            roundabout          %bool; #IMPLIED
+                            drive_on_right_side %bool; #IMPLIED >
+<!ELEMENT route_landmark_item ( description, road_side?, 
+                                landmarklocation_type?, landmark_type?,
+                                distance?, name? )>
+<!ATTLIST route_landmark_item at_turn   %bool; #REQUIRED 
+                              is_detour %bool; #IMPLIED
+                              is_start  %bool; #IMPLIED 
+                              is_stop   %bool; #IMPLIED >
+<!ELEMENT road_side ( #PCDATA )>
+<!ELEMENT landmarklocation_type ( #PCDATA )>
+<!ELEMENT landmark_type ( #PCDATA )>
+
+
+<!-- Search Request -->
+<!ELEMENT search_request ( search_request_header,
+                           (search_query | proximity_query ) )>
+<!ATTLIST search_request transaction_id ID #REQUIRED>
+
+<!ELEMENT search_request_header (search_preferences, 
+                                 search_explicit_itemid?)>
+<!ATTLIST search_request_header 
+                         position_sytem %position_system_t; "MC2"
+                         position_search_items %bool; "false"
+                         position_search_areas %bool; "false"
+                         search_area_starting_index %number; "0"
+                         search_area_ending_index %number; "49"
+                         search_item_starting_index %number; "0"
+                         search_item_ending_index %number; "99"
+                         full_search_area_match_purge %bool; #IMPLIED >
+
+<!ELEMENT search_preferences ( ((user_id|uin), search_settings?) | 
+                               search_settings |
+                               (user_session_id, user_session_key,
+                                search_settings?) )>
+<!ELEMENT search_explicit_itemid EMPTY>
+<!ELEMENT search_settings ( search_for_municipal?, search_for_city?,
+                            search_for_citypart?, search_for_zipcode?,
+                            search_for_ziparea?,
+                            search_for_street?,
+                            search_for_company?, search_for_category?,
+                            search_for_misc?, 
+                            show_search_area_municipal?,
+                            show_search_area_city?, 
+                            show_search_area_city_part?,
+                            show_search_area_zipcode?,
+                            show_search_area_ziparea?,
+                            show_search_area_country?,
+                            show_search_item_municipal?,
+                            show_search_item_city?, 
+                            show_search_item_city_part?,
+                            show_search_item_zipcode?,
+                            show_search_item_ziparea?,
+                            language? )>
+<!ATTLIST search_settings 
+              matchtype                        %matchtype_t; #IMPLIED
+              wordmatch                        %wordmatch_t; #IMPLIED
+              sorttype                         %sorttype_t;  #IMPLIED
+              minimum_numberhits               %number;      #IMPLIED >
+<!ELEMENT search_for_municipal EMPTY>
+<!ELEMENT search_for_city EMPTY>
+<!ELEMENT search_for_citypart EMPTY>
+<!ELEMENT search_for_zipcode EMPTY>
+<!ELEMENT search_for_ziparea EMPTY>
+<!ELEMENT search_for_street EMPTY>
+<!ELEMENT search_for_company EMPTY>
+<!ELEMENT search_for_category EMPTY>
+<!ELEMENT search_for_misc EMPTY>
+<!ELEMENT show_search_area_municipal EMPTY>
+<!ELEMENT show_search_area_city EMPTY>
+<!ELEMENT show_search_area_city_part EMPTY>
+<!ELEMENT show_search_area_zipcode EMPTY>
+<!ELEMENT show_search_area_ziparea EMPTY>
+<!ELEMENT show_search_area_country EMPTY>
+<!ELEMENT show_search_item_municipal EMPTY>
+<!ELEMENT show_search_item_city EMPTY>
+<!ELEMENT show_search_item_city_part EMPTY>
+<!ELEMENT show_search_item_zipcode EMPTY>
+<!ELEMENT show_search_item_ziparea EMPTY>
+
+<!ELEMENT search_query ( top_region?, (search_area_query | search_area), 
+                         search_item_query? )>
+<!ELEMENT search_area_query ( #PCDATA )>
+<!ELEMENT search_item_query ( #PCDATA )>
+<!ATTLIST search_item_query house_number CDATA #IMPLIED >
+<!ELEMENT proximity_query ( ( ((search_item | position_item), distance?) |
+                              boundingbox),
+                            search_item_query? ) >
+
+
+<!-- Search Reply -->
+<!ELEMENT search_reply ( ( search_area_list?, search_item_list? ) |
+                         ( status_code, status_message, 
+                           status_code_extended? ) )>
+<!ATTLIST search_reply transaction_id ID #REQUIRED>
+
+<!ELEMENT search_area_list ( search_area* )>
+<!ATTLIST search_area_list numberitems %number; #REQUIRED
+                           total_numberitems %number; #IMPLIED
+                           starting_index %number; #IMPLIED
+                           ending_index %number; #IMPLIED >
+
+<!ELEMENT search_item_list ( search_item* )>
+<!ATTLIST search_item_list numberitems %number; #REQUIRED
+                           total_numberitems %number; #IMPLIED
+                           starting_index %number; #IMPLIED
+                           ending_index %number; #IMPLIED >
+
+<!-- General search elements -->
+<!ELEMENT name ( #PCDATA )>
+
+<!-- Search Item -->
+
+<!ENTITY % search_item_type_t "(street|pointofinterest|category|misc|person|
+                                other)">
+<!ELEMENT search_item ( name, itemid, streetnbr?, explicit_itemid?,
+                        location_name?, lat?, lon?, category_list?,
+                        boundingbox?, search_area*, info_item? )>
+<!ATTLIST search_item search_item_type %search_item_type_t; #REQUIRED
+                      image CDATA #IMPLIED
+                      advert %bool; #IMPLIED
+                      top_region_id %number; #IMPLIED >
+<!ELEMENT itemid ( #PCDATA )>
+<!ELEMENT streetnbr ( #PCDATA )>
+<!ELEMENT explicit_itemid ( #PCDATA )>
+<!ELEMENT location_name ( #PCDATA )>
+
+<!-- Search Area -->
+
+<!ENTITY % search_area_type_t "(municipal|city|citypart|zipcode|ziparea|
+                                country|other)">
+<!ELEMENT search_area ( name, areaid, location_name?,
+                        lat?, lon?, boundingbox?, top_region_id?,
+                        search_area* )>
+<!ATTLIST search_area search_area_type %search_area_type_t; #REQUIRED>
+<!ELEMENT areaid ( #PCDATA )>
+
+<!-- Position Item -->
+<!ELEMENT position_item ( lat, lon, angle? )>
+<!ATTLIST position_item position_system %position_system_t; #REQUIRED>
+<!-- latitude and longitude WSG84 format: (N|S|E|W) D(D*)MMSS[.ddd] -->
+<!ELEMENT lat ( #PCDATA )>
+<!ELEMENT lon ( #PCDATA )>
+<!ELEMENT angle ( #PCDATA ) >
+
+<!ELEMENT image_name ( #PCDATA ) >
+<!ELEMENT type ( #PCDATA ) >
+
+<!ELEMENT search_position_desc_request ( position_item ) >
+<!ATTLIST search_position_desc_request
+          transaction_id ID #REQUIRED
+          language CDATA #REQUIRED >
+
+<!ELEMENT search_position_desc_reply ( top_region?, search_hit_type* ) >
+<!ATTLIST search_position_desc_reply transaction_id ID #REQUIRED 
+                                     length %number; #REQUIRED >
+
+<!ELEMENT search_desc_request EMPTY >
+<!ATTLIST search_desc_request transaction_id ID #REQUIRED
+                              crc %hex_t; #REQUIRED
+                              language CDATA #REQUIRED
+                              uin %number; #IMPLIED
+                              desc_version %number; "0" >
+
+<!ELEMENT search_desc_reply (search_hit_type* | crc_ok) >
+<!ATTLIST search_desc_reply transaction_id ID #REQUIRED
+                            crc %hex_t; #REQUIRED
+                            length %number; #REQUIRED >
+
+<!ELEMENT search_hit_type (name, top_region_id?, image_name?, type?) >
+<!ATTLIST search_hit_type round %number; #REQUIRED
+                          heading %number; #REQUIRED >
+
+<!ELEMENT category_query ( #PCDATA ) >
+<!ELEMENT category_id ( #PCDATA ) >
+<!ELEMENT category_list (category_id+) >
+
+<!ELEMENT compact_search_request ( search_item_query, 
+                                   ( category_query | category_name  |
+                                     category_id | category_list )?,
+                                   ( (search_area_query, top_region_id)|
+                                     search_area|
+                                    (position_item, distance?) ) ) >
+<!ATTLIST compact_search_request transaction_id ID #REQUIRED
+                         start_index %number; #REQUIRED
+                         end_index %number; #REQUIRED
+                         max_hits %number; #REQUIRED
+                         language CDATA #REQUIRED
+                         round %number; #IMPLIED
+                         heading %number; #IMPLIED
+                         uin %number; #IMPLIED
+                         version %number; "0"
+                         category_search %bool; "false"
+                         include_category_id %bool; "false"
+                         include_top_region_id %bool; "false"
+                         use_persistent_ids %bool; "false"
+                         include_info_item %bool; "false"
+                         position_system %position_system_t; "MC2" >
+
+<!ELEMENT ad_results_text ( #PCDATA ) >
+<!ELEMENT all_results_text ( #PCDATA ) >
+
+<!ELEMENT compact_search_reply (
+                 ( ad_results_text?, all_results_text?, search_hit_list* ) |
+                 ( status_code, status_message, 
+                   status_uri?, status_code_extended? ) )>
+<!ATTLIST compact_search_reply transaction_id ID #REQUIRED>
+
+<!-- Category Handling -->
+<!ELEMENT category_list_request ( position_item? ) >
+<!ATTLIST category_list_request transaction_id ID #REQUIRED
+                                crc %hex_t; #REQUIRED
+                                language CDATA #REQUIRED >
+
+<!ELEMENT category_list_reply (cat*|crc_ok) >
+<!ATTLIST category_list_reply transaction_id ID #REQUIRED 
+                              count %number; #REQUIRED
+                              crc %hex_t; #REQUIRED >
+
+<!ELEMENT poi_search_request (position_item, distance,
+                              category_list?,
+                              search_item_query?) >
+
+<!ATTLIST poi_search_request transaction_id ID #REQUIRED
+                             start_index %number; #REQUIRED
+                             end_index %number; #REQUIRED
+                             language CDATA #REQUIRED
+                             include_top_region_id %bool; "false"
+                             use_persistent_ids %bool; "false"
+                             include_info_item %bool; "false" >
+
+<!ATTLIST poi_search_reply transaction_id ID #REQUIRED >
+<!ELEMENT poi_search_reply ( search_item_list |
+          ( status_code, status_message,
+          status_uri?, status_code_extended? ) )>
+
+<!-- Note: change name of category node -->
+<!ELEMENT category (name,category_name,image_name) >
+
+<!ELEMENT cat (name,image_name?,cat*) >
+<!ATTLIST cat cat_id %number; #IMPLIED >
+
+<!ELEMENT category_tree ( cat* ) >
+<!ENTITY % category_tree_t "(vicinity|eventfinder)" >
+<!ATTLIST category_tree_request transaction_id ID #REQUIRED
+                                crc %hex_t; #REQUIRED
+                                language CDATA #REQUIRED
+                                type %category_tree_t; "vicinity" >
+
+<!ELEMENT category_tree_request EMPTY>
+
+<!ELEMENT category_tree_reply (category_tree|crc_ok |
+                              ( status_code, status_message, 
+                               status_code_extended? ) ) >
+<!ATTLIST category_tree_reply transaction_id ID #REQUIRED 
+                              crc %hex_t; #REQUIRED >
+
+
+<!-- Copyright Strings Request -->
+
+<!ELEMENT copyright_strings_request EMPTY >
+<!ATTLIST copyright_strings_request transaction_id ID #REQUIRED 
+                                    crc %hex_t; #REQUIRED
+                                    language CDATA #REQUIRED >
+<!ELEMENT copyright_strings_data ( #PCDATA )>
+
+<!ELEMENT copyright_strings_reply ( crc_ok | copyright_strings_data ) >
+<!ATTLIST copyright_strings_reply transaction_id ID #REQUIRED 
+                                  crc %hex_t; #REQUIRED >
+
+
+
+<!ELEMENT search_hit_list ( ad_results_text?, all_results_text?, (search_item* | search_area* ))>
+<!ATTLIST search_hit_list numberitems %number; #REQUIRED
+                          total_numberitems %number; #REQUIRED
+                          starting_index %number; #REQUIRED
+                          ending_index %number; #REQUIRED
+                          heading %number; #REQUIRED
+                          top_hits %number; "0" >
+
+<!-- Expand Request -->
+<!-- When expanding categories search_area must be provided. 
+     search_area is not needed when expanding a pointofinterest.-->
+<!ELEMENT expand_request ( expand_request_header, 
+                           expand_request_query )>
+<!ATTLIST expand_request transaction_id ID #REQUIRED>
+<!ELEMENT expand_request_header (search_preferences)>
+<!ENTITY % expand_request_location_t "(all_possible|country_city)">
+<!ATTLIST expand_request_header
+                         position_system %position_system_t; "MC2"
+                         include_top_region_id %bool; "false"
+                         location_name %expand_request_location_t; #IMPLIED >
+
+<!ELEMENT expand_request_query ( (search_area, search_item) |
+                                 search_item | position_item | search_area )>
+
+
+<!-- Expand Reply -->
+<!ELEMENT expand_reply ( (search_item_list | search_area_list |
+                          companydata)+ |
+                         (status_code, status_message, 
+                          status_code_extended? ) )>
+<!ATTLIST expand_reply transaction_id ID #REQUIRED>
+<!-- More later -->
+<!ELEMENT companydata EMPTY>
+
+<!-- ad debit request -->
+<!ELEMENT ad_debit (itemid) >
+<!ATTLIST ad_debit type %number; #REQUIRED >
+
+<!ELEMENT ad_debit_request (ad_debit*) >
+<!ATTLIST ad_debit_request transaction_id ID #REQUIRED 
+                           count %number; #REQUIRED >
+
+
+<!-- ad debit reply -->
+<!ELEMENT ad_debit_reply EMPTY >
+<!ATTLIST ad_debit_reply transaction_id ID #REQUIRED >
+
+<!-- Send SMS Request -->
+<!ELEMENT send_sms_request ( phone_number, 
+                             (smsmessage |
+                              (route_sms_message, route_message_data) |
+                              (local_map_sms_settings, local_map_data) |
+                              (wayfinder_destination_sms) |
+                              (wayfinder_route_sms) | 
+                              (wayfinder_favourite_sms) |
+                              (wap_push_service_indication) ) ) >
+<!ATTLIST send_sms_request transaction_id ID #REQUIRED
+                           wayfinder_sms_version CDATA "1">
+<!ELEMENT smsmessage (#PCDATA)> <!-- Max 160 characters -->
+<!ELEMENT route_sms_message ( phone_manufacturer, phone_model ) >
+<!ATTLIST route_sms_message wap_link %bool; #REQUIRED >
+<!-- Route message data -->
+<!ELEMENT route_message_data ( language, signature, 
+                               originString, originLocationString,
+                               destinationString, 
+                               destinationLocationString ) >
+<!ATTLIST route_message_data route_id CDATA  #REQUIRED >
+<!ELEMENT signature ( #PCDATA ) >
+<!ELEMENT originString ( #PCDATA ) >
+<!ELEMENT originLocationString ( #PCDATA ) >
+<!ELEMENT destinationString ( #PCDATA ) >
+<!ELEMENT destinationLocationString ( #PCDATA ) >
+<!-- Local map settings -->
+<!ELEMENT local_map_sms_settings ( phone_manufacturer, phone_model ) >
+<!-- Wayfinder destination sms -->
+<!ELEMENT wayfinder_destination_sms ( position_item, signature? ) >
+<!ATTLIST wayfinder_destination_sms description CDATA #REQUIRED >
+<!-- Wayfinder route sms -->
+<!ELEMENT wayfinder_route_sms ( position_item, position_item, signature? )>
+<!ATTLIST wayfinder_route_sms orig_description CDATA #REQUIRED
+                              dest_description CDATA #REQUIRED >
+<!-- Wayfinder favourite sms -->
+<!ELEMENT wayfinder_favourite_sms ( position_item, name, short_name, 
+                                    category_name, map_icon_name, 
+                                    signature? )>
+<!ATTLIST wayfinder_favourite_sms description CDATA #REQUIRED >
+<!ELEMENT short_name ( #PCDATA ) >
+<!ELEMENT category_name ( #PCDATA ) >
+<!ELEMENT map_icon_name ( #PCDATA ) >
+
+<!-- WAP Push, Service Indication (WAP-167-ServiceInd-20010731-a) -->
+<!ELEMENT wap_push_service_indication ( #PCDATA ) >
+<!ATTLIST wap_push_service_indication href %HREF; #REQUIRED >
+
+<!-- Send SMS Reply -->
+<!ELEMENT send_sms_reply ( status_code, status_message, 
+                           status_code_extended? )>
+<!ATTLIST send_sms_reply transaction_id ID #REQUIRED>
+
+
+<!-- User login Request -->
+<!ELEMENT user_login_request ( user_name, user_password, 
+                               user_service? ) >
+<!ATTLIST user_login_request
+             transaction_id ID          #REQUIRED
+             user_create_session %bool; "false"
+             client_type         CDATA  #IMPLIED
+             client_type_options CDATA  #IMPLIED >
+<!ELEMENT user_name ( #PCDATA ) >
+<!ELEMENT user_password ( #PCDATA ) >
+
+<!-- User login Reply -->
+<!ELEMENT user_login_reply ( status_code, status_message, 
+                             status_code_extended?,
+                             user_session_id?, user_session_key? ) >
+<!ATTLIST user_login_reply transaction_id ID #REQUIRED>
+<!ELEMENT user_session_id ( #PCDATA ) >
+<!ELEMENT user_session_key ( #PCDATA ) >
+
+
+<!-- User verify Request -->
+<!ELEMENT user_verify_request ( user_session_id, user_session_key ) >
+<!ATTLIST user_verify_request transaction_id ID #REQUIRED>
+
+<!-- User verify Reply -->
+<!ELEMENT user_verify_reply ( status_code, status_message, 
+                              status_code_extended? ) >
+<!ATTLIST user_verify_reply transaction_id ID #REQUIRED>
+
+
+<!-- User logout Request -->
+<!ELEMENT user_logout_request ( user_session_id, user_session_key ) >
+<!ATTLIST user_logout_request transaction_id ID #REQUIRED>
+
+<!-- User logout Reply -->
+<!ELEMENT user_logout_reply ( status_code, status_message, 
+                              status_code_extended? ) >
+<!ATTLIST user_logout_reply transaction_id ID #REQUIRED>
+
+
+<!-- Map request -->
+<!ELEMENT map_request ( map_request_header, map_symbol_list? ) >
+<!ATTLIST map_request transaction_id ID #REQUIRED>
+<!ELEMENT map_request_header ( boundingbox, image_settings?,
+                               route_data?, phone_position? ) >
+<!ATTLIST map_request_header 
+             image_width  %number; "400"
+             image_height %number; "400"
+             image_default_format %route_image_format_t; "png"
+             image_display_type %image_display_type; "std"
+             showMap            %bool;   "true"
+             showTopographMap   %bool;   "true"
+             showPOI            %bool;   "true"
+             showRoute          %bool;   "true"
+             showScale          %bool;   "false"
+             showTraffic        %bool;   "false" >
+<!ELEMENT image_settings EMPTY>
+<!ATTLIST image_settings 
+             image_show_street_main %bool; "true" 
+             image_show_street_first %bool; "true"
+             image_show_street_second %bool; "true"
+             image_show_street_third %bool; "true"
+             image_show_street_fourth %bool; "true"
+             image_show_builtup_area %bool; "true"
+             image_show_park %bool; "true"
+             image_show_forest %bool; "true"
+             image_show_building %bool; "true"
+             image_show_water %bool; "true"
+             image_show_island %bool; "true"
+             image_show_pedestrianarea %bool; "true"
+             image_show_aircraftroad %bool; "true"
+             image_show_land %bool; "true" >
+<!ELEMENT route_data ( route_id, route_turn? ) >
+<!ELEMENT route_id ( #PCDATA ) >
+<!ELEMENT route_turn ( #PCDATA ) >
+<!ELEMENT map_symbol_list ( map_symbol_item+ ) >
+<!ELEMENT map_symbol_item ( position_item, name ) >
+<!ATTLIST map_symbol_item href %HREF; #REQUIRED>
+
+<!ELEMENT phone_position ( lat, lon, 
+                           innerRadius, outerRadius, 
+                           startAngle, stopAngle,
+                           levelOfConfidence ) >
+<!ATTLIST phone_position position_sytem %position_system_t; "MC2" >
+<!ELEMENT innerRadius ( #PCDATA )>
+<!ELEMENT outerRadius ( #PCDATA )>
+<!ELEMENT startAngle ( #PCDATA )>
+<!ELEMENT stopAngle ( #PCDATA )>
+<!ELEMENT levelOfConfidence ( #PCDATA )>
+
+<!-- Map reply -->
+<!ELEMENT map_reply ( href | ( status_code, status_message, 
+                               status_code_extended? ) ) >
+<!ATTLIST map_reply transaction_id ID #REQUIRED>
+<!ELEMENT href ( #PCDATA )>
+
+
+<!-- POI info request -->
+<!-- The search_item may be a street or a pointofinterest item -->
+<!-- If search_item is a street then all POIs on that street is returned-->
+<!-- If search_item is a pointofinterest then info for it is returned -->
+<!ELEMENT poi_info_request ( search_item, language ) >
+<!ATTLIST poi_info_request transaction_id ID #REQUIRED
+                           position_system %position_system_t; "MC2"
+                           include_category_id %bool; "false"
+                           include_full_search_item %bool; "false"
+                           use_persistent_ids %bool; "false" >
+
+
+<!-- POI info reply -->
+<!ELEMENT poi_info_reply ( info_item* | ( status_code, status_message, 
+                                          status_code_extended? ) ) >
+<!ATTLIST poi_info_reply transaction_id ID #REQUIRED>
+<!ELEMENT info_item ( typeName, itemName, lat?, lon?, category_list?,
+                      info_field*, search_item? )>
+<!ATTLIST info_item numberfields %number; #REQUIRED
+                    heading %number; #IMPLIED >
+<!ELEMENT typeName ( #PCDATA )>
+<!ELEMENT itemName ( #PCDATA )>
+<!ELEMENT info_field ( fieldName, fieldValue ) >
+<!ATTLIST info_field info_type %poi_info_t; #IMPLIED >
+<!ELEMENT fieldName ( #PCDATA )>
+<!ELEMENT fieldValue ( #PCDATA )>
+
+<!-- simple poi desc request -->
+<!ELEMENT simple_poi_desc_request EMPTY >
+<!ATTLIST simple_poi_desc_request transaction_id ID #REQUIRED 
+                                  crc %hex_t; #REQUIRED >
+
+<!ENTITY % te_t "(identity|base64)" >
+
+<!-- crc_ok -->
+<!ELEMENT crc_ok EMPTY >
+
+<!-- simple poi desc reply -->
+<!ELEMENT simple_poi_desc_reply ( simple_poi_desc_data | crc_ok ) >
+<!ATTLIST simple_poi_desc_reply transaction_id ID #REQUIRED
+                                crc %hex_t; #REQUIRED  > 
+
+
+<!ELEMENT simple_poi_desc_data (#PCDATA) >
+<!ATTLIST simple_poi_desc_data te %te_t; #REQUIRED >
+
+<!-- Send email request -->
+<!ELEMENT email_request ( email_request_header, 
+                          (route_message_data | local_map_data | invite_email ) ) >
+<!ATTLIST email_request transaction_id ID #REQUIRED>
+<!ELEMENT invite_email EMPTY>
+<!ELEMENT email_request_header ( email_address, subject, 
+                                 return_email_address? ) >
+<!ATTLIST email_request_header 
+                           image_format %route_image_format_t; "png"
+                           message_type %message_t; "html" 
+                           route_turn_image_type %route_turn_image_t; "map"
+                           max_message_size %size_t; "inf"
+                           overview_image_width    %size_t; #IMPLIED
+                           overview_image_height   %size_t; #IMPLIED
+                           route_turn_image_width  %size_t; #IMPLIED
+                           route_turn_image_height %size_t; #IMPLIED
+                           abbreviate_route_names  %bool;   #IMPLIED
+                           route_landmarks         %bool;   #IMPLIED
+                           route_only_overview     %bool;   #IMPLIED >
+<!ELEMENT subject ( #PCDATA )>
+<!ELEMENT return_email_address ( #PCDATA )>
+<!-- Local map data -->
+<!ELEMENT local_map_data ( language, signature, boundingbox, 
+                           local_map_string, map_symbol_list ) >
+<!ELEMENT local_map_string ( #PCDATA ) >
+
+
+<!-- Send email reply -->
+<!ELEMENT email_reply ( status_code, status_message, 
+                        status_code_extended? ) >
+<!ATTLIST email_reply transaction_id ID #REQUIRED>
+
+
+<!-- SMS Format request -->
+<!ENTITY % sms_version_t "(vicinity|eventfinder)" >
+<!ELEMENT invite_sms (name) >
+<!ATTLIST invite_sms type %sms_version_t; #REQUIRED >
+<!ELEMENT place_sms (position_item|(search_item,language)) >
+<!ATTLIST place_sms type %sms_version_t; #REQUIRED >
+
+<!ELEMENT sms_format_request ( (smsmessage, phone_manufacturer, phone_model) |
+                               (route_sms_message, route_message_data) |
+                               (wayfinder_destination_sms) | 
+                               (wayfinder_route_sms) |
+                               (wayfinder_favourite_sms) | invite_sms | place_sms ) >
+<!ATTLIST sms_format_request transaction_id ID #REQUIRED
+                             wayfinder_sms_version CDATA "1">
+
+
+<!-- SMS Format reply -->
+<!ELEMENT sms_format_reply ( (status_code, status_message, 
+                              status_code_extended?) |
+                             sms_list )>
+<!ATTLIST sms_format_reply transaction_id ID #REQUIRED>
+<!ELEMENT sms_list ( smsmessage+ )>
+
+
+<!-- Sort dist request -->
+<!ELEMENT sort_dist_request ( (position_item | search_item),
+                              (routeable_item_list | all_favorites) ) >
+<!ATTLIST sort_dist_request 
+                         transaction_id ID #REQUIRED
+                         max_number_reply_items %number; "1"
+                         sort_distance %sort_distance_t; "radius"
+                         route_cost %route_cost_t; "time"
+                         position_system %position_system_t; "MC2"
+                         route_vehicle %route_vehicle_t; "passengercar" >
+<!ELEMENT all_favorites ( (user_id | 
+                           (user_session_id, user_session_key) ) )>
+
+
+<!-- Sort dist reply -->
+<!ELEMENT sort_dist_reply ( (sort_dist_list) |
+                            ( status_code, status_message, 
+                              status_code_extended? ) ) >
+<!ATTLIST sort_dist_reply transaction_id ID #REQUIRED>
+<!ELEMENT sort_dist_list ( sort_dist_item+ )>
+<!ELEMENT sort_dist_item ( (position_item | search_item | favorite) ) >
+<!ATTLIST sort_dist_item 
+                      distance %number; #REQUIRED
+                      estimated_time %number; #IMPLIED>
+
+
+<!-- Top region request -->
+<!ELEMENT top_region_request ( top_region_request_header ) >
+<!ATTLIST top_region_request transaction_id ID     #REQUIRED
+                             top_region_crc CDATA  #IMPLIED >
+<!ELEMENT top_region_request_header ( language ) >
+<!ATTLIST top_region_request_header 
+                     position_system %position_system_t; "MC2"
+                     country             %bool; "true"
+                     state               %bool; "false"
+                     internationalRegion %bool; "false"
+                     metaregion          %bool; "false" >
+
+
+<!-- Top region reply -->
+<!ELEMENT top_region_reply ( top_region_list | top_region_crc_ok |
+                             ( status_code, status_message, 
+                               status_code_extended? ) ) >
+<!ATTLIST top_region_reply transaction_id ID     #REQUIRED
+                           top_region_crc CDATA  #IMPLIED >
+<!ELEMENT top_region_list ( top_region* ) >
+<!ATTLIST top_region_list numberitems %number; #REQUIRED >
+<!ELEMENT top_region_crc_ok EMPTY >
+
+
+<!-- Phone manufacturer request -->
+<!ELEMENT phone_manufacturer_request EMPTY >
+<!ATTLIST phone_manufacturer_request transaction_id ID #REQUIRED>
+
+
+<!-- Phone manufacturer reply -->
+<!ELEMENT phone_manufacturer_reply ( phone_manufacturer_list | 
+                                     ( status_code, status_message, 
+                                       status_code_extended? ) ) >
+<!ATTLIST phone_manufacturer_reply transaction_id ID #REQUIRED>
+<!ELEMENT phone_manufacturer_list ( phone_manufacturer* )>
+
+
+<!-- Phone model request -->
+<!ELEMENT phone_model_request ( phone_manufacturer? ) >
+<!ATTLIST phone_model_request transaction_id ID #REQUIRED>
+
+
+<!-- Phone model reply -->
+<!ELEMENT phone_model_reply ( phone_model_list | 
+                              ( status_code, status_message, 
+                                status_code_extended? ) ) >
+<!ATTLIST phone_model_reply transaction_id ID #REQUIRED>
+<!ELEMENT phone_model_list ( phone_model* )>
+
+
+<!-- User track request -->
+<!ELEMENT user_track_request ( user_id | uin |
+                               (user_session_id, user_session_key) ) >
+<!ATTLIST user_track_request transaction_id ID #REQUIRED
+                             start_time %time_t; #IMPLIED
+                             end_time %time_t; #IMPLIED
+                             max_nbr_tracks %size_t; "1"
+                             position_system %position_system_t; "MC2" >
+
+
+<!-- User track reply -->
+<!ELEMENT user_track_reply ( ( user_track_item* ) |
+                             ( status_code, status_message, 
+                               status_code_extended? ) ) >
+<!ATTLIST user_track_reply transaction_id ID #REQUIRED>
+<!ELEMENT user_track_item ( position_item ) >
+<!ATTLIST user_track_item 
+                      time    %time_t;     #REQUIRED
+                      dist    %number;     #IMPLIED
+                      speed   %number;     #IMPLIED
+                      source  CDATA        #REQUIRED >
+
+
+<!-- User track add request -->
+<!ELEMENT user_track_add_request ( ( user_id | uin | 
+                                    (user_session_id, user_session_key) ), 
+                                  user_track_item+ ) >
+<!ATTLIST user_track_add_request transaction_id ID #REQUIRED >
+
+
+<!-- User track add reply -->
+<!ELEMENT user_track_add_reply ( status_code, status_message, 
+                                 status_code_extended? ) >
+<!ATTLIST user_track_add_reply transaction_id ID #REQUIRED >
+
+
+<!-- User debit log request -->
+<!ELEMENT user_debit_log_request ( user_id | 
+                                   (user_session_id, user_session_key) ) >
+<!ATTLIST user_debit_log_request 
+                                   transaction_id ID       #REQUIRED
+                                   start_time     %time_t; #REQUIRED
+                                   end_time       %time_t; #REQUIRED
+                                   start_index    %size_t; "0"
+                                   end_index      %size_t; "99" >
+
+
+<!-- User debit log reply -->
+<!ELEMENT user_debit_log_reply ( ( user_debit_log_element* ) |
+                                   ( status_code, status_message, 
+                                     status_code_extended? ) ) >
+<!ATTLIST user_debit_log_reply transaction_id ID       #REQUIRED
+                               start_index    %size_t; #REQUIRED
+                               end_index      %size_t; #REQUIRED
+                               total_number_elements %size_t; #REQUIRED >
+<!ELEMENT user_debit_log_element EMPTY >
+<!ATTLIST user_debit_log_element 
+                                   message_id    %number; #REQUIRED
+                                   debit_info    %number; #REQUIRED
+                                   time          %time_t; #REQUIRED
+                                   operationType %number; #REQUIRED
+                                   sentSize      %size_t; #REQUIRED
+                                   userOrigin    CDATA    #REQUIRED
+                                   serverID      CDATA    #REQUIRED
+                                   description   CDATA    #REQUIRED >
+
+
+<!-- User find request -->
+<!ELEMENT user_find_request ( user ) >
+<!ATTLIST user_find_request transaction_id ID #REQUIRED >
+
+
+<!-- User find reply -->
+<!ELEMENT user_find_reply ( (user_id,uin)* | 
+                            ( status_code, status_message, 
+                              status_code_extended? ) ) >
+<!ATTLIST user_find_reply transaction_id ID #REQUIRED >
+<!ELEMENT uin (#PCDATA)>
+
+
+<!-- Transactions request -->
+<!ELEMENT transactions_request ( (user_id | 
+                                  (user_session_id, 
+                                   user_session_key))? ) >
+<!ATTLIST transactions_request 
+                       transaction_id ID #REQUIRED
+                       uin CDATA #IMPLIED
+                       transaction_change %number; #IMPLIED >
+
+
+<!-- Transactions reply -->
+<!ELEMENT transactions_reply ( status_code, status_message, 
+                               status_code_extended? ) >
+<!ATTLIST transactions_reply transaction_id ID #REQUIRED
+                             nbr_transactions %number; #IMPLIED >
+
+
+<!-- Transaction days request -->
+<!ELEMENT transaction_days_request ( 
+   (user_id | (user_session_id, user_session_key))? ) >
+<!ATTLIST transaction_days_request 
+                      transaction_id     ID       #REQUIRED
+                      uin                CDATA    #IMPLIED
+                      check              %bool;   #IMPLIED
+                      transaction_change %number; #IMPLIED >
+
+
+<!-- Transaction days reply -->
+<!ELEMENT transaction_days_reply ( status_code, status_message, 
+                                   status_code_extended? ) >
+<!ATTLIST transaction_days_reply 
+                      transaction_id       ID       #REQUIRED
+                      nbr_transaction_days %number; #REQUIRED
+                      current_day          %time_t; #REQUIRED >
+
+
+<!-- Activation request -->
+<!ELEMENT activate_request ( phone_number?, new_password?, 
+                             name?, email?, opt_in?, 
+                             ( external_auth | server_auth_bob |
+                               handle_me | hardware_id | hardware_key+ )? ) >
+<!ATTLIST activate_request      transaction_id     ID       #REQUIRED
+                                activation_code    CDATA    #IMPLIED 
+                                uin                CDATA    #IMPLIED
+                                may_use            %bool;   "true"
+                                create_new_token   %bool;   "true"
+                                top_region_id      %number; #IMPLIED >
+<!ELEMENT email ( #PCDATA ) >
+<!ELEMENT opt_in EMPTY>
+<!ATTLIST opt_in name CDATA #REQUIRED> <!-- prod-info -->
+<!ELEMENT external_auth EMPTY>
+<!ATTLIST external_auth type CDATA #REQUIRED>
+<!ELEMENT handle_me ( licence_key? ) >
+<!ATTLIST handle_me >
+<!ELEMENT licence_key EMPTY>
+<!ATTLIST licence_key key CDATA #REQUIRED >
+
+<!ELEMENT hardware_id ( #PCDATA ) >
+<!ATTLIST hardware_id type %hardware_key_type_t; #REQUIRED >
+
+<!ELEMENT hardware_key ( #PCDATA ) >
+<!ATTLIST hardware_key type %hardware_key_type_t; #REQUIRED >
+
+
+
+<!-- Activation reply -->
+<!ELEMENT activate_reply ( ( user_id?, auth_token? ) |
+                           ( status_code, status_message, 
+                             status_code_extended? ) ) >
+<!ATTLIST activate_reply  transaction_id       ID       #REQUIRED
+                          uin                  CDATA    #IMPLIED >
+<!ELEMENT auth_token ( #PCDATA ) >
+
+<!-- External service request -->
+<!ELEMENT ext_services_request EMPTY>
+<!ATTLIST ext_services_request  transaction_id     ID           #REQUIRED
+                                crc                CDATA        #IMPLIED
+				language           CDATA        #REQUIRED
+                                new_client         %bool; "false" >
+				
+<!-- Extservice node -->
+<!ELEMENT ext_service ( name, ext_service_help, icons, field* ) >
+<!ATTLIST ext_service          background_colour    CDATA       #REQUIRED
+                               service_id          %number;    #REQUIRED
+                               type                CDATA       #REQUIRED >
+
+<!-- Extservice field node -->
+<!ELEMENT field ( field_name, field_option* ) >
+<!ATTLIST field                id                   %number;    #REQUIRED
+                               type                 CDATA       #REQUIRED
+                               req                  %hex_t;     #REQUIRED 
+                               nbr_choices          %number;    #IMPLIED >
+
+<!-- Extservice field name -->
+<!ELEMENT field_name ( #PCDATA ) >
+<!-- Extservice field option -->
+<!ELEMENT field_option ( field_option_name ) >
+<!ATTLIST field_option         id                   %number;    #REQUIRED >
+<!-- Extservice field option name -->
+<!ELEMENT field_option_name ( #PCDATA ) >
+<!-- Extservice help text -->
+<!ELEMENT ext_service_help ( #PCDATA ) >
+<!-- Extservice background colour -->
+<!ELEMENT background_colour ( #PCDATA ) >
+<!-- Icons -->
+<!ELEMENT icons ( icon* ) >
+<!ATTLIST icons nbr_icons %number; #REQUIRED >
+<!-- Icon -->
+<!ELEMENT icon EMPTY >
+<!ATTLIST icon name        CDATA        #REQUIRED
+               xsize       %number;     #REQUIRED
+               ysize       %number;     #REQUIRED 
+               client_type CDATA        #REQUIRED >
+
+<!-- External services reply -->
+<!ELEMENT ext_services_reply ( ext_services_crc_ok |  ext_service* |
+                              ( status_code, status_message, 
+                                status_code_extended? ) ) >
+<!ATTLIST ext_services_reply   crc                  CDATA       #REQUIRED
+                               transaction_id       ID          #REQUIRED
+                               nbr_services         %number;    #REQUIRED >
+
+<!-- External services crc ok -->
+<!ELEMENT ext_services_crc_ok EMPTY >
+
+<!-- External search request -->
+<!ELEMENT ext_search_request ( field_val* ) >
+<!ATTLIST ext_search_request   search_item_starting_index %number; #REQUIRED
+                               search_item_ending_index   %number; #REQUIRED
+                               service_id                 %number; #REQUIRED
+                               language                   CDATA    #REQUIRED
+                               transaction_id             ID       #REQUIRED >
+
+<!-- External search request field val -->
+<!ELEMENT field_val ( #PCDATA ) >
+<!ATTLIST field_val            id                         %number; #REQUIRED >
+
+
+<!-- Tunnel request -->
+<!ELEMENT tunnel_request ( post_data? ) >
+<!ATTLIST tunnel_request   transaction_id     ID       #REQUIRED
+                           url                %HREF;   #REQUIRED  >
+<!ELEMENT post_data ( #PCDATA ) >
+
+<!ATTLIST post_data te %te_t; "identity">
+
+<!-- Tunnel reply -->
+<!ELEMENT tunnel_reply ( ( header*, body? ) |
+                           ( status_code, status_message, 
+                             status_code_extended? ) ) >
+<!ATTLIST tunnel_reply  transaction_id       ID       #REQUIRED
+                        status_line          CDATA    #IMPLIED >
+
+<!-- Zoom Settings request -->
+<!ELEMENT zoom_settings_request EMPTY >
+<!ATTLIST zoom_settings_request transaction_id ID #REQUIRED
+                                crc %hex_t; #REQUIRED
+                                pixel_size %number; #IMPLIED >
+
+<!-- Zoom Settings reply -->
+<!ELEMENT zoom_settings_reply (zoom_levels | crc_ok ) >
+<!ATTLIST zoom_settings_reply transaction_id ID #REQUIRED >
+<!ELEMENT zoom_levels (zoom_level+)>
+<!ATTLIST zoom_levels crc %hex_t; #REQUIRED
+                      nbr_zoom_levels %number; #REQUIRED
+                      pixel_size %number; #REQUIRED>
+<!ELEMENT zoom_level EMPTY>
+<!ATTLIST zoom_level max_x %number; #REQUIRED 
+                     max_y %number; #REQUIRED
+                     min_x %number; #REQUIRED
+                     min_y %number; #REQUIRED
+                     zoom_level_nbr %number; #REQUIRED
+                     zoom_j2me %bool; #IMPLIED>
+
+<!ELEMENT header EMPTY>
+<!ATTLIST header field CDATA #REQUIRED
+                 value CDATA #REQUIRED >
+<!ELEMENT body ( #PCDATA ) >
+<!ATTLIST body te %te_t; "base64">
+
+
+<!-- Error report -->
+<!ELEMENT error_report ( error_message )>
+<!ATTLIST error_report transaction_id     ID       #REQUIRED
+                       subject            CDATA    #IMPLIED >
+<!ELEMENT error_message ( #PCDATA ) >
+
+<!-- Error report reply -->
+<!ELEMENT error_report_reply ( status_code, status_message, 
+                               status_code_extended? ) >
+<!ATTLIST error_report_reply transaction_id     ID       #REQUIRED>
+
+<!-- POI review -->
+<!ENTITY % poi_grade "(0|1|2|3|4|5)" >
+<!ELEMENT poi_review_requests ( poi_review_add_request | 
+                                poi_review_delete_request |
+                                poi_review_list_request )+ >
+<!ELEMENT poi_review_replies  ( poi_review_add_reply | 
+                                poi_review_delete_reply |
+                                poi_review_list_reply )+ >
+
+<!ELEMENT poi_review_add_request ( ( user_id | uin | 
+                                    ( user_session_id, user_session_key ) )? ,
+                                  ( poi_review_title, poi_review_text )? ) >
+<!ATTLIST poi_review_add_request transaction_id  ID           #REQUIRED
+                                 poi_id          CDATA        #REQUIRED 
+                                 grade           %poi_grade;  #REQUIRED 
+                                 lang            %language_t; #IMPLIED
+                                 review_id       CDATA        #IMPLIED >
+
+<!ELEMENT poi_review_add_reply ( status_code, status_message, 
+                                 status_code_extended? )? >
+<!ATTLIST poi_review_add_reply transaction_id  ID     #REQUIRED
+                               review_id       CDATA  #IMPLIED >
+
+<!ELEMENT poi_review_delete_request ( user_id | uin | 
+                                    ( user_session_id, user_session_key ) )? >
+<!ATTLIST poi_review_delete_request transaction_id  ID     #REQUIRED
+                                    review_id       CDATA  #REQUIRED >
+
+<!ELEMENT poi_review_delete_reply ( status_code, status_message, 
+                                    status_code_extended? )? >
+<!ATTLIST poi_review_delete_reply transaction_id  ID      #REQUIRED >
+
+<!ELEMENT poi_review_list_request ( user_id | uin | 
+                                    ( user_session_id, user_session_key ) | 
+                                    poi_review_poi | poi_review_id ) >
+<!ENTITY % poi_review_details "(none|some|all)" >
+<!ATTLIST poi_review_list_request transaction_id  ID                   #REQUIRED
+                                  details         %poi_review_details; "all" 
+                                  lang            %language_t;         #IMPLIED >
+
+<!ELEMENT poi_review_poi EMPTY >
+<!ATTLIST poi_review_poi poi_id CDATA #REQUIRED >
+<!ELEMENT poi_review_id  EMPTY >
+<!ATTLIST poi_review_id  review_id CDATA #REQUIRED >
+
+<!ELEMENT poi_review_list_reply ( ( poi_review* ) | 
+                                  ( status_code, status_message, 
+                                    status_code_extended? ) ) >
+<!ATTLIST poi_review_list_reply transaction_id  ID      #REQUIRED >
+
+<!ELEMENT poi_review ( poi_review_detail* ) >
+<!ATTLIST poi_review poi_id      CDATA        #REQUIRED
+                     avg_grade   CDATA        #IMPLIED
+                     grade_count %number;     #IMPLIED >
+
+<!ELEMENT poi_review_detail ( uin?, poi_review_title?, poi_review_text? ) >
+<!ATTLIST poi_review_detail review_id  CDATA       #REQUIRED
+                            date       CDATA       #REQUIRED
+                            grade      %poi_grade; #IMPLIED
+                            logonID    CDATA       #IMPLIED
+                            firstname  CDATA       #IMPLIED
+                            lastname   CDATA       #IMPLIED >
+
+<!ELEMENT poi_review_title ( #PCDATA ) >
+<!ELEMENT poi_review_text ( #PCDATA ) >
+
+<!-- Show activation code -->
+<!ELEMENT show_activationcode_request EMPTY >
+<!ATTLIST show_activationcode_request transaction_id ID #REQUIRED
+                                      actvationcode  CDATA #REQUIRED>
+<!ELEMENT show_activationcode_reply ( (status_code, status_message, 
+                                       status_code_extended?)? ) >
+<!ATTLIST show_activationcode_reply transaction_id ID #REQUIRED
+                                    rights   CDATA    #IMPLIED
+                                    server   CDATA    #IMPLIED
+                                    ownerUIN %number; #IMPLIED >
+
+
+<!-- Expand top region -->
+<!ELEMENT expand_top_region_request ( top_region* ) >
+<!ATTLIST expand_top_region_request
+              transaction_id      ID           #REQUIRED
+              language            %language_t; #IMPLIED
+              position_system     %position_system_t; "MC2"
+              country             %bool;       "true"
+              state               %bool;       "false"
+              internationalRegion %bool;       "false"
+              metaregion          %bool;       "false"  >
+<!ELEMENT expand_top_region_reply ( top_region_list* |
+                                    (status_code, status_message, 
+                                     status_code_extended?) ) >
+<!ATTLIST expand_top_region_reply transaction_id ID #REQUIRED >
+
+
+<!-- Get client type info -->
+<!ELEMENT client_type_info_request EMPTY >
+<!ATTLIST client_type_info_request 
+   transaction_id      ID           #REQUIRED
+   client_type         CDATA        #REQUIRED
+   client_type_options CDATA        #REQUIRED >
+
+<!ELEMENT client_type_info_reply ( (status_code, status_message,
+                                    status_code_extended?)? ) >
+<!ATTLIST client_type_info_reply 
+   transaction_id      ID           #REQUIRED
+   phoneModel          CDATA        #REQUIRED
+   imageExtension      CDATA        #REQUIRED
+   extraRights         CDATA        #REQUIRED >
+
+
+<!-- Get server list for client type and uin -->
+<!ELEMENT server_list_for_client_type_request EMPTY >
+<!ATTLIST server_list_for_client_type_request 
+   transaction_id      ID           #REQUIRED
+   client_type         CDATA        #REQUIRED
+   client_type_options CDATA        #REQUIRED
+   srvt                CDATA        #REQUIRED
+   uin                 CDATA        #IMPLIED >
+
+<!ELEMENT server_list_for_client_type_reply ( server_list | 
+                                              (status_code, status_message,
+                                               status_code_extended?) ) >
+<!ATTLIST server_list_for_client_type_reply 
+   transaction_id      ID           #REQUIRED >
+
+<!-- Create wayfinder user -->
+<!ELEMENT create_wayfinder_user_request ( hardware_key+ ) >
+<!ATTLIST create_wayfinder_user_request  
+   transaction_id      ID           #REQUIRED
+   client_type         CDATA        #REQUIRED
+   client_type_options CDATA        #REQUIRED
+   client_lang         %language_t; #REQUIRED
+   logon               CDATA        #REQUIRED
+   password            CDATA        #REQUIRED
+   activation_code     CDATA        #IMPLIED
+   top_region_id       %number;     #IMPLIED >
+
+<!ELEMENT create_wayfinder_user_reply ( (status_code, status_message,
+                                         status_code_extended?, 
+                                         server_list?)? ) >
+<!ATTLIST create_wayfinder_user_reply transaction_id ID    #REQUIRED
+                                      uin            CDATA #IMPLIED >
+
+
+<!-- Update user's hardware keys -->
+<!ELEMENT update_hardware_keys_request ( hardware_key+ ) >
+<!ATTLIST update_hardware_keys_request  
+   transaction_id      ID           #REQUIRED
+   uin                 CDATA        #IMPLIED
+   client_type         CDATA        #IMPLIED
+   client_type_options CDATA        #IMPLIED >
+
+<!ELEMENT update_hardware_keys_reply ( (status_code, status_message,
+                                        status_code_extended?)? ) >
+<!ATTLIST update_hardware_keys_reply transaction_id ID #REQUIRED >
+
+<!-- Get stored user data request -->
+<!ELEMENT get_stored_user_data_request EMPTY >
+<!ATTLIST get_stored_user_data_request
+   transaction_id       ID          #REQUIRED
+   uin                  CDATA       #REQUIRED
+   key                  CDATA       #IMPLIED >
+
+<!-- Get stored user data reply -->
+<!ELEMENT get_stored_user_data_reply ( ( stored_user_data ) | 
+            ( status_code, status_message, status_code_extended? ) ) >
+<!ATTLIST get_stored_user_data_reply
+   transaction_id       ID          #REQUIRED >
+<!ELEMENT stored_user_data EMPTY >
+<!ATTLIST stored_user_data
+   key                  CDATA       #REQUIRED
+   value                CDATA       #REQUIRED >
+
+<!-- Set stored user data  request -->
+<!ELEMENT set_stored_user_data_request ( stored_user_data ) >
+<!ATTLIST set_stored_user_data_request
+   transaction_id       ID          #REQUIRED
+   uin                  CDATA       #REQUIRED >
+
+<!-- Set stored user data reply -->
+<!ELEMENT set_stored_user_data_reply ( ( status_code, status_message, 
+                                         status_code_extended? )? ) >
+<!ATTLIST set_stored_user_data_reply
+   transaction_id       ID          #REQUIRED >
+
+
+<!-- Friend finder, request from client to update position and get friends list -->
+<!ELEMENT friend_finder_request EMPTY >
+<!ATTLIST friend_finder_request  
+   position_system          %position_system_t;   "MC2"
+   lat                      %number;              #IMPLIED
+   lon                      %number;              #IMPLIED
+   transaction_id           ID                    #REQUIRED >
+
+<!ELEMENT friend_finder_reply ( friend_list | 
+                                (status_code, status_message,
+                                 status_code_extended?) ) >
+<!ATTLIST friend_finder_reply   transaction_id ID   #REQUIRED >
+<!ELEMENT friend_list ( friend* ) >
+<!ATTLIST friend_list nbr   %number;              #REQUIRED >
+<!ELEMENT friend EMPTY >
+<!ATTLIST friend 
+                 uin                     CDATA             #REQUIRED
+                 name                    CDATA             #REQUIRED
+                 status                  CDATA             #REQUIRED
+                 description             CDATA             #IMPLIED 
+                 avatar_image_name       CDATA             #REQUIRED
+                 thumb_icon_name         CDATA             #REQUIRED
+                 phone_number            CDATA             #REQUIRED
+                 email_address           CDATA             #REQUIRED
+                 lat                     %number;          #REQUIRED
+                 lon                     %number;          #REQUIRED
+                 location                CDATA             #REQUIRED
+                 time_stamp              %time_t;          #REQUIRED >
+
+
+<!-- Information about a user's friend -->
+<!ELEMENT friend_finder_info_request EMPTY >
+<!ATTLIST friend_finder_info_request  uin             CDATA   #REQUIRED
+                                      friend_uin      CDATA   #REQUIRED
+                                      position_system %position_system_t; "MC2"
+                                      transaction_id  ID      #REQUIRED >
+
+<!ELEMENT friend_finder_info_reply ( friend | 
+                                     (status_code, status_message,
+                                      status_code_extended?) ) >
+<!ATTLIST friend_finder_info_reply   transaction_id ID   #REQUIRED >
+
+
+<!-- Cell ID request -->
+<!ELEMENT TGPP EMPTY >
+<!ATTLIST TGPP
+   c_mcc             CDATA #IMPLIED
+   c_mnc             CDATA #IMPLIED
+   lac               CDATA #IMPLIED
+   cell_id           CDATA #IMPLIED
+   network_type      CDATA #IMPLIED
+   signal_strength   CDATA #IMPLIED >
+<!ELEMENT CDMA EMPTY >
+<!ATTLIST CDMA
+   sid               CDATA #IMPLIED
+   nid               CDATA #IMPLIED
+   bid               CDATA #IMPLIED
+   network_type      CDATA #IMPLIED
+   signal_strength   CDATA #IMPLIED >
+<!ELEMENT iDEN EMPTY >
+<!ATTLIST iDEN
+   c_mcc             CDATA #IMPLIED
+   dnc               CDATA #IMPLIED
+   sa_id             CDATA #IMPLIED
+   lla_id            CDATA #IMPLIED
+   cell_id           CDATA #IMPLIED
+   signal_strength   CDATA #IMPLIED >
+<!ELEMENT cell_id_request (TGPP | CDMA | iDEN) >
+<!ATTLIST cell_id_request
+   position_system   %position_system_t;  "MC2"
+   transaction_id    ID                   #REQUIRED >
+
+<!-- Cell ID reply -->
+<!ELEMENT cell_id_reply ( ( position_item ) |
+            ( status_code, status_message, status_code_extended? ) ) >
+<!ATTLIST cell_id_reply
+   transaction_id    ID       #REQUIRED
+   inner_radius      %number; #IMPLIED
+   outer_radius      %number; #IMPLIED
+   altitude          %number; #IMPLIED
+   start_angle       %number; #IMPLIED
+   end_angle         %number; #IMPLIED >
+
+
+<!-- Local category tree request -->
+<!ELEMENT local_category_tree_request ( position_item ) >
+<!ATTLIST local_category_tree_request transaction_id ID #REQUIRED
+                                      crc CDATA #REQUIRED
+                                      language %language_t; #REQUIRED
+                                      version %number; #REQUIRED >
+
+<!-- Local category tree reply -->
+<!ELEMENT category_table ( #PCDATA ) >
+<!ATTLIST category_table length %number; #REQUIRED >
+<!ELEMENT lookup_table ( #PCDATA ) >
+<!ATTLIST lookup_table length %number; #REQUIRED >
+<!ELEMENT string_table ( #PCDATA ) >
+<!ATTLIST string_table length %number; #REQUIRED >
+<!ELEMENT local_category_tree_reply ( (category_table, lookup_table,
+                                    string_table)|crc_ok|( status_code, 
+                                    status_message, status_uri?, 
+                                    status_code_extended? ) ) >
+<!ATTLIST local_category_tree_reply transaction_id ID #REQUIRED 
+                                    crc CDATA #IMPLIED >
+
+<!-- POI detail request -->
+<!ELEMENT poi_detail_request ( itemid ) >
+<!ATTLIST poi_detail_request transaction_id ID           #REQUIRED 
+                             language       %language_t; #REQUIRED>
+
+<!-- POI detail reply -->
+<!ELEMENT poi_detail_reply ( ( detail_item, resources? ) |
+	  ( status_code, status_message,
+	  status_code_extended? ) ) >
+<!ATTLIST poi_detail_reply transaction_id ID #REQUIRED>
+
+<!ELEMENT detail_item ( detail_field* )>
+<!ATTLIST detail_item numberfields %number; #REQUIRED >
+
+<!ELEMENT detail_field ( fieldName, fieldValue ) >
+<!ATTLIST detail_field detail_type %poi_detail_t; #IMPLIED
+                       detail_content %poi_detail_content_t; #IMPLIED >
+
+<!ELEMENT resources ( image_group*, review_group* ) >
+<!ATTLIST resources number_image_groups %number; #REQUIRED
+                    number_review_groups %number; #REQUIRED >
+
+<!ELEMENT image_group ( image* ) >
+<!ATTLIST image_group number_images %number; #REQUIRED
+	  provider_name CDATA #REQUIRED
+	  provider_image CDATA #REQUIRED >
+
+<!ELEMENT image EMPTY >
+<!ATTLIST image url CDATA #REQUIRED >
+
+<!ELEMENT review_group ( review* ) >
+<!ATTLIST review_group number_reviews %number; #REQUIRED
+	  provider_name CDATA #REQUIRED
+	  provider_image CDATA #REQUIRED >
+
+<!ELEMENT review ( #PCDATA ) >
+<!ATTLIST review rating %number; #REQUIRED
+	  date CDATA #REQUIRED
+	  reviewer CDATA #REQUIRED >
+
+<!-- Search match -->
+
+<!ENTITY % search_match_type_t "(street|pointofinterest|misc|person|
+                                 other)">
+<!ELEMENT search_match ( name, itemid,
+                         location_name, lat?, lon?, category_list?,
+                         search_area*, detail_item? )>
+<!ATTLIST search_match search_match_type %search_match_type_t; #REQUIRED
+                       category_image CDATA #REQUIRED
+                       provider_image CDATA #REQUIRED
+                       brand_image CDATA #REQUIRED 
+                       additional_info_exists %bool; #REQUIRED>
+
+<!-- One list search request -->
+
+<!-- The sorting of the resulting search_hit_list -->
+<!ENTITY % sorting_t "(alfa_sort|distance_sort)">
+<!ENTITY % search_for_type_t "(address|all)">
+
+<!ELEMENT one_search_request ( search_match_query?, 
+                               category_list?,
+                               ( ( position_item, distance? ) |
+                               ( query_location, top_region_id ) ) ) >
+<!ATTLIST one_search_request transaction_id    ID            #REQUIRED
+                             max_number_matches %number;     #REQUIRED
+                             language          %language_t;  #REQUIRED
+                             round             %number;      #REQUIRED
+                             version           %number;      #REQUIRED
+                             include_detail_fields %bool;      #IMPLIED
+                             position_system %position_system_t; "MC2"
+                             sorting           %sorting_t;   #REQUIRED 
+                             search_type %search_for_type_t; "all" >
+<!ELEMENT search_match_query ( #PCDATA )>
+<!ELEMENT query_location ( #PCDATA )>
+
+<!-- One list search reply -->
+<!ELEMENT one_search_reply ( search_list |
+                             ( status_code, status_message, 
+                               status_uri? ) ) >
+<!ATTLIST one_search_reply transaction_id  ID      #REQUIRED >
+
+<!ELEMENT search_list ( search_match* )>
+<!ATTLIST search_list number_matches       %number; #REQUIRED
+                      total_number_matches %number; #REQUIRED >
+
+<!-- Server info request -->
+<!ELEMENT server_info_request EMPTY>
+<!ATTLIST server_info_request transaction_id ID #REQUIRED
+                              client_type CDATA #REQUIRED
+                              client_type_options CDATA #IMPLIED 
+                              client_version CDATA #REQUIRED >
+
+<!-- Server info reply -->
+<!ELEMENT server_info_reply ( client_type_info |
+                            ( status_code, status_message,
+                              status_uri? ) ) >
+<!ATTLIST server_info_reply transaction_id ID #REQUIRED >
+
+<!ELEMENT client_type_info EMPTY>
+<!ATTLIST client_type_info upgrade_available %bool; #REQUIRED
+                           latest_version CDATA #REQUIRED
+                           force_upgrade %bool; #REQUIRED
+                           upgrade_id CDATA #IMPLIED >
+

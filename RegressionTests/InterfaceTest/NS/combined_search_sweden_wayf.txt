@@ -1,0 +1,1 @@
+NavRequest protoVer 0xc type 0x44 reqID 0x0 reqVer 0x1 NParamBlock 11 params 3:004400471620441 4:wf-linux-demo. 5:none. 6:0x0001; 1201:0x00; 1203:wayf. 1205:0x00000001; 5600:0x00000000; 5601:0x00000000; 5602:0xffffffff; 5603:0x00000014;

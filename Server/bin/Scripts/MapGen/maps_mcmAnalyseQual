@@ -1,0 +1,96 @@
+#!/bin/sh 
+
+
+# Change to something else if you don't want the temp log files here
+# The directory must exist
+TEMPLOGFILEPATH="."
+#TEMPLOGFILEPATH="$something/tmpMapGenLogs"
+
+TMPFILE1=`mktemp ${TEMPLOGFILEPATH}/scriptNameXXXXXXXXXX`;
+TMPFILE2=`mktemp ${TEMPLOGFILEPATH}/scriptNameXXXXXXXXXX`;
+
+# Read input arguments.
+argNbr=0;  # Index of non-flagged parameter.
+pos=1;     # Corresponds to index of positional parameter.
+flaggedArg=""; #false
+for i; do 
+   case $i in
+      -h) echo "`basename $0` QUALDIFFFILE [OPTIONS]"
+          echo ""
+          echo "QUALDIFFFILE"
+          echo "File created by QualTool -c file1 -C file2"
+          echo "which is the []_MapsQualDiff.log file from running"
+          echo "the maps_genQualityCheck"
+          echo ""
+          echo "OPTIONS"
+          echo ""
+          echo "-n NUMBER"
+          echo "Only posts with original number of items > NUMBER are shown."
+          echo ""
+          echo "-p NUMBER"
+          echo "Only posts with difference greater then > NUMBER percent are shown."
+          echo ""
+          echo "-i"
+          echo "If set only reports incresed values, otherwise decreased.";
+          echo ""
+          exit;;
+    -n) eval nbrLimit=$`echo $[pos+1]`;
+           flaggedArg="true";;
+    -p) eval percentLimit=$`echo $[pos+1]`;
+           flaggedArg="true";;
+    -i) increases="true";;
+      -*) echo "Invalid option $i"; exit;;
+      *) if [ ${flaggedArg} ]; then
+           flaggedArg=""; #false
+         else
+            eval arg${argNbr}="$i";
+            argNbr=$[argNbr+1]
+         fi;;
+   esac
+   pos=$[pos+1];
+done
+
+
+qualLogDiff=${arg0};
+
+if [ ! "${nbrLimit}" ]; then
+    nbrLimit=1000;
+fi
+if [ ! "${percentLimit}" ]; then
+    percentLimit=25;
+fi
+if [ ! "${increases}" ]; then
+    echo "Only reporting decreases.";
+    signLimit="-";
+else
+    echo "Only reporting increases.";
+    signLimit="+";
+fi
+
+echo "Minimum nbr original items: ${nbrLimit}";
+echo "Minimum percentage diff:    ${percentLimit}";
+echo ""
+
+
+grep -E "DIFF MCM.*:.*: [^ ^-]"  ${qualLogDiff} > $TMPFILE1
+   #Clear out not interesting lines.
+cat $TMPFILE1 | grep -v ": company" | grep -v "Nbr POIs from others" | grep -v "[^S]: Total number" > $TMPFILE2
+
+
+while read line; do
+   sign="`echo $line | sed -e 's/^.*\([+-]\)[0-9x ]\{1,\}$/\1/'`"
+   if [ $sign = "${signLimit}" ]; then
+        origNbr="`echo $line | sed -e 's/^.* \([0-9]\{1,\}\)[ ]\{1,\}[0-9]\{1,\} [\+\-][0-9 ]\{1,\} [\+\-][0-9x ]\{1,\}$/\1/'`"
+        percent="`echo $line | sed -e 's/^.* //'`"
+        if [ "${percent}" != "x" ]; then
+            if [ ${percent} -gt ${percentLimit} -a $origNbr -gt ${nbrLimit} ]; then
+                echo "$line";
+            fi
+        fi
+   fi      
+done < $TMPFILE2
+
+
+
+rm ${TMPFILE1}
+rm ${TMPFILE2}

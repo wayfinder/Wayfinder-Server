@@ -1,0 +1,28 @@
+all docs::
+	@for subdir in $(SUBDIRS); do \
+		if test -d $$subdir; then \
+			(unset CDIR; cd $$subdir && $(MAKE) $@) || exit 1; \
+		fi; \
+	done
+
+clean::
+	@for subdir in $(SUBDIRS); do \
+		if test -d $$subdir; then \
+			(unset CDIR; cd $$subdir && $(MAKE) $@ CLEAN=true) || exit 1; \
+		fi; \
+	done
+	rm -f ./docs/html/*.* ./docs/$(DOCFILE).tex
+
+unit-tests:
+	@for subdir in $(SUBDIRS); do \
+		if test -d $$subdir; then \
+			(unset CDIR; cd $$subdir && $(MAKE) $@) || exit 1; \
+		fi; \
+	done
+
+depclean::
+	@for subdir in $(SUBDIRS); do \
+		if test -d $$subdir; then \
+			(unset CDIR; cd $$subdir && $(MAKE) $@ CLEAN=true) || exit 1; \
+		fi; \
+	done

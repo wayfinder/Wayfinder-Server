@@ -1,0 +1,4 @@
+from waftools import servertool
+
+def build(bld):
+    srv = servertool.create_server(bld, 'TrafficServer')

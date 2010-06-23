@@ -1,0 +1,12 @@
+def configure(conf):
+    conf.sub_config( 'MC2Gtk/src' )
+
+def build(bld):
+    bld.add_subdirs( 'Supervisor/src' )
+    bld.add_subdirs( 'SearchViewer/src' )
+    bld.add_subdirs( 'MC2Gtk/src' )
+    bld.add_subdirs( 'NGPMaker/src' )
+    bld.add_subdirs( 'Mercator/src' )
+    bld.add_subdirs( 'TCPProxy/src' )
+    bld.add_subdirs( 'GSystemTest/src' )
+    bld.add_subdirs( 'ParamDump/src' )

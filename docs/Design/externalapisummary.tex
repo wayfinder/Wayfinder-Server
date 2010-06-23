@@ -1,0 +1,85 @@
+% 
+% 
+% Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+% All rights reserved.
+% 
+% Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+% 
+%     * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+%     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+%     * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+% 
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+%
+%  
+
+\section{Summary}
+The main purpose of this interface is to provide a general API to
+the \mc-system. The API can be used by a third party to incorporate
+our services into their system. The main service for the \mc-system 
+is to provide an answer to the question ``How do I best go from A to B?''. 
+The origin and destination can for example be given to the system in terms of a 
+coordinate, a street address, or a company name. Multiple destinations 
+will result in a route from the origin to the closest destination.
+
+The following services are available:
+\begin{description}
+   \item[Search] By sending a text search string into the \mc-system the matching
+      items are returned to the caller. These items could then be used as
+      origins or destinations. If the answer contains a category, this can
+      be expanded to its content. Some optional parameters can be provided
+      to make it possible for the user to set the search criterion.\\
+      \textbf{Example:} By sending a request containing ``\texttt{Lund,
+         Bar}'' the answer might contain the street item ``\texttt{Baravägen}'' and 
+         the company item ``\texttt{Bara Elektronik AB}'', both located in the
+         city of Lund.
+   \item[Route] It is possible to send an origin and a destination in a route request to
+      the \mc-system and get
+      the best route between them in reply. The origin and destinations
+      can be specified either as coordinates, items from a previous search
+      requests, or an entire
+      category of companies or objects. Some optional
+      parameters can be provided to 
+      adjust the choice of the optimal route.\\
+      \textbf{Example 1:} A request that contains the coordinate
+         \texttt{(55.718, 13.190)} as origin and the point of interest
+         named ``\texttt{Lund, Station}'' 
+         as destination, will get a reply containing a route from the street address
+         that is closest to the given coordinate, (Baravägen 1), to the
+         Central Train Station of Lund.\\
+      \textbf{Example 2:} If the request contains the company item ``\texttt{Lund, 
+         Wayfinder Systems}'' as origin, and both the restaurant
+         ``\texttt{Lund, Pizzeria Portofino}'' and the restaurant
+         ``\texttt{Lund, Pizzeria Fäladstorget}'' as 
+         destinations, the reply will contain a route from Wayfinder 
+         Systems to the closest one of the two pizzerias.\\
+      \textbf{Example 3:} A request, that contains the company item
+         ``\texttt{Lund, Wayfinder Systems}'' as origin and the company
+         category item ``\texttt{Restaurant}'' as destination, will be replied to with 
+         a route to the restaurant that is closest to the address of
+         Wayfinder Systems.
+   \item[Expand] Items, including categories of companies, that can be returned
+      as a reply to a Search request may be expanded. By expanding a category
+      we mean that the
+      items in that category will be returned.\\ % Better explanation
+      \textbf{Example:} Sending an expand request for the area item ``\texttt{Lund}'' 
+         and the category item ``\texttt{Restaurant}'', will result in a reply containing a 
+         list of all restaurants in Lund.
+   \item[User handling] It is possible to update the user 
+      profiles by sending a user request to the \mc-system. The user
+      profiles contains information about the user's vehicle, phone 
+      and other preferences that the user might have. User handling
+      functions also include user login, verification of sessions,
+      user logout, logging and debiting.
+   \item[Positioning] It is possible to ask for the approximate position of a
+     certain mobile phone. The availability of this feature is
+     currently limited
+     by network hardware availibility, and user privacy
+     considerations.
+   \item[SMS] Route descriptions or other text may be formatted for
+     display on an SMS capable phone, and the SMSes may be sent to the
+     mobile phone of a user.
+   \item[E-mail] Route descriptions or other text may be formatted and
+     sent as e-mails.
+   \item[Traffic] The caller can get graphic traffic information for a specified area. 
+\end{description}

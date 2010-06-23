@@ -1,0 +1,120 @@
+#!/usr/bin/perl -w
+
+# Make ngp request for each line with NavRequest data
+# reads from std
+# ngp_grep NavigatorServer_NavRequest.log
+
+use Cwd qw(abs_path);
+use File::Basename;
+
+my $path = dirname( abs_path( $0 ) );
+
+if ( $path ) {
+    $path .= '/';
+}
+
+my $NS = 'ngpmaker';
+my $host = "testhost";
+my $port = "80";
+my $extraCmds ='';
+my $messagereqs = 0;
+my $upgradereqs = 0;
+my $navprot='';
+my $printReply = 0;
+my $logfile='';
+
+# Check arguments
+foreach my $arg (@ARGV) {
+    if ( $arg eq "--help" || $arg eq "-h" ) {
+        # You must be kidding!? Right?
+        print "Usage:   $0 [Options] NavigatorServer_XXX.log\n";
+        print "Options: -h                  \n".
+              "         --help              This help.\n".
+              "         --ns                Path to NS application to use.\n".
+              "         --host=[hostname]   Set the host to connect to.\n".
+              "         --port=[portnumber] Set the port to connect to.\n".
+              "         --navprot           Use raw navprot, default is http.\n".
+              "         --messagereqs       Allow message requests.\n".
+              "         --upgradereqs       Allow upgrade requests.\n".
+              "         --testuser          Set nstestuser as requester.\n".
+              "         --printReply        Print the contents of the reply.\n";
+        exit 1;
+    } elsif ( $arg eq '--testuser' ) {
+        $extraCmds .= "d\n1\nd\n2\nd\n3\nd\n8\nd\n9\nd\n14\nd\n17\nd\n29\nd\n30\n";
+        $extraCmds .= "a\n1\nt\n460809085\nd\na\n3\nt\nnstestuser\nr\nd\n";
+    } elsif ( $arg eq '--messagereqs' ) {
+         $messagereqs = 1;
+    } elsif ( $arg eq '--upgradereqs' ) {
+         $upgradereqs = 1;
+    } elsif ( $arg =~ /--ns=.*/ ) {
+        $NS = substr( $arg, 5 );
+    } elsif ( $arg eq '--navprot' ) {
+        $navprot = ' --navprot';
+    } elsif ( $arg =~ /--host=.*/ ) {
+        $host = substr( $arg, 7 );
+    } elsif ( $arg =~ /--port=.*/ ) {
+        $port = substr( $arg, 7 );
+    } elsif ( $arg eq '--printReply' ) {
+         $printReply = 1;
+    } elsif ( $arg =~ /^-.*/ ) { # Starts with - then an option
+        print "Unknown option $arg, try --help for help.\n";
+        exit 1;
+    } else {
+        $logfile = $arg;
+    }
+}
+
+if ( !$logfile ) {
+   print "No logfile given, quiting.\n";
+   exit 1;
+}
+
+
+my $total = `grep -c NavRequest $logfile`;
+chomp( $total );
+my $i = 0;
+
+open( FILE, "< $logfile" ) or die "Can't open $logfile: $!";
+my @input = (<FILE>);
+close( FILE );
+
+#while ( < @input > ) {
+for my $d (@input) {
+   if ( !($d =~ /NavRequest/) ) {
+      next; #continue;
+   }
+   $i++;
+   if ( $messagereqs == 0 && $d =~ / type 0x18 / ) {
+      print "Skipping message request.\n";
+      next; #continue;
+   }
+   if ( $upgradereqs == 0 && $d =~ / type 0x1A / ) {
+      print "Skipping upgrade request.\n";
+      next; #continue;
+   }
+
+   open( MOUT, ">/tmp/nav.txt" );
+   print MOUT $d;
+   close MOUT;
+   system( "rm -f /tmp/ngp.bin 2>& 1 > /dev/null" );
+#   print "Starting ngpmaker\n";
+   system( "echo \"/dev/stdout\n\n /tmp/nav.txt\n\n\n\n\n\n\n${extraCmds}done\n\" | $NS --ngpmaker > /tmp/ngp.bin 2>/dev/null" );
+   my $extraParams='';
+   my $outPut='';
+   if ( $printReply == 0 ) {
+      print "Sending request $i/$total to $host:$port ";
+   } else {
+       $extraParams="--file=/tmp/ngpreply.bin";
+       $outPut = '2>& 1 > /dev/null';
+   }
+   system( $path . "nstest.pl $navprot --host=$host --port=$port $extraParams /tmp/ngp.bin $outPut" );
+   if ( $printReply == 1 ) {
+      system( "echo \"/dev/stdout\n /tmp/ngpreply.bin\nhp\nq\n\" | $NS --ngpmaker" );
+   }
+#   print "Done\n";
+}
+
+system( "rm -f /tmp/ngp.bin 2>& 1 > /dev/null" );
+system( "rm -f /tmp/ngpreply.bin 2>& 1 > /dev/null" );
+system( "rm -f /tmp/nav.txt 2>& 1 > /dev/null" );
+

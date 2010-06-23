@@ -1,0 +1,1 @@
+NavRequest protoVer 0xc type 0x31 reqID 0x2 reqVer 0x4 NParamBlock 13 params 1:1047621110. 2:ChangeMe. 3:355225038839373 3:240014400173465 3:355225038839373 4:NoUse-UnitTest2-br. 5:none. 6:0x0001; 7:0x02; 11:0x000000090000003c000036b0;.......<..6. 29:imei. 29:imsi. 29:imei.

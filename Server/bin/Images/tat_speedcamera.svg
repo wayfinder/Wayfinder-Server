@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd" [
+	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
+	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
+]>
+<svg  version="1.1" baseProfile="tiny" id="Layer_1" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="40.076" height="40"
+	 viewBox="0 0 40.076 40" xml:space="preserve">
+<path fill="#A10300" d="M37.072,0.028h-14.02c-1.658,0-3.003,1.34-3.003,2.992v9.971l-0.001,6.98l5.752-3.988h11.271
+	c1.66,0,3.004-1.34,3.004-2.992V3.021C40.076,1.368,38.732,0.028,37.072,0.028z"/>
+<linearGradient id="XMLID_3_" gradientUnits="userSpaceOnUse" x1="30.0625" y1="1.0254" x2="30.0625" y2="18.0967">
+	<stop  offset="0" style="stop-color:#E0291C"/>
+	<stop  offset="0.2143" style="stop-color:#E22D1D"/>
+	<stop  offset="0.4357" style="stop-color:#E93A20"/>
+	<stop  offset="0.6596" style="stop-color:#F54E25"/>
+	<stop  offset="0.8146" style="stop-color:#FF6129"/>
+</linearGradient>
+<path fill="url(#XMLID_3_)" d="M37.072,1.025h-14.02c-1.105,0-2.002,0.894-2.002,1.995v9.971l0,5.105l4.296-3.111h11.727
+	c1.107,0,2.002-0.893,2.002-1.994V3.021C39.074,1.919,38.18,1.025,37.072,1.025z"/>
+<linearGradient id="XMLID_4_" gradientUnits="userSpaceOnUse" x1="30.0918" y1="4.7158" x2="30.0918" y2="1.0664">
+	<stop  offset="0" style="stop-color:#ED2B0C"/>
+	<stop  offset="1" style="stop-color:#FFA68C"/>
+</linearGradient>
+<path fill="url(#XMLID_4_)" d="M39.088,2.892c0,1.008-0.766,1.824-1.711,1.824H22.808c-0.945,0-1.713-0.816-1.713-1.824l0,0
+	c0-1.008,0.768-1.825,1.713-1.825h14.569C38.322,1.066,39.088,1.884,39.088,2.892L39.088,2.892z"/>
+<path fill="#FFFFFF" d="M31.064,9.601"/>
+<path fill="#FFFFFF" d="M31.064,11.993"/>
+<path fill="#FFFFFF" d="M33.066,4.017h-1v6.98h1V4.017z M35.07,7.008V5.015h-1.002v6.979h-2.002v0.998h3.004v-1.994h2.002V7.008
+	H35.07z M30.063,2.022c-0.001,0-0.002,0-0.004,0h-6.004c-0.553,0-1.002,0.446-1.002,0.997v9.972c0,0.551,0.449,0.996,1.002,0.996
+	h6.008c0.553,0,1.002-0.445,1.002-0.996l0,0l0,0V3.02l0,0C31.064,2.469,30.615,2.022,30.063,2.022z M26.558,12.991
+	c-1.382,0-2.503-1.117-2.503-2.492c0-1.378,1.121-2.494,2.503-2.494c1.383,0,2.504,1.116,2.504,2.494
+	C29.062,11.874,27.94,12.991,26.558,12.991z M28.561,6.011c-0.83,0-1.502-0.67-1.502-1.496S27.73,3.02,28.561,3.02
+	s1.502,0.669,1.502,1.495S29.391,6.011,28.561,6.011z M26.558,9.002c-0.829,0-1.501,0.671-1.501,1.497
+	c0,0.824,0.672,1.494,1.501,1.494c0.83,0,1.502-0.67,1.502-1.494C28.06,9.673,27.388,9.002,26.558,9.002z"/>
+<rect fill="none" width="40.063" height="40"/>
+</svg>

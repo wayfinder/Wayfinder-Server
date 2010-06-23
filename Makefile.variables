@@ -1,0 +1,502 @@
+CXX          =    g++
+ifndef CXXFLAGS
+CXXFLAGS     =
+endif
+ifndef LDFLAGS
+LDFLAGS      =
+endif
+
+
+CXXFLAGS     += $(OPTFLAGS)
+
+# For the backtrace. Only linux really
+LDFLAGS += -rdynamic
+
+# Multi threading
+LDFLAGS  += -lpthread -lJTC
+
+# Java
+JAVAC	     =    javac
+JAVACFLAGS   =    -d .
+JAR	     =    jar
+JARFLAGS     =    cvf 
+
+# check what we're compiling on
+ifndef ARCH
+   export archdefs := -DHAVE_ARCH
+   unames := $(shell uname -s)
+   unamem := $(shell uname -m)
+
+   ifeq ($(unames),SunOS)
+      export ARCH_SYS = solaris
+      archdefs += -DARCH_OS_SOLARIS
+   else
+      ifeq ($(unames),Linux)
+         archdefs += -DARCH_OS_LINUX
+         CHECKREL := $(shell /bin/ls -1d /usr/share/doc/centos-release-4/EULA 2>/dev/null)
+         ifeq "$(CHECKREL)" "/usr/share/doc/centos-release-4/EULA"
+            export ARCH_RH_RELEASE := $(shell rpm -q centos-release --queryformat '%{VERSION}')
+            export ARCH_EXTRA = el-$(ARCH_RH_RELEASE)
+            export ARCH_SYS = linux
+            export ARCH_SYSX = centos4
+         else
+            export ARCH_RH_RELEASE := $(shell rpm -q redhat-release --queryformat '%{VERSION}')
+            CHECKEL := $(shell rpm -q redhat-release --queryformat '%{RELEASE}' | sed -e 's/^.*\.//; s/[[:digit:]]$$//')
+            ifeq ($(CHECKEL),el)
+               export ARCH_EXTRA = el-$(ARCH_RH_RELEASE)
+            else
+               export ARCH_EXTRA = rh-$(ARCH_RH_RELEASE)
+            endif
+            export ARCH_SYS = linux
+         endif
+         archdefs += -DARCH_OS_LINUX_RH_REL=$(ARCH_RH_RELEASE)
+      # $(warning ***INFO*** ARCH_OS_LINUX_RH_REL is: $(ARCH_RH_RELEASE))
+      else
+	 ifeq ($(unames),FreeBSD)
+           export ARCH_SYS = FreeBSD
+           archdefs += -DARCH_OS_FREEBSD
+         else
+           ifeq ($(unames),CYGWIN_NT-5.0)
+              export ARCH_SYS = cygwin
+              archdefs += -DARCH_OS_CYGWIN
+           else
+           ifeq ($(unames),Darwin)
+              export ARCH_SYS = darwin
+              archdefs += -DARCH_OS_DARWIN
+           else
+             $(error Fatal error, unknown operating system: $(unames))
+           endif
+           endif
+         endif
+      endif
+   endif
+
+   ifeq ($(unamem),i686)
+      export ARCH_HW = i386
+      archdefs += -DARCH_HW_I386
+   else
+      ifeq ($(unamem),i86pc)
+         export ARCH_HW = i386
+      else
+         ifeq ($(unamem),sparc)
+            export ARCH_HW = sparc
+            archdefs += -DARCH_HW_SPARC
+         else
+            ifeq ($(unamem),i386)
+               export ARCH_HW = i386
+               archdefs += -DARCH_HW_I386
+            else
+               ifeq ($(unamem),x86_64)
+                  export ARCH_HW = x86_64
+                  archdefs += -DARCH_HW_X8664
+                else
+                ifeq ($(unamem),Power Macintosh)
+                  export ARCH_HW = powerpc
+                  archdefs += -DARCH_HW_POWERPC
+                else
+                  $(error Fatal error, unknown machine type: $(unamem))
+                endif
+                endif
+            endif
+         endif
+      endif
+   endif
+
+   ifdef ARCH_SYSX
+      export ARCH = $(ARCH_SYSX)-$(ARCH_HW)
+   else
+      export ARCH = $(ARCH_SYS)-$(ARCH_HW)
+   endif
+   archdefs += -DARCH_STR=${ARCH}
+
+   export ARCH_DESC = $(ARCH)-$(ARCH_EXTRA)
+   ifneq ($(ARCH), linux-i386)
+   export LIBSUFFIX = -$(ARCH)
+   endif
+
+   $(shell echo ***INFO*** Building for $(ARCH_DESC) 1>&2)
+
+endif
+
+
+# Normal version
+ifneq ($(release), on)
+
+   # Produce debugging information in the operating system's native format 
+   # (stabs, COFF, XCOFF, or DWARF).
+   # GDB can work with this debugging information.
+   CXXFLAGS    +=    -g 
+
+   # use pipes instead of temp-files
+   CXXFLAGS    +=    -pipe
+
+   # nasty warning strategy
+   CXXFLAGS    +=    -Wall -Werror
+   CXXFLAGS    +=    -Wpointer-arith -Wcast-align
+   CXXFLAGS    +=    -Woverloaded-virtual
+
+   # enable profiling
+   #CXXFLAGS    +=    -pg
+
+   # processor optimization 
+   #CXXFLAGS    +=    -march=pentiumpro
+
+   # code optimization
+   #CXXFLAGS    +=    -O2
+
+   ifndef OPTFLAGS
+      OPTFLAGS    = 
+   endif
+
+   # Omits all symbol information from the output file.
+   #LDFLAGS     +=    -s
+
+   # Makes calls threadsafer by changing some unsafe function to their 
+   # safe counterpart.
+   CXXFLAGS	+=	-D_REENTRANT=1
+
+   # Define that we are compiling MC2. Can be useful for shared stuff
+   CXXFLAGS += -DMC2_SYSTEM
+
+   # Turn off assertions, primarily for release versions.
+   #CXXFLAGS += -DNDEBUG
+
+else
+   # Release version
+
+   # nasty warning strategy
+   CXXFLAGS    +=    -Wall -Werror 
+   CXXFLAGS    +=    -Wpointer-arith -Wcast-align
+   CXXFLAGS    +=    -Woverloaded-virtual
+
+   # use pipes instead of temp-files
+   CXXFLAGS    +=    -pipe
+
+   # processor optimization 
+   CXXFLAGS    +=    -march=pentiumpro
+
+   # code optimization
+#   CXXFLAGS    +=    -O3 -fschedule-insns -fschedule-insns2
+   ifndef OPTFLAGS
+      OPTFLAGS    =    -O2
+   endif
+
+   # Omits all symbol information from the output file.
+   LDFLAGS     +=    -s
+
+   # Makes calls threadsafer by changing some unsafe function to their 
+   # safe counterpart.
+   CXXFLAGS	+=	-D_REENTRANT=1
+
+   # Define that we are compiling MC2. Can be useful for shared stuff
+   CXXFLAGS += -DMC2_SYSTEM
+
+   # Turn off assertions.
+   CXXFLAGS += -DNDEBUG
+
+   # Define for use in code (#ifdef RELEASE_VERSION)
+   CXXFLAGS	+=	-DRELEASE_VERSION   
+
+   # Get rid of DEBUG flags
+   CXXFLAGS := $(patsubst -DDEBUG_LEVEL%,,$(CXXFLAGS))
+
+endif  # release
+
+# Add SSL define if not NO_SSL=1 on command line
+# Add ld cxx flags later 
+ifneq ($(NO_SSL),1) 
+   USE_SSL=1
+   CXXFLAGS	+= -DUSE_SSL
+   # Enable compression in OpenSSL, XXX: Make a check if openssl was compiled
+   # with ZLIB.
+   CXXFLAGS	+= -DZLIB
+   ifeq ($(ARCH_RH_RELEASE),3.0)
+      CXXFLAGS += -I/usr/kerberos/include
+   endif
+endif # NO_SSL
+
+ifeq ($(USE_ORACLE),1) 
+   CXXFLAGS	+= -DUSE_ORACLE
+   CXXFLAGS    += -I/usr/local/oracle/orahome/rdbms/demo
+   CXXFLAGS    += -I/usr/local/oracle/orahome/rdbms/public
+endif
+
+# Add xerces XML library
+ifneq ($(NO_XML),1) 
+   USE_XML=1
+   CXXFLAGS	+= -DUSE_XML
+endif # NO_XML
+
+# =========================================================
+#                                               D o c + + =
+# Path to the docc++ binary
+# Found at http://docpp.sourceforge.net/
+DOCPP          =  doc++
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Set the doc++-flags that should be included in both html and tex
+# include documentation for private functions
+DOCFLAGS       =  --private
+
+# Skip the defines in the parsed files
+#DOCFLAGS       += --no-define
+
+# Include documentation for the included files
+#DOCFLAGS       += --scan-includes
+
+# include documentation for all classes
+#DOCFLAGS       += --all
+
+# Print some debug when generating documentation. To use this the
+# binary must be compiled with debug.
+#DOCFLAGS       += --verbose
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Doc++-flags that should be included when generating html
+
+# Use our own file as footer
+#DOCHTMLFLAGS   =  --footer $(DOCFOOT)
+#DOCFOOT        =  docfoot.html
+
+# Instructs DOC++ to sort documentation entries alphabetically. 
+DOCHTMLFLAGS   += --sort
+
+# include the filename on each generated HTML-page
+DOCHTMLFLAGS   += --filenames
+
+# suppres the java applets in the class graphs
+#DOCHTMLFLAGS   += --no-java-graphs
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Doc++-flags that should be included when generating TeX
+# Create TeX output
+DOCTEXFLAGS    =  --tex
+
+# Add graphics to doc++
+#DOCTEXFLAGS    += --package graphics
+
+# =========================================================
+
+# SINGLE version without multicast
+ifeq ($(VERSION), single)
+	CXXFLAGS	+=	-DSINGLE_VERSION
+endif
+
+ifeq ($(ARCH_SYS), linux)
+   ifeq ($(ARCH_HW), x86_64)
+      LDFLAGS += -L/usr/X11R6/lib64
+   else 
+      LDFLAGS += -L/usr/X11R6/lib
+   endif
+endif
+
+ifeq ($(ARCH_SYS), cygwin)
+   CXXFLAGS    +=    -Wno-deprecated
+   vpath %a /usr/local/lib
+endif
+
+ifeq ($(ARCH_SYS), solaris)
+   vpath %a /usr/local/lib
+   LDFLAGS += -R/usr/local/lib
+endif
+
+ifeq ($(NEEDSSL), yes)
+   ifeq ($(USE_SSL),1) 
+      LDFLAGS		+= -lssl
+      LDFLAGS		+= -lcrypto
+   endif
+endif
+
+ifeq ($(NEEDTECLA), yes)
+   LDFLAGS += -ltecla
+   ifeq ($(ARCH_SYS), solaris)
+      LIBS += -lcurses
+   endif
+   ifeq ($(ARCH_SYS), FreeBSD)
+      LIBS += -lcurses
+   endif
+    ifeq ($(ARCH_SYS), cygwin)
+      LIBS += -lcurses
+   endif
+endif
+
+ifeq ($(NEEDFREETYPE), yes)
+   FREETYPELIB = -lttf
+   ifeq ($(ARCH_SYS), linux)
+      CXXFLAGS += -I/usr/include/freetype2
+      FREETYPELIB = -lfreetype
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+      CXXFLAGS    += -I/usr/local/include/freetype2
+   endif
+   LDFLAGS += $(FREETYPELIB)
+endif
+
+ifeq ($(NEEDMAGICK), yes)
+   MAGICLIB = -lMagick
+   ifeq ($(ARCH_SYS), linux)
+      ifeq ($(ARCH_RH_RELEASE), 6)
+         CXXFLAGS += -I/usr/include/ImageMagick
+         MAGICLIB = -lMagickCore
+      endif
+         CXXFLAGS += -I/usr/X11R6/include/X11/magick
+      else
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+   IMAGE_MAGICK_VERSION := $(shell a=`rpm -q ImageMagick --queryformat '%{VERSION}'` ; echo -n $${a:0:1})
+   ifeq ($(IMAGE_MAGICK_VERSION), 6)
+      LDFLAGS += -lbz2 -lxml2 -ldpstk -ltiff
+   endif
+   LDFLAGS += $(MAGICLIB)
+endif
+
+ifeq ($(NEEDGD), yes)
+   LDFLAGS += -lgd
+   ifeq ($(ARCH_SYS), linux)
+#      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+      ifeq ($(ARCH_RH_RELEASE),3.0)
+         CXXFLAGS += -I/usr/include/gd2
+      endif
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+#      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+   
+ifeq ($(NEEDPNG), yes)
+   LDFLAGS += -lpng
+   ifeq ($(ARCH_SYS), linux)
+#      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+#      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+
+ifeq ($(NEEDGDKPIXBUF2), yes)
+   ifeq ($(ARCH_SYS), linux)
+      CXXFLAGS += -I/usr/include/gtk-2.0/gdk-pixbuf
+   endif
+endif
+
+ifeq ($(NEEDJPEG), yes)
+   LDFLAGS += -ljpeg
+   ifeq ($(ARCH_SYS), linux)
+#      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+#      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+
+ifeq ($(NEEDZLIB), yes)
+   LDFLAGS += -lz
+   CXXFLAGS += -DHAVE_ZLIB
+   ifeq ($(ARCH_SYS), linux)
+#      CXXFLAGS += -I/usr/X11R6/include/X11/magick
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+#      CXXFLAGS    += -I/usr/local/include/magick
+   endif
+endif
+
+
+
+ifeq ($(NEEDPOSTGRESPLUSPLUS), yes)
+   LDFLAGS     += -lpq++
+   LDFLAGS     += -lpq
+   ifeq ($(ARCH_SYS), linux)
+   CXXFLAGS    += -I/usr/include/pgsql
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+   CXXFLAGS    += -I/usr/local/include/pgsql
+   endif
+endif
+
+ifeq ($(NEEDPOSTGRES), yes)
+   LDFLAGS     += -lpq
+   ifeq ($(ARCH_SYS), linux)
+   CXXFLAGS    += -I/usr/include/pgsql
+   endif
+   ifeq ($(ARCH_SYS), solaris)
+   CXXFLAGS    += -I/usr/local/include/pgsql
+   endif
+endif
+
+ifeq ($(NEEDMYSQL), yes)
+   LDFLAGS     += -lmysqlclient_r -lz
+   ifeq ($(ARCH_RH_RELEASE),4)
+      LDFLAGS += -L/usr/lib/mysql
+   endif
+   ifeq ($(ARCH_RH_RELEASE),6)
+      LDFLAGS += -L/usr/lib/mysql
+   endif
+endif
+
+ifeq ($(NEEDORACLE), yes)
+# the line below is _not_ a mistake (unfortunately)
+   LDFLAGS     += -L/usr/local/oracle/orahome/lib -lclntsh /usr/local/oracle/orahome/rdbms/lib/kpuadef.o -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lclient8 -lvsn8 -lwtc8 -lcommon8 -lgeneric8 -lwtc8 -lmm -lnls8 -lcore8 -lnls8 -lcore8 -lnls8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lclient8 -lvsn8 -lwtc8 -lcommon8 -lgeneric8 -ltrace8 -lnls8 -lcore8 -lnls8 -lcore8 -lnls8 -lclient8 -lvsn8 -lwtc8 -lcommon8 -lgeneric8 -lnls8 -lcore8 -lnls8 -lcore8 -lnls8 -ldl -lm -lpthread -ldl -lm -ldl -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lnro8 -lnbeq8 -lnhost8 -lnus8 -lnldap8 -lldapclnt8 -lnsslb8 -ln8 -lncrypt8 -ln8 -lncrypt8 -lnoname8 -lntcp8 -lntcps8 -lnsslb8 -lnent8 -lntcp8 -lntns8 -lnsgr8 -lnzjs8 -ln8 -lnl8 -lsql8 -lsql8
+endif
+
+ifeq ($(NEEDXML), yes)
+   ifeq ($(USE_XML),1) 
+      LDFLAGS   += -lxerces-c
+      ifeq ($(ARCH_SYS), linux)
+         CXXFLAGS  += -I/usr/include/xercesc
+      endif
+      ifeq ($(ARCH_SYS), solaris)
+         CXXFLAGS  += -I/usr/local/include/xerces
+      endif
+   endif
+endif
+
+ifeq ($(NEEDRSVG), yes)
+   CXXFLAGS    +=   $(shell pkg-config librsvg-2.0 --cflags)
+   LDFLAGS     +=   $(shell pkg-config librsvg-2.0 --libs)
+endif
+
+ifeq ($(NEEDGTK2), yes)
+   CXXFLAGS    +=   $(shell pkg-config gtk+-2.0 --cflags)
+   LDFLAGS     +=   $(shell pkg-config gtk+-2.0 --libs)
+endif
+ifeq ($(NEEDGTKMM), yes)
+   CXXFLAGS    +=   $(shell pkg-config gtkmm-2.4 --cflags)
+   LDFLAGS     +=   $(shell pkg-config gtkmm-2.4 --libs)
+endif
+
+ifeq ($(NEEDGTKMM2), yes)
+   CXXFLAGS    +=   $(shell pkg-config gtkmm-2.4 --cflags)
+   LDFLAGS     +=   $(shell pkg-config gtkmm-2.4 --libs)
+endif
+
+ifeq ($(NEEDARCHDEFS), yes)
+   CXXFLAGS += $(archdefs)
+endif
+
+MEMCACHEDTEST=$(shell if ( pkg-config --exists libmemcached); then echo "yes"; fi)
+
+ifeq ($(MEMCACHEDTEST), yes)
+   CXXFLAGS    += -DHAVE_MEMCACHED $(shell pkg-config libmemcached --cflags)
+   ifeq ($(NEEDMEMCACHED), yes)
+      LDFLAGS  += -lmemcached
+   endif
+endif
+
+ifeq ($(ARCH_SYS), solaris)
+      LDFLAGS     += -lsocket -lnsl -lrt
+endif
+
+ifeq ($(ARCH_SYS), FreeBSD)
+      CXXFLAGS += -I/usr/local/include/
+endif
+
+CAIROTEST=$(shell if ( pkg-config --exists cairo); then echo "yes"; fi)
+
+ifeq ($(CAIROTEST), yes)
+   CXXFLAGS    +=   -DHAVE_CAIRO $(shell pkg-config cairo --cflags)
+   ifeq ($(NEEDCAIRO), yes)
+      LDFLAGS    +=   $(shell pkg-config cairo --libs)
+   endif
+endif

@@ -1,0 +1,42 @@
+
+sources		:=	$(shell echo *.cpp)
+
+NODEPS := no
+
+ifdef ONLY
+   ifneq (,$(findstring $(TARGET), $(ONLY)))
+      all: $(BINPATH)/$(TARGET)
+   else
+      all:
+      NODEPS := yes
+   endif
+else
+all: $(BINPATH)/$(TARGET)
+endif
+
+$(BINPATH)/$(TARGET)  : $(patsubst %,.objects-$(ARCH)/%, $(sources:.cpp=.o)) $(LIBS)
+	@mkdir -p $(BINPATH)
+	@echo Linking $(TARGET)
+	$(CXX) -o $(BINPATH)/$(TARGET) $(CXXFLAGS) $^ $(LDFLAGS)
+
+
+ifdef UNITTEST
+unit-tests: $(TARGET)
+	@echo UnitTest: $(BINPATH)/$(TARGET)
+	(unset CDIR; cd $(BINPATH) && ./$(TARGET)) || exit 1
+else
+unit-tests:
+endif
+
+depclean:
+	-rm -rf .depend-$(ARCH) 
+clean:
+	-rm -rf .objects-$(ARCH) .depend-$(ARCH) core $(BINPATH)/$(TARGET)
+
+ifeq ($(CLEAN), true)
+   NODEPS = yes
+endif
+
+ifneq ($(NODEPS), yes)
+   include $(patsubst %,.depend-$(ARCH)/%, $(sources:.cpp=.d))
+endif

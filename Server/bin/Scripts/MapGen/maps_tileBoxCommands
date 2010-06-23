@@ -1,0 +1,666 @@
+#!/bin/zsh
+
+# Read input arguments.
+argNbr=0;  # Index of non-flagged parameter.
+pos=1;     # Corresponds to index of positional parameter.
+flaggedArg=""; #false
+for i; do 
+   case $i in
+      -h) echo "`basename $0` OPTIONS REGIONS"
+          echo ""
+          echo "REGIONS:"
+          echo "Space separated list of regions to process. Chose from:"
+          echo "eu na mea apac sam africa. Or give ALL for all of them."
+          echo ""
+          echo ""
+          echo "OPTIONS:"
+          echo ""
+          echo "-o (mandatory)" 
+          echo "The out file tag. For instance if tileCmd is given and the"
+          echo "file of region eu will be called tileCmd_eu.sh"
+          echo ""
+          echo "-filterBoxFile BOXFILE"
+          echo "The BOXFILE should be on the format of the BTGPS simulator +"
+          echo "space and each box:s x-index:y-index. Examples:"
+          echo "[(1073741800,-2147483648),(1052266964,-2113929216)] 0:0"
+          echo ""
+          echo "-filterPointFile POINTFILE"
+          echo "The POINTFILE should be on the format of the BTGPS simulator +"
+          echo "space and each box:s x-index:y-index. Examples:"
+          echo "1073741800 -2147483648 0:0"
+          echo ""
+          echo "-filterTileCmd CMDFILE"
+          echo "All commands for creating tiles. Example of the content:"
+          echo "time wget -T0 -nv -O ./15_18.wfd 'http://localhost:12211/tmap.bin?lla=665719916&llo=-1644167168&ula=687194752&ulo=-1610612736&lang=eng&scale=1&l=0,1,2&cn=15_18&cs=16389000&gz=1&sf=1'"
+          echo ""
+          echo ""
+          exit;;
+###    -singleFlag) singleFlagInArgs="true";;
+     -o) eval outFileTag=$`echo $[pos+1]`; flaggedArg="true";;
+     -filterBoxFile) eval boxFileToFilter=$`echo $[pos+1]`; flaggedArg="true";;
+     -filterPointFile) eval pointFileToFilter=$`echo $[pos+1]`; 
+           flaggedArg="true";;
+     -filterTileCmd) eval cmdFileToFilter=$`echo $[pos+1]`; flaggedArg="true";;
+       -*) echo "Invalid option $i"; exit;;
+       *) if [ ${flaggedArg} ]; then
+           flaggedArg=""; #false
+         else
+            eval arg${argNbr}="$i";
+            argNbr=$[argNbr+1]
+         fi;;
+   esac
+   pos=$[pos+1];
+done
+
+### firstNotFlaggedArg=${arg0};
+### secondNotFlaggedArg=${arg1};
+
+
+if [ -e "$boxFileToFilter" ]; then
+    echo "Filtering box file $boxFileToFilter";
+    outFileTag="boxes";
+    outFileExt="txt";
+elif [ -e "$pointFileToFilter" ]; then
+    echo "Filtering box file $pointFileToFilter";
+    outFileTag="points";
+    outFileExt="txt";
+elif [ -e "$cmdFileToFilter" ]; then
+    echo "Filtering commands of $cmdFileToFilter";
+    outFileTag="tileCmd";
+    outFileExt="sh";
+else
+    echo "Nothing to do. Check file parameters."
+    exit 1;
+fi
+
+if [ "$arg0" = "ALL" ]; then
+    arg0="eu";
+    arg1="na";
+    arg2="mea";
+    arg3="apac";
+    arg4="sam";
+    arg5="africa";
+fi
+
+
+get_tile()
+{
+    if [ $boxFileToFilter ]; then
+        pattern="[ ]${1}:${2}$";
+        grep "$pattern" $boxFileToFilter | sed -e "s/$pattern//"
+        echo -n "." 1>&2
+
+    elif [ $pointFileToFilter ]; then
+        pattern="[ ]${1}:${2}$";
+        grep "$pattern" $pointFileToFilter
+        echo -n "." 1>&2
+
+    elif [ $cmdFileToFilter ]; then
+        grep "^time wget -T0 -nv -O ./${1}_${2}.wfd" $cmdFileToFilter
+        echo -n "." 1>&2
+    fi
+}
+
+get_x_tiles()
+{
+   y=$1
+   x1=$2
+   x2=$3
+   for x in {$x1..$x2}; do
+       get_tile $x $y
+   done
+}
+
+
+extractRegion()
+{
+    regionToExtract=$1;
+    echo ""
+    echo "Extracting region: $regionToExtract";
+    outFileName=${outFileTag}_$regionToExtract.$outFileExt;
+    echo "Printing to $outFileName";
+
+    if [ $regionToExtract = "apac" ]; then
+        #echo -n "Getting APAC tiles " 1>&2
+        
+        (
+            # Hong Kong and Macao
+            get_tile 104 37
+            
+             # Taiwan
+            get_tile 107 35
+            get_tile 106 36
+            get_tile 107 36
+            get_tile 106 37
+            get_tile 107 37
+          
+             # Thailand
+             get_tile 99 38
+             get_tile 98 39
+             get_tile 99 39
+             get_tile 98 40
+             get_tile 99 40
+             get_tile 100 40
+             get_tile 101 40
+             get_tile 99 41
+             get_tile 100 41
+             get_tile 101 41
+             get_tile 99 42
+             get_tile 100 42
+             get_tile 99 43
+             get_tile 99 44
+             get_tile 99 45
+             get_tile 99 46
+             get_tile 100 46
+
+             # Malaysia, Singapore, Indonesia
+             get_x_tiles 46 105 106
+             get_x_tiles 47 98 100
+             get_x_tiles 47 104 106
+             get_x_tiles 48 98 105
+             get_x_tiles 49 98 109
+             get_x_tiles 50 99 113
+             get_x_tiles 51 99 113
+             get_x_tiles 52 100 113 
+             get_x_tiles 53 101 113
+             get_x_tiles 54 101 113
+             get_x_tiles 55 106 108
+
+             
+             # India
+             get_tile 90 30
+             get_tile 91 30
+          
+             get_tile 90 31
+             get_tile 91 31
+          
+             get_tile 90 32
+             get_tile 91 32
+             get_tile 92 32
+          
+             get_tile 90 33
+             get_tile 91 33
+             get_tile 92 33
+          
+             get_tile 89 34
+             get_tile 90 34
+             get_tile 91 34
+             get_tile 92 34
+             get_tile 93 34
+          
+             get_tile 89 35
+             get_tile 90 35
+             get_tile 91 35
+             get_tile 92 35
+             get_tile 93 35
+             get_tile 94 35
+             get_tile 95 35
+          
+             get_tile 88 36
+             get_tile 89 36
+             get_tile 90 36
+             get_tile 91 36
+             get_tile 92 36
+             get_tile 93 36
+             get_tile 94 36
+             get_tile 95 36
+          
+             get_tile 88 37
+             get_tile 89 37
+             get_tile 90 37
+             get_tile 91 37
+             get_tile 92 37
+             get_tile 93 37
+             get_tile 94 37
+             get_tile 95 37
+          
+             get_tile 88 38
+             get_tile 89 38
+             get_tile 90 38
+             get_tile 91 38
+             get_tile 92 38
+             get_tile 93 38
+             get_tile 94 38
+          
+             get_tile 89 39
+             get_tile 90 39
+             get_tile 91 39
+             get_tile 92 39
+             get_tile 93 39
+             get_tile 94 39
+          
+             get_tile 89 40
+             get_tile 90 40
+             get_tile 91 40
+             get_tile 92 40
+             get_tile 93 40
+          
+             get_tile 89 41
+             get_tile 90 41
+             get_tile 91 41
+             get_tile 92 41
+          
+             get_tile 89 42
+             get_tile 90 42
+             get_tile 91 42
+             get_tile 92 42
+          
+             get_tile 90 43
+             get_tile 91 43
+             get_tile 92 43
+          
+             get_tile 91 44
+             get_tile 92 44
+          
+             get_tile 91 45
+
+             # Australia
+             get_x_tiles 56 110 114
+             get_x_tiles 57 108 115
+             get_x_tiles 58 108 115
+             get_x_tiles 59 107 115
+             get_x_tiles 60 106 116
+             get_x_tiles 61 104 117
+             get_x_tiles 62 104 117
+             get_x_tiles 63 104 118
+             get_x_tiles 64 104 118
+             get_x_tiles 65 104 118
+             get_x_tiles 66 104 118
+             get_x_tiles 67 104 118
+             get_x_tiles 68 104 118
+             get_x_tiles 69 104 117
+             get_x_tiles 70 112 117
+             get_x_tiles 71 113 117
+             get_x_tiles 72 115 116
+             get_x_tiles 73 115 116
+             get_x_tiles 74 115 116
+
+             # New Zealand
+             get_x_tiles 69 125 126
+             get_x_tiles 70 125 126
+             get_x_tiles 71 125 127               
+             get_x_tiles 72 124 126
+             get_x_tiles 73 124 126
+             get_x_tiles 74 123 125
+             get_x_tiles 75 123 124
+             get_x_tiles 76 123 123
+
+       ) > $outFileName
+    
+    elif [ $regionToExtract = "mea" ]; then
+        #echo
+        #echo -n "Getting Middle East and North Africa tiles " 1>&2
+        (
+            #  Egypt
+            get_tile
+            for x in {73..76}; do
+                for y in {32..37}; do
+                    get_tile $x $y
+                done
+            done
+             # Saudi Arabia, Kuwait, Bahrain, Qatar, UAE
+            get_tile 77 32
+            get_tile 78 32
+          
+             get_tile 77 33
+             get_tile 78 33
+             get_tile 79 33
+             get_tile 80 33
+             get_tile 81 33
+          
+             get_tile 77 34
+             get_tile 78 34
+             get_tile 79 34
+             get_tile 80 34
+             get_tile 81 34
+          
+             get_tile 77 35
+             get_tile 78 35
+             get_tile 79 35
+             get_tile 80 35
+             get_tile 81 35
+             get_tile 82 35
+             get_tile 83 35
+             get_tile 84 35
+          
+             get_tile 77 36
+             get_tile 78 36
+             get_tile 79 36
+             get_tile 80 36
+             get_tile 81 36
+             get_tile 82 36
+             get_tile 83 36
+             get_tile 84 36
+          
+             get_tile 77 37
+             get_tile 78 37
+             get_tile 79 37
+             get_tile 80 37
+             get_tile 81 37
+             get_tile 82 37
+             get_tile 83 37
+             get_tile 84 37
+             get_tile 85 37
+          
+             get_tile 78 38
+             get_tile 79 38
+             get_tile 80 38
+             get_tile 81 38
+             get_tile 82 38
+             get_tile 83 38
+             get_tile 84 38
+             
+             get_tile 78 39
+             get_tile 79 39
+             get_tile 80 39
+             get_tile 81 39
+             get_tile 82 39
+             get_tile 83 39
+             get_tile 84 39
+             
+             get_tile 78 40
+             get_tile 79 40
+             get_tile 80 40
+             get_tile 81 40
+             get_tile 82 40
+             get_tile 83 40
+             
+        ) > $outFileName
+
+    elif [ $regionToExtract = "africa" ]; then
+        
+        #echo
+        #echo -n "Getting Africa tiles " 1>&2
+        ( 
+
+            # North southern africa ( Zambia, Malawi, Mozambique )
+            get_x_tiles 54 74 75
+            get_x_tiles 55 74 75
+            get_x_tiles 56 72 78
+            get_x_tiles 57 72 78
+            get_x_tiles 58 72 78
+
+            # Namibia, Botswana, Zimbabwe, Mozambique, 
+            # South Africa + Swaziland & Lesotho
+            for x in {68..78}; do
+                get_tile $x 59
+            done
+            for x in {68..77}; do
+                get_tile $x 60
+            done
+            for x in {68..76}; do
+                get_tile $x 61
+            done
+            for x in {69..76}; do
+                get_tile $x 62
+            done
+            for x in {69..76}; do
+                get_tile $x 63
+            done
+            for x in {69..75}; do
+                for y in 64 65 66; do
+                    get_tile $x $y
+                done
+            done
+            for x in {70..74}; do
+                for y in 67 68; do
+                    get_tile $x $y
+                done
+            done
+            
+            get_tile 70 69
+            get_tile 71 69
+            get_tile 72 69
+        ) > $outFileName
+
+    elif [ $regionToExtract = "sam" ]; then
+        
+        #echo -n "Getting South America tiles " 1>&2
+        (
+            # Chile
+            get_tile 39 60
+            get_tile 39 61
+          
+            get_tile 39 62
+            get_tile 40 62
+            
+            get_tile 38 63
+            get_tile 39 63
+            get_tile 40 63
+          
+            get_tile 38 64
+            get_tile 39 64
+            
+            for y in {65..69}; do
+                get_tile 38 $y
+                get_tile 39 $y
+            done
+            
+            for y in {70..78}; do
+                get_tile 37 $y
+                get_tile 38 $y
+            done
+            
+            get_tile 37 79
+            get_tile 38 79
+            get_tile 39 79
+            
+            get_tile 38 80
+            get_tile 39 80
+
+            # Brazil
+            get_x_tiles 47 41 42
+            get_x_tiles 48 41 45
+            get_x_tiles 49 39 46
+            get_x_tiles 50 39 48
+            get_x_tiles 51 39 50
+            get_x_tiles 52 38 50
+            get_x_tiles 53 38 51
+            get_x_tiles 54 38 51
+            get_x_tiles 55 38 51
+            get_x_tiles 56 41 50
+            get_x_tiles 57 42 50
+            get_x_tiles 58 42 50
+            get_x_tiles 59 43 50
+            get_x_tiles 60 43 49
+            get_x_tiles 61 43 49
+            get_x_tiles 62 44 49
+            get_x_tiles 63 44 48
+            get_x_tiles 64 44 46
+            get_x_tiles 65 44 46
+            get_x_tiles 66 43 46
+            get_x_tiles 67 44 46
+            get_x_tiles 68 45 45
+
+
+
+        ) > $outFileName
+
+    elif [ $regionToExtract = "eu" ]; then
+        # EU is bounded by approximately [(55,10), (78,30)]
+        # This also skips (most) water-only tiles
+        #echo -n "Getting EU tiles " 1>&2
+        
+        (
+            # Faroe Islands
+            get_tile 61 15
+
+            # Iceland
+            get_tile 55 13
+            get_tile 56 13
+            get_tile 57 13
+            get_tile 58 13
+            get_tile 59 13
+            get_tile 55 14
+            get_tile 56 14
+            get_tile 57 14
+            get_tile 58 14
+         
+            # Shetland
+            get_tile 63 16
+            
+            # Top of NO
+            get_tile 71 10
+            get_tile 72 10
+            get_tile 73 10
+            get_tile 74 10
+            # Top of NO, SE, FI, RU
+            for x in {69..77}; do
+               get_tile $x 11
+            done
+            # Next row
+            for x in {68..78}; do
+               get_tile $x 12
+            done
+            # Next row
+            for x in {68..78}; do
+               get_tile $x 13
+            done
+            # Next row
+            for x in {67..78}; do
+               get_tile $x 14
+            done
+            # the three bottom parts of norway and all the way to russia on the right:
+            for x in {65..78}; do
+               for y in {15..17}; do
+                  get_tile $x $y
+               done
+            done
+            # denmark -> russia
+            for x in {66..78}; do
+               for y in {18..19}; do
+                  get_tile $x $y
+               done
+            done
+            # a piece of the UK and most of the continent all the way down to africa
+            for x in {63..78}; do
+               for y in {20..30}; do
+                  get_tile $x $y
+               done
+            done
+            
+            # Some more of Russia (east of Moscow)
+            for x in {79..80}; do
+               for y in {13..26}; do
+                  get_tile $x $y
+               done
+            done
+
+            # The easternmost piece of Turkey:
+            get_tile 79 27
+            get_tile 79 28
+            # the rest of UK and Ireland
+            # top
+            get_tile 61 17
+            get_tile 62 17
+            get_tile 63 17
+            # and onwards
+            get_tile 61 18
+            get_tile 62 18
+            get_tile 63 18
+            get_tile 60 19
+            get_tile 61 19
+            get_tile 62 19
+            get_tile 63 19
+            get_tile 60 20
+            get_tile 61 20
+            get_tile 62 20 # 63 20,21 is part of "most of the continent above"
+            get_tile 60 21
+            get_tile 61 21
+            get_tile 62 21
+            get_tile 61 22
+            get_tile 62 22
+            # and now france
+            get_tile 62 23
+            # iberia 60,25 62,29 (parts are covered by the "continent"
+            for x in {60..62}; do
+               for y in {25..29}; do
+                  get_tile $x $y
+               done
+            done
+            # rest of Gibraltar + fill in the 62,30 "gap"
+            get_tile 61 30
+            get_tile 62 30
+         
+         
+         # old
+         #   for x in {55..78}
+         #   do
+         #      for y in {10..30}
+         #      do
+         #         get_tile ${x} ${y}
+         #      done
+         #   done
+        ) > $outFileName
+
+    elif [ $regionToExtract = "na" ]; then
+        #echo
+        #echo -n "Getting NA tiles " 1>&2
+        (
+            # Canada, USA, Mexico
+            get_x_tiles 18 15 42
+            get_x_tiles 19 16 43
+            get_x_tiles 20 16 44
+            get_x_tiles 21 18 44
+            get_x_tiles 22 18 44
+            get_x_tiles 23 19 45
+            get_x_tiles 24 19 42
+            get_x_tiles 25 19 41
+            get_x_tiles 26 19 39
+            get_x_tiles 27 19 39
+            get_x_tiles 28 19 37
+            get_x_tiles 29 20 37
+            get_x_tiles 30 20 37
+            get_x_tiles 31 21 36
+            get_x_tiles 32 22 35
+            get_x_tiles 33 22 35
+            get_x_tiles 34 23 30
+            get_x_tiles 34 34 35 # Florida
+            get_x_tiles 35 23 29
+            get_x_tiles 35 34 35 # Florida
+            get_x_tiles 36 24 29
+            get_tile 35 36  # Florida
+            get_x_tiles 37 24 29
+            get_x_tiles 38 26 33
+            get_x_tiles 39 26 32
+            get_x_tiles 40 27 32
+            get_x_tiles 41 29 31
+
+            # Alaska coast
+            get_x_tiles 15 10 11
+            get_x_tiles 16 10 16
+            get_x_tiles 17 14 16
+
+            # Hawaii
+            get_x_tiles 37 7 8
+            get_x_tiles 38 7 8
+            get_x_tiles 39 8 8
+            
+            
+        ) > $outFileName
+    fi # end of regions
+}
+
+# Get value of $arg0 $arg1 etc.
+#
+# Inparameters
+# index: The index of the script argument to get the value of.
+#
+getArg()
+{
+    index=$1;
+    eval arg=\$arg${index};
+    echo $arg;
+}
+
+
+
+i=0;
+arg=`getArg $i`
+while [ "$arg" ]; do
+    extractRegion $arg;
+    i=$[i+1];
+    arg=`getArg $i`
+done
+
+echo 

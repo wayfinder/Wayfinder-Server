@@ -1,0 +1,92 @@
+#!/bin/sh 
+#    Script that changes map ids of maps.
+#    Makes it easy to create maps of a combination of 
+#    different sources with individual numbering (ie. different countries).
+#    Used in map merge generation.
+ 
+
+if [ $# -lt 1 ]; then
+   echo "Usage: `basename $0` mcm_directory_or_mcm_file..."
+   echo "   Support both mcm files (compressed or uncompressed) and directories."
+   echo "   The specified mcm files will be copied to this path."
+   echo "   The map ids will be changed so that they will be consecutive,"
+   echo "   starting at 0. The order of the maps will remain the same."
+   echo "   Note that GenerateMapServer and a mc2.prop with MAPPATH set"
+   echo "   to \"./\" must be present"
+   exit
+fi
+
+target="./GenerateMapServer"
+prop="./mc2.prop"
+if ( [ -s ${target} ] && [ -x ${target} ] && ! [ -d ${target} ] && 
+     [ -s ${prop} ] && ! [ -d ${prop} ] ) then
+     
+   tmpdir="tmpdir_`date +%m%d`-`date +%H%M%S`"
+   mkdir $tmpdir
+   cp $target $prop $tmpdir
+     
+else
+   echo "GenerateMapServer and mc2.prop not found."
+   exit 1;
+fi
+    
+#Collect all maps
+for map in $*; do
+   
+   if [ -d $map ]; then
+      for i in `ls $map/0000000*.mcm* | egrep ".*(mcm$|mcm\.bz2$|mcm\.gz$)"`; do
+         ALLMAPS="$ALLMAPS $i"
+      done
+   elif [ -s $map ]; then
+      # Make sure it's a mcm map
+      if (echo $map | egrep "0000000[0-9a-f]*\.(mcm$|mcm\.bz2$|mcm\.gz$)" > /dev/null); then
+         ALLMAPS="$ALLMAPS $map"
+      else
+         echo "$map is not a underview mcm file"
+      fi
+   else
+      echo "$map is not found"
+   fi
+done
+
+#Change ids for the maps
+newid=0
+for map in $ALLMAPS; do
+   echo "Processing $map"
+   basemap=`basename $map`
+   hexoldid="0x`echo $basemap | awk -F "." '{print $1}'`"
+   #Convert to dec
+   oldid=`printf '%d' $hexoldid`
+   
+   #Check if we need to change id or if we can just copy the original
+   if [ $oldid -ne $newid ]; then
+      cp $map $tmpdir
+      pushd $tmpdir > /dev/null
+      echo "./GenerateMapServer -n $oldid $newid"
+      ./GenerateMapServer -n $oldid $newid >& latestChangeID.log
+      popd > /dev/null
+      newmcm="`printf '%09x' ${newid}`.mcm"
+      if ( ! [ -s $tmpdir/$newmcm ] ); then
+         chmod +w $tmpdir/*.mcm*
+         echo "Something went wrong. No $newmcm was created!"
+         pushd $tmpdir > /dev/null
+         echo "Find map and log in `pwd`";
+         #rm -fr $tmpdir
+         exit 1;
+      fi
+      cp $tmpdir/$newmcm .
+      chmod +w $tmpdir/*.mcm*
+      rm $tmpdir/*.mcm*
+   else
+      echo "$map already has id $oldid. Copying original."
+      cp $map .
+   fi
+   
+   # Increase id
+   newid=$[newid + 1];
+done
+
+rm -fr $tmpdir
+
+echo "Done!"
+

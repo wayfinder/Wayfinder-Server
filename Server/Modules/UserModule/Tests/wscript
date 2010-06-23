@@ -1,0 +1,13 @@
+from waftools import mc2test
+
+def build(bld):
+    sources = [ 'UserPasswordTest.cpp' ]
+    sources.extend(mc2test.create_sources(bld, '../src/', '*.cpp',
+                                          'UserModule.cpp'))
+    target = mc2test.unit_test(bld, 'UserPasswordTest', sources,
+                               'Module ServersShared ServersSharedNet \
+    ServersSharedDrawing ServersSharedGfx ServersSharedXML \
+ServersSharedCommon ServersSharedItems ServersSharedDatabase Shared SharedNet',
+                               'MODULE SHARED SERVERSSHARED MEMCACHED DATABASE' )
+    target.defines = 'USE_XML'
+    target.linkflags ='-lpq'

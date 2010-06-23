@@ -1,0 +1,1 @@
+NavRequest protoVer 0xc type 0x52 reqID 0x0 reqVer 0x1 NParamBlock 6 params 3:004400471620441 4:wf-linux-demo. 6:0x0001; 6800:Delfinen. 6802:0x27F722CC08EEB391; 6804:0x00000005; 6805:0x00000000; 6807:0x00000000;

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE isab-mc2>
+<isab-mc2>
+  <auth indentingandlinebreaks="true" 
+        client_type="wf-bb-demo"
+        client_lang="english" >
+    <auth_user>%%%AUTH_USER%%%</auth_user>
+    <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+  </auth>
+  <category_tree_request transaction_id="Id1"
+                         crc="%%%ATTR_CRC%%%"
+                         language="%%%ATTR_LANGUAGE%%%"
+                         type="%%%ATTR_TYPE%%%"/>
+</isab-mc2>

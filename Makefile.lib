@@ -1,0 +1,43 @@
+
+sources		:=	$(shell echo *.cpp)
+
+ifdef ONLY
+   LIBOK = true
+   ifeq ($(LIBNAME), MC2ServerModules)
+      ifeq (,$(findstring Module, $(ONLY)))
+         LIBOK = false
+      endif
+   endif
+   ifeq ($(LIBNAME), MC2ServerServers)
+      ifeq (,$(findstring Server, $(ONLY)))
+          LIBOK = false
+      endif
+   endif
+   ifeq ($(LIBOK), true)
+       all: $(LIBPATH)/lib$(LIBNAME).a
+   else
+       all:
+       NODEPS := yes
+   endif
+else
+all: $(LIBPATH)/lib$(LIBNAME).a
+endif
+
+
+$(LIBPATH)/lib$(LIBNAME).a	: $(patsubst %,.objects-$(ARCH)/%, $(sources:.cpp=.o))
+	@mkdir -p $(LIBPATH)
+	@echo Creating library $(LIBNAME)
+	$(AR) r $(LIBPATH)/lib$(LIBNAME).a $^
+
+unit-tests:
+	# Nothing to do with libraries
+
+depclean:
+	-rm -rf .depend-$(ARCH)
+
+clean:
+	-rm -rf .objects-$(ARCH) .depend-$(ARCH) core $(LIBPATH)/lib$(LIBNAME).a
+
+ifneq ($(CLEAN), true)
+   include $(patsubst %,.depend-$(ARCH)/%, $(sources:.cpp=.d))
+endif

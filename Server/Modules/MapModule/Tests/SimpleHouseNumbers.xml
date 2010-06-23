@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<housenumbers>
+   <housenumber value="17"       good="true"/>
+   <housenumber value="8"        good="true"/>
+   <housenumber value="bertil"   good="false"/>
+   <housenumber value="17A"      good="true"/>
+   <housenumber value="1234z"    good="true"/>
+   <housenumber value="123z4"    good="false"/>
+   <housenumber value="1234-C"   good="false"/>
+   <housenumber value="g13"      good="false"/>
+   <housenumber value=""         good="false"/>
+   <housenumber value="12 13"    good="false"/>
+   <housenumber value="A"        good="false"/>
+   <housenumber value="巴巴多斯"  good="false"/>
+</housenumbers>

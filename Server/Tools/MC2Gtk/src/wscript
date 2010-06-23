@@ -1,0 +1,16 @@
+
+def configure(conf):
+    conf.check_cfg(package='gtk+-2.0', uselib_store='GTK',
+                   atleast_version='2.1.0',
+                   mandatory=True, args='--cflags --libs')
+
+def build(bld):
+    staticlib = bld.new_task_gen( 'cxx', 'staticlib' )
+    staticlib.source = bld.glob( '*.cpp' )
+    staticlib.target = 'MC2Gtk'
+    staticlib.install_path = None
+    staticlib.includes = '../include'
+    staticlib.uselib_local = 'SharedUtility Shared \
+ServersSharedXML'
+    staticlib.export_incdirs='../include'
+    staticlib.uselib = 'GTK'

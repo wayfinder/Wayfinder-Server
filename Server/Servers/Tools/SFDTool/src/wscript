@@ -1,0 +1,6 @@
+from waftools import servertool
+
+def build(bld):
+   prog = servertool.create_server_tool(bld, 'SFDTool')
+   prog.uselib_local = 'Module ServersServers ServersShared ' + prog.uselib_local
+   prog.uselib += ' SERVER MODULE TECLA'

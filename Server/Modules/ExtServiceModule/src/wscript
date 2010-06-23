@@ -1,0 +1,6 @@
+from waftools import servertool
+
+def build(bld):
+   prog = servertool.create_module(bld, 'ExtServiceModule')
+   prog.uselib_local += ' ServersSharedJSON SharedNet'
+   prog.defines += ' USE_XML'

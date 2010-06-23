@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" baseProfile="tiny" height="20" version="1.1" viewBox="-278.451 420.39 20 20" width="20">
+<path d="M-261.431,420.417h-14.044c-1.661,0-3.011,1.341-3.011,2.992v16.953l5.763-3.99h11.292  c1.666,0,3.016-1.338,3.016-2.991v-9.972C-258.416,421.758-259.765,420.417-261.431,420.417z" fill="#004A00"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 38.9941)" gradientUnits="userSpaceOnUse" id="XMLID_395_" x1="-268.489" x2="-268.489" y1="-382.4209" y2="-399.4912">
+<stop offset="0" style="stop-color:#007805"/>
+<stop offset="0.1364" style="stop-color:#047A05"/>
+<stop offset="0.2774" style="stop-color:#118104"/>
+<stop offset="0.4206" style="stop-color:#258C04"/>
+<stop offset="0.5651" style="stop-color:#429C03"/>
+<stop offset="0.7094" style="stop-color:#67B101"/>
+<stop offset="0.8146" style="stop-color:#87C200"/>
+<stop offset="1" style="stop-color:#87C200"/>
+</linearGradient>
+<path d="M-261.431,421.415h-14.044c-1.108,0-2.005,0.892-2.005,1.993v9.971l-0.003,5.106l4.304-3.111  h11.748c1.11,0,2.012-0.894,2.012-1.995v-9.97C-259.42,422.307-260.321,421.415-261.431,421.415z" fill="url(#XMLID_395_)"/>
+<linearGradient gradientTransform="matrix(1 0 0 -1 0.0376 38.9941)" gradientUnits="userSpaceOnUse" id="XMLID_396_" x1="-268.4592" x2="-268.4592" y1="-386.1113" y2="-382.46">
+<stop offset="0" style="stop-color:#007805"/>
+<stop offset="1" style="stop-color:#E2FFBD"/>
+</linearGradient>
+<path d="M-259.407,423.28c0,1.008-0.77,1.825-1.715,1.825h-14.6c-0.949,0-1.715-0.817-1.715-1.825l0,0  c0-1.009,0.766-1.826,1.715-1.826h14.6C-260.176,421.454-259.407,422.271-259.407,423.28L-259.407,423.28z" fill="url(#XMLID_396_)"/>
+<path d="M-267.447,429.991" fill="#FFFFFF"/>
+<path d="M-267.447,432.385" fill="#FFFFFF"/>
+<path d="M-262.431,429.329l-9.029,0.062v-3.988l-2.01-2.99l-2.005,2.99v8.976h14.044v-2.989L-262.431,429.329z   M-269.455,433.381h-2.006c0,0,0,0,0-0.996c0-1.996,2.006-1.996,2.006,0C-269.455,433.381-269.455,433.381-269.455,433.381z   M-266.446,433.381h-2.006c0,0,0,0,0-0.996c0-1.996,2.006-1.996,2.006,0C-266.446,433.381-266.446,433.381-266.446,433.381z   M-263.437,433.381h-2.005c0,0,0,0,0-0.996c0-1.996,2.005-1.996,2.005,0C-263.437,433.381-263.437,433.381-263.437,433.381z" fill="#FFFFFF"/>
+</svg>

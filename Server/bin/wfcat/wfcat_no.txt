@@ -1,0 +1,15 @@
+Petrol Station	Bensin
+Rent a car	Bilutleie
+Shopping	Butikksenter
+City Centre	Bysentrum
+Ferry Terminal	Fergekai
+Hotel	Hotell, motell
+Train Station	Jernbanestasjon
+Airport	Lufthavn
+Museum	Museum
+Nightlife	Nattklubb
+Parking Garage	Parkeringshus
+Open Parking Area	Parkeringsplass
+Post Office	Postkontor
+Restaurant	Restaurant
+Tourist information	Turistinformasjon

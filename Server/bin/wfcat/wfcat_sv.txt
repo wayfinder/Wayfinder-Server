@@ -1,0 +1,15 @@
+Petrol Station	Bensin
+Rent a car	Biluthyrning
+Airport	Flygplats
+Ferry Terminal	Färjeterminal
+Hotel	Hotell, motell
+Train Station	Järnvägsstation
+Shopping	Köpcentrum
+Museum	Museum
+Nightlife	Nattklubb
+Open Parking Area	Parkering
+Parking Garage	Parkeringshus
+Post Office	Post
+Restaurant	Restaurang
+City Centre	Stadscentrum
+Tourist information	Turistinformation

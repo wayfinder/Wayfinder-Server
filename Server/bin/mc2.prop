@@ -1,0 +1,408 @@
+#
+# Default MC2 properties file
+#
+
+# The path to the where the images, configuration etc. files and directories
+# are.
+BASE_PATH    = .
+
+# The path to the m3 maps
+MAP_PATH    = {BASE_PATH}
+
+# If you have more than one set of maps use these setting instead of MAP_PATH
+# The maximum number of map sets is (currently) 8!
+# Note: don't set at all if only one set is used!
+# Affected settings:
+# MAP_PATH
+# MODULE_CACHE_PATH
+# IP/port settings for {Map,Route,Search}Module
+#MAP_SET_COUNT = 2
+#MAP_PATH_0     = 
+#MAP_PATH_1     = 
+
+# Set this if you want {Search,Route}Modules to cache maps in the file
+# system instead of loading from MapModule every time. Directory must exist.
+# Set to "" if not wanted
+# Path to module cache, empty means no caching will be done. Directory must exist!
+MODULE_CACHE_PATH = "" 
+#MODULE_CACHE_PATH_0 = ""
+#MODULE_CACHE_PATH_1 = ""
+
+# Set TILE_MAP_CACHE_PATH if you want ParserThread to cache TileMaps. Directory is
+# created if it does not exist.
+TILE_MAP_CACHE_PATH = ""
+
+# Set SFD_PATH if you want to use stored sfd files for tile maps. 
+# Each supported language should be in own directory. The [ISO639-3] will be 
+# replaced in the path for each possible language, like 
+# wayfinder_tiles_0811_swe for Swedish.
+# Beware of using this as there will be crc missmatches if not the same map 
+# version and server code is used when generating sfds as when running.
+#SFD_PATH = "/maps/sfd/zoom3_wayfinder_tiles_[ISO639-3]/"
+
+
+#############################################################
+# Set this path if you want the GenericMap and MapModuleNoticeContainer to
+# try to load from URL if it can not find map on the normal paths, 
+# ( MapHttpServer must be up and running )
+# MAP_PATH_URL=http://<server>:<portnum>/
+#
+# These options are used by the MapHttpServer
+#
+# Port number for which the server is listening for incoming connections
+# MAP_SERV_PORT= 30303
+#
+# Destination path for the converted maps
+# This path will be appended with map set number.
+# Ex: dest path is /tmp and the map set is 0 then the path will be /tmp/0/ .
+# The server will try to find maps from this path before it tries 
+# to convert them. (i.e cached system)
+# MAP_SERV_DEST_PATH=/some/path/
+
+# This is the map set 0 path, it will try to load from this path if map set = 0
+# MAP_SERV_SOURCE_PATH=
+# MAP_SERV_SOURCE_PATH_0={MAP_SOURCE_PATH}
+# This is the source path for map set 1
+# MAP_SERV_SOURCE_PATH_1=
+# for each map set ....
+# MAP_SERV_SOURCE_PATH_<num>=path
+
+
+#############################################################
+# Category tree file
+# Contains the category tree and its translations
+# This file is loaded from the ParserThreadGroup at start.
+
+CATEGORY_TREE_FILE={BASE_PATH}/poi_category_tree.xml
+
+# Directory for the category list files
+
+CATEGORIES_PATH={BASE_PATH}/ConfigFiles/Categories
+
+CATEGORY_REGION_CONFIG_PATH={CATEGORIES_PATH}/category_tree_region_configuration.xml
+
+CATEGORY_DEFAULT_CONFIG_PATH={CATEGORIES_PATH}/category_tree_default_configuration.xml
+
+# How often the cached category lists should be flushed (in seconds)
+
+CATEGORIES_FLUSH_INTERVAL=3600
+
+
+#############################################################
+# External Search Integrations
+# 
+# Google Local Search - Enable it if you have permission to 
+# use it from Google. 
+# See http://code.google.com/apis/ajaxsearch/local.html
+# ENABLE_GOOGLE_LOCAL_SEARCH_INTEGRATION = true
+#
+# Qype, http://www.qype.co.uk/, POIs, reviews and images,
+# you must have permission from Qype to use it.
+# ENABLE_QYPE_INTEGRATION = true
+# Also you must set the Qype API key, see 
+# http://apidocs.qype.com/ for how to get one.
+# QYPE_CONSUMER_KEY = 
+
+#############################################################
+# OpenCellID, http://www.opencellid.org/
+# You must have permission from OpenCellID
+# and an API Key
+#
+# ENABLE_OPENCELLID_INTEGRATION = true
+# The API key must be set
+# OPENCELLID_KEY = ""
+
+#############################################################
+# Server news url for ServerInfo ( NavigatorServer ) news string.
+# NEWS_SERVER_URL = "http://server:port/"
+# cache timeout for news in minutes, if not specified the default will be 30 min
+# NEWS_CACHE_TIMEOUT = 30
+
+#############################################################
+# The url to download new client application from. The url is launched by the 
+# client application.
+# This url is for all types of clients. See also upgradeId in 
+# navclientsettings.txt.
+# DOWNLOAD_NEW_CLIENT_URL = 
+
+#############################################################
+# Precache tiles properties, done when a route is made to ensure the tiles
+# area avalable when the client requests them.
+# This are the default values:
+#
+# enable or disable precacheing of tiles
+# PRECACHETILE_ENABLE = false
+# Maximum queue size of routes to precache for
+# PRECACHETILE_MAX_QUEUE_SIZE   = 128
+
+
+# Default SQL settings
+DEFAULT_SQL_DRIVER    = mysql
+DEFAULT_SQL_HOST      = databasehost
+DEFAULT_SQL_DATABASE  = mc2user
+
+# Number of seconds to try to connect
+# to MySQL database before timeout 
+# SQL_CONNECT_TIMEOUT = 10
+
+# Number of seconds before read or write
+# gets a timeout in mysql 
+# SQL_READWRITE_TIMEOUT = 5
+
+# Number of pois to read at a time when reading many
+POI_SQL_MAX_PRECACHE = 1000
+
+# User Module specific settings
+USER_SQL_DRIVER    = {DEFAULT_SQL_DRIVER}
+USER_SQL_HOST      = {DEFAULT_SQL_HOST}
+USER_SQL_DATABASE  = {DEFAULT_SQL_DATABASE}
+USER_SQL_USER      = mc2user
+USER_SQL_PASSWORD  = UghTre6S
+USER_SQL_CHARENCODING = UTF-8
+
+# InfoModule specific settings
+INFO_SQL_DRIVER   = {DEFAULT_SQL_DRIVER}
+INFO_SQL_HOST     = {DEFAULT_SQL_HOST}
+INFO_SQL_DATABASE = {DEFAULT_SQL_DATABASE}
+INFO_SQL_USER     = mc2info
+INFO_SQL_PASSWORD = UghTre6S
+INFO_SQL_CHARENCODING = UTF-8
+
+# POI SQL database settings
+POI_SQL_DATABASE = poi
+POI_SQL_HOST = poihost
+POI_SQL_USER = poi
+POI_SQL_PASSWORD = UghTre6S
+POI_SQL_CHARENCODING = UTF-8
+
+########################################################
+# UserModule settings
+# Default memcached settings, used by UserModule if define PARALLEL_USERMODULE
+DEFAULT_MEMCACHED_SERVERS = 
+# Number of debits to cache before commiting to database
+# The query size limits the maximum number to 75
+# DEBIT_STORE_SIZE = 10
+# Time before cached debits will be commited to database
+# DEBIT_STORE_TIMEOUT = 60
+# Path format to directory where to store routes. See strftime for available formats.
+# If not set routes are stored in sql database.
+# ROUTE_STORAGE_PATH="/mc2-cache/routecache/%Y_%m_%d"
+
+
+########################################################
+# New cluster variables defines one number per module.
+# Use these instead of the old *_MODULE_*_IP/PORT variables.
+# If a *_MODULE_NET variable is missing the fallback will be 
+# the old *_MODULE_*_IP 
+#
+# The start multicast address is 225.1.1.1 and
+# the formula for selecting a multicast address is:
+# start multicast address + 2*i + module + ( net << 16 )
+# where:
+#  - 'net' is the number from the *_MODULE_NET variable
+#  - 'module' is 0 for leader and 1 for avail
+#  - 'i' is the module type number
+# 
+# The module port is determined by the following formula:
+# module port = 5000 + 2*i + module + net * 0x100
+#
+BURGER_NET  = 1
+
+MY_NET={BURGER_NET}
+
+# my own cluster
+GFX_MODULE_NET = {MY_NET}
+TILE_MODULE_NET = {MY_NET}
+INFO_MODULE_NET = {MY_NET}
+MAP_MODULE_NET = {MY_NET}
+USER_MODULE_NET = {MY_NET}
+ROUTE_MODULE_NET = {MY_NET}
+SEARCH_MODULE_NET = {MY_NET}
+EXTSERVICE_MODULE_NET = {MY_NET}
+COMM_MODULE_NET = {MY_NET}
+EMAIL_MODULE_NET = {MY_NET}
+SMS_MODULE_NET = {MY_NET}
+TEST_MODULE_NET = {MY_NET}
+
+# These three settings are set by the _NET parameters above
+# NOTE! When using MAP_SET_COUNT > 1:
+# * the last byte of the BMC (3rd octet of the IPs) will be calculated to be the
+#   specified number + the map set instance
+# * the PPM and PPX must not be larger than 80. The upper third bits of the
+#   port number is reserved to represent the map set instance!
+# NOTE 2! When us
+# BMC = Base MultiCast
+# PPM = Port Prefix Module
+# PPX = Port Prefix eXtra
+# Defaults for the burger cluster
+# BMC       = 225.1.1.
+# PPM       = 40
+# PPX       = 30
+
+########################################################
+
+# The instance that this is. See namedservers.txt for selection.
+# WF_INSTANCE = burger
+# The prefix for created wayfinder users. Default is "wl".
+# WAYFINDER_CREATE_USER_PREFIX = "wf"
+# The url to MyWayfinder for this instance
+# MYWAYFINDER_URL = "http://localhost/"
+
+# Email settings
+SMTP_HOST = "mail.internal.com"
+# The default return address for sent emails from MC2
+# DEFAULT_RETURN_EMAIL_ADDRESS
+# Errorreports reported to XMLServer is sent to this address
+XML_ERROR_EMAIL_ADDRESS = "errors@localhost"
+
+DEFAULT_WEB_HOST          = "http://localhost/"
+# Where clients can download images we have of the POIs.
+POI_IMAGE_DIR_URI = "http://{DEFAULT_WEB_HOST}/poi_img/"
+
+# Proxy for png tiles
+# The Squid server is used as a cache for the tiled png images, also called
+# mercartor maps.
+# INTERNAL_SQUID_URL=http://localhost:8080/
+
+# The timeout for requests sent to content window web server in ms.
+# CW_TIMEOUT = 5000
+# The host of the services web site
+#CW_HOST, "http://localhost/"
+
+########################################################
+# Packet caching in modules settings
+# The maximum age of cached packets
+PACKET_CACHE_MAX_AGE_SEC = 30
+# The maximum number of bytes in cache (not counting current packet, 0 is off)
+# Don't turn the cache off unless you are testing something.
+PACKET_CACHE_MAX_SIZE_BYTES = 20971520
+
+########################################################
+# Loadsharing properties
+MODULE_MAX_MEM           =   30 #The max nbr of maps loaded
+MODULE_OPT_MEM           =   10 #The module will discard maps in excess of this
+                                # make sure that all required maps can be 
+                                # loaded.
+
+# Some examples
+# Delete maps unused for 10 minutes in all modules
+#MODULE_MAX_MAP_AGE_MINUTES = 10
+# Delete maps unused for 10 minutes in MapModule
+#MAP_MODULE_MAX_MAP_AGE_MINUTES = 10
+# Delete maps unused for 10 minutes in MapModule mapset 0
+#MAP_MODULE_MAX_MAP_AGE_MINUTES_0 = 10
+
+# MapModule uses the unit bytes (approx)
+MAP_MODULE_MAX_MEM     = 900000000
+MAP_MODULE_OPT_MEM     = 900000000
+# MapModule keeps one copy of 09-map
+#MAP_MODULE_KEEP_ONE_MAP_OF = "0x90000000"
+# Example for two map sets
+#MAP_MODULE_KEEP_ONE_MAP_OF_0 = "0x90000000"
+#MAP_MODULE_KEEP_ONE_MAP_OF_1 = "0x91000000"
+
+# RouteModule uses the unit bytes (approx)
+ROUTE_MODULE_MAX_MEM     = 900000000
+ROUTE_MODULE_OPT_MEM     = 900000000
+# RouteModule keeps one copy of 09-map
+#ROUTE_MODULE_KEEP_ONE_MAP_OF = "0x90000000"
+# Example for two map sets
+#ROUTE_MODULE_KEEP_ONE_MAP_OF_0 = "0x90000000"
+#ROUTE_MODULE_KEEP_ONE_MAP_OF_1 = "0x91000000"
+
+# SearchModule uses the unit bytes (approx)
+SEARCH_MODULE_MAX_MEM     = 500000000     
+SEARCH_MODULE_OPT_MEM     = 500000000       
+
+# Info module should be able to load very many maps (all)
+INFO_MODULE_MAX_MEM      = 65535
+INFO_MODULE_OPT_MEM      = 65535
+
+#####################################################################
+# Route module settings
+
+# Distances for going to higher levels. The levels are the from-levels.
+ROUTE_DISTANCE_LEVEL_0 = 80000
+ROUTE_DISTANCE_LEVEL_1 = 700000
+
+# If a destination is closer to a map edge than this distance,
+# the neighbour map will also be used when routing from higher
+# level. The unit is meters.
+ROUTE_MIN_DIST_TO_EDGE = 1000
+
+# The minimum number of nodes that must be on higher level before
+# going to the next level of routing.
+ROUTE_MIN_NBR_HIGHLEVELNODES = 16
+
+# The penalties for toll booth willies.
+ROUTE_TOLL_ROAD_TIME_PENALTY_S = 3600
+ROUTE_TOLL_ROAD_DIST_PENALTY_M = 10000
+
+# The penalty factor for highways when it is to be avoided.
+ROUTE_HIGHWAY_PENALTY_FACTOR_PERCENT = 600
+
+# The maximum distance between start and destination for a pedestrian in meters.
+# Please observe that pedestrian routes cost much more than ordinary 
+# ones for longer distances.
+ROUTE_MAX_WALKING_DISTANCE = 100000
+
+#####################################################################
+# Search module settings
+
+# The maximum allowed radius to use when proximity searching.
+SEARCH_PROXIMITY_MAX_RADIUS_METERS = 100000
+
+#####################################################################
+# Gfx maps settings
+
+# Type of clip algorithm for GfxFeatureMaps.
+# 0 is convex gfx clipping algorithm which is fast (Sutherland-Hodgemann).
+# 1 is slower concave gfx clipping algorithm (more general) (Greiner-Hormann).
+CONCAVE_GFX_CLIPPER = 1
+
+# Imagedraw library to use;
+# Possible values are "cairo" and "gd".
+# default is "gd"
+IMAGEDRAW_LIB = cairo
+
+# Settings for scalable user images, the default values ix 40x40
+# The values are comma separated.
+USER_IMAGE_SIZES = 20x20, 40x40, 50x50, 75x75, 
+
+#####################################################################
+# Set this to an English region name to limit the Tile and GfxMaps to that
+# on the XML- or Navigator-server with the property set.
+# SERVER_ALLOWED_GFX_REGIONS = italy
+# SERVER_ALLOWED_GFX_REGIONS = italy;sweden
+
+#####################################################################
+# Paths to resources
+FONT_PATH                 = {BASE_PATH}/Fonts
+IMAGES_PATH               = {BASE_PATH}/Images
+MESSAGE_TEMPLATE_DIR      = {BASE_PATH}/MessageTemplate
+
+# Html specific settings
+HTML_ROOT            = {BASE_PATH}/HtmlFiles   # the path to the http-rootdirectory, ( /==\ && \==/ :)
+
+#####################################################################
+# NavigatorServer settings
+# Recommended interval between reroutes for new traffic information, in minutes
+NAV_PERIODIC_TRAFFIC_UPDATE_INTERVAL = 30
+
+#####################################################################
+# XMLServer settings
+XML_PRINT_XML        = 0       # XMLServer prints the reply if set to non zero.
+XML_SERVER_REPLY_DTD_CHECK = 0 # XMLServer checks own reply against DTD
+
+#####################################################################
+# External search settings
+
+# Where the AdServerTalker in ExtServiceModule gets ads
+# ADSERVER_URL="http://localhost/webservice.php"
+
+# Search Heading Timeout
+# The time in seconds the Search Heading Manager caches the
+# search headings before checking with ExtServiceModule if the
+# list of search headings has changed.
+# Default value if not set is 180 s.
+# SEARCH_HEADING_TIMEOUT = 180

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+   <auth indentingandlinebreaks="true" client_type="wf-bb-demo">
+      <auth_user>%%%AUTH_USER%%%</auth_user>
+      <auth_passwd>%%%AUTH_PASSWD%%%</auth_passwd>
+   </auth>
+
+   <one_search_request
+                   transaction_id = "test3" 
+                   version = "0"
+                   max_number_matches = "10"
+                   language = "%%%LANGUAGE%%%"
+                   round = "0"
+                   sorting="distance_sort"
+                   >
+   <category_list>
+      <category_id>272</category_id>
+      <category_id>118</category_id>
+      <category_id>56</category_id>
+   </category_list>
+
+   <position_item position_system="MC2">
+      <lat>673582845</lat>
+      <lon>162222849</lon>
+   </position_item>
+
+ </one_search_request>
+
+</isab-mc2>

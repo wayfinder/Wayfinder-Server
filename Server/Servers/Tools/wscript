@@ -1,0 +1,4 @@
+def build(bld):
+    bld.add_subdirs( 'SFDTool/src' )
+    bld.add_subdirs( 'ngpmaker/src' )
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Copyright (c) 1999 - 2010, Vodafone Group Services Ltd
+  All rights reserved.
+  
+  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+  
+      * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+      * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+      * Neither the name of the Vodafone Group Services Ltd nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+  
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<!DOCTYPE isab-mc2 SYSTEM "isab-mc2.dtd">
+
+<isab-mc2>
+   <auth indentingandlinebreaks="true">
+      <auth_user>${username}</auth_user>
+      <auth_passwd>${password}</auth_passwd>
+   </auth>
+   <compact_search_request
+                   transaction_id = "xox" 
+                   start_index = "${start}"
+                   end_index = "${end}"
+                   max_hits = "${max_hits}"
+                   language = "${language}"
+                   heading = "${heading}"
+                   round = "${round}"
+                   >
+
+   <search_item_query>${what}</search_item_query>
+
+   <search_area_query>${where}</search_area_query>
+<!--
+   <search_area search_area_type="municipal">
+    <name>Lund</name>
+    <areaid>a:A7:D:0:1</areaid>
+   </search_area>
+-->
+
+<!--
+   <position_item position_system="MC2">
+    <lat>${lat}</lat>
+    <lon>${lon}</lon>
+    <angle>${angle}</angle>
+   </position_item>
+-->
+   <top_region_id>${top_region}</top_region_id>
+ </compact_search_request>
+</isab-mc2>

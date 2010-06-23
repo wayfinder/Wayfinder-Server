@@ -1,0 +1,5 @@
+from waftools import mc2test
+
+def build(bld):
+    mc2test.unit_test(bld, 'JPathTest', 'JPathTest.cpp',
+                      'ServersSharedJSON SharedUtility Shared', 'SHARED')
