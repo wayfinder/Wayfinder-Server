@@ -5509,6 +5509,10 @@ function stitch()
     typeset EXTRADATAPATH="${BASEGENFILESPATH}/extradata/stitching";
     
     tmpDir="${TEMPLOGFILEPATH}";
+    if [ "$tmpDir" = "." ]; then
+      tmpDir="`pwd`";
+      echo "Setting tmpDir to pwd = $tmpDir"
+    fi
     if [ ! -d "$tmpDir" ]; then
         echo "stitch tmpDir not reachable:"
         echo "$tmpDir";

@@ -29,7 +29,9 @@ print "\n\n";
 # is stored
 # Update it to point to the full path of where you create the BASEGENFILESPATH
 #my $BASEGENFILESPATH="fullpath/genfiles";
-my $BASEGENFILESPATH=".";
+use lib "/home/is/devel/Maps/genfilesPSTC/script/perllib"; # LLLPSTC
+#my $BASEGENFILESPATH=".";
+my $BASEGENFILESPATH="/home/is/devel/Maps/genfilesPSTC"; # LLLPSTC
 my $genfilesScriptPath = "$BASEGENFILESPATH/script";
 my $poiCategoryXMLFile = "$BASEGENFILESPATH/xml/poi_category_tree.xml";
 
@@ -856,7 +858,8 @@ if ( $runImport ){
    #
    # CPIF POIs from for instance mid/mif ======================================
    elsif ( 
-           $productID == 51    # OSM_eu
+           ($productID == 51 )   # OSM_eu
+           or ($productID == 52) # TA_eu_oss
            ) 
    {
       timeprint "Importing CPIF POI data.";

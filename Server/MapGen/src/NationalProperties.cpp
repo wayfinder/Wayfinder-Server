@@ -426,6 +426,10 @@ NationalProperties::getMapToMC2ChEnc( StringTable::countryCode
    if (mapSupplier == MapGenEnums::OpenStreetMap ) {
       fromType = CharEncodingType::UTF8;
    }
+   // All maps from TeleAtlas have char enc UTF-8
+   if (mapSupplier == MapGenEnums::TeleAtlas ) {
+      fromType = CharEncodingType::UTF8;
+   }
    if (mapSupplier == MapGenEnums::Carmenta ) {
       fromType = CharEncodingType::iso8859_1;
    }

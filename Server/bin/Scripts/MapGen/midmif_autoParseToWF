@@ -17,8 +17,8 @@ STEPS="rundos2unix
        parseItems
        parsePOIs";
 
-startStep=0;
-stopStep=10000;
+startStep="";
+stopStep="";
 stepsDone=0;
 
 supplier="";
@@ -106,8 +106,13 @@ lang="";
 mapRelease="";
 if [ "$MAP_RELEASE_ARG" ]; then
    
+   # TA MN shape
+   if [ "$MAP_RELEASE_ARG" = "TA_2010_06" ]; then
+      mapRelease=$MAP_RELEASE_ARG;
+      supplier="TeleAtlasMNshp";
+      
    # Open Street Map
-   if [ "$MAP_RELEASE_ARG" = "OSM_201005" ]; then
+   elif [ "$MAP_RELEASE_ARG" = "OSM_201005" ]; then
       mapRelease=$MAP_RELEASE_ARG;
       supplier="OSM";
    
@@ -131,9 +136,15 @@ source ${PARSEVARFILE}
 
 if [ "$START_ARG" ]; then
    startStep=$START_ARG;
+else
+   echo "No start step given - exit"
+   exit 1;
 fi
 if [ "$STOP_ARG" ]; then
    stopStep=$STOP_ARG;
+else
+   echo "No stop step given - exit"
+   exit 1;
 fi
 
 if [ "$COORDSYS_ARG" ]; then
@@ -223,13 +234,14 @@ function fixPlineMultiple {
 workInSubDirs="";
 if [ $supplier = "something" ]; then
    workInSubDirs="yes";
-elif [ $supplier = "OSM" ]; then
+elif [ $supplier = "OSM" -o $supplier = "TeleAtlasMNshp" ]; then
    ok="ok";
 else
    echo "define workInSubDirs for $supplier!"
    echo "how to run do2unix, check pline multiple and collection???"
    exit 1;
 fi
+
 
 
 
@@ -428,8 +440,74 @@ if [ $startStep -le 4 -a $stopStep -ge 4 ]; then
 
 
 
+   ################ TeleAtlas MN shape data ##############
+   if [ $supplier = "TeleAtlasMNshp" ]; then
+
+      echo `date +"%Y%m%d %T"`" Parse midmif items TeleAtlas MN shape"
+
+      countryCommand="";
+      if [ "$CC_CODE" ]; then
+         countryCommand="-c $CC_CODE";
+      else
+         echo "no country code CC_CODE given in parse varible file - exit"
+         exit 1;
+      fi
+      coordSysOption="-y $coordSysString";
+      
+      # municipal
+      echo `date +"%Y%m%d %T"`"   municipal";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t municipal $MUNICIPALMID $MUNICIPALMIF $ADMINALTNAMES >& $LOGPATH/parse_municipal.log
+      chk_res
+
+      # bua
+      echo `date +"%Y%m%d %T"`"   builtUpArea";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t builtUpArea $BUAMID $BUAMIF >& $LOGPATH/parse_builtUpArea.log
+      chk_res
+      
+      # cityPart
+      echo `date +"%Y%m%d %T"`"   cityPart";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t cityPart $CITYPARTMID $CITYPARTMIF >& $LOGPATH/parse_cityPart.log
+      chk_res
+      
+      # landuse
+      echo `date +"%Y%m%d %T"`"   landuse";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t landuse $LANDUSEMID $LANDUSEMIF >& $LOGPATH/parse_landuse.log
+      chk_res
+
+      # land cover
+      echo `date +"%Y%m%d %T"`"   landcover";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t landcover $LANDCOVERMID $LANDCOVERMIF >& $LOGPATH/parse_landcover.log
+      chk_res
+
+      # railway line
+      echo `date +"%Y%m%d %T"`"   railway";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t railway $RAILWAYMID $RAILWAYMIF >& $LOGPATH/parse_railway.log
+      chk_res
+      
+      # water areas
+      echo `date +"%Y%m%d %T"`"   water poly";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t waterPoly $WATERAREAMID $WATERAREAMIF >& $LOGPATH/parse_waterPoly.log
+      chk_res
+
+      # water lines
+      echo `date +"%Y%m%d %T"`"   water line";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease  $countryCommand $coordSysOption -t waterLine $WATERLINEMID $WATERLINEMIF >& $LOGPATH/parse_waterLine.log
+      chk_res
+      
+      # network restrictions (manouvers)
+      echo `date +"%Y%m%d %T"`"   restrictions";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t restrictions $MANOUVERS $MANOUVERSPATH $NETWORKMID >& $LOGPATH/parse_restrictions.log
+      chk_res
+      
+      # network ssi + ferry
+      echo `date +"%Y%m%d %T"`"   network";
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t network $NETWORKMID $NETWORKMIF $ELEMINAREA $MUNICIPALMID >& $LOGPATH/parse_network.log
+      chk_res
+
+
+
    ################ OSM ################
-   if [ $supplier = "OSM" ]; then
+   elif [ $supplier = "OSM" ]; then
 
       echo `date +"%Y%m%d %T"`" Parse midmif items $supplier"
       runScript="${scriptDir}/midmif_osm2wayfinder.pl";
@@ -518,7 +596,16 @@ if [ $startStep -le 4 -a $stopStep -ge 4 ]; then
    #  - buildings (WFindustryItems.mif)
    #  - restrictions (turn table)
       
-   if [ $supplier = "OSM" ]; then
+   if [ $supplier = "TeleAtlasMNshp" ]; then
+      echo "merge wf water files into one WFwaterItems_all.mid/mif"
+      cat WFwater_line.mid WFwater_poly.mid >& WFwaterItems_all.mid
+      cat WFwater_line.mif WFwater_poly.mif >& WFwaterItems_all.mif
+      
+      echo "merge wf restrictions files and header file into one WFstreetSegmentItemsturntable.txt"
+      cat WFturntableheader.txt WFrestrictionsTurntable.txt WFnetwork_restrictions.txt >& WFstreetSegmentItemsturntable.txt
+
+
+   elif [ $supplier = "OSM" ]; then
       echo "merge wf water files into one WFwaterItems_all.mid/mif"
       cat WFwaterpoly.mid WFwaterways.mid >& WFwaterItems_all.mid
       cat WFwaterpoly.mif WFwaterways.mif >& WFwaterItems_all.mif
@@ -596,8 +683,30 @@ if [ $startStep -le 5 -a $stopStep -ge 5 ]; then
    # Parse all poi files, write to Wayfinder CPIF file
    # Converts coordinates to mc2 coord sys
 
+   ################ TeleAtlas MN Shape ###################
+   if [ $supplier = "TeleAtlasMNshp" ]; then
+
+      countryCommand="";
+      if [ "$CC_CODE" ]; then
+         countryCommand="-c $CC_CODE";
+      else
+         echo "no country code CC_CODE given in parse varible file - exit"
+         exit 1;
+      fi
+      coordSysOption="-y $coordSysString";
+      
+      # pois
+      echo `date +"%Y%m%d %T"`"   poi";
+      $scriptDir/midmif_taMNshape2wayfinder.pl $coordSysOption -v $mapRelease $countryCommand -t poi $POIMID $POIMIF $PIEA >& $LOGPATH/parse_poi.log
+      chk_res
+      
+      # city centres
+      echo `date +"%Y%m%d %T"`"   cityCentre";
+      $scriptDir/midmif_taMNshape2wayfinder.pl $coordSysOption -v $mapRelease $countryCommand -t cityCentre $CITYCENTREMID $CITYCENTREMIF >& $LOGPATH/parse_cityCentre.log
+      chk_res
+
    ################ OSM #####################
-   if [ $supplier = "OSM" ]; then
+   elif [ $supplier = "OSM" ]; then
 
       runScript="${scriptDir}/midmif_osm2wayfinder.pl";
       countryCommand="";
@@ -656,7 +765,11 @@ if [ $startStep -le 5 -a $stopStep -ge 5 ]; then
    
    # Cat the parsed poi files and convert to utf-8 if needed
    echo "";
-   if [ $supplier = "OSM" ]; then
+   if [ $supplier = "TeleAtlasMNshp" ]; then
+      echo "cat poi files to WFcpif_all_${CC_CODE}.txt";
+      cat WFcpif_poi_${CC_CODE}.txt WFcpif_cc_${CC_CODE}.txt >& WFcpif_all_${CC_CODE}.txt
+
+   elif [ $supplier = "OSM" ]; then
       echo "cat poi files to WFcpif_all_${CC_CODE}_utf8.txt";
       cat WFcpif_poi_${CC_CODE}.txt WFcpif_cc_${CC_CODE}.txt >& WFcpif_all_${CC_CODE}_utf8.txt
    
