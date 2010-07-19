@@ -1,0 +1,4 @@
+base referer
+rect $classGfxFeatureMapProcBase.html 7,31 177,57
+rect $classGfxFeatureMapProcessor.html 239,5 412,32
+rect $classGfxTileFeatureMapProcessor.html 228,56 423,83

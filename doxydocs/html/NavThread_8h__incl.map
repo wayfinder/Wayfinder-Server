@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 10,5 79,32
+rect $InterfaceParserThread_8h.html 22,80 187,107
+rect $NotCopyable_8h.html 211,80 321,107

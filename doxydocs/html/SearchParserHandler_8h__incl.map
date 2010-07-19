@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 235,5 304,32
+rect $CompactSearch_8h.html 178,229 306,256
+rect $LangTypes_8h.html 555,80 651,107
+rect $MC2String_8h.html 264,80 360,107
+rect $StringTable_8h.html 91,155 190,181
+rect $ItemInfoEnums_8h.html 542,155 664,181
+rect $ParserHandler_8h.html 22,80 139,107
+rect $ImageTable_8h.html 366,155 467,181

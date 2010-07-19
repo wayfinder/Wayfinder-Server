@@ -1,0 +1,7 @@
+base referer
+rect $classAutoWritingReadable.html 5,80 152,107
+rect $classFileReadable.html 176,80 275,107
+rect $classTCPSocket.html 299,80 387,107
+rect $classTCPSocketReadable.html 411,80 555,107
+rect $classDataSocket.html 225,155 316,181
+rect $classPacketReceiveSocket.html 340,155 489,181

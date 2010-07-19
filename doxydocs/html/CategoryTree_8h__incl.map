@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 5,118 75,145
+rect $MC2String_8h.html 148,42 244,69
+rect $LangTypes_8h.html 148,143 244,170
+rect $CategoryTreeUtils_8h.html 127,194 265,221
+rect $NotCopyable_8h.html 141,245 251,271
+rect $XMLTool_8h.html 153,397 239,423

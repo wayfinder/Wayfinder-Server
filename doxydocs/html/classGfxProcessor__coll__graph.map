@@ -1,0 +1,8 @@
+base referer
+rect $classProcessor.html 143,96 225,123
+rect $classMapSafeVector.html 5,5 117,32
+rect $classMC2String.html 208,5 293,32
+rect $classPOIImageIdentificationTable.html 456,96 643,123
+rect $classServerTileMapFormatDesc.html 667,96 848,123
+rect $classTileMapFormatDesc.html 611,5 752,32
+rect $classTileMapCoords.html 776,5 888,32

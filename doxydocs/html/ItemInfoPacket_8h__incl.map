@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 94,5 163,32
+rect $Packet_8h.html 26,155 98,181
+rect $ItemTypes_8h.html 82,80 175,107
+rect $ItemInfoEnums_8h.html 199,80 322,107
+rect $ItemInfoEntry_8h.html 223,155 335,181

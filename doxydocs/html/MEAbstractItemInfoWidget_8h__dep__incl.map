@@ -1,0 +1,12 @@
+base referer
+rect $MEBuildingItemInfoWidget_8h.html 35,5 224,32
+rect $MECartographicItemInfoWidget_8h.html 20,56 239,83
+rect $MEItemInfoWidget_8h.html 59,107 200,133
+rect $MERouteableItemInfoWidget_8h.html 28,157 231,184
+rect $MEGroupItemInfoWidget_8h.html 40,208 219,235
+rect $MEStreetSegmentItemInfoWidget_8h.html 13,259 245,285
+rect $MEFerryItemInfoWidget_8h.html 43,309 216,336
+rect $MEWaterItemInfoWidget_8h.html 41,360 217,387
+rect $MEParkItemInfoWidget_8h.html 44,411 215,437
+rect $MEPoiItemInfoWidget_8h.html 48,461 211,488
+rect $MEIndividualBuildingItemInfoWidget_8h.html 7,512 252,539

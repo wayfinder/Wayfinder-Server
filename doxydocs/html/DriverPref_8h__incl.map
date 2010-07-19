@@ -1,0 +1,7 @@
+base referer
+rect $Types_8h.html 95,80 161,107
+rect $config_8h.html 272,155 341,181
+rect $MC2Logging_8h.html 413,229 520,256
+rect $ItemTypes_8h.html 121,304 215,331
+rect $SearchTypes_8h.html 280,229 389,256
+rect $Vehicle_8h.html 112,379 187,405

@@ -1,0 +1,5 @@
+base referer
+rect $classNotCopyable.html 5,5 104,32
+rect $classPacket.html 67,83 128,109
+rect $classMC2String.html 201,83 287,109
+rect $classvector.html 191,5 297,32

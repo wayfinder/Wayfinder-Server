@@ -1,0 +1,4 @@
+base referer
+rect $classGMSFerryItem.html 15,229 124,256
+rect $classOldRouteableItem.html 5,80 133,107
+rect $classOldItem.html 36,5 103,32

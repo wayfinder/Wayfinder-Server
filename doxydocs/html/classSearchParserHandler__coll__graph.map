@@ -1,0 +1,6 @@
+base referer
+rect $classParserHandler.html 131,197 237,224
+rect $classParserThread.html 5,96 107,123
+rect $classMC2String.html 152,5 237,32
+rect $classParserThreadGroup.html 131,96 269,123
+rect $structSearchParserHandler_1_1Category.html 244,147 455,173

@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 5,305 75,332
+rect $IDPairVector_8h.html 361,204 468,230
+rect $SearchTypes_8h.html 141,305 251,332
+rect $StringTable_8h.html 147,356 245,382
+rect $MC2Coordinate_8h.html 133,457 259,484
+rect $MC2BoundingBox_8h.html 345,508 484,534
+rect $TopRegionRequest_8h.html 123,26 269,53
+rect $SearchRequestParameters_8h.html 319,356 511,382
+rect $NotCopyable_8h.html 360,558 469,585

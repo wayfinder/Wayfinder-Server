@@ -1,0 +1,3 @@
+base referer
+rect $config_8h.html 5,5 75,32
+rect $GenericMap_8h.html 33,80 137,107

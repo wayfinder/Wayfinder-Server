@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 595,80 664,107
+rect $Types_8h.html 749,155 816,181
+rect $MC2Logging_8h.html 293,155 400,181
+rect $MC2String_8h.html 173,155 269,181
+rect $XPathMultiExpression_8h.html 216,229 381,256
+rect $WGS84Coordinate_8h.html 632,229 776,256
+rect $DeleteHelpers_8h.html 475,155 592,181
+rect $XPathAssigner_8h.html 239,304 359,331

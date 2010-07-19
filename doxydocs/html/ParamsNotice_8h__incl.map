@@ -1,0 +1,13 @@
+base referer
+rect $SharedBuffer_8h.html 320,155 429,181
+rect $BitBuffer_8h.html 327,229 409,256
+rect $config_8h.html 224,80 293,107
+rect $Types_8h.html 179,155 245,181
+rect $MC2Logging_8h.html 484,155 591,181
+rect $LangTypes_8h.html 43,155 139,181
+rect $RouteID_8h.html 345,304 428,331
+rect $MC2SimpleString_8h.html 685,155 821,181
+rect $NotCopyable_8h.html 317,80 427,107
+rect $TileMapParams_8h.html 263,379 388,405
+rect $TileMapConfig_8h.html 128,229 245,256
+rect $TileMapTypes_8h.html 207,304 321,331

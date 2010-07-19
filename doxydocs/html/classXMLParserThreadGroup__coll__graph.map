@@ -1,0 +1,11 @@
+base referer
+rect $classHttpParserThreadGroup.html 268,264 431,291
+rect $classInterfaceParserThreadGroup.html 528,187 720,213
+rect $classParserThreadGroup.html 281,96 420,123
+rect $classNotCopyable.html 263,5 361,32
+rect $classHttpFileHandler.html 143,96 257,123
+rect $classISABMonitor.html 409,5 505,32
+rect $classMC2String.html 5,5 91,32
+rect $classInterfaceHandleIO.html 837,5 968,32
+rect $classInterfaceIO.html 816,96 904,123
+rect $classNotifyPipe.html 511,96 593,123

@@ -1,0 +1,4 @@
+base referer
+rect $classTileMapParams.html 43,96 157,123
+rect $classRouteID.html 5,5 75,32
+rect $classMC2SimpleString.html 99,5 224,32

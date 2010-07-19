@@ -1,0 +1,12 @@
+base referer
+rect $config_8h.html 492,80 561,107
+rect $Types_8h.html 493,155 560,181
+rect $MC2Logging_8h.html 635,155 741,181
+rect $STLStringUtility_8h.html 361,229 484,256
+rect $MC2String_8h.html 373,155 469,181
+rect $ItemIDTree_8h.html 229,229 328,256
+rect $IDPairVector_8h.html 128,155 235,181
+rect $RegionIDTree_8h.html 220,304 335,331
+rect $TopRegionMatch_8h.html 460,304 593,331
+rect $MapTopRegion_8h.html 463,379 585,405
+rect $MapGenEnums_8h.html 867,379 992,405

@@ -1,0 +1,8 @@
+base referer
+rect $classParserHandler.html 165,173 272,200
+rect $classParserThread.html 220,83 321,109
+rect $classParserThreadGroup.html 57,83 196,109
+rect $classNotCopyable.html 5,5 104,32
+rect $classParserThreadFileDBufRequester.html 329,173 543,200
+rect $classFileDBufRequester.html 551,83 684,109
+rect $classServerTileMapFormatDesc.html 345,83 527,109

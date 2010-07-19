@@ -1,0 +1,5 @@
+base referer
+rect $classNullTileMapQuery.html 5,80 133,107
+rect $classTileMapBufferQuery.html 157,80 299,107
+rect $classTileMapClientPrecacheQuery.html 323,80 517,107
+rect $classTileMapClientSFDQuery.html 337,155 503,181

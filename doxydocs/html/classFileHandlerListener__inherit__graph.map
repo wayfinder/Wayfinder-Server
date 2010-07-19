@@ -1,0 +1,4 @@
+base referer
+rect $classMultiFileDBufRequester.html 5,80 168,107
+rect $classMultiFileDBufRequesterIndexHandler.html 192,80 432,107
+rect $classUnixMFDBufRequester.html 8,155 165,181

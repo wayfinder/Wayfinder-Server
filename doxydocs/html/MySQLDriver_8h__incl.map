@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 131,80 200,107
+rect $Types_8h.html 19,155 85,181
+rect $MC2Logging_8h.html 391,155 497,181
+rect $SQLDriver_8h.html 291,229 384,256
+rect $MC2String_8h.html 271,155 367,181
+rect $AutoPtr_8h.html 459,229 536,256

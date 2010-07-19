@@ -1,0 +1,4 @@
+base referer
+rect $classOldAirportItem.html 5,80 112,107
+rect $classOldItem.html 25,5 92,32
+rect $classGMSItem.html 136,80 213,107

@@ -1,0 +1,10 @@
+base referer
+rect $classTCPSocket.html 192,251 280,277
+rect $classSocket.html 61,173 123,200
+rect $classSelectable.html 51,83 133,109
+rect $classTemplateSelectable.html 5,5 179,32
+rect $classWriteable.html 147,173 224,200
+rect $classReadable.html 248,173 325,200
+rect $classStepLogger.html 349,173 440,200
+rect $classMC2String.html 352,83 437,109
+rect $classvector.html 341,5 448,32

@@ -1,0 +1,13 @@
+base referer
+rect $PathNode_8h.html 104,229 195,256
+rect $MC2String_8h.html 375,155 471,181
+rect $StringUtility_8h.html 465,304 564,331
+rect $TextIterator_8h.html 509,229 608,256
+rect $UTF8Util_8h.html 632,229 717,256
+rect $config_8h.html 575,80 644,107
+rect $Types_8h.html 647,155 713,181
+rect $MC2Logging_8h.html 737,155 844,181
+rect $DeleteHelpers_8h.html 49,155 167,181
+rect $TextConversionTables_8h.html 191,155 351,181
+rect $MC2SimpleString_8h.html 868,155 1004,181
+rect $PathTypes_8h.html 304,304 400,331

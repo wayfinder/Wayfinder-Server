@@ -1,0 +1,8 @@
+base referer
+rect $InterfaceParserThread_8h.html 5,80 171,107
+rect $InterfaceParserThreadGroup_8h.html 195,80 397,107
+rect $NavHandler_8h.html 523,80 624,107
+rect $NavUserHelp_8h.html 356,5 468,32
+rect $NavMapHelp_8h.html 492,5 601,32
+rect $NavMessHelp_8h.html 625,5 740,32
+rect $NavRequestHandler_8h.html 699,80 851,107

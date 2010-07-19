@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 327,5 396,32
+rect $StringUtility_8h.html 5,155 104,181
+rect $MC2String_8h.html 177,80 273,107
+rect $WFSubscriptionConstants_8h.html 449,80 636,107
+rect $StringTable_8h.html 229,155 328,181
+rect $ImageTable_8h.html 352,155 453,181
+rect $CategoryRegionID_8h.html 313,229 455,256
+rect $NotCopyable_8h.html 711,229 820,256

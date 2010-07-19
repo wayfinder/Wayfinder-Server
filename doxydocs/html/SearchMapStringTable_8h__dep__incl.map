@@ -1,0 +1,10 @@
+base referer
+rect $SearchMap2_8h.html 207,229 316,256
+rect $SearchMapItem_8h.html 244,304 372,331
+rect $SearchComparators_8h.html 5,5 157,32
+rect $SearchNotice_8h.html 72,80 184,107
+rect $SearchResult_8h.html 340,155 452,181
+rect $SearchStruct_8h.html 73,155 183,181
+rect $WriteableStringSearch_8h.html 208,80 373,107
+rect $SearchableStringSearch_8h.html 397,80 573,107
+rect $SearchQuery_8h.html 207,155 316,181

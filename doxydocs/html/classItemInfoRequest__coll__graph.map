@@ -1,0 +1,11 @@
+base referer
+rect $classRequest.html 121,96 193,123
+rect $classRequestWithStatus.html 195,173 331,200
+rect $classLink.html 5,5 51,32
+rect $classRequestData.html 75,5 173,32
+rect $classPacketContainerTree.html 343,5 489,32
+rect $classCoordinateObject.html 328,355 453,381
+rect $classVanillaMatch.html 640,355 736,381
+rect $classSearchMatch.html 640,264 741,291
+rect $classSearchReplyData.html 760,355 885,381
+rect $classTopRegionRequest.html 195,264 328,291

@@ -1,0 +1,10 @@
+base referer
+rect $classMultiFileDBufRequesterIndexHandler.html 127,357 367,384
+rect $classDBufRequester.html 435,83 547,109
+rect $classMemoryDBufRequester.html 411,160 571,187
+rect $classNotCopyable.html 44,5 143,32
+rect $classSharedBuffer.html 43,83 144,109
+rect $classFileHandlerListener.html 139,160 275,187
+rect $classFileHandler.html 299,160 387,187
+rect $classMC2SimpleString.html 692,160 817,187
+rect $classBitBuffer.html 43,160 115,187

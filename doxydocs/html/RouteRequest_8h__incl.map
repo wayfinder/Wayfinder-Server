@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 151,5 220,32
+rect $StringTable_8h.html 24,80 123,107
+rect $Request_8h.html 52,155 135,181
+rect $RouteTypes_8h.html 159,155 263,181
+rect $ItemTypes_8h.html 287,155 380,181
+rect $RequestUserData_8h.html 335,80 474,107

@@ -1,0 +1,5 @@
+base referer
+rect $MEFerryItemInfoWidget_8h.html 5,80 179,107
+rect $MEItemInfoDialog_8h.html 187,5 325,32
+rect $MEMapArea_8h.html 203,80 309,107
+rect $GMSFerryItem_8h.html 333,80 453,107

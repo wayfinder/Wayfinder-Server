@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 86,5 155,32
+rect $NavHandler_8h.html 26,80 127,107
+rect $LangTypes_8h.html 213,155 309,181
+rect $NavUserHelp_8h.html 77,155 189,181

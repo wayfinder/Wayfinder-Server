@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 181,80 250,107
+rect $Types_8h.html 22,155 89,181
+rect $MC2Logging_8h.html 163,155 270,181
+rect $MEAbstractItemInfoWidget_8h.html 250,229 442,256
+rect $OldItem_8h.html 345,155 425,181
+rect $OldBuildingItem_8h.html 101,229 226,256

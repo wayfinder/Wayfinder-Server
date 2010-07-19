@@ -1,0 +1,4 @@
+base referer
+rect $classTilePrimitiveFeature.html 7,5 145,32
+rect $classTileFeature.html 196,5 284,32
+rect $classWritableTileFeature.html 333,5 472,32

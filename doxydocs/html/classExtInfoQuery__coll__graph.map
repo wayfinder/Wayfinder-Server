@@ -1,0 +1,6 @@
+base referer
+rect $classMC2Coordinate.html 5,83 120,109
+rect $classSearchReplyData.html 271,83 396,109
+rect $classMC2String.html 420,83 505,109
+rect $classvector.html 409,5 516,32
+rect $classExtService.html 529,83 615,109

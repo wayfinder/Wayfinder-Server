@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 376,5 445,32
+rect $SearchMapItem_8h.html 5,80 133,107
+rect $SearchMap2_8h.html 81,155 191,181
+rect $SearchMatch_8h.html 388,155 500,181
+rect $SearchMatchPoints_8h.html 392,80 541,107
+rect $MapRights_8h.html 565,80 661,107
+rect $NameUtility_8h.html 265,155 364,181
+rect $DeleteHelpers_8h.html 625,155 743,181

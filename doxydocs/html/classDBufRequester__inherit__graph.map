@@ -1,0 +1,7 @@
+base referer
+rect $classFileDBufRequester.html 45,155 179,181
+rect $classMemoryDBufRequester.html 203,155 363,181
+rect $classMultiFileDBufRequester.html 387,155 549,181
+rect $classNotCopyable.html 233,5 332,32
+rect $classParserThreadFileDBufRequester.html 5,229 219,256
+rect $classUnixMFDBufRequester.html 389,229 547,256

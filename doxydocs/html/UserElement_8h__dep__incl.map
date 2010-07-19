@@ -1,0 +1,10 @@
+base referer
+rect $UserData_8h.html 243,155 331,181
+rect $MTSender_8h.html 5,80 99,107
+rect $XMLServerUtility_8h.html 355,80 488,107
+rect $UserIDKey_8h.html 416,155 512,181
+rect $CellularPhoneModelsElement_8h.html 123,80 331,107
+rect $ParserExternalAuth_8h.html 511,5 657,32
+rect $InterfaceRequestData_8h.html 563,80 725,107
+rect $UserLicenceKey_8h.html 536,155 664,181
+rect $UserRight_8h.html 688,155 779,181

@@ -1,0 +1,4 @@
+base referer
+rect $GMSSignPost_8h.html 15,155 132,181
+rect $SignPostTable_8h.html 15,80 132,107
+rect $OldGenericMap_8h.html 11,5 136,32

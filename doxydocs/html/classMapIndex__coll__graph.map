@@ -1,0 +1,10 @@
+base referer
+rect $classWriteableMapModuleNoticeContainer.html 39,264 281,291
+rect $classMapModuleNoticeContainer.html 67,187 253,213
+rect $classItemIDTree.html 5,5 91,32
+rect $classRegionIDTree.html 109,96 211,123
+rect $classNameCollection.html 235,96 349,123
+rect $classvector.html 147,5 272,32
+rect $className.html 296,5 352,32
+rect $classMC2String.html 305,264 391,291
+rect $classvector.html 295,187 401,213

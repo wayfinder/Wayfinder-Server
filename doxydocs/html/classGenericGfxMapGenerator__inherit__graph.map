@@ -1,0 +1,5 @@
+base referer
+rect $classGfxCountryMapGenerator.html 5,229 181,256
+rect $classGfxMapGenerator.html 205,229 333,256
+rect $classMapGenerator.html 128,80 235,107
+rect $classISABThread.html 135,5 228,32

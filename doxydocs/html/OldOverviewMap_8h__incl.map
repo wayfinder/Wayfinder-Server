@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 272,5 341,32
+rect $OldGenericMap_8h.html 93,80 219,107
+rect $OldMap_8h.html 189,155 269,181
+rect $ItemTypes_8h.html 368,80 461,107
+rect $OldStreetSegmentItem_8h.html 528,80 696,107
+rect $Vector_8h.html 85,5 155,32
+rect $NationalProperties_8h.html 344,155 485,181

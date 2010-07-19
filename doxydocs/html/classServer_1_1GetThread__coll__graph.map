@@ -1,0 +1,6 @@
+base referer
+rect $classServer.html 85,264 147,291
+rect $classISABThread.html 191,96 284,123
+rect $classServer_1_1PutThread.html 161,355 292,381
+rect $classISABThreadGroup.html 172,5 303,32
+rect $classGenericServer.html 160,173 267,200

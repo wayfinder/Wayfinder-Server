@@ -1,0 +1,5 @@
+base referer
+rect $classLink.html 5,203 51,229
+rect $classLinkage.html 7,7 73,33
+rect $classHead.html 44,112 97,139
+rect $classISABMonitor.html 75,203 171,229

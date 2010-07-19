@@ -1,0 +1,3 @@
+base referer
+rect $classRouteRequestParams.html 7,5 159,32
+rect $classRouteRequestData.html 209,5 343,32

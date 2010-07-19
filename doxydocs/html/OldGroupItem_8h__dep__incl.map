@@ -1,0 +1,12 @@
+base referer
+rect $OldBuiltUpAreaItem_8h.html 16,80 165,107
+rect $GMSBuiltUpAreaItem_8h.html 5,5 165,32
+rect $OldCategoryItem_8h.html 195,80 328,107
+rect $GMSCategoryItem_8h.html 189,5 333,32
+rect $OldStreetItem_8h.html 352,80 467,107
+rect $GMSStreetItem_8h.html 357,5 483,32
+rect $OldZipAreaItem_8h.html 491,80 616,107
+rect $OldZipCodeItem_8h.html 640,80 768,107
+rect $GMSZipCodeItem_8h.html 635,5 773,32
+rect $MEGroupItemInfoWidget_8h.html 792,80 971,107
+rect $MEItemInfoDialog_8h.html 812,5 951,32

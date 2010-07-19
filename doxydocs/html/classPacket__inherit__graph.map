@@ -1,0 +1,11 @@
+base referer
+rect $classAllMapReplyPacket.html 272,5 411,32
+rect $classAllMapRequestPacket.html 264,56 419,83
+rect $classChangeMapPacket.html 275,107 408,133
+rect $classHeartBeatPacket.html 280,157 403,184
+rect $classReplyPacket.html 293,208 389,235
+rect $classRequestPacket.html 285,259 397,285
+rect $classShutdownPacket.html 281,309 401,336
+rect $classStatisticsPacket.html 284,360 399,387
+rect $classVotePacket.html 297,411 385,437
+rect $classNotCopyable.html 5,208 104,235

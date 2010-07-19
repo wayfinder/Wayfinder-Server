@@ -1,0 +1,5 @@
+base referer
+rect $classCylindricalProjection.html 5,264 147,291
+rect $classDrawingProjection.html 87,187 215,213
+rect $classPixelBox.html 101,83 173,109
+rect $classMC2BoundingBox.html 11,5 139,32

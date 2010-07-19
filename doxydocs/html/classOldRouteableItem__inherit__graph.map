@@ -1,0 +1,8 @@
+base referer
+rect $classOldBusRouteItem.html 16,155 141,181
+rect $classOldFerryItem.html 171,155 269,181
+rect $classOldStreetSegmentItem.html 299,155 456,181
+rect $classOldItem.html 187,5 253,32
+rect $classGMSBusRouteItem.html 5,229 141,256
+rect $classGMSFerryItem.html 165,229 275,256
+rect $classGMSStreetSegmentItem.html 299,229 467,256

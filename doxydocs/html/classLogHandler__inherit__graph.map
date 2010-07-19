@@ -1,0 +1,3 @@
+base referer
+rect $classStreamLogHandler.html 5,80 139,107
+rect $classSyslogLogHandler.html 163,80 293,107

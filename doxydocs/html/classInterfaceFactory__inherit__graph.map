@@ -1,0 +1,4 @@
+base referer
+rect $classHttpInterfaceFactory.html 5,80 149,107
+rect $classNavInterfaceFactory.html 173,80 315,107
+rect $classTcpInterfaceFactory.html 175,155 313,181

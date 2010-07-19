@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 245,5 315,32
+rect $GenericServer_8h.html 435,80 552,107
+rect $ParserThreadGroup_8h.html 261,80 411,107
+rect $ThreadRequestContainer_8h.html 5,80 187,107
+rect $NotCopyable_8h.html 439,5 548,32

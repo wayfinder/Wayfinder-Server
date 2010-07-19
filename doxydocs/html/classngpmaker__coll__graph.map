@@ -1,0 +1,5 @@
+base referer
+rect $classReadlineHelper.html 23,173 135,200
+rect $classReadline.html 5,83 80,109
+rect $classMC2String.html 104,83 189,109
+rect $classvector.html 93,5 200,32

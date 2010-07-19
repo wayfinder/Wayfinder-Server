@@ -1,0 +1,3 @@
+base referer
+rect $classDataBufferRW.html 7,5 113,32
+rect $classStreetNbr.html 163,5 243,32

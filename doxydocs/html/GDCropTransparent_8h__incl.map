@@ -1,0 +1,8 @@
+base referer
+rect $GDImagePtr_8h.html 65,155 172,181
+rect $MC2String_8h.html 600,155 696,181
+rect $config_8h.html 276,80 345,107
+rect $Types_8h.html 196,155 263,181
+rect $MC2Logging_8h.html 421,155 528,181
+rect $MC2Point_8h.html 287,155 377,181
+rect $AutoPtr_8h.html 79,80 156,107

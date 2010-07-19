@@ -1,0 +1,6 @@
+base referer
+rect $classVectorElement.html 5,237 115,264
+rect $classCoordinateReplyPacket.html 139,237 299,264
+rect $classReplyPacket.html 171,160 267,187
+rect $classPacket.html 188,83 249,109
+rect $classNotCopyable.html 169,5 268,32

@@ -1,0 +1,11 @@
+base referer
+rect $FilePtr_8h.html 5,304 75,331
+rect $MySQLDriver_8h.html 99,304 211,331
+rect $InfoSQL_8h.html 60,155 143,181
+rect $MySQLReplDriver_8h.html 85,229 224,256
+rect $GDImagePtr_8h.html 235,304 341,331
+rect $GDCropTransparent_8h.html 248,229 400,256
+rect $POICache_8h.html 277,155 371,181
+rect $POIOverlapDetector_8h.html 304,80 456,107
+rect $TileMapCreator_8h.html 261,5 384,32
+rect $GdkPixbufPtr_8h.html 365,304 475,331

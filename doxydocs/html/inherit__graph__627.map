@@ -1,0 +1,11 @@
+base referer
+rect $structDataBufferObject.html 7,107 129,133
+rect $classDataTable.html 179,5 408,32
+rect $classDataTable.html 199,56 388,83
+rect $classIDTranslationTable.html 229,107 357,133
+rect $classSimpleArrayObject.html 212,208 375,235
+rect $classUserRightsItemTable.html 221,157 365,184
+rect $classSelectableDataTable.html 539,5 829,32
+rect $classItemComboTable.html 456,56 912,83
+rect $classItemDataTable.html 525,107 843,133
+rect $classSimpleArray.html 5,208 131,235

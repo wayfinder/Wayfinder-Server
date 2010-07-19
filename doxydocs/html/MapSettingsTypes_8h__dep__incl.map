@@ -1,0 +1,8 @@
+base referer
+rect $LocalMapMessageRequest_8h.html 5,80 200,107
+rect $XMLParserThread_8h.html 224,80 365,107
+rect $MapSettings_8h.html 389,80 496,107
+rect $GfxTileFeatureMapProcessor_8h.html 73,5 279,32
+rect $HttpMapFunctions_8h.html 303,5 444,32
+rect $HttpUtility_8h.html 468,5 556,32
+rect $RouteMessageRequest_8h.html 580,5 751,32

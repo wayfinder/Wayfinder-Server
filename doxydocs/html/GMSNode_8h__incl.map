@@ -1,0 +1,13 @@
+base referer
+rect $OldNode_8h.html 713,229 799,256
+rect $config_8h.html 561,5 631,32
+rect $ItemTypes_8h.html 763,80 856,107
+rect $GMSLane_8h.html 903,155 996,181
+rect $GMSSignPostElm_8h.html 740,155 879,181
+rect $DataBuffer_8h.html 157,155 253,181
+rect $AlignUtility_8h.html 157,80 253,107
+rect $SharedBuffer_8h.html 277,80 387,107
+rect $OldConnection_8h.html 455,155 575,181
+rect $StringTable_8h.html 547,80 645,107
+rect $sockets_8h.html 5,80 83,107
+rect $Vector_8h.html 669,80 739,107

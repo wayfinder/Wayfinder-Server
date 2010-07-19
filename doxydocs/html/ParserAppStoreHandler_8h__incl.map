@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 223,80 292,107
+rect $Types_8h.html 23,155 89,181
+rect $MC2Logging_8h.html 113,155 220,181
+rect $ParserHandler_8h.html 204,229 321,256
+rect $ParserThreadConfig_8h.html 295,155 447,181
+rect $MC2String_8h.html 345,229 441,256
+rect $MC2Coordinate_8h.html 465,229 591,256
+rect $LangTypes_8h.html 572,155 668,181
+rect $OperationTypes_8h.html 665,229 791,256

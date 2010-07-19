@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 347,80 416,107
+rect $Types_8h.html 252,155 319,181
+rect $MC2Logging_8h.html 665,155 772,181
+rect $ItemTypes_8h.html 52,304 145,331
+rect $SearchTypes_8h.html 92,155 201,181
+rect $StringUtility_8h.html 392,304 491,331
+rect $MC2String_8h.html 444,155 540,181
+rect $TextIterator_8h.html 271,229 369,256
+rect $TextConversionTables_8h.html 695,229 855,256
+rect $UTF8Util_8h.html 585,229 671,256

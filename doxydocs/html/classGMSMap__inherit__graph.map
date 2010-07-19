@@ -1,0 +1,5 @@
+base referer
+rect $classOldMap.html 51,229 117,256
+rect $classOldGenericMap.html 27,155 141,181
+rect $classOldGenericMapHeader.html 5,80 163,107
+rect $classVectorElement.html 29,5 139,32

@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 118,5 187,32
+rect $MC2Point_8h.html 107,80 198,107
+rect $MC2String_8h.html 274,80 370,107
+rect $PixelBox_8h.html 29,155 111,181
+rect $Properties_8h.html 413,155 506,181
+rect $GDCropTransparent_8h.html 186,155 338,181

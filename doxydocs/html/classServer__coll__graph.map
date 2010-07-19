@@ -1,0 +1,4 @@
+base referer
+rect $classServer_1_1GetThread.html 5,173 136,200
+rect $classServer_1_1PutThread.html 181,173 312,200
+rect $classGenericServer.html 105,5 212,32

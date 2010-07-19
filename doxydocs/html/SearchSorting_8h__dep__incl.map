@@ -1,0 +1,12 @@
+base referer
+rect $SearchMatch_8h.html 280,304 392,331
+rect $TalkerUtility_8h.html 5,229 104,256
+rect $SearchResult_8h.html 128,229 240,256
+rect $NavSearchHandler_8h.html 264,229 408,256
+rect $XMLSMSCommon_8h.html 432,229 576,256
+rect $SearchReplyPacket_8h.html 600,229 749,256
+rect $SearchPacket_8h.html 617,155 732,181
+rect $MTSender_8h.html 555,5 648,32
+rect $ServerProximityPackets_8h.html 656,80 829,107
+rect $HttpFunctionHandler_8h.html 672,5 827,32
+rect $MTReceiver_8h.html 851,5 955,32

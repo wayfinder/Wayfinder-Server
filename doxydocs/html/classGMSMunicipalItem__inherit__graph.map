@@ -1,0 +1,4 @@
+base referer
+rect $classOldMunicipalItem.html 5,80 128,107
+rect $classOldItem.html 33,5 100,32
+rect $classGMSItem.html 152,80 229,107

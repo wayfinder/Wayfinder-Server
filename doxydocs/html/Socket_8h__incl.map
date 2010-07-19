@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 400,80 469,107
+rect $Types_8h.html 507,155 573,181
+rect $MC2Logging_8h.html 625,155 732,181
+rect $Selectable_8h.html 387,155 483,181
+rect $Readable_8h.html 107,155 197,181
+rect $Writeable_8h.html 221,155 312,181
+rect $sockets_8h.html 5,155 83,181

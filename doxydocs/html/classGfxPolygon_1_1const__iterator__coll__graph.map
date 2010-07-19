@@ -1,0 +1,4 @@
+base referer
+rect $classMC2Coordinate.html 5,96 120,123
+rect $classGfxPolygon.html 271,96 361,123
+rect $classGfxCoordinates.html 259,5 373,32

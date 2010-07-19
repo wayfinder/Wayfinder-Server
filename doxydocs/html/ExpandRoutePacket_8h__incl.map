@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 153,5 223,32
+rect $Packet_8h.html 27,80 99,107
+rect $ItemTypes_8h.html 400,80 493,107
+rect $TrafficDataTypes_8h.html 123,80 253,107
+rect $StringTable_8h.html 277,80 376,107

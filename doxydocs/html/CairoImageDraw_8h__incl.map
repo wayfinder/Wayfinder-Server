@@ -1,0 +1,4 @@
+base referer
+rect $ImageDraw_8h.html 100,80 199,107
+rect $MC2BoundingBox_8h.html 5,5 144,32
+rect $DrawSettings_8h.html 173,5 285,32

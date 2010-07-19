@@ -1,0 +1,4 @@
+base referer
+rect $classInterfaceRequestData.html 5,31 157,57
+rect $classNavRequestData.html 205,5 328,32
+rect $classXMLAuthData.html 213,56 320,83

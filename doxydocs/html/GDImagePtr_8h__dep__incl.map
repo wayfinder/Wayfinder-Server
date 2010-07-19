@@ -1,0 +1,5 @@
+base referer
+rect $GDCropTransparent_8h.html 5,229 157,256
+rect $POICache_8h.html 35,155 128,181
+rect $POIOverlapDetector_8h.html 63,80 215,107
+rect $TileMapCreator_8h.html 20,5 143,32

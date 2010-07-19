@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 608,80 678,107
+rect $Types_8h.html 610,155 676,181
+rect $MC2Logging_8h.html 835,155 942,181
+rect $GenericServer_8h.html 403,304 520,331
+rect $ISABThread_8h.html 199,155 303,181
+rect $RequestHandler_8h.html 480,229 608,256
+rect $PushServiceHandler_8h.html 302,229 456,256
+rect $Component_8h.html 43,229 144,256
+rect $ServerTypes_8h.html 479,155 586,181
+rect $NotCopyable_8h.html 168,229 278,256

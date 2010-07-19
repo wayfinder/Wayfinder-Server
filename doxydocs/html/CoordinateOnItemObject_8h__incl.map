@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 272,5 341,32
+rect $CoordinateOnItemPacket_8h.html 23,80 204,107
+rect $PacketContainerTree_8h.html 228,80 385,107
+rect $Request_8h.html 304,155 387,181
+rect $MC2BoundingBox_8h.html 460,80 599,107
+rect $Vector_8h.html 544,155 613,181

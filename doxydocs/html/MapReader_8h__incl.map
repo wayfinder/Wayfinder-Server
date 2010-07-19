@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 197,5 267,32
+rect $StandardReader_8h.html 28,80 159,107
+rect $StringTable_8h.html 183,80 281,107
+rect $ItemTypes_8h.html 305,80 399,107
+rect $MapModuleNoticeContainer_8h.html 423,80 620,107

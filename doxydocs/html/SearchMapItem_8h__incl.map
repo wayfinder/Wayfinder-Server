@@ -1,0 +1,8 @@
+base referer
+rect $SearchMap2_8h.html 368,229 477,256
+rect $config_8h.html 388,5 457,32
+rect $MC2Coordinate_8h.html 187,80 312,107
+rect $IDPairVector_8h.html 5,80 112,107
+rect $ItemTypes_8h.html 656,80 749,107
+rect $SearchMapRegionTable_8h.html 336,80 509,107
+rect $StringUtility_8h.html 533,80 632,107

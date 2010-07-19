@@ -1,0 +1,8 @@
+base referer
+rect $classImageDraw.html 56,5 147,32
+rect $classDrawingProjection.html 37,56 165,83
+rect $classGDImageDraw_1_1BrushNotice.html 7,107 196,133
+rect $classGDImageDraw_1_1FaceNotice.html 9,157 193,184
+rect $classISABMonitor.html 53,239 149,265
+rect $classGDImageDraw_1_1ImageNotice.html 5,289 197,316
+rect $classBinarySearchTree.html 37,363 165,389

@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 86,5 155,32
+rect $MEAbstractItemInfoWidget_8h.html 24,80 216,107
+rect $OldCartographicItem_8h.html 240,80 395,107

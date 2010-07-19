@@ -1,0 +1,3 @@
+base referer
+rect $classPacketSenderReceiver.html 5,5 163,32
+rect $classModulePacketSenderReceiver.html 212,5 412,32

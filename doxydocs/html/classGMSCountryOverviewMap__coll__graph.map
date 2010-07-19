@@ -1,0 +1,4 @@
+base referer
+rect $classOldCountryOverviewMap.html 32,96 203,123
+rect $classOldGenericMap.html 5,5 120,32
+rect $classStack.html 144,5 200,32

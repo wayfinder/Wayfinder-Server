@@ -1,0 +1,6 @@
+base referer
+rect $BuiltUpAreaItem_8h.html 5,5 136,32
+rect $CategoryItem_8h.html 160,5 272,32
+rect $StreetItem_8h.html 296,5 389,32
+rect $ZipAreaItem_8h.html 413,5 517,32
+rect $ZipCodeItem_8h.html 541,5 651,32

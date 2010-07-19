@@ -1,0 +1,4 @@
+base referer
+rect $classTrafficIPC.html 5,83 85,109
+rect $classMapRequester.html 109,83 219,109
+rect $classRequester.html 123,5 205,32

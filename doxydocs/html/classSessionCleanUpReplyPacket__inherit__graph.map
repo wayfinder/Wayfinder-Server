@@ -1,0 +1,5 @@
+base referer
+rect $classUserReplyPacket.html 41,229 164,256
+rect $classReplyPacket.html 55,155 151,181
+rect $classPacket.html 72,80 133,107
+rect $classNotCopyable.html 53,5 152,32

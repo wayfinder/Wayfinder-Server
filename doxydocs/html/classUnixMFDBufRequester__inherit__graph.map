@@ -1,0 +1,5 @@
+base referer
+rect $classMultiFileDBufRequester.html 53,155 216,181
+rect $classDBufRequester.html 5,80 117,107
+rect $classNotCopyable.html 12,5 111,32
+rect $classFileHandlerListener.html 141,80 277,107

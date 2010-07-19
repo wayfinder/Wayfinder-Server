@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 300,80 369,107
+rect $Types_8h.html 8,155 75,181
+rect $MC2Logging_8h.html 488,155 595,181
+rect $NParamBlock_8h.html 199,379 313,405
+rect $NParam_8h.html 427,304 509,331
+rect $MC2Coordinate_8h.html 200,229 325,256
+rect $MC2String_8h.html 779,155 875,181
+rect $UTF8Util_8h.html 603,229 688,256
+rect $MC2SimpleString_8h.html 619,155 755,181
+rect $NParamUtility_8h.html 200,304 312,331

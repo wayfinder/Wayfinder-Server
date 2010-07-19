@@ -1,0 +1,13 @@
+base referer
+rect $config_8h.html 5,272 75,298
+rect $ParserHandler_8h.html 324,69 441,96
+rect $MC2String_8h.html 145,170 241,197
+rect $RouteID_8h.html 341,272 424,298
+rect $RouteTypes_8h.html 141,322 245,349
+rect $ItemTypes_8h.html 147,373 240,400
+rect $StringTable_8h.html 333,120 432,146
+rect $MC2BoundingBox_8h.html 313,424 452,450
+rect $MC2Coordinate_8h.html 131,474 256,501
+rect $ImageDrawConfig_8h.html 124,525 263,552
+rect $IPnPort_8h.html 344,221 421,248
+rect $OperationTypes_8h.html 320,576 445,602

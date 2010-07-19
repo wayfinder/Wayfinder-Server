@@ -1,0 +1,4 @@
+base referer
+rect $classMapHashTable.html 87,80 196,107
+rect $classLocationHashTable.html 5,5 139,32
+rect $classNotCopyable.html 163,5 261,32

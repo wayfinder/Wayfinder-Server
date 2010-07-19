@@ -1,0 +1,4 @@
+base referer
+rect $classGfxTileFeatureMapProcessor.html 5,5 200,32
+rect $classGenericMap.html 224,5 317,32
+rect $classGfxFeatureMapProcessor.html 341,5 515,32

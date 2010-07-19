@@ -1,0 +1,4 @@
+base referer
+rect $MEFeatureIdentification_8h.html 5,5 179,32
+rect $MEShowExtradataWindow_8h.html 203,5 392,32
+rect $ExtraDataReader_8h.html 416,5 552,32

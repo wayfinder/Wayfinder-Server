@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 393,80 463,107
+rect $Types_8h.html 527,155 593,181
+rect $MC2Logging_8h.html 637,155 744,181
+rect $MC2Point_8h.html 125,229 216,256
+rect $ClockWise_8h.html 5,229 101,256
+rect $MC2Coordinate_8h.html 189,155 315,181
+rect $GnuPlotDump_8h.html 240,229 357,256
+rect $InsideUtil_8h.html 381,229 469,256

@@ -1,0 +1,6 @@
+base referer
+rect $classLink.html 5,203 51,229
+rect $classLinkage.html 7,7 73,33
+rect $classHead.html 44,112 97,139
+rect $classNotCopyable.html 75,203 173,229
+rect $structItemTypes_1_1lmdescription__t.html 197,203 376,229

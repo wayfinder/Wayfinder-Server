@@ -1,0 +1,12 @@
+base referer
+rect $classServerTileMapFormatDesc.html 251,277 432,304
+rect $classTileMapFormatDesc.html 271,187 412,213
+rect $classNotCopyable.html 5,96 104,123
+rect $classSharedBuffer.html 83,187 184,213
+rect $classCopyrightHolder.html 128,96 245,123
+rect $classMC2SimpleString.html 124,5 249,32
+rect $classTileMapLayerInfoVector.html 269,96 432,123
+rect $classTileArgContainer.html 456,96 576,123
+rect $classTileMapCoords.html 560,187 672,213
+rect $classvector.html 600,96 765,123
+rect $classBitBuffer.html 147,277 219,304

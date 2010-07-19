@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 24,5 93,32
+rect $Packet_8h.html 23,80 95,107
+rect $LangTypes_8h.html 119,80 215,107
+rect $ScreenSize_8h.html 239,80 340,107

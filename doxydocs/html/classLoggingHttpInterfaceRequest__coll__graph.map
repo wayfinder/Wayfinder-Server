@@ -1,0 +1,12 @@
+base referer
+rect $classHttpInterfaceRequest.html 341,352 488,379
+rect $classSocketInterfaceRequest.html 708,247 871,273
+rect $classSelectableInterfaceRequest.html 572,96 759,123
+rect $classTCPSocket.html 763,5 851,32
+rect $classSocketBuffer.html 899,96 997,123
+rect $classTimedOutSocketInfo.html 5,247 149,273
+rect $classIPnPort.html 583,247 649,273
+rect $classHttpBody.html 331,247 408,273
+rect $classMC2String.html 197,96 283,123
+rect $classHttpHeader.html 432,247 523,273
+rect $structHttpHeader_1_1methodTable__t.html 364,96 548,123

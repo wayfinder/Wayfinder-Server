@@ -1,0 +1,4 @@
+base referer
+rect $classGfxCoordinates.html 5,31 120,57
+rect $classGfxCoordinates16.html 169,5 297,32
+rect $classGfxCoordinates32.html 169,56 297,83

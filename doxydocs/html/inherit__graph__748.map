@@ -1,0 +1,3 @@
+base referer
+rect $classTopRegionMatch.html 5,5 128,32
+rect $classMapTopRegion.html 176,5 288,32

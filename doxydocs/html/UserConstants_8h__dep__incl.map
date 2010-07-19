@@ -1,0 +1,16 @@
+base referer
+rect $SMSStringUtility_8h.html 55,229 183,256
+rect $ExpandStringItem_8h.html 29,155 168,181
+rect $ExpandStringItemVector_8h.html 5,80 181,107
+rect $RouteMessageRequest_8h.html 216,229 387,256
+rect $SMSFormatter_8h.html 411,229 528,256
+rect $XMLServerUtility_8h.html 555,80 688,107
+rect $UserData_8h.html 491,155 579,181
+rect $UserIDKey_8h.html 653,155 749,181
+rect $UserElement_8h.html 704,229 813,256
+rect $MTSender_8h.html 205,80 299,107
+rect $CellularPhoneModelsElement_8h.html 323,80 531,107
+rect $ParserExternalAuth_8h.html 711,5 857,32
+rect $InterfaceRequestData_8h.html 763,80 925,107
+rect $UserLicenceKey_8h.html 773,155 901,181
+rect $UserRight_8h.html 925,155 1016,181

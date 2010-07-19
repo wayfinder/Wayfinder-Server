@@ -1,0 +1,4 @@
+base referer
+rect $classModule.html 76,80 140,107
+rect $classComponent.html 5,5 96,32
+rect $classISABThread.html 120,5 213,32

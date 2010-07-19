@@ -1,0 +1,6 @@
+base referer
+rect $Types_8h.html 463,80 529,107
+rect $config_8h.html 285,155 355,181
+rect $MC2Logging_8h.html 179,229 285,256
+rect $MC2String_8h.html 360,229 456,256
+rect $NotCopyable_8h.html 45,229 155,256

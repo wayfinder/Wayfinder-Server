@@ -1,0 +1,4 @@
+base referer
+rect $classOldPedestrianAreaItem.html 5,80 165,107
+rect $classOldItem.html 52,5 119,32
+rect $classGMSItem.html 189,80 267,107

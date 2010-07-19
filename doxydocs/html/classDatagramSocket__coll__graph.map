@@ -1,0 +1,4 @@
+base referer
+rect $classSocket.html 61,155 123,181
+rect $classSelectable.html 51,80 133,107
+rect $classTemplateSelectable.html 5,5 179,32

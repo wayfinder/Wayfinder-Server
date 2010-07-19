@@ -1,0 +1,7 @@
+base referer
+rect $classOldConnection.html 59,96 168,123
+rect $classMEMapArea.html 201,96 297,123
+rect $classOldGenericMap.html 5,5 120,32
+rect $classMEItemLayer.html 144,5 245,32
+rect $classGDFRef.html 269,5 339,32
+rect $classMC2BoundingBox.html 363,5 491,32

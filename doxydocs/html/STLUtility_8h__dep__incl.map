@@ -1,0 +1,7 @@
+base referer
+rect $PreCacheRouteData_8h.html 5,80 160,107
+rect $AllocatorTemplate_8h.html 235,80 373,107
+rect $ItemAllocator_8h.html 196,5 305,32
+rect $IDTranslationTable_8h.html 397,80 539,107
+rect $DisturbancePacketUtility_8h.html 563,80 739,107
+rect $ItemComboLoader_8h.html 763,80 904,107

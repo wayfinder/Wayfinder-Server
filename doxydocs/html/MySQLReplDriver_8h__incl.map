@@ -1,0 +1,8 @@
+base referer
+rect $MySQLDriver_8h.html 127,304 239,331
+rect $config_8h.html 219,80 288,107
+rect $Types_8h.html 303,155 369,181
+rect $MC2Logging_8h.html 473,155 580,181
+rect $SQLDriver_8h.html 305,229 399,256
+rect $MC2String_8h.html 132,155 228,181
+rect $AutoPtr_8h.html 23,229 100,256

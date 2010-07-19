@@ -1,0 +1,4 @@
+base referer
+rect $OldItemNames_8h.html 21,80 144,107
+rect $MC2String_8h.html 34,5 130,32
+rect $StringUtility_8h.html 168,80 266,107

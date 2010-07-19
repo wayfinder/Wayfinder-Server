@@ -1,0 +1,4 @@
+base referer
+rect $classDBufRequester.html 5,83 117,109
+rect $classNotCopyable.html 12,5 111,32
+rect $classMC2SimpleString.html 284,83 409,109

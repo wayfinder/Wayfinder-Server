@@ -1,0 +1,6 @@
+base referer
+rect $DataBuffer_8h.html 5,80 101,107
+rect $Packet_8h.html 176,80 248,107
+rect $PacketOperator_8h.html 99,5 224,32
+rect $ItemDataTable_8h.html 323,80 440,107
+rect $ItemComboTable_8h.html 293,5 424,32

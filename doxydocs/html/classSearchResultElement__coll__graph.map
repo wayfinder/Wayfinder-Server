@@ -1,0 +1,7 @@
+base referer
+rect $classSearchMatchPoints.html 76,96 212,123
+rect $classSearchMapItem.html 236,96 351,123
+rect $classMC2Coordinate.html 5,5 120,32
+rect $classIDPair__t.html 271,5 340,32
+rect $classMapRights.html 375,96 460,123
+rect $classPacketRW.html 376,5 459,32

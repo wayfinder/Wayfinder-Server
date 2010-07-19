@@ -1,0 +1,12 @@
+base referer
+rect $RouteRequest_8h.html 149,155 267,181
+rect $DATEXRequest_8h.html 5,80 131,107
+rect $UserStorage_8h.html 155,80 261,107
+rect $NavMessage_8h.html 397,155 507,181
+rect $isabBoxNavMessage_8h.html 285,80 443,107
+rect $isabBoxRouteMessage_8h.html 357,5 525,32
+rect $NavRouteMessage_8h.html 467,80 613,107
+rect $NavMessageFactory_8h.html 637,80 792,107
+rect $isabBoxMessageFactory_8h.html 625,5 804,32
+rect $NavUtil_8h.html 531,155 605,181
+rect $ParserDebitHandler_8h.html 629,155 779,181

@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 128,5 198,32
+rect $StringTable_8h.html 28,155 127,181
+rect $MC2String_8h.html 115,80 211,107
+rect $ImageDrawConfig_8h.html 202,155 340,181
+rect $MapSettings_8h.html 310,80 416,107
+rect $Vector_8h.html 415,155 484,181

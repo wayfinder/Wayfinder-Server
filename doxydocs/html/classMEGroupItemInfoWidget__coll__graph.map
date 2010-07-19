@@ -1,0 +1,10 @@
+base referer
+rect $classMEAbstractItemInfoWidget.html 5,459 187,485
+rect $classOldItem.html 85,187 152,213
+rect $classOldGenericMap.html 167,277 281,304
+rect $classGfxDataFull.html 179,96 269,123
+rect $classMC2BoundingBox.html 228,5 356,32
+rect $classMEMapArea.html 289,368 385,395
+rect $classMEItemLayer.html 375,277 476,304
+rect $classGDFRef.html 500,277 569,304
+rect $classMEGroupItemInfoWidget_1_1Columns.html 211,459 437,485

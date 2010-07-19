@@ -1,0 +1,5 @@
+base referer
+rect $classCoordArg.html 5,80 83,107
+rect $classCoordsArg.html 107,80 192,107
+rect $classSimpleArg.html 216,80 299,107
+rect $classStringArg.html 323,80 400,107

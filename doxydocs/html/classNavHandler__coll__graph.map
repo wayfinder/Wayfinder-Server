@@ -1,0 +1,8 @@
+base referer
+rect $classNavParserThreadGroup.html 391,109 553,136
+rect $classInterfaceParserThreadGroup.html 5,5 197,32
+rect $classSearchNavLatestNewsData.html 221,5 405,32
+rect $classISABMutex.html 429,5 517,32
+rect $classNavClientVersionStorage.html 548,5 719,32
+rect $classInterfaceParserThread.html 647,109 801,136
+rect $classParserThread.html 743,5 844,32

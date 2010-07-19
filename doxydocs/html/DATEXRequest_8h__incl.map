@@ -1,0 +1,16 @@
+base referer
+rect $config_8h.html 113,252 183,279
+rect $Request_8h.html 257,75 340,102
+rect $StreetSegmentItemPacket_8h.html 416,227 605,254
+rect $TrafficDataTypes_8h.html 233,379 364,406
+rect $MC2String_8h.html 251,531 347,558
+rect $AddDisturbancePacket_8h.html 427,278 595,304
+rect $TopRegionPacket_8h.html 443,632 579,659
+rect $TopRegionMatch_8h.html 232,734 365,760
+rect $TrafficSituation_8h.html 451,379 571,406
+rect $RouteRequest_8h.html 452,126 569,152
+rect $GenericServer_8h.html 240,24 357,51
+rect $GetTMCCoordinatePacket_8h.html 417,582 604,608
+rect $RemoveDisturbancePacket_8h.html 415,430 607,456
+rect $IDTranslationPacket_8h.html 436,683 585,710
+rect $ExpandItemID_8h.html 452,784 569,811

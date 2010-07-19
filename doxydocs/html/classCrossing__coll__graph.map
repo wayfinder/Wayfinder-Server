@@ -1,0 +1,5 @@
+base referer
+rect $classOldNode.html 47,96 121,123
+rect $classOldConnection.html 5,5 115,32
+rect $classOldMap.html 157,96 224,123
+rect $classOldGenericMap.html 147,5 261,32

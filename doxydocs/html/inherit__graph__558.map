@@ -1,0 +1,4 @@
+base referer
+rect $classRMSubRoute.html 5,5 107,32
+rect $classCompleteRMSubRoute.html 156,5 313,32
+rect $classCompleteProximityRMSubRoute.html 363,5 576,32

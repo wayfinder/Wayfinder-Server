@@ -1,0 +1,10 @@
+base referer
+rect $classRequest.html 385,44 457,71
+rect $classNotCopyable.html 16,112 115,139
+rect $classClientSetting.html 373,95 469,121
+rect $classMimeMessage.html 367,667 476,693
+rect $classPacketContainer.html 5,501 125,528
+rect $classGfxFeatureMapImageRequest.html 321,435 521,461
+rect $classUserItem.html 28,391 103,417
+rect $classMapSettings.html 17,573 113,600
+rect $classMC2String.html 23,295 108,321

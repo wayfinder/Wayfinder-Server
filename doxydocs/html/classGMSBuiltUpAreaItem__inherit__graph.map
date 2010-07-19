@@ -1,0 +1,5 @@
+base referer
+rect $classOldBuiltUpAreaItem.html 5,155 144,181
+rect $classOldGroupItem.html 23,80 127,107
+rect $classOldItem.html 41,5 108,32
+rect $classGMSItem.html 168,155 245,181

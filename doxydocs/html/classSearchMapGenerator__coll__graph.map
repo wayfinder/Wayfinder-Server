@@ -1,0 +1,11 @@
+base referer
+rect $classMapGenerator.html 173,187 280,213
+rect $classISABThread.html 5,96 99,123
+rect $classMapHandler.html 123,96 216,123
+rect $classTCPSocket.html 240,96 328,123
+rect $classSearchUnitBuilder.html 637,96 765,123
+rect $classWriteableSearchMapStringTable.html 799,5 1012,32
+rect $classSearchMap2.html 461,5 557,32
+rect $classSearchUnit.html 393,187 481,213
+rect $classMultiStringSearch.html 485,96 613,123
+rect $classGetAdditionalPOIInfo.html 628,5 775,32

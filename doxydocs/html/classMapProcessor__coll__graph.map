@@ -1,0 +1,9 @@
+base referer
+rect $classMapHandlingProcessor.html 107,200 267,227
+rect $classProcessor.html 155,109 237,136
+rect $classMapSafeVector.html 5,5 117,32
+rect $classMC2String.html 163,5 248,32
+rect $classGetAdditionalPOIInfo.html 291,200 437,227
+rect $classCharEncSQLConn.html 299,109 429,136
+rect $classSQLConnection.html 299,5 413,32
+rect $classCharEncoding.html 437,5 544,32

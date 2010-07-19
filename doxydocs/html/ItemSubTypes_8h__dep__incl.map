@@ -1,0 +1,9 @@
+base referer
+rect $OldCartographicItem_8h.html 240,80 395,107
+rect $MECartographicItemInfoWidget_8h.html 5,5 224,32
+rect $GMSCartographicItem_8h.html 248,5 413,32
+rect $OldIndividualBuildingItem_8h.html 469,80 651,107
+rect $MEIndividualBuildingItemInfoWidget_8h.html 437,5 683,32
+rect $GMSIndividualBuildingItem_8h.html 707,5 899,32
+rect $CartographicItem_8h.html 675,80 811,107
+rect $IndividualBuildingItem_8h.html 835,80 997,107

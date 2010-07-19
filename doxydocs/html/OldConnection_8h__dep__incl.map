@@ -1,0 +1,9 @@
+base referer
+rect $OldGenericMap_8h.html 195,155 320,181
+rect $OldExternalConnections_8h.html 5,80 181,107
+rect $MEEditSignPostDialog_8h.html 205,80 371,107
+rect $MESignPostInfoDialog_8h.html 265,5 431,32
+rect $METurnRestrictionsDialog_8h.html 445,155 632,181
+rect $Crossing_8h.html 669,80 755,107
+rect $GMSNode_8h.html 707,155 803,181
+rect $SetTurnDescriptions_8h.html 827,155 979,181

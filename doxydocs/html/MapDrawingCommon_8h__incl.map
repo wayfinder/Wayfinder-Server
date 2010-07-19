@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 72,5 141,32
+rect $GfxFeature_8h.html 57,80 156,107
+rect $DrawSettings_8h.html 123,155 235,181

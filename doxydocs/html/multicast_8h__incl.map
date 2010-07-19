@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 148,80 217,107
+rect $Types_8h.html 8,155 75,181
+rect $MC2Logging_8h.html 407,155 513,181
+rect $Properties_8h.html 387,229 480,256
+rect $MC2String_8h.html 284,155 380,181
+rect $ModuleTypes_8h.html 149,229 261,256
+rect $sockets_8h.html 285,229 363,256

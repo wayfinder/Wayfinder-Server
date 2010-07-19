@@ -1,0 +1,14 @@
+base referer
+rect $classRequest.html 412,44 484,71
+rect $classNotCopyable.html 24,140 123,167
+rect $classExpandStringItem.html 384,247 512,273
+rect $classCopyrightHandler.html 385,145 511,172
+rect $classExpandRouteReplyPacket.html 360,196 536,223
+rect $classPacketContainer.html 13,308 133,335
+rect $classGfxFeatureMapImageRequest.html 348,443 548,469
+rect $classRouteReplyPacket.html 8,401 139,428
+rect $classUserItem.html 36,465 111,492
+rect $classTopRegionRequest.html 7,539 140,565
+rect $classMapSettings.html 25,660 121,687
+rect $structMapSettingsTypes_1_1ImageSettings.html 336,624 560,651
+rect $classExpandItemID.html 395,675 501,701

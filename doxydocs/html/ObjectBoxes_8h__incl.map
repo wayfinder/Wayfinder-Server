@@ -1,0 +1,10 @@
+base referer
+rect $MC2BoundingBox_8h.html 331,229 469,256
+rect $PixelBox_8h.html 220,304 303,331
+rect $config_8h.html 436,80 505,107
+rect $Types_8h.html 568,155 635,181
+rect $MC2Logging_8h.html 679,155 785,181
+rect $MC2Coordinate_8h.html 419,155 544,181
+rect $MC2Point_8h.html 216,229 307,256
+rect $MapPlotterConfig_8h.html 5,155 141,181
+rect $MapPlotterTypes_8h.html 9,229 140,256

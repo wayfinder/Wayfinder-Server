@@ -1,0 +1,4 @@
+base referer
+rect $classTileFeatureArg.html 5,83 115,109
+rect $classTileMapCoord.html 139,83 243,109
+rect $classMC2Coordinate.html 133,5 248,32

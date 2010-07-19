@@ -1,0 +1,4 @@
+base referer
+rect $classTileMapQuery.html 17,187 121,213
+rect $classSharedBuffer.html 19,83 120,109
+rect $classNotCopyable.html 20,5 119,32

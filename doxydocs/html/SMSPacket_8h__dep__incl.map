@@ -1,0 +1,12 @@
+base referer
+rect $SMSTalker_8h.html 252,155 348,181
+rect $CIMDSMSTalker_8h.html 455,5 585,32
+rect $SMSProcessor_8h.html 363,80 483,107
+rect $SMSForwardThread_8h.html 372,155 524,181
+rect $DummySMSTalker_8h.html 289,5 431,32
+rect $HayesSMSTalker_8h.html 155,80 288,107
+rect $GM12SMSTalker_8h.html 135,5 265,32
+rect $XMLSMSTalker_8h.html 5,80 131,107
+rect $CIMDUtil_8h.html 548,155 633,181
+rect $SMSSendRequest_8h.html 657,155 799,181
+rect $WayfinderSMSRequest_8h.html 643,80 813,107

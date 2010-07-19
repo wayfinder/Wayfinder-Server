@@ -1,0 +1,7 @@
+base referer
+rect $UserRightsItemTable_8h.html 5,80 163,107
+rect $OldGenericMap_8h.html 21,5 147,32
+rect $GenericMap_8h.html 191,5 295,32
+rect $SelectableDataTable_8h.html 187,80 341,107
+rect $ItemComboTable_8h.html 199,155 329,181
+rect $VectorIndexTable_8h.html 365,80 501,107

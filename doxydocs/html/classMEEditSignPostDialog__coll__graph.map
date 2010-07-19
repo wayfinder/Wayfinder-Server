@@ -1,0 +1,7 @@
+base referer
+rect $classMESignPostInfoDialog.html 56,277 211,304
+rect $classMELogCommentInterfaceBox.html 164,96 361,123
+rect $classOldNode.html 637,96 712,123
+rect $classOldConnection.html 475,5 584,32
+rect $classMEMapArea.html 44,96 140,123
+rect $classMC2String.html 385,96 471,123

@@ -1,0 +1,9 @@
+base referer
+rect $DataBuffer_8h.html 5,81 101,108
+rect $GMSNode_8h.html 159,107 255,133
+rect $GMSGfxData_8h.html 151,157 263,184
+rect $GMSItem_8h.html 163,5 251,32
+rect $OldGenericMap_8h.html 335,208 460,235
+rect $OldStreetSegmentItem_8h.html 313,309 481,336
+rect $StringUtility_8h.html 348,360 447,387
+rect $AllocatorTemplate_8h.html 328,512 467,539

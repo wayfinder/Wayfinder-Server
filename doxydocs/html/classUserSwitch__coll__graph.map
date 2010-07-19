@@ -1,0 +1,4 @@
+base referer
+rect $classUserItem.html 5,5 80,32
+rect $classParserThread.html 104,97 205,124
+rect $classClientSetting.html 119,5 215,32

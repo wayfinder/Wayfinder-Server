@@ -1,0 +1,11 @@
+base referer
+rect $CommunicationReader_8h.html 5,5 173,32
+rect $EmailReader_8h.html 35,56 144,83
+rect $ExtServiceReader_8h.html 20,107 159,133
+rect $InfoReader_8h.html 40,157 139,184
+rect $MapReader_8h.html 39,208 140,235
+rect $RouteReader_8h.html 35,259 144,285
+rect $SearchReader_8h.html 31,309 148,336
+rect $SMSReader_8h.html 37,360 141,387
+rect $TileReader_8h.html 41,411 137,437
+rect $UserReader_8h.html 37,461 141,488

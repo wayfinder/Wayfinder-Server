@@ -1,0 +1,12 @@
+base referer
+rect $PacketQueue_8h.html 193,229 305,256
+rect $JobCourier_8h.html 37,155 133,181
+rect $ThreadedJobCourier_8h.html 5,80 160,107
+rect $DummyCourier_8h.html 23,5 143,32
+rect $JobThread_8h.html 340,155 436,181
+rect $Fifo_8h.html 349,229 405,256
+rect $SMSForwardThread_8h.html 164,155 316,181
+rect $SMSProcessor_8h.html 184,80 304,107
+rect $CIMDSMSTalker_8h.html 172,5 303,32
+rect $DummySMSTalker_8h.html 327,5 468,32
+rect $UserProcessor_8h.html 429,229 549,256

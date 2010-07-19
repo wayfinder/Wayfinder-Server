@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 5,75 75,102
+rect $OldGenericMap_8h.html 124,25 249,51
+rect $StringUtility_8h.html 137,75 236,102
+rect $MEGdkColors_8h.html 327,126 441,153
+rect $MEDrawSettingsDialog_8h.html 299,177 469,203

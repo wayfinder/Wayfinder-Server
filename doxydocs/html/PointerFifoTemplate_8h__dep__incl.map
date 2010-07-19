@@ -1,0 +1,10 @@
+base referer
+rect $ProviderPrioScheduler_8h.html 232,5 397,32
+rect $MapSafeVector_8h.html 253,56 376,83
+rect $PacketReaderThread_8h.html 236,107 393,133
+rect $StandardReader_8h.html 24,171 155,197
+rect $NetPacketQueue_8h.html 248,208 381,235
+rect $ParserThreadGroup_8h.html 240,309 389,336
+rect $PreCacheTileMapHandler_8h.html 223,360 407,387
+rect $PacketSenderReceiver_8h.html 5,247 173,273
+rect $QueuedPacketReceiver_8h.html 229,411 400,437

@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 266,5 335,32
+rect $InterfaceParserThread_8h.html 23,80 188,107
+rect $HttpParserThreadConfig_8h.html 212,80 388,107
+rect $DrawingProjection_8h.html 412,80 554,107
+rect $TimeUtility_8h.html 578,80 671,107
+rect $NotCopyable_8h.html 695,80 804,107

@@ -1,0 +1,6 @@
+base referer
+rect $InterfaceParserThread_8h.html 5,5 171,32
+rect $ParserThread_8h.html 105,80 220,107
+rect $ThreadRequestContainer_8h.html 113,155 295,181
+rect $ParserThreadGroup_8h.html 225,5 375,32
+rect $ParserHandler_8h.html 369,155 487,181

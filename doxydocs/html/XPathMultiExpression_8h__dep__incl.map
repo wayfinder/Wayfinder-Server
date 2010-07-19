@@ -1,0 +1,8 @@
+base referer
+rect $ProxyAssigner_8h.html 5,80 123,107
+rect $TalkerUtility_8h.html 111,5 209,32
+rect $XPathAssigner_8h.html 197,80 317,107
+rect $XPathSubAssigner_8h.html 341,80 485,107
+rect $DatexIIStructs_8h.html 233,5 351,32
+rect $XPathMatchHandler_8h.html 509,80 661,107
+rect $QypeHandler_8h.html 531,5 640,32

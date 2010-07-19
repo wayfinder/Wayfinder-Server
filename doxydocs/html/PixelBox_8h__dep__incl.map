@@ -1,0 +1,6 @@
+base referer
+rect $TileFeature_8h.html 5,80 104,107
+rect $GDImageDraw_8h.html 135,5 255,32
+rect $DrawingProjection_8h.html 179,80 320,107
+rect $ObjectBoxes_8h.html 344,80 451,107
+rect $POICache_8h.html 475,80 568,107

@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 457,80 527,107
+rect $Types_8h.html 459,155 525,181
+rect $MC2Logging_8h.html 176,155 283,181
+rect $MC2String_8h.html 5,155 101,181
+rect $OldItem_8h.html 567,304 647,331
+rect $ArrayTools_8h.html 688,155 784,181
+rect $ItemTypes_8h.html 808,155 901,181
+rect $NameUtility_8h.html 601,229 700,256
+rect $GMSGfxData_8h.html 412,229 524,256

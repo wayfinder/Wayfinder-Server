@@ -1,0 +1,4 @@
+base referer
+rect $classOldParkItem.html 5,80 101,107
+rect $classOldItem.html 20,5 87,32
+rect $classGMSItem.html 125,80 203,107

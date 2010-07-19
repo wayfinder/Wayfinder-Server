@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 205,5 275,32
+rect $MC2BoundingBox_8h.html 28,80 167,107
+rect $ItemIDTree_8h.html 191,80 289,107
+rect $NameCollection_8h.html 313,80 439,107
+rect $Name_8h.html 463,80 532,107

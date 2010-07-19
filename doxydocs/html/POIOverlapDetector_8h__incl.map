@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 305,80 375,107
+rect $Types_8h.html 307,155 373,181
+rect $MC2Logging_8h.html 125,155 232,181
+rect $MC2String_8h.html 5,155 101,181
+rect $MC2Point_8h.html 448,155 539,181
+rect $POICache_8h.html 440,304 533,331
+rect $PixelBox_8h.html 405,229 488,256
+rect $Properties_8h.html 112,229 205,256
+rect $GDCropTransparent_8h.html 229,229 381,256

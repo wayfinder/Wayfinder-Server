@@ -1,0 +1,4 @@
+base referer
+rect $classMEItemLayer.html 5,5 107,32
+rect $classMERouteableItemLayer.html 156,5 316,32
+rect $classMEStreetSegmentItemLayer.html 367,5 556,32

@@ -1,0 +1,6 @@
+base referer
+rect $classMC2String.html 16,160 101,187
+rect $classvector.html 5,83 112,109
+rect $classGMSMap.html 152,160 229,187
+rect $classOldMap.html 157,83 224,109
+rect $classOldGenericMap.html 133,5 248,32

@@ -1,0 +1,6 @@
+base referer
+rect $classMEItemLayer.html 5,187 107,213
+rect $classOldItem.html 131,187 197,213
+rect $classGfxDataFull.html 119,96 209,123
+rect $classGfxData.html 68,5 137,32
+rect $classMC2BoundingBox.html 161,5 289,32

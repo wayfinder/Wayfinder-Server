@@ -1,0 +1,5 @@
+base referer
+rect $classDriverPref.html 91,128 173,155
+rect $classVehicle.html 5,7 69,33
+rect $classRouteAllowedMap.html 236,128 364,155
+rect $classmap.html 215,7 425,33

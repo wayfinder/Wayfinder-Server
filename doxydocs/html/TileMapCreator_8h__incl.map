@@ -1,0 +1,12 @@
+base referer
+rect $config_8h.html 21,132 91,159
+rect $GfxFeatureMap_8h.html 377,82 503,108
+rect $MC2BoundingBox_8h.html 156,31 295,58
+rect $GfxFeature_8h.html 176,183 275,210
+rect $POIOverlapDetector_8h.html 364,284 516,311
+rect $POICache_8h.html 179,284 272,311
+rect $ServerTileMapFormatDesc_8h.html 344,183 536,210
+rect $TileMapParams_8h.html 163,132 288,159
+rect $TileMap_8h.html 185,436 265,463
+rect $ServerTileMap_8h.html 380,436 500,463
+rect $TileFeature_8h.html 7,462 105,488

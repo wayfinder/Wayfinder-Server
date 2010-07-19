@@ -1,0 +1,9 @@
+base referer
+rect $classPacketContainer.html 183,203 303,229
+rect $classScopedArray.html 140,83 287,109
+rect $classNotCopyable.html 164,5 263,32
+rect $classPacket.html 5,83 67,109
+rect $classSharedBuffer.html 465,83 567,109
+rect $classTimeoutSequence.html 311,83 441,109
+rect $classDataBuffer.html 457,203 543,229
+rect $classMC2SimpleString.html 567,203 692,229

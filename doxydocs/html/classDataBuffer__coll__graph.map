@@ -1,0 +1,3 @@
+base referer
+rect $classSharedBuffer.html 5,80 107,107
+rect $classNotCopyable.html 7,5 105,32

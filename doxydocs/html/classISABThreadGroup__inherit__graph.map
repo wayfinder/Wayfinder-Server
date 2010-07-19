@@ -1,0 +1,7 @@
+base referer
+rect $classParserThreadGroup.html 223,80 361,107
+rect $classInterfaceParserThreadGroup.html 87,155 279,181
+rect $classTrafficInfoParserThreadGroup.html 303,155 500,181
+rect $classHttpParserThreadGroup.html 8,229 171,256
+rect $classNavParserThreadGroup.html 195,229 357,256
+rect $classXMLParserThreadGroup.html 5,304 173,331

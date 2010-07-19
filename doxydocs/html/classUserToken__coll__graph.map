@@ -1,0 +1,5 @@
+base referer
+rect $classUserElement.html 15,83 113,109
+rect $classVectorElement.html 5,5 115,32
+rect $classMC2String.html 145,83 231,109
+rect $classvector.html 139,5 245,32

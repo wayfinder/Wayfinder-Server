@@ -1,0 +1,17 @@
+base referer
+rect $classRouteReply.html 361,397 452,424
+rect $classOutGoingNavMessage.html 443,307 597,333
+rect $classNavMessage.html 635,216 733,243
+rect $classNavSession.html 648,125 741,152
+rect $classisabBoxSession.html 757,216 872,243
+rect $classPacketContainer.html 147,125 267,152
+rect $classRouteList.html 341,307 419,333
+rect $classRouteRequest.html 264,216 371,243
+rect $classScopedArray.html 5,5 152,32
+rect $classPacket.html 176,5 237,32
+rect $classTimeoutSequence.html 311,5 441,32
+rect $classIsabRouteList.html 545,397 649,424
+rect $classRouteReq.html 395,216 475,243
+rect $classNavStringTable.html 499,216 611,243
+rect $classUserItem.html 776,125 851,152
+rect $classMC2String.html 875,125 960,152

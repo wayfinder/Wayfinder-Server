@@ -1,0 +1,5 @@
+base referer
+rect $isabBoxSession_8h.html 101,155 229,181
+rect $isabBoxNavMessage_8h.html 11,80 168,107
+rect $isabBoxRouteMessage_8h.html 5,5 173,32
+rect $DataSocket_8h.html 192,80 293,107

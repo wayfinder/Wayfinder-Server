@@ -1,0 +1,7 @@
+base referer
+rect $classExpandStringSignPosts.html 32,5 195,32
+rect $classExpandStringLanesCont.html 31,56 196,83
+rect $classExpandedRouteLandmarkVector.html 7,107 220,133
+rect $classMC2BoundingBox.html 49,157 177,184
+rect $classNameCollection.html 56,208 171,235
+rect $classExpandedRouteRoadVector.html 20,259 207,285

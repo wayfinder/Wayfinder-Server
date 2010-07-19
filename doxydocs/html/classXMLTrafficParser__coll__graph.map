@@ -1,0 +1,4 @@
+base referer
+rect $classTrafficParser.html 20,173 116,200
+rect $classMC2String.html 25,83 111,109
+rect $classvector.html 15,5 121,32

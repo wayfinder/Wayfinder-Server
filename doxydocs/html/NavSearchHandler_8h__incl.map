@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 84,5 154,32
+rect $NavHandler_8h.html 26,155 127,181
+rect $SearchTypes_8h.html 111,80 220,107
+rect $SearchMatch_8h.html 202,155 314,181

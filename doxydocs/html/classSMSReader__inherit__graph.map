@@ -1,0 +1,5 @@
+base referer
+rect $classStandardReader.html 44,155 164,181
+rect $classReader.html 20,80 84,107
+rect $classISABThread.html 5,5 99,32
+rect $classReaderBase.html 108,80 204,107

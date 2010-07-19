@@ -1,0 +1,16 @@
+base referer
+rect $classAddUserTrackRequest.html 332,5 489,32
+rect $classCoordinateObject.html 348,56 473,83
+rect $classCopyrightRequest.html 347,107 475,133
+rect $classCoveredIDsRequest.html 340,157 481,184
+rect $classFilteredGfxMapRequest.html 329,208 492,235
+rect $classGetUserTrackRequest.html 335,259 487,285
+rect $classGfxFeatureMapImageRequest.html 311,309 511,336
+rect $classMadnessRequest.html 348,360 473,387
+rect $classMultiRequest.html 361,411 460,437
+rect $classRouteRequest.html 357,461 464,488
+rect $classSearchResultRequest.html 335,512 487,539
+rect $classTopRegionRequest.html 344,563 477,589
+rect $classTrafficPointRequest.html 341,613 480,640
+rect $classUserFavoritesRequest.html 335,664 487,691
+rect $classRequest.html 5,335 77,361

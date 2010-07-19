@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 464,80 533,107
+rect $Types_8h.html 331,155 397,181
+rect $MC2Logging_8h.html 176,155 283,181
+rect $RouteConstants_8h.html 841,528 969,555
+rect $OverviewMap_8h.html 619,453 733,480
+rect $GenericMap_8h.html 611,304 715,331
+rect $Connection_8h.html 719,229 817,256
+rect $ItemTypes_8h.html 807,155 900,181
+rect $Map_8h.html 555,379 613,405
+rect $Vector_8h.html 523,155 592,181

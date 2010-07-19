@@ -1,0 +1,13 @@
+base referer
+rect $classCommunicationReader.html 319,5 476,32
+rect $classEmailReader.html 348,56 447,83
+rect $classExtServiceReader.html 332,107 463,133
+rect $classInfoReader.html 353,157 441,184
+rect $classMapReader.html 352,208 443,235
+rect $classRouteReader.html 347,259 448,285
+rect $classSearchReader.html 344,309 451,336
+rect $classSMSReader.html 351,360 444,387
+rect $classTileReader.html 355,411 440,437
+rect $classUserReader.html 351,461 444,488
+rect $classReader.html 21,208 85,235
+rect $classReaderBase.html 5,259 101,285

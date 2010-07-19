@@ -1,0 +1,7 @@
+base referer
+rect $Crossing_8h.html 5,5 91,32
+rect $ExtraDataReader_8h.html 115,5 251,32
+rect $GMSFerryItem_8h.html 275,5 395,32
+rect $GMSMidMifHandler_8h.html 419,5 565,32
+rect $GMSStreetItem_8h.html 589,5 715,32
+rect $GMSUtility_8h.html 739,5 835,32

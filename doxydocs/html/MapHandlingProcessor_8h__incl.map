@@ -1,0 +1,8 @@
+base referer
+rect $Processor_8h.html 5,229 96,256
+rect $config_8h.html 164,80 233,107
+rect $Types_8h.html 260,155 327,181
+rect $MC2Logging_8h.html 495,155 601,181
+rect $MC2String_8h.html 351,155 447,181
+rect $StringTable_8h.html 120,229 219,256
+rect $StringTableUTF8_8h.html 103,155 236,181

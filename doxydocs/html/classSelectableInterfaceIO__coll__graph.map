@@ -1,0 +1,4 @@
+base referer
+rect $classInterfaceIO.html 27,96 115,123
+rect $classInterfaceHandleIO.html 5,5 136,32
+rect $classISABMutex.html 139,96 227,123

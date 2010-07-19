@@ -1,0 +1,12 @@
+base referer
+rect $Request_8h.html 417,304 500,331
+rect $config_8h.html 505,80 575,107
+rect $Types_8h.html 507,155 573,181
+rect $MC2Logging_8h.html 597,155 704,181
+rect $PacketContainerTree_8h.html 533,229 691,256
+rect $PacketContainer_8h.html 779,155 909,181
+rect $CCSet_8h.html 933,155 1005,181
+rect $StringTable_8h.html 128,229 227,256
+rect $MC2String_8h.html 213,155 309,181
+rect $StringTableUTF8_8h.html 5,155 139,181
+rect $RequestData_8h.html 251,229 360,256

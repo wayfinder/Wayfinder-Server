@@ -1,0 +1,5 @@
+base referer
+rect $classExtServiceTalker.html 5,173 125,200
+rect $classMC2String.html 23,83 108,109
+rect $classvector.html 12,5 119,32
+rect $classNotCopyable.html 149,173 248,200

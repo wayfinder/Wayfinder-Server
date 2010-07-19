@@ -1,0 +1,9 @@
+base referer
+rect $structimpRange__t.html 5,173 99,200
+rect $classSFDHeader.html 123,173 213,200
+rect $classMC2SimpleString.html 137,83 263,109
+rect $classTileMapParams.html 237,173 352,200
+rect $classBitBuffer.html 393,173 465,200
+rect $classSharedBuffer.html 424,83 525,109
+rect $classNotCopyable.html 425,5 524,32
+rect $classRouteID.html 331,83 400,109

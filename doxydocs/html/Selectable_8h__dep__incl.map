@@ -1,0 +1,6 @@
+base referer
+rect $FDSelectable_8h.html 5,5 117,32
+rect $NotifyPipe_8h.html 141,5 235,32
+rect $Socket_8h.html 259,5 333,32
+rect $TimedSelectable_8h.html 357,5 488,32
+rect $SelectableSelector_8h.html 512,5 656,32

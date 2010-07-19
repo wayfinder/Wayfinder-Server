@@ -1,0 +1,3 @@
+base referer
+rect $classPacketContainer.html 5,5 125,32
+rect $classSMSSendRequest_1_1SMSPacketContainer.html 173,5 440,32

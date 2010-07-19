@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 592,80 661,107
+rect $Types_8h.html 767,155 833,181
+rect $MC2Logging_8h.html 385,155 492,181
+rect $GfxCoordinates_8h.html 295,229 420,256
+rect $MC2Coordinate_8h.html 567,155 692,181
+rect $TileMapCoord_8h.html 247,155 361,181
+rect $GfxConstants_8h.html 7,155 121,181
+rect $TileMapConfig_8h.html 5,80 123,107

@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 331,5 400,32
+rect $InterfaceRequestData_8h.html 165,229 328,256
+rect $LangTypes_8h.html 317,80 413,107
+rect $StringTable_8h.html 27,155 125,181
+rect $IPnPort_8h.html 149,155 227,181
+rect $UserEnums_8h.html 403,155 504,181
+rect $isabBoxInterfaceRequest_8h.html 453,229 635,256
+rect $NParamBlock_8h.html 605,80 720,107
+rect $NavPacket_8h.html 709,155 805,181

@@ -1,0 +1,12 @@
+base referer
+rect $NavMessage_8h.html 360,304 469,331
+rect $config_8h.html 236,80 305,107
+rect $Types_8h.html 61,155 128,181
+rect $MC2Logging_8h.html 557,155 664,181
+rect $StringTable_8h.html 206,229 305,256
+rect $MC2String_8h.html 688,155 784,181
+rect $StringTableUTF8_8h.html 152,155 285,181
+rect $ItemTypes_8h.html 368,229 461,256
+rect $SearchTypes_8h.html 360,155 469,181
+rect $NavAddress_8h.html 38,229 142,256
+rect $RouteTypes_8h.html 808,155 912,181

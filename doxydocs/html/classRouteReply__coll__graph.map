@@ -1,0 +1,11 @@
+base referer
+rect $classOutGoingNavMessage.html 5,307 160,333
+rect $classNavMessage.html 33,216 132,243
+rect $classPacketContainer.html 220,125 340,152
+rect $classRouteList.html 352,307 429,333
+rect $classRouteRequest.html 337,216 444,243
+rect $classScopedArray.html 79,5 225,32
+rect $classPacket.html 249,5 311,32
+rect $classTimeoutSequence.html 384,5 515,32
+rect $classRouteReq.html 468,216 548,243
+rect $classNavStringTable.html 572,216 684,243

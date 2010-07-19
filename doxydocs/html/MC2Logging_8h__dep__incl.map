@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 124,155 193,181
+rect $SyslogLogHandler_8h.html 5,5 147,32
+rect $StreamLogHandler_8h.html 171,5 315,32

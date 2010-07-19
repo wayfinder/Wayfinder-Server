@@ -1,0 +1,5 @@
+base referer
+rect $classRequest.html 5,5 77,32
+rect $classPacketContainer.html 183,5 303,32
+rect $classFindUserReplyPacket.html 413,5 563,32
+rect $classGetUserDataReplyPacket.html 587,5 760,32

@@ -1,0 +1,8 @@
+base referer
+rect $OldOverviewMap_8h.html 35,80 168,107
+rect $GMSCountryOverviewMap_8h.html 5,5 197,32
+rect $MEStreetSegmentItemInfoWidget_8h.html 192,80 424,107
+rect $MEItemInfoDialog_8h.html 432,5 571,32
+rect $MEMapArea_8h.html 448,80 555,107
+rect $Crossing_8h.html 579,80 664,107
+rect $GMSStreetSegmentItem_8h.html 688,80 867,107

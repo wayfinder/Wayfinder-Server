@@ -1,0 +1,3 @@
+base referer
+rect $config_8h.html 59,5 128,32
+rect $GfxData_8h.html 92,80 175,107

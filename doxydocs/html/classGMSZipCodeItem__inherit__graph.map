@@ -1,0 +1,5 @@
+base referer
+rect $classOldZipCodeItem.html 5,155 123,181
+rect $classOldGroupItem.html 12,80 116,107
+rect $classOldItem.html 31,5 97,32
+rect $classGMSItem.html 147,155 224,181

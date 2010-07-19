@@ -1,0 +1,11 @@
+base referer
+rect $classDataTable.html 237,5 467,32
+rect $classDataTable.html 249,56 455,83
+rect $classDataTable.html 268,107 436,133
+rect $classDataTable.html 180,157 524,184
+rect $classDataTable.html 257,208 447,235
+rect $classIDTranslationTable.html 288,259 416,285
+rect $classSimpleArrayObject.html 271,309 433,336
+rect $classSimpleArrayObject.html 237,360 467,387
+rect $classSimpleArrayObject.html 256,411 448,437
+rect $classUserRightsItemTable.html 280,461 424,488

@@ -1,0 +1,4 @@
+base referer
+rect $classDebugClock.html 7,5 100,32
+rect $classNamedClock.html 149,5 248,32
+rect $classScopedClock.html 297,5 396,32

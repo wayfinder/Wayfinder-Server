@@ -1,0 +1,5 @@
+base referer
+rect $classOldFerryItem.html 20,155 119,181
+rect $classOldRouteableItem.html 5,80 133,107
+rect $classOldItem.html 36,5 103,32
+rect $classGMSItem.html 143,155 220,181

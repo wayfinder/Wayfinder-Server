@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 297,80 367,107
+rect $Types_8h.html 229,155 296,181
+rect $MC2Logging_8h.html 372,155 479,181
+rect $MC2String_8h.html 59,155 155,181
+rect $TrafficFeed_8h.html 5,229 104,256

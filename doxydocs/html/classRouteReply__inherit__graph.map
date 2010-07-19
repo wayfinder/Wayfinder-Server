@@ -1,0 +1,4 @@
+base referer
+rect $classisabBoxRouteReply.html 13,229 152,256
+rect $classOutGoingNavMessage.html 5,80 160,107
+rect $classNavMessage.html 33,5 132,32

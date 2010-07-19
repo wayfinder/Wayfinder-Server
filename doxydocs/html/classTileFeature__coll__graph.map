@@ -1,0 +1,5 @@
+base referer
+rect $classTilePrimitiveFeature.html 97,173 236,200
+rect $classPixelBox.html 33,83 105,109
+rect $classMC2BoundingBox.html 5,5 133,32
+rect $classVectorProxy.html 129,83 305,109

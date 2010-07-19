@@ -1,0 +1,8 @@
+base referer
+rect $classCIMDSMSTalker.html 5,80 125,107
+rect $classGM12SMSTalker.html 149,80 269,107
+rect $classMonitorCache.html 293,80 397,107
+rect $classMTLog.html 421,80 485,107
+rect $classRequestQueue.html 509,80 621,107
+rect $classSafeHead.html 645,80 725,107
+rect $classSafeLink.html 749,80 821,107

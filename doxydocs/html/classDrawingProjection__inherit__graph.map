@@ -1,0 +1,5 @@
+base referer
+rect $classCosLatProjection.html 5,80 128,107
+rect $classCylindricalProjection.html 152,80 293,107
+rect $classBraunProjection.html 89,155 207,181
+rect $classMercatorProjection.html 231,155 364,181

@@ -1,0 +1,17 @@
+base referer
+rect $classClientSettingStorage.html 1096,380 1240,407
+rect $classISABThreadGroup.html 355,12 485,39
+rect $classNotCopyable.html 5,84 104,111
+rect $classThreadRequestHandler.html 340,113 500,140
+rect $classTimedOutSocketLogger.html 339,164 501,191
+rect $classCellularPhoneModelsElement.html 321,215 519,241
+rect $classISABMonitor.html 7,291 103,317
+rect $classPointerFifoTemplate.html 279,328 561,355
+rect $classNamedServerLists.html 355,441 485,468
+rect $classMC2String.html 12,435 97,461
+rect $classCategoriesDataHolder.html 344,716 496,743
+rect $classISABMutex.html 11,716 99,743
+rect $classFOBC.html 391,767 449,793
+rect $classUserSessionCache.html 352,817 488,844
+rect $classServerRegionIDs.html 359,868 481,895
+rect $classTopRegionRequest.html 353,919 487,945

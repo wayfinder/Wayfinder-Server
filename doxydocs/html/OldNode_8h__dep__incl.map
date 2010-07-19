@@ -1,0 +1,7 @@
+base referer
+rect $MEFeatureIdentification_8h.html 5,80 179,107
+rect $GMSNode_8h.html 203,80 299,107
+rect $Crossing_8h.html 81,5 167,32
+rect $GMSFerryItem_8h.html 191,5 311,32
+rect $GMSStreetSegmentItem_8h.html 335,5 513,32
+rect $SetTurnDescriptions_8h.html 323,80 475,107

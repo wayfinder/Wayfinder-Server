@@ -1,0 +1,9 @@
+base referer
+rect $ExternalSearchConsts_8h.html 663,229 828,256
+rect $config_8h.html 565,80 635,107
+rect $Types_8h.html 475,155 541,181
+rect $MC2Logging_8h.html 224,155 331,181
+rect $StringTable_8h.html 532,229 631,256
+rect $MC2String_8h.html 355,155 451,181
+rect $StringTableUTF8_8h.html 616,155 749,181
+rect $LangTypes_8h.html 824,155 920,181

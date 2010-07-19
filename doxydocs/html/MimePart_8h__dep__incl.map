@@ -1,0 +1,4 @@
+base referer
+rect $RouteMessageRequest_8h.html 5,80 176,107
+rect $MimeMessage_8h.html 200,80 320,107
+rect $LocalMapMessageRequest_8h.html 163,5 357,32

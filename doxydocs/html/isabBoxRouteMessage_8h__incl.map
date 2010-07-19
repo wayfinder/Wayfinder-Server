@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 133,80 203,107
+rect $Types_8h.html 24,155 91,181
+rect $MC2Logging_8h.html 115,155 221,181
+rect $NavMessage_8h.html 397,155 507,181
+rect $isabBoxSession_8h.html 245,155 373,181
+rect $NavRouteMessage_8h.html 456,229 603,256
+rect $RouteList_8h.html 581,155 669,181
+rect $isabBoxNavMessage_8h.html 245,229 403,256

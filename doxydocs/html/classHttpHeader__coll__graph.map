@@ -1,0 +1,4 @@
+base referer
+rect $structHttpHeader_1_1methodTable__t.html 5,83 189,109
+rect $classMC2String.html 213,83 299,109
+rect $classvector.html 203,5 309,32

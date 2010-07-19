@@ -1,0 +1,11 @@
+base referer
+rect $XMLIndata_8h.html 168,5 267,32
+rect $TalkerUtility_8h.html 168,56 267,83
+rect $XMLCategoryListNode_8h.html 133,107 301,133
+rect $XMLExtServiceHelper_8h.html 136,157 299,184
+rect $XMLSearchUtility_8h.html 149,208 285,235
+rect $XMLServerElements_8h.html 139,259 296,285
+rect $XMLSMSCommon_8h.html 145,309 289,336
+rect $XMLInit_8h.html 5,385 85,412
+rect $XMLTool_8h.html 175,411 260,437
+rect $XPathExpression_8h.html 149,461 285,488

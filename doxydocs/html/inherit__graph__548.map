@@ -1,0 +1,3 @@
+base referer
+rect $classRegionIDs.html 7,5 89,32
+rect $classServerRegionIDs.html 140,5 263,32

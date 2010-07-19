@@ -1,0 +1,7 @@
+base referer
+rect $classThreadRequestHandler.html 224,264 384,291
+rect $classISABThread.html 24,96 117,123
+rect $classThreadRequestHandler_1_1RequestThread.html 80,355 339,381
+rect $classISABThreadGroup.html 5,5 136,32
+rect $classNotCopyable.html 369,96 468,123
+rect $classGenericServer.html 425,173 532,200

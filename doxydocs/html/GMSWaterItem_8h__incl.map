@@ -1,0 +1,14 @@
+base referer
+rect $OldWaterItem_8h.html 116,379 231,405
+rect $config_8h.html 336,80 406,107
+rect $Types_8h.html 742,155 808,181
+rect $MC2Logging_8h.html 832,155 939,181
+rect $OldItem_8h.html 134,304 214,331
+rect $ArrayTools_8h.html 51,155 147,181
+rect $ItemTypes_8h.html 171,155 264,181
+rect $NameUtility_8h.html 211,229 310,256
+rect $GMSGfxData_8h.html 384,229 496,256
+rect $DataBuffer_8h.html 478,155 574,181
+rect $VectorElement_8h.html 598,155 718,181
+rect $GMSItem_8h.html 490,304 578,331
+rect $MapData_8h.html 592,229 680,256

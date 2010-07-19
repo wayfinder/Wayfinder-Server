@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 362,5 431,32
+rect $InterfaceParserThreadConfig_8h.html 38,80 243,107
+rect $MC2Coordinate_8h.html 275,229 401,256
+rect $NavHandler_8h.html 187,155 289,181
+rect $WFSubscriptionConstants_8h.html 369,80 555,107
+rect $UserEnums_8h.html 490,155 591,181
+rect $ExtraAddInfo_8h.html 681,155 790,181
+rect $NavRequestData_8h.html 526,229 659,256

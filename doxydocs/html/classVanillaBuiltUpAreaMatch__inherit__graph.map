@@ -1,0 +1,4 @@
+base referer
+rect $classVanillaRegionMatch.html 20,155 159,181
+rect $classVanillaMatch.html 41,80 137,107
+rect $classSearchMatch.html 39,5 140,32

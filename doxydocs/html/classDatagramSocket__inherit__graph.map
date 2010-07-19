@@ -1,0 +1,6 @@
+base referer
+rect $classDatagramReceiver.html 5,304 139,331
+rect $classDatagramSender.html 163,304 285,331
+rect $classSocket.html 117,155 179,181
+rect $classSelectable.html 107,80 189,107
+rect $classTemplateSelectable.html 61,5 235,32

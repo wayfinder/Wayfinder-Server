@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 170,5 240,32
+rect $Request_8h.html 21,155 104,181
+rect $PacketContainerTree_8h.html 69,80 226,107
+rect $CoordinateObject_8h.html 69,229 205,256
+rect $ItemInfoEnums_8h.html 301,155 424,181
+rect $ItemTypes_8h.html 389,229 482,256

@@ -1,0 +1,10 @@
+base referer
+rect $classisabBoxSession.html 155,187 269,213
+rect $classNavSession.html 5,96 99,123
+rect $classUserItem.html 123,96 197,123
+rect $classMC2String.html 221,96 307,123
+rect $classRouteList.html 452,187 529,213
+rect $classRouteReq.html 336,96 416,123
+rect $classPacketContainer.html 448,5 568,32
+rect $classRouteRequest.html 527,96 633,123
+rect $classNavStringTable.html 657,96 769,123

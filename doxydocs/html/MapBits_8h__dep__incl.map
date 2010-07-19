@@ -1,0 +1,8 @@
+base referer
+rect $OldGenericMap_8h.html 5,80 131,107
+rect $Balancer_8h.html 205,80 291,107
+rect $SimpleBalancer_8h.html 145,5 271,32
+rect $Reader_8h.html 315,80 389,107
+rect $MMRoutingCostTable_8h.html 413,80 573,107
+rect $GenericMap_8h.html 597,80 701,107
+rect $ItemDataTable_8h.html 725,80 843,107

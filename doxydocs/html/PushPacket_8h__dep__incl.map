@@ -1,0 +1,5 @@
+base referer
+rect $DisturbancePushPacket_8h.html 5,80 179,107
+rect $MapSubscriptionPacket_8h.html 203,80 376,107
+rect $TestPacket_8h.html 400,80 499,107
+rect $MTSender_8h.html 403,5 496,32

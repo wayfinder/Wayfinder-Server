@@ -1,0 +1,12 @@
+base referer
+rect $BasicMapRequester_8h.html 480,5 632,32
+rect $BasicRequester_8h.html 493,56 619,83
+rect $RequestHandler_8h.html 492,208 620,235
+rect $GenericServer_8h.html 272,176 389,203
+rect $PTServer_8h.html 49,164 137,191
+rect $Server_8h.html 57,240 129,267
+rect $ParserThreadGroup_8h.html 481,411 631,437
+rect $InterfaceParserThreadGroup_8h.html 229,360 432,387
+rect $HttpParserThreadGroup_8h.html 5,335 181,361
+rect $ServerPort_8h.html 508,461 604,488
+rect $ThreadRequestInfo_8h.html 483,512 629,539

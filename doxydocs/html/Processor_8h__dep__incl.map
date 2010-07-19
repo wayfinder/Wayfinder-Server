@@ -1,0 +1,10 @@
+base referer
+rect $CommunicationProcessor_8h.html 7,5 191,32
+rect $EmailProcessor_8h.html 36,56 161,83
+rect $ExtServiceProcessor_8h.html 20,107 177,133
+rect $FakeExtServiceProcessor_8h.html 7,157 191,184
+rect $GfxProcessor_8h.html 43,208 155,235
+rect $MapHandlingProcessor_8h.html 13,259 184,285
+rect $SMSProcessor_8h.html 39,309 159,336
+rect $TileProcessor_8h.html 43,360 155,387
+rect $UserProcessor_8h.html 39,411 159,437

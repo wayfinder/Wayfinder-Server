@@ -1,0 +1,3 @@
+base referer
+rect $classDummyEmailSender.html 5,80 149,107
+rect $classStandardEmailSender.html 173,80 325,107

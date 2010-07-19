@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 363,80 432,107
+rect $Types_8h.html 485,155 552,181
+rect $MC2Logging_8h.html 797,155 904,181
+rect $ParserHandler_8h.html 181,453 299,480
+rect $ParserThreadConfig_8h.html 164,379 316,405
+rect $ISABThread_8h.html 209,304 313,331
+rect $SysUtility_8h.html 440,229 528,256
+rect $MC2String_8h.html 576,155 672,181
+rect $XMLUtility_8h.html 428,304 521,331
+rect $XMLServerErrorMsg_8h.html 603,229 757,256

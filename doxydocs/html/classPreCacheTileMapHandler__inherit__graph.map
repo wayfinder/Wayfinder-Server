@@ -1,0 +1,5 @@
+base referer
+rect $classParserThread.html 64,155 165,181
+rect $classISABThread.html 5,80 99,107
+rect $classMapRequester.html 123,80 232,107
+rect $classRequester.html 136,5 219,32

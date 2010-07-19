@@ -1,0 +1,7 @@
+base referer
+rect $ClientSettings_8h.html 5,80 120,107
+rect $ParserThread_8h.html 109,5 224,32
+rect $UserEnums_8h.html 195,80 296,107
+rect $NavUserHelp_8h.html 267,5 379,32
+rect $NavLatestNewsData_8h.html 371,80 525,107
+rect $WFActivationPacket_8h.html 549,80 701,107

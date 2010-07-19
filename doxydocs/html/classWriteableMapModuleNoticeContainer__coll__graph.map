@@ -1,0 +1,7 @@
+base referer
+rect $classMapModuleNoticeContainer.html 51,187 238,213
+rect $classItemIDTree.html 6,5 91,32
+rect $classRegionIDTree.html 94,96 195,123
+rect $classNameCollection.html 219,96 334,123
+rect $classvector.html 131,5 257,32
+rect $className.html 281,5 337,32

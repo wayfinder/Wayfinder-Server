@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 309,80 379,107
+rect $Types_8h.html 411,155 477,181
+rect $MC2Logging_8h.html 536,155 643,181
+rect $AlignUtility_8h.html 291,155 387,181
+rect $SharedBuffer_8h.html 5,155 115,181
+rect $NotCopyable_8h.html 5,80 115,107
+rect $sockets_8h.html 139,155 216,181

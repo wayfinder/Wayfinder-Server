@@ -1,0 +1,16 @@
+base referer
+rect $config_8h.html 5,360 75,387
+rect $OldItemNames_8h.html 145,613 268,640
+rect $OldItem_8h.html 384,360 464,387
+rect $GMSGfxData_8h.html 151,461 263,488
+rect $OldGenericMapHeader_8h.html 340,259 508,285
+rect $IDTranslationTable_8h.html 353,5 495,32
+rect $UserRightsItemTable_8h.html 128,715 285,741
+rect $OldConnection_8h.html 364,157 484,184
+rect $MC2Coordinate_8h.html 361,56 487,83
+rect $ItemMap_8h.html 164,512 249,539
+rect $ConnectingLanesTable_8h.html 123,563 291,589
+rect $SignPostTable_8h.html 148,411 265,437
+rect $MapBits_8h.html 384,107 464,133
+rect $OldMapHashTable_8h.html 353,816 495,843
+rect $Vector_8h.html 172,208 241,235

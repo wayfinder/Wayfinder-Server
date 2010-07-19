@@ -1,0 +1,8 @@
+base referer
+rect $classGfxData.html 5,160 75,187
+rect $classMC2String.html 123,160 208,187
+rect $classvector.html 112,83 219,109
+rect $classMC2BoundingBox.html 265,160 393,187
+rect $classGMSMap.html 417,160 495,187
+rect $classOldMap.html 423,83 489,109
+rect $classOldGenericMap.html 399,5 513,32

@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 193,5 262,32
+rect $DatagramSocket_8h.html 30,155 161,181
+rect $TCPSocket_8h.html 185,155 284,181
+rect $ISABThread_8h.html 265,80 369,107
+rect $ServerProximityPackets_8h.html 393,80 566,107
+rect $MTLog_8h.html 358,155 433,181

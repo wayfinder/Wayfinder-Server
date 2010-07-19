@@ -1,0 +1,7 @@
+base referer
+rect $classParserPosPushItem.html 101,267 240,293
+rect $classParserHandler.html 176,188 283,215
+rect $classParserThread.html 43,96 144,123
+rect $classMC2String.html 51,5 136,32
+rect $classParserThreadGroup.html 168,96 307,123
+rect $classURL.html 264,267 312,293

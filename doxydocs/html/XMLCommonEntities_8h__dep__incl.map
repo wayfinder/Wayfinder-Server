@@ -1,0 +1,5 @@
+base referer
+rect $XMLItemDetailUtility_8h.html 5,5 157,32
+rect $XMLItemInfoUtility_8h.html 181,5 323,32
+rect $XMLSearchUtility_8h.html 347,5 483,32
+rect $XMLTopRegionElement_8h.html 507,5 680,32

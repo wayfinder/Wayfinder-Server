@@ -1,0 +1,5 @@
+base referer
+rect $classSearchMapStringTable.html 5,187 163,213
+rect $classSearchMapRegionTable.html 85,96 248,123
+rect $classWriteableSearchMapRegionTable.html 187,187 405,213
+rect $classSTLUtility_1_1ValuePair.html 45,5 288,32

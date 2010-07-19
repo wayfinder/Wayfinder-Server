@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 240,5 310,32
+rect $ItemTypes_8h.html 23,80 116,107
+rect $TrafficDataTypes_8h.html 140,80 271,107
+rect $StringTable_8h.html 295,80 394,107
+rect $MC2Coordinate_8h.html 418,80 543,107
+rect $LangTypes_8h.html 567,80 663,107
+rect $Vector_8h.html 770,80 839,107
+rect $MC2SimpleString_8h.html 863,80 999,107

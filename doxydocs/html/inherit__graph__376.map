@@ -1,0 +1,13 @@
+base referer
+rect $classMEAbstractItemInfoWidget.html 5,259 187,285
+rect $classMEBuildingItemInfoWidget.html 263,5 441,32
+rect $classMECartographicItemInfoWidget.html 248,56 456,83
+rect $classMEFerryItemInfoWidget.html 271,107 433,133
+rect $classMEGroupItemInfoWidget.html 268,157 436,184
+rect $classMEIndividualBuildingItemInfoWidget.html 235,208 469,235
+rect $classMEItemInfoWidget.html 287,259 417,285
+rect $classMEParkItemInfoWidget.html 273,309 431,336
+rect $classMEPoiItemInfoWidget.html 277,360 427,387
+rect $classMERouteableItemInfoWidget.html 256,411 448,437
+rect $classMEStreetSegmentItemInfoWidget.html 241,461 463,488
+rect $classMEWaterItemInfoWidget.html 269,512 435,539

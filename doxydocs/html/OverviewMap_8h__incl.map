@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 127,5 196,32
+rect $GenericMap_8h.html 224,80 328,107
+rect $Map_8h.html 199,155 257,181
+rect $ItemTypes_8h.html 5,80 99,107
+rect $Vector_8h.html 403,155 472,181

@@ -1,0 +1,7 @@
+base referer
+rect $classInterfaceRequestData.html 5,96 157,123
+rect $classNavReplyPacket.html 183,5 303,32
+rect $classIsabBoxInterfaceRequest.html 480,96 651,123
+rect $classNParamBlock.html 259,96 363,123
+rect $classisabBoxSession.html 381,5 496,32
+rect $classNavRequestPacket.html 547,5 683,32

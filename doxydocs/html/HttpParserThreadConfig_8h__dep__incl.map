@@ -1,0 +1,8 @@
+base referer
+rect $HttpFunctionHandler_8h.html 245,5 400,32
+rect $HttpFunctionsConfig_8h.html 247,56 399,83
+rect $HttpParserThread_8h.html 253,107 392,133
+rect $HttpParserThreadGroup_8h.html 235,208 411,235
+rect $XMLParserThreadGroup_8h.html 7,183 185,209
+rect $HttpProxyFunctions_8h.html 248,259 397,285
+rect $ProjectionSettings_8h.html 252,309 393,336

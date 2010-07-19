@@ -1,0 +1,4 @@
+base referer
+rect $classRoutingNode.html 5,80 104,107
+rect $classLink.html 128,80 173,107
+rect $classLinkage.html 117,5 184,32

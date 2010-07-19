@@ -1,0 +1,9 @@
+base referer
+rect $OldExternalConnections_8h.html 155,229 331,256
+rect $MC2String_8h.html 497,155 593,181
+rect $config_8h.html 221,5 290,32
+rect $OldGenericMap_8h.html 30,155 155,181
+rect $OldConnection_8h.html 130,80 250,107
+rect $DataBuffer_8h.html 274,80 370,107
+rect $FileException_8h.html 497,229 609,256
+rect $ObjVector_8h.html 281,155 371,181

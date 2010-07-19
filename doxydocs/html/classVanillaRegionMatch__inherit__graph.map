@@ -1,0 +1,9 @@
+base referer
+rect $classVanillaBuiltUpAreaMatch.html 5,229 173,256
+rect $classVanillaCityPartMatch.html 197,229 341,256
+rect $classVanillaCountryMatch.html 365,229 509,256
+rect $classVanillaMunicipalMatch.html 533,229 685,256
+rect $classVanillaZipAreaMatch.html 709,229 853,256
+rect $classVanillaZipCodeMatch.html 877,229 1024,256
+rect $classVanillaMatch.html 475,80 571,107
+rect $classSearchMatch.html 472,5 573,32

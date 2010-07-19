@@ -1,0 +1,8 @@
+base referer
+rect $ReaderBase_8h.html 79,80 185,107
+rect $StandardReader_8h.html 5,5 136,32
+rect $PacketSenderReceiver_8h.html 209,80 377,107
+rect $ModulePacketSenderReceiver_8h.html 188,5 399,32
+rect $QueuedPacketSender_8h.html 401,80 564,107
+rect $JobThread_8h.html 428,5 524,32
+rect $ModulePacketSender_8h.html 548,5 705,32

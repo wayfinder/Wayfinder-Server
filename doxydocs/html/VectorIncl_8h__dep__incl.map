@@ -1,0 +1,6 @@
+base referer
+rect $Vector_8h.html 5,5 75,32
+rect $OldItemNames_8h.html 99,5 221,32
+rect $CoordinateObject_8h.html 245,5 381,32
+rect $XMLSMSCommon_8h.html 405,5 549,32
+rect $ItemNames_8h.html 573,5 675,32

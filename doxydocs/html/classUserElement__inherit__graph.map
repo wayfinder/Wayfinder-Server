@@ -1,0 +1,14 @@
+base referer
+rect $classUserBuddyList.html 347,5 456,32
+rect $classUserCellular.html 355,56 448,83
+rect $classUserIDKey.html 359,107 444,133
+rect $classUserLastClient.html 347,157 456,184
+rect $classUserLicenceKey.html 343,208 460,235
+rect $classUserNavigator.html 348,259 455,285
+rect $classUserPIN.html 365,309 437,336
+rect $classUserRegionAccess.html 333,360 469,387
+rect $classUserRight.html 361,411 441,437
+rect $classUserToken.html 359,461 444,488
+rect $classUserUser.html 363,512 440,539
+rect $classUserWayfinderSubscription.html 311,563 492,589
+rect $classVectorElement.html 5,284 115,311

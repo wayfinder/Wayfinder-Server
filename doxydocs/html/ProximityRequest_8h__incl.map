@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 433,80 503,107
+rect $Types_8h.html 435,155 501,181
+rect $MC2Logging_8h.html 800,155 907,181
+rect $SearchResultRequest_8h.html 660,304 823,331
+rect $Request_8h.html 643,229 725,256
+rect $StringTable_8h.html 576,155 675,181
+rect $SearchTypes_8h.html 301,155 411,181
+rect $SharedProximityPackets_8h.html 381,229 560,256
+rect $Packet_8h.html 205,155 277,181
+rect $MC2Coordinate_8h.html 5,304 131,331

@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 234,5 303,32
+rect $HttpFunctionsConfig_8h.html 23,80 175,107
+rect $ImageDrawConfig_8h.html 199,80 338,107
+rect $MapSettings_8h.html 362,80 468,107
+rect $DrawingProjection_8h.html 492,80 634,107

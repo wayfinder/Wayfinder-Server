@@ -1,0 +1,4 @@
+base referer
+rect $OldOverviewMap_8h.html 5,5 139,32
+rect $GMSMap_8h.html 163,5 251,32
+rect $SetTurnDescriptions_8h.html 275,5 427,32

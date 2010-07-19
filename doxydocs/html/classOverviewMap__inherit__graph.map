@@ -1,0 +1,5 @@
+base referer
+rect $classGenericMap.html 99,155 192,181
+rect $classGenericMapHeader.html 5,80 144,107
+rect $classVectorElement.html 20,5 129,32
+rect $classNotCopyable.html 168,80 267,107

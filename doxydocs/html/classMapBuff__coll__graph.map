@@ -1,0 +1,5 @@
+base referer
+rect $classMC2SimpleString.html 5,160 131,187
+rect $classBitBuffer.html 155,160 227,187
+rect $classSharedBuffer.html 140,83 241,109
+rect $classNotCopyable.html 141,5 240,32

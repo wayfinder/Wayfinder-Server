@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 683,80 752,107
+rect $Types_8h.html 720,155 787,181
+rect $MC2Logging_8h.html 811,155 917,181
+rect $DeleteHelpers_8h.html 288,155 405,181
+rect $MC2String_8h.html 429,155 525,181
+rect $DataBuffer_8h.html 549,155 645,181
+rect $STLUtility_8h.html 244,229 332,256
+rect $DataBufferRW_8h.html 720,229 837,256
+rect $PacketRW_8h.html 861,229 955,256
+rect $PacketDataBuffer_8h.html 509,229 645,256

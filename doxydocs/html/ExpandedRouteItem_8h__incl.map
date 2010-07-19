@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 5,233 75,260
+rect $ItemTypes_8h.html 160,182 253,209
+rect $NameCollection_8h.html 383,132 508,158
+rect $MC2BoundingBox_8h.html 376,81 515,108
+rect $ExpandedRouteRoadItem_8h.html 352,233 539,260
+rect $ExpandedRouteLandmarkItem_8h.html 339,284 552,310
+rect $ExpandStringLane_8h.html 136,334 277,361
+rect $ExpandStringSignPost_8h.html 124,385 289,412
+rect $StringTable_8h.html 157,436 256,462

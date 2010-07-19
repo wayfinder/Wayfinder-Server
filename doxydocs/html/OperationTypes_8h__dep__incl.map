@@ -1,0 +1,9 @@
+base referer
+rect $ParserThread_8h.html 403,80 517,107
+rect $InterfaceParserThread_8h.html 5,5 171,32
+rect $ParserThreadGroup_8h.html 195,5 344,32
+rect $PreCacheTileMapHandler_8h.html 368,5 552,32
+rect $UserSwitch_8h.html 576,5 677,32
+rect $TrafficThread_8h.html 701,5 813,32
+rect $ParserAppStoreHandler_8h.html 541,80 715,107
+rect $ParserDebitHandler_8h.html 739,80 888,107

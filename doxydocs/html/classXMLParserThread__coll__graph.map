@@ -1,0 +1,5 @@
+base referer
+rect $classXMLExtServiceHelper.html 125,187 280,213
+rect $classHttpParserThread.html 5,5 133,32
+rect $classHttpHeader.html 157,5 248,32
+rect $classXMLAuthData.html 272,5 379,32

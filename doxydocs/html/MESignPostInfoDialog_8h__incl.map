@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 360,5 429,32
+rect $OldConnection_8h.html 237,80 357,107
+rect $MEMapArea_8h.html 568,80 675,107
+rect $MELogCommentInterfaceBox_8h.html 5,80 213,107
+rect $MEEditSignPostDialog_8h.html 335,155 500,181

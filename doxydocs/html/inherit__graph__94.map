@@ -1,0 +1,5 @@
+base referer
+rect $classDBaseObject.html 7,56 105,83
+rect $classDBUserNavDestination.html 161,5 319,32
+rect $classDBUserNavigator.html 177,56 303,83
+rect $classMapUpdateDBaseObject.html 156,107 324,133

@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 256,5 325,32
+rect $MC2Coordinate_8h.html 124,80 249,107
+rect $MC2BoundingBox_8h.html 5,155 144,181
+rect $SearchParameters_8h.html 219,155 363,181
+rect $SearchMap2_8h.html 437,155 547,181

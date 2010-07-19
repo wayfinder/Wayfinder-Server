@@ -1,0 +1,5 @@
+base referer
+rect $classDBaseBool.html 5,80 93,107
+rect $classDBaseInt.html 117,80 195,107
+rect $classDBaseSmallInt.html 219,80 328,107
+rect $classDBaseString.html 352,80 448,107

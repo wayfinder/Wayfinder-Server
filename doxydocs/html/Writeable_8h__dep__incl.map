@@ -1,0 +1,5 @@
+base referer
+rect $Socket_8h.html 87,80 161,107
+rect $TCPSocket_8h.html 5,5 104,32
+rect $DatagramSocket_8h.html 128,5 259,32
+rect $ByteBuffer_8h.html 185,80 279,107

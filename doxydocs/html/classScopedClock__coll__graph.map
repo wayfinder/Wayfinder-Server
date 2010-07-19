@@ -1,0 +1,5 @@
+base referer
+rect $classNamedClock.html 41,173 140,200
+rect $classDebugClock.html 5,83 99,109
+rect $classMC2String.html 123,83 208,109
+rect $classvector.html 112,5 219,32

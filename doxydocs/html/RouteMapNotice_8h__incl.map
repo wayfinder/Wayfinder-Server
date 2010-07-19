@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 380,80 449,107
+rect $Types_8h.html 510,155 577,181
+rect $MC2Logging_8h.html 612,155 718,181
+rect $MapNotice_8h.html 284,229 380,256
+rect $VectorElement_8h.html 366,155 486,181
+rect $MC2BoundingBox_8h.html 121,229 260,256
+rect $MC2Coordinate_8h.html 30,155 156,181

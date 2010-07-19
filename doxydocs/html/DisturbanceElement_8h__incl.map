@@ -1,0 +1,8 @@
+base referer
+rect $MC2String_8h.html 500,80 596,107
+rect $UserEnums_8h.html 205,155 307,181
+rect $config_8h.html 221,5 291,32
+rect $TrafficDataTypes_8h.html 328,80 459,107
+rect $MapRights_8h.html 319,229 415,256
+rect $MC2Coordinate_8h.html 5,80 131,107
+rect $PacketRW_8h.html 427,155 520,181

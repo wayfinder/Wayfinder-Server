@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 272,5 342,32
+rect $ItemTypes_8h.html 23,80 116,107
+rect $WFSubscriptionConstants_8h.html 140,80 327,107
+rect $FOB_8h.html 351,80 410,107
+rect $StringUtility_8h.html 434,80 532,107
+rect $LangTypes_8h.html 556,80 652,107

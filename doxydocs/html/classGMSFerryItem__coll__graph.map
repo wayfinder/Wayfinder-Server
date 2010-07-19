@@ -1,0 +1,12 @@
+base referer
+rect $classOldFerryItem.html 173,381 272,408
+rect $classOldRouteableItem.html 151,291 279,317
+rect $classOldItem.html 79,187 145,213
+rect $classGfxDataFull.html 56,96 147,123
+rect $classGfxData.html 5,5 75,32
+rect $classMC2BoundingBox.html 99,5 227,32
+rect $classOldNode.html 184,187 259,213
+rect $classOldConnection.html 171,96 280,123
+rect $classGMSItem.html 297,381 375,408
+rect $classMapData.html 303,291 377,317
+rect $classVectorElement.html 285,187 395,213

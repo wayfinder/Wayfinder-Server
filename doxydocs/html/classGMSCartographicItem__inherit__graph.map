@@ -1,0 +1,4 @@
+base referer
+rect $classOldCartographicItem.html 5,80 149,107
+rect $classOldItem.html 44,5 111,32
+rect $classGMSItem.html 173,80 251,107

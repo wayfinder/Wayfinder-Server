@@ -1,0 +1,12 @@
+base referer
+rect $classJobLogger.html 227,291 312,317
+rect $classNotCopyable.html 5,5 104,32
+rect $structJobReply.html 133,187 211,213
+rect $classPacket.html 92,83 153,109
+rect $classPacketQueue.html 316,187 417,213
+rect $classQueue.html 336,83 397,109
+rect $classISABMonitor.html 421,83 517,109
+rect $classFixedSizeString.html 508,187 623,213
+rect $classStackOrHeap.html 541,83 723,109
+rect $classMC2String.html 227,83 312,109
+rect $classvector.html 216,5 323,32

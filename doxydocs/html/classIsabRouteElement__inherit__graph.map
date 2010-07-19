@@ -1,0 +1,12 @@
+base referer
+rect $classLandmarkPTElement.html 187,5 333,32
+rect $classLaneDataPTElement.html 188,56 332,83
+rect $classLaneInfoPTElement.html 191,107 329,133
+rect $classMetaPTElement.html 201,157 319,184
+rect $classMicroDeltaElement.html 193,208 327,235
+rect $classMiniElement.html 212,259 308,285
+rect $classOrigoElement.html 208,309 312,336
+rect $classScaleElement.html 208,360 312,387
+rect $classSignPostPTElement.html 189,411 331,437
+rect $classTimeDistLeftElement.html 187,461 333,488
+rect $classWPTorTPTElement.html 192,512 328,539

@@ -1,0 +1,7 @@
+base referer
+rect $classLocationHashCell.html 5,5 131,32
+rect $classLocationHashTable.html 189,96 323,123
+rect $classOldMapHashTable.html 183,187 313,213
+rect $classOldGenericMap.html 221,277 336,304
+rect $classUserRightsMapInfo.html 29,96 165,123
+rect $classGfxDataFull.html 355,96 445,123

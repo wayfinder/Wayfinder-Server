@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 409,80 479,107
+rect $Types_8h.html 532,155 599,181
+rect $MC2Logging_8h.html 644,155 751,181
+rect $SSLSocket_8h.html 199,304 297,331
+rect $TCPSocket_8h.html 327,229 425,256
+rect $Socket_8h.html 44,155 119,181
+rect $SysUtility_8h.html 193,155 281,181
+rect $StepLogger_8h.html 305,155 407,181
+rect $sockets_8h.html 5,80 83,107
+rect $NotCopyable_8h.html 193,229 303,256

@@ -1,0 +1,7 @@
+base referer
+rect $classGfxDataFull.html 11,80 101,107
+rect $classGfxDataMultiplePoints.html 125,80 277,107
+rect $classGfxDataSingleLine.html 301,80 435,107
+rect $classGfxDataSinglePoint.html 459,80 597,107
+rect $classGfxDataSingleSmallPoly.html 621,80 787,107
+rect $classGMSGfxData.html 5,155 107,181

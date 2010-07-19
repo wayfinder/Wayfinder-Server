@@ -1,0 +1,8 @@
+base referer
+rect $classDisturbancePushPacket.html 5,304 168,331
+rect $classMapSubscriptionHeartbeatRequestPacket.html 192,304 461,331
+rect $classMapSubscriptionRequestPacket.html 485,304 696,331
+rect $classTestPushPacket.html 720,304 837,331
+rect $classRequestPacket.html 403,155 515,181
+rect $classPacket.html 428,80 489,107
+rect $classNotCopyable.html 409,5 508,32

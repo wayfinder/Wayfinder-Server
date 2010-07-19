@@ -1,0 +1,10 @@
+base referer
+rect $classSearchMap2.html 399,187 495,213
+rect $classMultiStringSearch.html 223,277 351,304
+rect $classSearchMapRadiusInfo.html 5,96 157,123
+rect $classIDTranslationTable.html 181,96 309,123
+rect $classSearchMapStringTable.html 500,96 657,123
+rect $classSearchMapRegionTable.html 365,5 528,32
+rect $classSearchMapPOIInfo.html 681,96 817,123
+rect $classSearchMapItem.html 841,96 956,123
+rect $classMultiSearchNotice.html 221,187 352,213

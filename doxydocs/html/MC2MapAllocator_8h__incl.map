@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 395,80 464,107
+rect $Types_8h.html 301,155 368,181
+rect $MC2Logging_8h.html 613,155 720,181
+rect $DeleteHelpers_8h.html 160,155 277,181

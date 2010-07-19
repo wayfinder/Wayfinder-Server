@@ -1,0 +1,4 @@
+base referer
+rect $SelectableInterfaceIO_8h.html 117,80 277,107
+rect $CommunicationProcessor_8h.html 5,5 189,32
+rect $TimedOutSocketLogger_8h.html 213,5 384,32

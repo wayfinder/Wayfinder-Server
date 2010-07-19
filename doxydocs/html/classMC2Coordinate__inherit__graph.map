@@ -1,0 +1,3 @@
+base referer
+rect $classFilteredCoord.html 5,80 107,107
+rect $classTileMapCoord.html 131,80 235,107

@@ -1,0 +1,4 @@
+base referer
+rect $classImageDraw.html 5,31 96,57
+rect $classGDImageDraw.html 144,5 253,32
+rect $classIMImageDraw.html 147,56 251,83

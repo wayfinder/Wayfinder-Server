@@ -1,0 +1,14 @@
+base referer
+rect $SearchParameters_8h.html 20,32 164,59
+rect $UserRightsMapInfo_8h.html 260,57 407,84
+rect $SearchResult_8h.html 36,147 148,173
+rect $SearchMatch_8h.html 277,159 389,185
+rect $FilteredGfxMapRequest_8h.html 5,223 179,249
+rect $ServerTileMapFormatDesc_8h.html 237,260 429,287
+rect $GfxFeatureMapImageRequest_8h.html 228,311 439,337
+rect $UserData_8h.html 289,361 377,388
+rect $UserRightsItemTable_8h.html 255,412 412,439
+rect $DisturbanceElement_8h.html 257,463 409,489
+rect $MapSettings_8h.html 280,513 387,540
+rect $POISetProperties_8h.html 265,564 401,591
+rect $SearchRequestParameters_8h.html 237,615 429,641

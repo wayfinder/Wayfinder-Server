@@ -1,0 +1,7 @@
+base referer
+rect $CopyrightHolder_8h.html 5,155 133,181
+rect $RouteID_8h.html 157,155 240,181
+rect $TileFeatureArg_8h.html 365,155 485,181
+rect $TileFeature_8h.html 315,80 413,107
+rect $TileMap_8h.html 280,5 360,32
+rect $SFDFile_8h.html 509,155 589,181

@@ -1,0 +1,3 @@
+base referer
+rect $classNotCopyable.html 47,5 145,32
+rect $classPThread_1_1Monitor.html 100,83 225,109

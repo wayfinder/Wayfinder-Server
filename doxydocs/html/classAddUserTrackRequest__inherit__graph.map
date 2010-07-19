@@ -1,0 +1,5 @@
+base referer
+rect $classRequestWithStatus.html 16,229 152,256
+rect $classRequest.html 48,155 120,181
+rect $classLink.html 61,80 107,107
+rect $classLinkage.html 51,5 117,32

@@ -1,0 +1,5 @@
+base referer
+rect $MEWaterItemInfoWidget_8h.html 5,80 181,107
+rect $MEItemInfoDialog_8h.html 189,5 328,32
+rect $MEMapArea_8h.html 205,80 312,107
+rect $GMSWaterItem_8h.html 336,80 459,107

@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 27,5 96,32
+rect $GDColor_8h.html 20,80 103,107
+rect $GfxFeature_8h.html 127,80 226,107

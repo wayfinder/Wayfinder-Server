@@ -1,0 +1,9 @@
+base referer
+rect $ParserUserHandler_8h.html 213,155 360,181
+rect $ParserExternalAuth_8h.html 5,80 152,107
+rect $ParserExternalAuthHttpSettings_8h.html 176,80 397,107
+rect $XMLParserThread_8h.html 421,80 563,107
+rect $NavRequestData_8h.html 384,155 517,181
+rect $NavUserHelp_8h.html 587,80 699,107
+rect $NavExternalAuth_8h.html 576,5 709,32
+rect $XMLAuthData_8h.html 541,155 659,181

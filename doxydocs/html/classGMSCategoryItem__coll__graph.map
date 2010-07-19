@@ -1,0 +1,7 @@
+base referer
+rect $classOldCategoryItem.html 40,341 163,368
+rect $classOldGroupItem.html 49,264 153,291
+rect $classOldItem.html 68,187 135,213
+rect $classGfxDataFull.html 56,96 147,123
+rect $classGfxData.html 5,5 75,32
+rect $classMC2BoundingBox.html 99,5 227,32

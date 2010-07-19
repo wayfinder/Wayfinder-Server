@@ -1,0 +1,4 @@
+base referer
+rect $HttpInterfaceRequest_8h.html 28,80 188,107
+rect $LoggingHttpInterfaceRequest_8h.html 5,5 211,32
+rect $SendDataInterfaceRequest_8h.html 212,80 407,107

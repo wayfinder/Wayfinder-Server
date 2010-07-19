@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 398,5 467,32
+rect $ItemTypes_8h.html 128,155 222,181
+rect $MC2Coordinate_8h.html 270,80 395,107
+rect $IDPairVector_8h.html 723,155 830,181
+rect $Stack_8h.html 38,155 104,181
+rect $GfxData_8h.html 904,155 987,181
+rect $GfxFilterUtil_8h.html 547,155 648,181
+rect $OldGenericMap_8h.html 347,155 472,181
+rect $GMSGfxData_8h.html 632,80 744,107

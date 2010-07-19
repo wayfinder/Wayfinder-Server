@@ -1,0 +1,3 @@
+base referer
+rect $classDataTable.html 69,80 259,107
+rect $structDataBufferObject.html 103,5 225,32

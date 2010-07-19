@@ -1,0 +1,4 @@
+base referer
+rect $classParserHandler.html 75,96 181,123
+rect $classParserThread.html 5,5 107,32
+rect $classParserThreadGroup.html 131,5 269,32

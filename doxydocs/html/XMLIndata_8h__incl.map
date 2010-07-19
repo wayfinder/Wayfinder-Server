@@ -1,0 +1,7 @@
+base referer
+rect $MC2String_8h.html 5,155 101,181
+rect $NameCollection_8h.html 248,80 373,107
+rect $TopRegionMatch_8h.html 299,155 432,181
+rect $MapIndex_8h.html 507,155 597,181
+rect $XMLParserHelper_8h.html 441,80 580,107
+rect $XMLUtility_8h.html 621,155 715,181

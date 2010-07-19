@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 359,80 428,107
+rect $Types_8h.html 360,155 427,181
+rect $MC2Logging_8h.html 229,155 336,181
+rect $FileHandler_8h.html 627,155 725,181
+rect $MC2SimpleString_8h.html 19,155 155,181
+rect $DBufRequester_8h.html 749,155 872,181
+rect $TileMapConfig_8h.html 683,80 800,107
+rect $NotCopyable_8h.html 824,80 933,107

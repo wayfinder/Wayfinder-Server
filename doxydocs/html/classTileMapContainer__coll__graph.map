@@ -1,0 +1,9 @@
+base referer
+rect $classNotCopyable.html 42,5 141,32
+rect $structMapStorage.html 159,173 253,200
+rect $classTileMapFormatDesc.html 21,83 162,109
+rect $classMapProjection.html 502,173 609,200
+rect $classTransformMatrix.html 450,83 567,109
+rect $classMC2Coordinate.html 591,83 706,109
+rect $classMC2Point.html 857,83 937,109
+rect $classTileMapGarbage.html 237,83 426,109

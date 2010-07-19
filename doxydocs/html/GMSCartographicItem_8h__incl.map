@@ -1,0 +1,15 @@
+base referer
+rect $OldCartographicItem_8h.html 308,379 463,405
+rect $config_8h.html 308,80 378,107
+rect $Types_8h.html 199,155 266,181
+rect $MC2Logging_8h.html 290,155 396,181
+rect $OldItem_8h.html 346,304 426,331
+rect $ArrayTools_8h.html 874,155 970,181
+rect $ItemTypes_8h.html 31,155 124,181
+rect $NameUtility_8h.html 183,229 282,256
+rect $GMSGfxData_8h.html 423,229 535,256
+rect $DataBuffer_8h.html 610,155 706,181
+rect $VectorElement_8h.html 730,155 850,181
+rect $GMSItem_8h.html 614,304 702,331
+rect $ItemSubTypes_8h.html 204,304 322,331
+rect $MapData_8h.html 746,229 834,256

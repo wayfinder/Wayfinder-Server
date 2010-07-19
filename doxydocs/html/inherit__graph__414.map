@@ -1,0 +1,3 @@
+base referer
+rect $classModuleNotice.html 5,5 109,32
+rect $classSMSModuleNotice.html 159,5 289,32

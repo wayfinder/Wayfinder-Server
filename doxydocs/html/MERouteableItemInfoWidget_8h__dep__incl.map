@@ -1,0 +1,4 @@
+base referer
+rect $MEItemInfoDialog_8h.html 220,5 359,32
+rect $MEMapArea_8h.html 236,80 343,107
+rect $METurnRestrictionsDialog_8h.html 9,5 196,32

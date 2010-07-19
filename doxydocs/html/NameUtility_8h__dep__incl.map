@@ -1,0 +1,5 @@
+base referer
+rect $OldItem_8h.html 5,5 85,32
+rect $SearchMapStringTable_8h.html 109,5 277,32
+rect $SearchResult_8h.html 301,5 413,32
+rect $Item_8h.html 437,5 496,32

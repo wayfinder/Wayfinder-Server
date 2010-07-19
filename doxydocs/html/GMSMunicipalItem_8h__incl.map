@@ -1,0 +1,14 @@
+base referer
+rect $OldMunicipalItem_8h.html 383,379 519,405
+rect $config_8h.html 431,80 501,107
+rect $Types_8h.html 529,155 595,181
+rect $MC2Logging_8h.html 41,155 147,181
+rect $OldItem_8h.html 365,304 445,331
+rect $ArrayTools_8h.html 883,155 979,181
+rect $ItemTypes_8h.html 310,155 403,181
+rect $NameUtility_8h.html 242,229 341,256
+rect $GMSGfxData_8h.html 467,229 579,256
+rect $DataBuffer_8h.html 619,155 715,181
+rect $VectorElement_8h.html 739,155 859,181
+rect $GMSItem_8h.html 654,304 742,331
+rect $MapData_8h.html 755,229 843,256

@@ -1,0 +1,4 @@
+base referer
+rect $classTrafficIPC.html 7,31 87,57
+rect $classDummyTrafficIPC.html 137,5 263,32
+rect $classRealTrafficIPC.html 147,56 253,83

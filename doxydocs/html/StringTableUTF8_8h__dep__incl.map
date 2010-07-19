@@ -1,0 +1,3 @@
+base referer
+rect $StringTable_8h.html 5,5 104,32
+rect $DrawingProjection_8h.html 128,5 269,32

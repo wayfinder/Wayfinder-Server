@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 5,68 75,95
+rect $MC2BoundingBox_8h.html 137,43 276,69
+rect $CoordinateTransformer_8h.html 123,93 291,120
+rect $GfxDataTypes_8h.html 148,144 265,171
+rect $FilteredCoord_8h.html 151,651 263,677

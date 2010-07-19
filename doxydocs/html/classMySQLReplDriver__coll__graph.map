@@ -1,0 +1,4 @@
+base referer
+rect $classMySQLDriver.html 63,96 164,123
+rect $classSQLDriver.html 5,5 88,32
+rect $classAutoPtr.html 112,5 248,32

@@ -1,0 +1,4 @@
+base referer
+rect $classMapModuleNotice.html 5,155 133,181
+rect $classRouteMapNotice.html 157,155 277,181
+rect $classVectorElement.html 88,5 197,32

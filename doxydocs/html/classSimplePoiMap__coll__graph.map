@@ -1,0 +1,10 @@
+base referer
+rect $classDrawingProjection.html 8,187 136,213
+rect $classPixelBox.html 33,96 105,123
+rect $classMC2BoundingBox.html 5,5 133,32
+rect $classGfxFeatureMap.html 129,96 244,123
+rect $classPOIImageIdentificationTable.html 272,187 459,213
+rect $classServerTileMapFormatDesc.html 483,187 664,213
+rect $classTileMapFormatDesc.html 427,96 568,123
+rect $classTileMapCoords.html 592,96 704,123
+rect $classScreenSize.html 157,5 248,32

@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 604,80 673,107
+rect $Types_8h.html 727,155 793,181
+rect $MC2Logging_8h.html 5,229 112,256
+rect $MC2Point_8h.html 511,155 601,181
+rect $PixelBox_8h.html 545,229 628,256
+rect $TileFeature_8h.html 383,304 481,331
+rect $TileFeatureArg_8h.html 249,229 369,256
+rect $TileMapConfig_8h.html 369,155 487,181
+rect $BitBuffer_8h.html 191,155 273,181

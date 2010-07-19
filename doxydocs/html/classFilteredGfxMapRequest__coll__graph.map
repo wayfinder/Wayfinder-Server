@@ -1,0 +1,10 @@
+base referer
+rect $classRequestWithStatus.html 5,112 141,138
+rect $classGfxFeatureMapImageRequest.html 569,241 769,268
+rect $classTopRegionRequest.html 239,112 372,138
+rect $classServerTileMapFormatDesc.html 579,108 760,134
+rect $classGfxFeatureMap.html 248,376 363,402
+rect $classMC2BoundingBox.html 9,376 137,402
+rect $classRouteReplyPacket.html 240,297 371,324
+rect $classMapSettings.html 257,482 353,509
+rect $classTileMapParams.html 612,598 727,625

@@ -1,0 +1,7 @@
+base referer
+rect $CoordinateObject_8h.html 327,80 463,107
+rect $CoordinateRequest_8h.html 5,5 152,32
+rect $ItemInfoRequest_8h.html 176,5 307,32
+rect $OrigDestLookup_8h.html 331,5 459,32
+rect $RouteObject_8h.html 483,5 589,32
+rect $MTSender_8h.html 555,80 648,107

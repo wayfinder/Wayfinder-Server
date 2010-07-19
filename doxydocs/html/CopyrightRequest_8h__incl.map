@@ -1,0 +1,10 @@
+base referer
+rect $Request_8h.html 325,229 408,256
+rect $config_8h.html 454,5 524,32
+rect $PacketContainerTree_8h.html 174,80 332,107
+rect $CCSet_8h.html 440,155 512,181
+rect $StringTable_8h.html 317,155 416,181
+rect $MC2String_8h.html 356,80 452,107
+rect $RequestData_8h.html 536,155 645,181
+rect $CopyrightHolder_8h.html 22,80 150,107
+rect $CopyrightHandler_8h.html 106,155 242,181

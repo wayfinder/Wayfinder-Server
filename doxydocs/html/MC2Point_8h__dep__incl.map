@@ -1,0 +1,13 @@
+base referer
+rect $ClipUtil_8h.html 431,5 505,32
+rect $Intersect_8h.html 427,56 509,83
+rect $TransformMatrix_8h.html 404,157 532,184
+rect $MapProjection_8h.html 207,132 324,159
+rect $PixelBox_8h.html 427,309 509,336
+rect $TileFeature_8h.html 216,259 315,285
+rect $TileMap_8h.html 41,233 121,260
+rect $POICache_8h.html 219,385 312,412
+rect $GDCropTransparent_8h.html 392,411 544,437
+rect $POIOverlapDetector_8h.html 5,423 157,449
+rect $ScreenOrWorldCoordinate_8h.html 373,512 563,539
+rect $GSystem_8h.html 424,563 512,589

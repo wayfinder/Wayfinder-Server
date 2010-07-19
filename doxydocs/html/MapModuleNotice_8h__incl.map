@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 97,5 166,32
+rect $DataBuffer_8h.html 24,80 120,107
+rect $MapNotice_8h.html 144,80 240,107
+rect $GfxDataFull_8h.html 264,80 365,107

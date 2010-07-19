@@ -1,0 +1,4 @@
+base referer
+rect $classGenericMapError.html 5,80 128,107
+rect $classStringConvert_1_1ConvertException.html 152,80 368,107
+rect $classTileMapException_1_1BadTileMap.html 392,80 597,107

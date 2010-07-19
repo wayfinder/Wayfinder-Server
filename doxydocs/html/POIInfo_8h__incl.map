@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 417,80 487,107
+rect $Types_8h.html 531,155 597,181
+rect $MC2Logging_8h.html 672,155 779,181
+rect $MC2String_8h.html 411,155 507,181
+rect $LangTypes_8h.html 5,155 101,181
+rect $Array_8h.html 125,155 189,181

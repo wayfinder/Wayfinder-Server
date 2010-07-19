@@ -1,0 +1,10 @@
+base referer
+rect $classISABThread.html 531,5 624,32
+rect $classMapRequester.html 523,56 632,83
+rect $classIPnPort.html 273,157 340,184
+rect $classInterfaceRequestData.html 501,239 653,265
+rect $classISABMonitor.html 529,365 625,392
+rect $classScopedArray.html 504,416 651,443
+rect $classUserItem.html 540,467 615,493
+rect $classClientSetting.html 259,317 355,344
+rect $classMC2String.html 5,239 91,265

@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 537,80 607,107
+rect $Types_8h.html 539,155 605,181
+rect $MC2Logging_8h.html 307,155 413,181
+rect $MC2String_8h.html 5,155 101,181
+rect $IDPairVector_8h.html 176,155 283,181
+rect $GetAdditionalPOIInfo_8h.html 433,304 591,331
+rect $SQLDriver_8h.html 228,229 321,256
+rect $ItemInfoPacket_8h.html 451,229 573,256
+rect $Item_8h.html 731,155 789,181
+rect $PointOfInterestItem_8h.html 597,229 744,256

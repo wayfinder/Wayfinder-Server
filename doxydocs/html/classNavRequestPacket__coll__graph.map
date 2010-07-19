@@ -1,0 +1,4 @@
+base referer
+rect $classNavPacket.html 31,187 116,213
+rect $classNParamBlock.html 21,96 125,123
+rect $classNParam.html 39,5 108,32

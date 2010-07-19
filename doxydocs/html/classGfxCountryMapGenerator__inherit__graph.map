@@ -1,0 +1,4 @@
+base referer
+rect $classGenericGfxMapGenerator.html 7,155 180,181
+rect $classMapGenerator.html 40,80 147,107
+rect $classISABThread.html 47,5 140,32

@@ -1,0 +1,10 @@
+base referer
+rect $classOldZipCodeItem.html 43,355 160,381
+rect $classOldGroupItem.html 49,264 153,291
+rect $classOldItem.html 68,187 135,213
+rect $classGfxDataFull.html 56,96 147,123
+rect $classGfxData.html 5,5 75,32
+rect $classMC2BoundingBox.html 99,5 227,32
+rect $classGMSItem.html 184,355 261,381
+rect $classMapData.html 185,264 260,291
+rect $classVectorElement.html 168,187 277,213

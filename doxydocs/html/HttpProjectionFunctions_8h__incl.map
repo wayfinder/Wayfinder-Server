@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 244,80 313,107
+rect $Types_8h.html 8,155 75,181
+rect $MC2Logging_8h.html 544,155 651,181
+rect $HttpFunctionsConfig_8h.html 241,379 393,405
+rect $HttpParserThreadConfig_8h.html 229,304 405,331
+rect $MC2String_8h.html 323,155 419,181
+rect $HttpStringMap_8h.html 149,229 267,256

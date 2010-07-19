@@ -1,0 +1,4 @@
+base referer
+rect $classMapHashTable.html 33,80 143,107
+rect $classOldMapHashTable.html 167,80 297,107
+rect $classMapHashTableBuildable.html 5,155 171,181

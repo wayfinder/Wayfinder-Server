@@ -1,0 +1,11 @@
+base referer
+rect $classOldBuiltUpAreaItem.html 15,155 153,181
+rect $classOldCategoryItem.html 183,155 305,181
+rect $classOldStreetItem.html 329,155 433,181
+rect $classOldZipAreaItem.html 457,155 572,181
+rect $classOldZipCodeItem.html 596,155 713,181
+rect $classOldItem.html 348,5 415,32
+rect $classGMSBuiltUpAreaItem.html 5,229 155,256
+rect $classGMSCategoryItem.html 179,229 309,256
+rect $classGMSStreetItem.html 333,229 448,256
+rect $classGMSZipCodeItem.html 591,229 719,256

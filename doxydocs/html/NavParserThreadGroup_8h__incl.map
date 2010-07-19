@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 89,5 158,32
+rect $InterfaceParserThreadGroup_8h.html 22,80 225,107
+rect $NavLatestNewsDataCmp_8h.html 249,80 430,107

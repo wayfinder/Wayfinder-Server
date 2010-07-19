@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 212,5 281,32
+rect $ItemTypes_8h.html 158,155 252,181
+rect $CoordinateTransformer_8h.html 276,155 444,181
+rect $MC2String_8h.html 390,80 486,107
+rect $STLStrComp_8h.html 22,80 132,107
+rect $LangTypes_8h.html 156,80 252,107
+rect $Vector_8h.html 569,155 638,181

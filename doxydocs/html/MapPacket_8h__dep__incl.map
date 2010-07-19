@@ -1,0 +1,4 @@
+base referer
+rect $MapRequest_8h.html 5,5 115,32
+rect $StringTableRequest_8h.html 139,5 288,32
+rect $MTSender_8h.html 312,5 405,32

@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 98,5 167,32
+rect $DataBuffer_8h.html 24,80 120,107
+rect $MC2String_8h.html 144,80 240,107
+rect $GMSLane_8h.html 264,80 358,107

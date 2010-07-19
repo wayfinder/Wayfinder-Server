@@ -1,0 +1,13 @@
+base referer
+rect $JPathMultiExpression_8h.html 141,155 301,181
+rect $JPathAssigner_8h.html 5,80 123,107
+rect $JPathMatchHandler_8h.html 147,80 296,107
+rect $Path_8h.html 365,155 424,181
+rect $XPathMultiExpression_8h.html 468,155 633,181
+rect $ProxyAssigner_8h.html 320,80 437,107
+rect $TalkerUtility_8h.html 425,5 524,32
+rect $XPathAssigner_8h.html 512,80 632,107
+rect $XPathSubAssigner_8h.html 656,80 800,107
+rect $DatexIIStructs_8h.html 548,5 665,32
+rect $XPathMatchHandler_8h.html 824,80 976,107
+rect $QypeHandler_8h.html 845,5 955,32

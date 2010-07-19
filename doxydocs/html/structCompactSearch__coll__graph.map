@@ -1,0 +1,6 @@
+base referer
+rect $structCompactSearch_1_1Location.html 5,96 181,123
+rect $classMC2Coordinate.html 33,5 148,32
+rect $classIDPair__t.html 212,96 281,123
+rect $classMC2String.html 308,96 393,123
+rect $classvector.html 299,5 405,32

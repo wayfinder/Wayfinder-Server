@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 5,5 75,32
+rect $FileDBufRequester_8h.html 32,80 176,107
+rect $MC2SimpleString_8h.html 121,5 257,32
+rect $ServerTileMapFormatDesc_8h.html 251,80 443,107

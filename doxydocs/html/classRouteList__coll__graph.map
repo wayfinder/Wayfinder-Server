@@ -1,0 +1,5 @@
+base referer
+rect $classRouteReq.html 5,96 85,123
+rect $classPacketContainer.html 117,5 237,32
+rect $classRouteRequest.html 196,96 303,123
+rect $classNavStringTable.html 327,96 439,123

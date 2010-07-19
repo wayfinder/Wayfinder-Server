@@ -1,0 +1,17 @@
+base referer
+rect $classRequest.html 72,323 144,349
+rect $classRequestPtrOrRequestID.html 128,443 294,469
+rect $classLink.html 51,232 96,259
+rect $classLinkage.html 42,7 108,33
+rect $classHead.html 18,112 71,139
+rect $classRequestData.html 162,533 260,560
+rect $classUserUser.html 518,443 595,469
+rect $classUserElement.html 608,323 707,349
+rect $classVectorElement.html 603,232 712,259
+rect $classPacketContainerTree.html 120,232 267,259
+rect $classSMSSendRequest_1_1SMSPacketContainer.html 250,323 516,349
+rect $classPacketContainer.html 323,232 443,259
+rect $classScopedArray.html 310,112 456,139
+rect $classNotCopyable.html 215,7 314,33
+rect $classPacket.html 175,112 236,139
+rect $classTimeoutSequence.html 480,112 611,139

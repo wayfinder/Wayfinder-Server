@@ -1,0 +1,7 @@
+base referer
+rect $LandmarkLink_8h.html 168,155 285,181
+rect $config_8h.html 96,5 165,32
+rect $CCSet_8h.html 397,80 469,107
+rect $ItemTypes_8h.html 24,80 117,107
+rect $StringTable_8h.html 141,80 240,107
+rect $NotCopyable_8h.html 264,80 373,107

@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 584,80 653,107
+rect $Types_8h.html 788,155 855,181
+rect $MC2Logging_8h.html 97,155 204,181
+rect $ParserHandler_8h.html 283,379 400,405
+rect $ParserThreadConfig_8h.html 329,304 481,331
+rect $ISABThread_8h.html 512,229 616,256
+rect $SysUtility_8h.html 575,155 663,181
+rect $ParserPosPushItem_8h.html 160,453 312,480

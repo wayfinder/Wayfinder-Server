@@ -1,0 +1,3 @@
+base referer
+rect $classOldNode.html 5,5 80,32
+rect $classGMSNode.html 129,5 212,32

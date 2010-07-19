@@ -1,0 +1,4 @@
+base referer
+rect $classExpandRouteHead.html 5,5 139,32
+rect $classAlteredGfxList.html 163,5 269,32
+rect $classGenericMap.html 293,5 387,32

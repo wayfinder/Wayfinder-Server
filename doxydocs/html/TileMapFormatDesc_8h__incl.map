@@ -1,0 +1,11 @@
+base referer
+rect $TileMapConfig_8h.html 16,35 133,62
+rect $TileFeatureArg_8h.html 209,162 329,188
+rect $TileFeature_8h.html 400,111 499,138
+rect $TileImportanceTable_8h.html 193,60 345,87
+rect $MC2SimpleString_8h.html 7,339 143,366
+rect $TileMapLayerInfo_8h.html 201,466 337,492
+rect $CopyrightHolder_8h.html 205,263 333,290
+rect $LangTypes_8h.html 401,314 497,340
+rect $TileCategory_8h.html 396,364 503,391
+rect $NotCopyable_8h.html 395,567 504,594

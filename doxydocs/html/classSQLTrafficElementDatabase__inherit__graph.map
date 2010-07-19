@@ -1,0 +1,3 @@
+base referer
+rect $classTrafficElementDatabase.html 5,5 168,32
+rect $classNotCopyable.html 192,5 291,32

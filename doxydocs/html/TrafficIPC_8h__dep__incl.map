@@ -1,0 +1,3 @@
+base referer
+rect $DummyTrafficIPC_8h.html 5,5 141,32
+rect $RealTrafficIPC_8h.html 165,5 283,32

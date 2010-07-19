@@ -1,0 +1,9 @@
+base referer
+rect $classOldWaterItem.html 57,277 159,304
+rect $classOldItem.html 69,187 136,213
+rect $classGfxDataFull.html 56,96 147,123
+rect $classGfxData.html 5,5 75,32
+rect $classMC2BoundingBox.html 99,5 227,32
+rect $classGMSItem.html 183,277 260,304
+rect $classMapData.html 188,187 263,213
+rect $classVectorElement.html 171,96 280,123

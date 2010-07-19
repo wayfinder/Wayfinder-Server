@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 565,80 635,107
+rect $Types_8h.html 475,155 541,181
+rect $MC2Logging_8h.html 199,155 305,181
+rect $SQLDataContainer_8h.html 468,379 612,405
+rect $SQLDriver_8h.html 499,229 592,256
+rect $MC2String_8h.html 355,155 451,181
+rect $SQLTableData_8h.html 481,453 599,480
+rect $SQLQuery_8h.html 376,304 472,331

@@ -1,0 +1,7 @@
+base referer
+rect $NavMessage_8h.html 205,155 315,181
+rect $isabBoxNavMessage_8h.html 5,80 163,107
+rect $isabBoxRouteMessage_8h.html 76,5 244,32
+rect $NavRouteMessage_8h.html 187,80 333,107
+rect $NavMessageFactory_8h.html 357,80 512,107
+rect $isabBoxMessageFactory_8h.html 345,5 524,32

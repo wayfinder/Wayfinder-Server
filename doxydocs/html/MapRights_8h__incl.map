@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 259,80 328,107
+rect $Types_8h.html 8,155 75,181
+rect $MC2Logging_8h.html 651,155 757,181
+rect $UserEnums_8h.html 408,229 509,256
+rect $WFSubscriptionConstants_8h.html 200,155 387,181
+rect $LangTypes_8h.html 411,155 507,181
+rect $MC2String_8h.html 531,155 627,181
+rect $PacketRW_8h.html 832,229 925,256

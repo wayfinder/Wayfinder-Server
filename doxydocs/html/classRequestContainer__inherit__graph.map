@@ -1,0 +1,6 @@
+base referer
+rect $classNavRequestContainer.html 5,229 157,256
+rect $classThreadRequestContainer.html 181,229 352,256
+rect $classWinRequestContainer.html 376,229 528,256
+rect $classLink.html 244,80 289,107
+rect $classLinkage.html 233,5 300,32

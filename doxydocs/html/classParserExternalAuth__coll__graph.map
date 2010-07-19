@@ -1,0 +1,6 @@
+base referer
+rect $classParserHandler.html 131,328 237,355
+rect $classParserThread.html 5,227 107,253
+rect $classMC2String.html 152,5 237,32
+rect $classParserThreadGroup.html 131,227 269,253
+rect $classParserExternalAuthHttpSettings.html 244,277 455,304

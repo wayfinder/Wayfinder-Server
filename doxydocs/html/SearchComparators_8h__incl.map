@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 47,5 116,32
+rect $SearchMap2_8h.html 27,80 136,107
+rect $SearchNotice_8h.html 160,80 272,107

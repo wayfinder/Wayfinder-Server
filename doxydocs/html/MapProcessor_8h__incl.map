@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 141,5 211,32
+rect $StringTable_8h.html 75,80 173,107
+rect $ItemTypes_8h.html 233,155 327,181
+rect $GetAdditionalPOIInfo_8h.html 276,80 433,107
+rect $MapHandlingProcessor_8h.html 39,155 209,181

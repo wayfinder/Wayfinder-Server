@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 336,5 405,32
+rect $LangTypes_8h.html 67,80 163,107
+rect $MC2String_8h.html 237,80 333,107
+rect $ISABThread_8h.html 624,155 728,181
+rect $CategoryTree_8h.html 140,155 252,181
+rect $ImageTable_8h.html 327,155 428,181
+rect $CategoryRegionID_8h.html 408,80 549,107

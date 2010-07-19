@@ -1,0 +1,7 @@
+base referer
+rect $CommunicationProcessor_8h.html 5,155 189,181
+rect $InterfaceParserThreadGroup_8h.html 213,155 416,181
+rect $HttpParserThreadGroup_8h.html 127,80 303,107
+rect $XMLParserThreadGroup_8h.html 125,5 304,32
+rect $NavParserThreadGroup_8h.html 327,80 500,107
+rect $NavHandler_8h.html 363,5 464,32

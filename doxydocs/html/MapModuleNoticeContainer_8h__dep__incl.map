@@ -1,0 +1,4 @@
+base referer
+rect $MapIndex_8h.html 9,80 100,107
+rect $XMLIndata_8h.html 5,5 104,32
+rect $MapReader_8h.html 124,80 225,107

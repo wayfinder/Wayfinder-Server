@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 351,80 420,107
+rect $Types_8h.html 405,155 472,181
+rect $MC2Logging_8h.html 152,155 259,181
+rect $UserPacket_8h.html 335,229 436,256
+rect $Packet_8h.html 5,155 77,181
+rect $StringTable_8h.html 283,155 381,181
+rect $UserTrackElement_8h.html 597,155 739,181

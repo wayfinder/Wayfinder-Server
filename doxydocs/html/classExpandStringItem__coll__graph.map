@@ -1,0 +1,9 @@
+base referer
+rect $classNotCopyable.html 5,189 104,216
+rect $classLandmarkHead.html 128,189 240,216
+rect $classHead.html 157,112 211,139
+rect $classLinkage.html 151,7 217,33
+rect $classExpandStringSignPosts.html 264,189 427,216
+rect $classvector.html 236,112 452,139
+rect $classExpandStringLanesCont.html 472,189 637,216
+rect $classvector.html 476,112 673,139

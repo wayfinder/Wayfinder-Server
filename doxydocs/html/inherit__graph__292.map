@@ -1,0 +1,4 @@
+base referer
+rect $classJobScheduler.html 5,31 109,57
+rect $classFIFOJobScheduler.html 168,5 301,32
+rect $classProviderPrioScheduler.html 157,56 312,83

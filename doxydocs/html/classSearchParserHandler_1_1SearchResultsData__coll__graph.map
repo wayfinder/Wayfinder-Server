@@ -1,0 +1,16 @@
+base referer
+rect $structCompactSearchHitType.html 41,504 204,531
+rect $classMC2String.html 21,384 107,411
+rect $classvector.html 5,293 112,320
+rect $classSearchResultRequest.html 435,504 587,531
+rect $classRequestWithStatus.html 564,384 700,411
+rect $classRequest.html 412,293 484,320
+rect $classRequestPtrOrRequestID.html 235,384 400,411
+rect $classLink.html 539,203 584,229
+rect $classLinkage.html 540,7 607,33
+rect $classHead.html 567,112 620,139
+rect $classRequestData.html 268,504 367,531
+rect $classUserUser.html 133,384 211,411
+rect $classUserElement.html 136,293 235,320
+rect $classVectorElement.html 131,203 240,229
+rect $classPacketContainerTree.html 319,203 465,229

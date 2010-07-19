@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 76,5 145,32
+rect $Request_8h.html 27,155 109,181
+rect $MapRights_8h.html 105,80 201,107
+rect $TileMapPacket_8h.html 289,80 409,107
+rect $ServerTileMapFormatDesc_8h.html 184,155 376,181

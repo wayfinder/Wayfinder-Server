@@ -1,0 +1,5 @@
+base referer
+rect $SearchNotice_8h.html 180,155 292,181
+rect $SearchComparators_8h.html 5,80 157,107
+rect $WriteableStringSearch_8h.html 56,5 221,32
+rect $SearchableStringSearch_8h.html 245,5 421,32

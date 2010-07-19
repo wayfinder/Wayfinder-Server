@@ -1,0 +1,12 @@
+base referer
+rect $classMEEditSignPostDialog.html 340,277 495,304
+rect $classMESignPostInfoDialog_1_1Columns.html 221,96 437,123
+rect $classOldConnection.html 5,96 115,123
+rect $classOldNode.html 116,187 191,213
+rect $classMEMapArea.html 477,96 573,123
+rect $classOldGenericMap.html 281,5 396,32
+rect $classMEItemLayer.html 420,5 521,32
+rect $classGDFRef.html 545,5 615,32
+rect $classMC2BoundingBox.html 639,5 767,32
+rect $classMELogCommentInterfaceBox.html 631,187 828,213
+rect $classMC2String.html 852,187 937,213

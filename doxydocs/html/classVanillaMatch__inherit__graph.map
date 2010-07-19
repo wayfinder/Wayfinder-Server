@@ -1,0 +1,8 @@
+base referer
+rect $classVanillaCategoryMatch.html 5,155 157,181
+rect $classVanillaCompanyMatch.html 181,155 336,181
+rect $classVanillaMatchWithSSI.html 360,155 507,181
+rect $classVanillaMiscMatch.html 531,155 656,181
+rect $classVanillaRegionMatch.html 680,155 819,181
+rect $classVanillaStreetMatch.html 843,155 976,181
+rect $classSearchMatch.html 463,5 564,32

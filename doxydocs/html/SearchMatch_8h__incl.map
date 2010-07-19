@@ -1,0 +1,13 @@
+base referer
+rect $config_8h.html 5,383 75,409
+rect $MC2String_8h.html 139,155 235,181
+rect $SearchTypes_8h.html 132,459 241,485
+rect $SearchMatchPoints_8h.html 299,509 448,536
+rect $IDPairVector_8h.html 133,53 240,80
+rect $MC2Coordinate_8h.html 124,611 249,637
+rect $MC2BoundingBox_8h.html 304,661 443,688
+rect $NewStrDup_8h.html 323,244 424,271
+rect $SearchSorting_8h.html 315,408 432,435
+rect $StringUtility_8h.html 324,143 423,169
+rect $MapRights_8h.html 139,357 235,384
+rect $POIReview_8h.html 324,307 423,333

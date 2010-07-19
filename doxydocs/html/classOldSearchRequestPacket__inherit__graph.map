@@ -1,0 +1,8 @@
+base referer
+rect $classExpandCategory2SearchRequestPacket.html 5,304 267,331
+rect $classProximitySearchRequestPacket.html 291,304 499,331
+rect $classUserSearchRequestPacket.html 523,304 704,331
+rect $classVanillaSearchRequestPacket.html 728,304 920,331
+rect $classRequestPacket.html 448,155 560,181
+rect $classPacket.html 473,80 535,107
+rect $classNotCopyable.html 455,5 553,32

@@ -1,0 +1,6 @@
+base referer
+rect $MEPoiItemInfoWidget_8h.html 5,80 168,107
+rect $MEItemInfoDialog_8h.html 176,5 315,32
+rect $MEMapArea_8h.html 192,80 299,107
+rect $GMSPointOfInterestItem_8h.html 323,80 501,107
+rect $WASPExtractor_8h.html 525,80 651,107

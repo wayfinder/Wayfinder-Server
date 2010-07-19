@@ -1,0 +1,9 @@
+base referer
+rect $classInterfaceRequest.html 7,31 129,57
+rect $classSelectableInterfaceRequest.html 179,31 365,57
+rect $classNavInterfaceRequest.html 423,5 569,32
+rect $classSocketInterfaceRequest.html 415,56 577,83
+rect $classIsabBoxInterfaceRequest.html 633,5 804,32
+rect $classHttpInterfaceRequest.html 645,56 792,83
+rect $classSendDataInterfaceRequest.html 628,107 809,133
+rect $classLoggingHttpInterfaceRequest.html 860,56 1055,83

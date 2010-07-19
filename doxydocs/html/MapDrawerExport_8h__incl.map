@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 137,80 206,107
+rect $Types_8h.html 27,155 94,181
+rect $MC2Logging_8h.html 118,155 225,181
+rect $DrawSettings_8h.html 245,229 357,256
+rect $GDColor_8h.html 299,155 382,181
+rect $GfxFeature_8h.html 406,155 505,181

@@ -1,0 +1,9 @@
+base referer
+rect $classOldCartographicItem.html 29,277 173,304
+rect $classOldItem.html 68,187 135,213
+rect $classGfxDataFull.html 56,96 147,123
+rect $classGfxData.html 5,5 75,32
+rect $classMC2BoundingBox.html 99,5 227,32
+rect $classGMSItem.html 197,277 275,304
+rect $classMapData.html 199,187 273,213
+rect $classVectorElement.html 181,96 291,123

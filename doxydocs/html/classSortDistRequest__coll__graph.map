@@ -1,0 +1,17 @@
+base referer
+rect $classRequest.html 267,293 339,320
+rect $classRequestPtrOrRequestID.html 123,384 288,411
+rect $classLink.html 216,203 261,229
+rect $classLinkage.html 212,7 279,33
+rect $classHead.html 249,112 303,139
+rect $classRequestData.html 156,475 255,501
+rect $classUserUser.html 21,384 99,411
+rect $classUserElement.html 11,293 109,320
+rect $classVectorElement.html 5,203 115,229
+rect $classPacketContainerTree.html 285,203 432,229
+rect $classCoordinateOnItemReplyPacket.html 444,293 647,320
+rect $classReplyPacket.html 517,203 613,229
+rect $classPacket.html 599,112 660,139
+rect $classRequestPacket.html 691,203 803,229
+rect $classNotCopyable.html 580,7 679,33
+rect $classCoordinateOnItemRequestPacket.html 671,293 889,320

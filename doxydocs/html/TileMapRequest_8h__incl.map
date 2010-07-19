@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 357,5 427,32
+rect $Request_8h.html 5,80 88,107
+rect $MC2String_8h.html 292,155 388,181
+rect $FilteredGfxMapRequest_8h.html 44,155 217,181
+rect $TileMapBufferHolder_8h.html 412,155 567,181
+rect $ServerTileMapFormatDesc_8h.html 163,80 355,107

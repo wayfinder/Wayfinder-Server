@@ -1,0 +1,12 @@
+base referer
+rect $SearchMapRegionTable_8h.html 175,155 348,181
+rect $SearchMapStringTable_8h.html 5,80 173,107
+rect $SearchMap2_8h.html 207,5 316,32
+rect $SearchMapItem_8h.html 197,80 325,107
+rect $ClientSettingsProductReader_8h.html 401,155 604,181
+rect $GenericMap_8h.html 685,155 789,181
+rect $CountryOverviewMap_8h.html 349,80 509,107
+rect $ExternalConnections_8h.html 533,80 688,107
+rect $ItemAllocator_8h.html 712,80 821,107
+rect $Map_8h.html 896,80 955,107
+rect $OverviewMap_8h.html 835,5 949,32

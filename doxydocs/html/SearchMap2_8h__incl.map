@@ -1,0 +1,9 @@
+base referer
+rect $SearchMapItem_8h.html 322,304 450,331
+rect $config_8h.html 290,5 359,32
+rect $IDPairVector_8h.html 28,155 135,181
+rect $ItemTypes_8h.html 724,80 818,107
+rect $NodeBits_8h.html 210,155 298,181
+rect $LangTypes_8h.html 216,80 312,107
+rect $StringTable_8h.html 336,80 435,107
+rect $SearchMapStringTable_8h.html 575,155 743,181

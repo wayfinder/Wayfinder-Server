@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 565,80 635,107
+rect $Types_8h.html 472,155 539,181
+rect $MC2Logging_8h.html 199,155 305,181
+rect $Pipe_8h.html 505,304 564,331
+rect $FileException_8h.html 344,229 456,256
+rect $MC2String_8h.html 352,155 448,181
+rect $Selectable_8h.html 672,304 768,331
+rect $NotCopyable_8h.html 480,229 589,256

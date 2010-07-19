@@ -1,0 +1,12 @@
+base referer
+rect $OldItemNames_8h.html 145,80 268,107
+rect $OldGenericMap_8h.html 5,5 131,32
+rect $GMSItemNames_8h.html 155,5 285,32
+rect $SearchMapStringTable_8h.html 292,80 460,107
+rect $SearchMap2_8h.html 321,5 431,32
+rect $ItemNames_8h.html 484,80 585,107
+rect $GenericMap_8h.html 483,5 587,32
+rect $MapModuleNoticeContainer_8h.html 609,80 807,107
+rect $MapIndex_8h.html 636,5 727,32
+rect $MapReader_8h.html 751,5 852,32
+rect $URLAddToer_8h.html 831,80 940,107

@@ -1,0 +1,4 @@
+base referer
+rect $TCPSocket_8h.html 5,5 104,32
+rect $ISABThread_8h.html 128,5 232,32
+rect $MC2Exception_8h.html 256,5 376,32

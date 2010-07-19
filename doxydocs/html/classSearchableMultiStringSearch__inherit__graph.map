@@ -1,0 +1,3 @@
+base referer
+rect $classMultiStringSearch.html 5,5 133,32
+rect $classSearchableStringSearch.html 157,5 323,32

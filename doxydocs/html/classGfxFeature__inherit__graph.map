@@ -1,0 +1,7 @@
+base referer
+rect $classGfxEventFeature.html 5,155 128,181
+rect $classGfxPOIFeature.html 152,155 264,181
+rect $classGfxRoadFeature.html 288,155 408,181
+rect $classGfxSymbolFeature.html 432,155 565,181
+rect $classGfxTrafficInfoFeature.html 589,155 736,181
+rect $classVectorElement.html 293,5 403,32

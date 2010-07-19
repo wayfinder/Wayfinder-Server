@@ -1,0 +1,8 @@
+base referer
+rect $Types_8h.html 193,5 259,32
+rect $config_8h.html 191,80 261,107
+rect $SortDistPacket_8h.html 30,155 150,181
+rect $CoordinateOnItemPacket_8h.html 475,155 657,181
+rect $Request_8h.html 225,155 307,181
+rect $VectorElement_8h.html 331,155 451,181
+rect $Vector_8h.html 681,155 750,181

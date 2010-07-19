@@ -1,0 +1,7 @@
+base referer
+rect $classInterfaceParserThread.html 5,5 160,32
+rect $classNavRequestHandler.html 99,96 240,123
+rect $classNotCopyable.html 368,96 467,123
+rect $classNavSession.html 491,96 584,123
+rect $classNavParserThreadGroup.html 195,5 357,32
+rect $classNavInterfaceRequest.html 608,96 755,123

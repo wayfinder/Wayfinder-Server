@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 368,80 437,107
+rect $Types_8h.html 485,155 552,181
+rect $MC2Logging_8h.html 163,155 269,181
+rect $JobDispatcher_8h.html 344,155 461,181

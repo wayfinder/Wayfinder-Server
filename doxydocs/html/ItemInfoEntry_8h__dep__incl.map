@@ -1,0 +1,8 @@
+base referer
+rect $TalkerUtility_8h.html 5,155 104,181
+rect $ItemInfoPacket_8h.html 128,155 251,181
+rect $GetAdditionalPOIInfo_8h.html 100,80 257,107
+rect $MapProcessor_8h.html 44,5 161,32
+rect $SearchUnitBuilder_8h.html 185,5 324,32
+rect $UserFavorites_8h.html 285,155 400,181
+rect $UserFavoritesRequest_8h.html 281,80 444,107

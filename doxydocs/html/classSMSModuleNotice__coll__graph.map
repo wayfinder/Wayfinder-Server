@@ -1,0 +1,11 @@
+base referer
+rect $classModuleNotice.html 193,264 297,291
+rect $classIPnPort.html 108,173 175,200
+rect $classMapStatistics.html 199,173 300,200
+rect $classmap.html 5,83 195,109
+rect $classMC2String.html 219,83 304,109
+rect $classvector.html 208,5 315,32
+rect $classSMSStatisticsPacket.html 321,264 465,291
+rect $classStatisticsPacket.html 336,173 451,200
+rect $classPacket.html 363,83 424,109
+rect $classNotCopyable.html 344,5 443,32

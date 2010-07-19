@@ -1,0 +1,3 @@
+base referer
+rect $classTileMapIdleListener.html 5,5 141,32
+rect $classTileMapToolkit.html 165,5 272,32

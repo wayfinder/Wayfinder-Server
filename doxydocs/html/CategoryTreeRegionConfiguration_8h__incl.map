@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 211,5 280,32
+rect $MC2String_8h.html 344,80 440,107
+rect $CategoryTree_8h.html 283,155 395,181
+rect $CategoryRegionID_8h.html 5,155 147,181

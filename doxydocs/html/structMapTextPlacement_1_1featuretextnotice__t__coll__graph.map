@@ -1,0 +1,6 @@
+base referer
+rect $classGfxFeature.html 37,173 125,200
+rect $classVectorElement.html 5,83 115,109
+rect $classMC2String.html 139,83 224,109
+rect $classvector.html 128,5 235,32
+rect $classMapSetting.html 149,173 237,200

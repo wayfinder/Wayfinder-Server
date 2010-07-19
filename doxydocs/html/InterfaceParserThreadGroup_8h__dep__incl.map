@@ -1,0 +1,5 @@
+base referer
+rect $HttpParserThreadGroup_8h.html 7,80 183,107
+rect $XMLParserThreadGroup_8h.html 5,5 184,32
+rect $NavParserThreadGroup_8h.html 207,80 380,107
+rect $NavHandler_8h.html 243,5 344,32

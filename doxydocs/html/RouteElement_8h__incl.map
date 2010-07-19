@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 251,5 320,32
+rect $StringTable_8h.html 116,80 215,107
+rect $ItemTypes_8h.html 239,80 332,107
+rect $ExpandStringLane_8h.html 546,80 687,107
+rect $ExpandStringSignPost_8h.html 356,80 522,107
+rect $Vector_8h.html 23,80 92,107

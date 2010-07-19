@@ -1,0 +1,12 @@
+base referer
+rect $classURLFetcherNoSSL.html 219,413 355,440
+rect $classNotCopyable.html 120,323 219,349
+rect $classTCPSocket.html 243,323 331,349
+rect $classSocket.html 61,173 123,200
+rect $classSelectable.html 51,83 133,109
+rect $classTemplateSelectable.html 5,5 179,32
+rect $classWriteable.html 147,173 224,200
+rect $classReadable.html 248,173 325,200
+rect $classStepLogger.html 349,173 440,200
+rect $classMC2String.html 399,83 484,109
+rect $classvector.html 388,5 495,32

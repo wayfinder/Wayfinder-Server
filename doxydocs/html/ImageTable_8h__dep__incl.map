@@ -1,0 +1,9 @@
+base referer
+rect $CategoriesData_8h.html 39,5 164,32
+rect $ClientSettings_8h.html 44,56 159,83
+rect $ParserMapHandler_8h.html 29,107 173,133
+rect $SearchHeadingDesc_8h.html 24,157 179,184
+rect $SearchParserHandler_8h.html 21,208 181,235
+rect $ImageDraw_8h.html 52,259 151,285
+rect $MapSettings_8h.html 48,309 155,336
+rect $ServerTileMapFormatDesc_8h.html 5,360 197,387

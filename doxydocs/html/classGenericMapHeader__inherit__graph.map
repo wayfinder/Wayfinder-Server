@@ -1,0 +1,6 @@
+base referer
+rect $classGenericMap.html 156,155 249,181
+rect $classVectorElement.html 148,5 257,32
+rect $classCountryOverviewMap.html 5,229 155,256
+rect $classMap.html 179,229 227,256
+rect $classOverviewMap.html 251,229 355,256

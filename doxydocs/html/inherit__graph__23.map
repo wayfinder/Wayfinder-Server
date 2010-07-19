@@ -1,0 +1,4 @@
+base referer
+rect $classCategoriesDataHolder.html 7,31 159,57
+rect $classNavCategoriesDataHolder.html 211,5 387,32
+rect $classXMLCategoriesDataHolder.html 208,56 389,83

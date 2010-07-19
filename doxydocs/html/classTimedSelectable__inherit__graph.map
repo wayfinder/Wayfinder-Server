@@ -1,0 +1,7 @@
+base referer
+rect $classBufferReceiver.html 41,229 151,256
+rect $classBufferSender.html 195,229 296,256
+rect $classSelectable.html 119,80 201,107
+rect $classTemplateSelectable.html 73,5 247,32
+rect $classQueuedPacketReceiver.html 5,304 165,331
+rect $classMultiPacketSender.html 189,304 323,331

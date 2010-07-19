@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 437,80 507,107
+rect $Types_8h.html 384,155 451,181
+rect $MC2Logging_8h.html 475,155 581,181
+rect $NavSession_8h.html 440,304 544,331
+rect $ISABThread_8h.html 135,304 239,331
+rect $SysUtility_8h.html 277,229 365,256
+rect $MC2String_8h.html 264,155 360,181
+rect $ImageDrawConfig_8h.html 619,304 757,331
+rect $IPnPort_8h.html 719,229 796,256

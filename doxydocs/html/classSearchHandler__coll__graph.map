@@ -1,0 +1,12 @@
+base referer
+rect $classNotCopyable.html 739,11 837,38
+rect $classSearchRequestParameters.html 697,62 879,89
+rect $classTopRegionMatch.html 727,113 849,139
+rect $classMatchLink.html 747,202 829,229
+rect $classMC2Coordinate.html 731,291 845,318
+rect $classPacketContainer.html 728,381 848,407
+rect $classOldSearchRequestPacket.html 701,431 875,458
+rect $classCoordinateOnItemObject.html 704,534 872,561
+rect $classRequest.html 388,634 460,661
+rect $classPacketContainerTree.html 5,534 152,561
+rect $classTopRegionRequest.html 721,674 855,701

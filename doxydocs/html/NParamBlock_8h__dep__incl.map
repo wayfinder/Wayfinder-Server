@@ -1,0 +1,6 @@
+base referer
+rect $NavRequestData_8h.html 5,155 139,181
+rect $NavPacket_8h.html 67,229 163,256
+rect $NavUserHelp_8h.html 16,80 128,107
+rect $NavExternalAuth_8h.html 5,5 139,32
+rect $ngpmaker_8h.html 187,229 277,256

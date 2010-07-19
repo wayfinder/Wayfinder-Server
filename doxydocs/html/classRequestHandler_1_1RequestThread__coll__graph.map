@@ -1,0 +1,7 @@
+base referer
+rect $classRequestHandler.html 284,307 401,333
+rect $classISABThread.html 497,96 591,123
+rect $classISABThreadGroup.html 479,5 609,32
+rect $classISABMonitor.html 57,96 153,123
+rect $classPacketResendHandler.html 132,201 287,228
+rect $classRequestList.html 311,201 401,228

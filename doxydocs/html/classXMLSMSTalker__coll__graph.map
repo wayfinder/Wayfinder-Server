@@ -1,0 +1,10 @@
+base referer
+rect $classSMSTalker.html 360,155 445,181
+rect $classSMSProcessor.html 171,245 283,272
+rect $classProcessor.html 5,155 88,181
+rect $classMC2String.html 509,5 595,32
+rect $classURLFetcherNoSSL.html 639,155 775,181
+rect $classSMSForwardThread.html 112,155 253,181
+rect $classURLFetcher.html 629,245 723,272
+rect $classNotCopyable.html 668,5 767,32
+rect $classTCPSocket.html 791,5 879,32

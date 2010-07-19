@@ -1,0 +1,11 @@
+base referer
+rect $Types_8h.html 148,80 215,107
+rect $config_8h.html 360,155 429,181
+rect $SMSSendRequest_8h.html 119,379 260,405
+rect $SMSPacket_8h.html 43,229 144,256
+rect $Request_8h.html 600,304 683,331
+rect $PacketContainerTree_8h.html 835,229 992,256
+rect $CCSet_8h.html 432,229 504,256
+rect $StringTable_8h.html 528,229 627,256
+rect $RequestData_8h.html 651,229 760,256
+rect $MC2Coordinate_8h.html 181,304 307,331

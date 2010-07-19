@@ -1,0 +1,5 @@
+base referer
+rect $classIncomingNavMessage.html 35,173 187,200
+rect $classNavMessage.html 61,96 160,123
+rect $classNavAddress.html 5,5 99,32
+rect $classNavSession.html 123,5 216,32

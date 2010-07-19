@@ -1,0 +1,8 @@
+base referer
+rect $classMEShowExtradataWindow_1_1ColumnsEDCoords.html 5,96 307,123
+rect $classMEShowExtradataWindow_1_1ColumnsED.html 331,96 589,123
+rect $classMEMapArea.html 613,96 709,123
+rect $classOldGenericMap.html 417,5 532,32
+rect $classMEItemLayer.html 556,5 657,32
+rect $classGDFRef.html 681,5 751,32
+rect $classMC2BoundingBox.html 775,5 903,32

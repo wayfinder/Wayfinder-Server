@@ -1,0 +1,4 @@
+base referer
+rect $NavRequestData_8h.html 5,155 139,181
+rect $NavUserHelp_8h.html 16,80 128,107
+rect $NavExternalAuth_8h.html 5,5 139,32

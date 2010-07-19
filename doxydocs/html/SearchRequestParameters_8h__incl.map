@@ -1,0 +1,10 @@
+base referer
+rect $SearchTypes_8h.html 192,80 301,107
+rect $ItemTypes_8h.html 97,155 191,181
+rect $config_8h.html 461,5 531,32
+rect $MapRights_8h.html 499,229 595,256
+rect $UserEnums_8h.html 701,155 803,181
+rect $MC2String_8h.html 687,80 783,107
+rect $StringTable_8h.html 315,155 413,181
+rect $StringTableUTF8_8h.html 325,80 459,107
+rect $PacketRW_8h.html 584,155 677,181

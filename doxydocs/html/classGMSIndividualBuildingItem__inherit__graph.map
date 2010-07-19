@@ -1,0 +1,4 @@
+base referer
+rect $classOldIndividualBuildingItem.html 5,80 176,107
+rect $classOldItem.html 57,5 124,32
+rect $classGMSItem.html 200,80 277,107

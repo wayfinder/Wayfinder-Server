@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 197,5 266,32
+rect $SQLDriver_8h.html 305,155 398,181
+rect $MC2String_8h.html 353,80 449,107
+rect $ItemInfoPacket_8h.html 22,80 145,107
+rect $Item_8h.html 169,80 227,107
+rect $PointOfInterestItem_8h.html 134,155 281,181

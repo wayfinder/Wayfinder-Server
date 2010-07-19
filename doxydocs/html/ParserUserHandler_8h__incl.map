@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 191,5 260,32
+rect $ParserHandler_8h.html 26,155 143,181
+rect $MC2String_8h.html 135,80 231,107
+rect $UserEnums_8h.html 218,155 319,181
+rect $ExtraAddInfo_8h.html 403,80 512,107
+rect $InterfaceRequestData_8h.html 268,229 431,256

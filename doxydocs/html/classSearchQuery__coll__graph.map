@@ -1,0 +1,9 @@
+base referer
+rect $classUserSearchParameters.html 361,264 521,291
+rect $classVanillaSearchParameters.html 224,173 395,200
+rect $classMC2Coordinate.html 5,83 120,109
+rect $classMC2String.html 271,83 356,109
+rect $classvector.html 260,5 367,32
+rect $classMapRights.html 392,83 477,109
+rect $classPacketRW.html 393,5 476,32
+rect $classUserRightsMapInfo.html 419,173 555,200

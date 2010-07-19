@@ -1,0 +1,5 @@
+base referer
+rect $classQueuedPacketReceiver.html 12,304 172,331
+rect $classTimedSelectable.html 32,155 152,181
+rect $classSelectable.html 51,80 133,107
+rect $classTemplateSelectable.html 5,5 179,32

@@ -1,0 +1,4 @@
+base referer
+rect $classCacheElement.html 5,96 115,123
+rect $classCellularPhoneModels.html 139,96 285,123
+rect $classCellularPhoneModel.html 141,5 283,32

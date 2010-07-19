@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 28,5 97,32
+rect $MEMapArea_8h.html 31,155 137,181
+rect $MEItemLayer_8h.html 100,80 209,107

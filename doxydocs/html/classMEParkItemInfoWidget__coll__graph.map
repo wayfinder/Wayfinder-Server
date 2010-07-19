@@ -1,0 +1,9 @@
+base referer
+rect $classMEAbstractItemInfoWidget.html 5,459 187,485
+rect $classOldItem.html 31,187 97,213
+rect $classOldGenericMap.html 112,277 227,304
+rect $classGfxDataFull.html 124,96 215,123
+rect $classMC2BoundingBox.html 173,5 301,32
+rect $classMEMapArea.html 235,368 331,395
+rect $classMEItemLayer.html 320,277 421,304
+rect $classGDFRef.html 445,277 515,304

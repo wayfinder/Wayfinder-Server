@@ -1,0 +1,10 @@
+base referer
+rect $classSearchMatch.html 251,173 352,200
+rect $classMC2Coordinate.html 629,83 744,109
+rect $classIDPair__t.html 5,83 75,109
+rect $classSearchMatchPoints.html 99,83 235,109
+rect $classMC2String.html 259,83 344,109
+rect $classvector.html 248,5 355,32
+rect $classMC2BoundingBox.html 368,83 496,109
+rect $classMapRights.html 520,83 605,109
+rect $classPacketRW.html 521,5 604,32

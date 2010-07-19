@@ -1,0 +1,12 @@
+base referer
+rect $VectorElement_8h.html 389,155 509,181
+rect $MapData_8h.html 352,229 440,256
+rect $config_8h.html 488,80 557,107
+rect $Types_8h.html 299,155 365,181
+rect $MC2Logging_8h.html 168,155 275,181
+rect $OldZipCodeItem_8h.html 533,304 661,331
+rect $OldGroupItem_8h.html 635,229 749,256
+rect $OldItem_8h.html 685,155 765,181
+rect $DataBuffer_8h.html 464,229 560,256
+rect $GMSZipCodeItem_8h.html 373,379 512,405
+rect $GMSItem_8h.html 399,304 487,331

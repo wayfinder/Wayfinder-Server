@@ -1,0 +1,12 @@
+base referer
+rect $config_8h.html 500,80 569,107
+rect $Types_8h.html 563,155 629,181
+rect $MC2Logging_8h.html 760,155 867,181
+rect $StringTable_8h.html 111,229 209,256
+rect $MC2String_8h.html 80,155 176,181
+rect $StringTableUTF8_8h.html 200,155 333,181
+rect $PacketContainerTree_8h.html 235,304 392,331
+rect $PacketContainer_8h.html 408,155 539,181
+rect $SubRouteContainer_8h.html 517,304 667,331
+rect $IDPairVector_8h.html 691,304 797,331
+rect $SubRoute_8h.html 544,229 635,256

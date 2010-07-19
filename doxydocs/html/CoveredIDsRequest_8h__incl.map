@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 214,5 284,32
+rect $Request_8h.html 28,80 110,107
+rect $ItemTypes_8h.html 134,80 228,107
+rect $PacketContainer_8h.html 252,80 382,107
+rect $MC2Coordinate_8h.html 406,80 532,107
+rect $IDPairVector_8h.html 556,80 662,107

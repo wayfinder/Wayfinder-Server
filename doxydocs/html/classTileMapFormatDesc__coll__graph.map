@@ -1,0 +1,6 @@
+base referer
+rect $classNotCopyable.html 5,96 104,123
+rect $classCopyrightHolder.html 128,96 245,123
+rect $classMC2SimpleString.html 124,5 249,32
+rect $classTileMapLayerInfoVector.html 269,96 432,123
+rect $classTileArgContainer.html 456,96 576,123

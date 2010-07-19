@@ -1,0 +1,3 @@
+base referer
+rect $classRequestPtrOrRequestID.html 7,5 172,32
+rect $classRequestData.html 223,5 321,32

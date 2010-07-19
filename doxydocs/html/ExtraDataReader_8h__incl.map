@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 326,5 395,32
+rect $ItemTypes_8h.html 108,80 202,107
+rect $OldItem_8h.html 199,155 279,181
+rect $CoordinateTransformer_8h.html 276,80 444,107
+rect $GMSMap_8h.html 30,155 118,181
+rect $STLStrComp_8h.html 652,80 762,107
+rect $OldExtraDataUtility_8h.html 460,155 604,181

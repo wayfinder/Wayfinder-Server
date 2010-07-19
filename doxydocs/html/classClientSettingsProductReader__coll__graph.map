@@ -1,0 +1,4 @@
+base referer
+rect $classLineParser.html 60,173 145,200
+rect $classMC2String.html 60,83 145,109
+rect $classvector.html 49,5 156,32

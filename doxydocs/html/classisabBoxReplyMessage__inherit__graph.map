@@ -1,0 +1,3 @@
+base referer
+rect $classOutGoingNavMessage.html 7,80 161,107
+rect $classNavMessage.html 35,5 133,32

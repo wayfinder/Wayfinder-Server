@@ -1,0 +1,6 @@
+base referer
+rect $ClosestSearchRequest_8h.html 5,5 173,32
+rect $ExpandRequest_8h.html 197,5 325,32
+rect $ExternalSearchRequest_8h.html 349,5 523,32
+rect $ProximityRequest_8h.html 547,5 683,32
+rect $SearchRequest_8h.html 707,5 832,32

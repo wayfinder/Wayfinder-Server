@@ -1,0 +1,13 @@
+base referer
+rect $config_8h.html 5,252 75,279
+rect $MC2String_8h.html 124,480 220,507
+rect $SearchMatch_8h.html 488,430 600,456
+rect $StringUtility_8h.html 303,379 401,406
+rect $LangTypes_8h.html 124,126 220,152
+rect $ItemInfoEnums_8h.html 291,176 413,203
+rect $ItemInfoEntry_8h.html 488,303 600,330
+rect $XPathMultiExpression_8h.html 269,632 435,659
+rect $XMLUtility_8h.html 125,24 219,51
+rect $StringTable_8h.html 303,227 401,254
+rect $XPathAssigner_8h.html 484,632 604,659
+rect $StringConvert_8h.html 487,835 601,862

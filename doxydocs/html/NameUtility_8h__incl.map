@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 99,5 169,32
+rect $ItemTypes_8h.html 267,80 361,107
+rect $LangTypes_8h.html 147,80 243,107
+rect $StringTable_8h.html 25,80 123,107

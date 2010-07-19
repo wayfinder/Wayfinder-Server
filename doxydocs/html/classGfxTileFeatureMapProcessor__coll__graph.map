@@ -1,0 +1,11 @@
+base referer
+rect $classGfxFeatureMapProcBase.html 5,96 176,123
+rect $classGenericMap.html 44,5 137,32
+rect $classMapFilterUtil.html 364,96 460,123
+rect $classMapSettings.html 485,96 581,123
+rect $classDrawingProjection.html 169,5 297,32
+rect $classRedLineSettings.html 328,5 448,32
+rect $classMC2SimpleString.html 472,5 597,32
+rect $classMapRights.html 640,5 725,32
+rect $classMapSetting.html 752,5 840,32
+rect $classMC2BoundingBox.html 605,96 733,123

@@ -1,0 +1,3 @@
+base referer
+rect $classReadline.html 5,5 80,32
+rect $classReadlineHelper.html 129,5 241,32

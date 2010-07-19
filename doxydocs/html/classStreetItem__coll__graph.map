@@ -1,0 +1,4 @@
+base referer
+rect $classGroupItem.html 5,173 91,200
+rect $classItem.html 24,96 72,123
+rect $classGfxData.html 13,5 83,32

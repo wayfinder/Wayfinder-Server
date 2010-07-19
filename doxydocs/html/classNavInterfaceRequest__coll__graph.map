@@ -1,0 +1,7 @@
+base referer
+rect $classSelectableInterfaceRequest.html 5,173 192,200
+rect $classInterfaceRequest.html 37,96 160,123
+rect $classOutGoingNavMessage.html 216,173 371,200
+rect $classNavMessage.html 244,96 343,123
+rect $classNavAddress.html 188,5 281,32
+rect $classNavSession.html 305,5 399,32

@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 428,80 497,107
+rect $Types_8h.html 525,155 592,181
+rect $MC2Logging_8h.html 243,155 349,181
+rect $ParserPosPushItem_8h.html 539,229 691,256
+rect $ParserHandler_8h.html 667,155 784,181
+rect $GfxUtility_8h.html 205,304 291,331
+rect $MC2String_8h.html 72,155 168,181
+rect $URL_8h.html 341,229 400,256
+rect $MC2Exception_8h.html 48,229 168,256
+rect $Point_8h.html 253,229 317,256

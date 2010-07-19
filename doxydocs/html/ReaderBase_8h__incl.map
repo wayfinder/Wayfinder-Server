@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 300,80 369,107
+rect $Types_8h.html 36,155 103,181
+rect $MC2Logging_8h.html 473,155 580,181
+rect $IPnPort_8h.html 169,229 247,256
+rect $MC2String_8h.html 127,155 223,181
+rect $NetPacketQueue_8h.html 473,304 607,331
+rect $PointerFifoTemplate_8h.html 517,229 667,256
+rect $SelectableSelector_8h.html 705,155 849,181
+rect $PacketSendList_8h.html 272,304 397,331

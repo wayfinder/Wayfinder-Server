@@ -1,0 +1,4 @@
+base referer
+rect $classUserElement.html 11,83 109,109
+rect $classVectorElement.html 5,5 115,32
+rect $classCellularPhoneModel.html 133,83 275,109

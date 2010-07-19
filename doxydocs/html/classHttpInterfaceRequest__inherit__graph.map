@@ -1,0 +1,5 @@
+base referer
+rect $classLoggingHttpInterfaceRequest.html 5,304 200,331
+rect $classSocketInterfaceRequest.html 21,155 184,181
+rect $classSelectableInterfaceRequest.html 9,80 196,107
+rect $classInterfaceRequest.html 41,5 164,32

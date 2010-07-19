@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 125,5 195,32
+rect $ParserThreadConfig_8h.html 28,80 180,107
+rect $ParserThread_8h.html 79,155 193,181
+rect $InterfaceParserThreadConfig_8h.html 217,155 423,181

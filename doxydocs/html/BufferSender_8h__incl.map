@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 292,80 361,107
+rect $Types_8h.html 8,155 75,181
+rect $MC2Logging_8h.html 757,155 864,181
+rect $Selectable_8h.html 149,155 245,181
+rect $TimeoutClock_8h.html 269,155 384,181
+rect $SimpleArray_8h.html 408,155 512,181
+rect $MC2String_8h.html 536,155 632,181
+rect $TimedSelectable_8h.html 261,229 392,256
+rect $SocketException_8h.html 519,229 649,256

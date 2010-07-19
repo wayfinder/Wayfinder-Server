@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 507,5 576,32
+rect $StringTable_8h.html 207,80 305,107
+rect $CacheElement_8h.html 839,229 959,256
+rect $UserConstants_8h.html 253,155 373,181
+rect $ItemTypes_8h.html 537,229 631,256
+rect $DBaseObject_8h.html 65,155 177,181
+rect $UserEnums_8h.html 579,80 680,107
+rect $MapRights_8h.html 668,155 764,181
+rect $UserElement_8h.html 260,229 369,256
+rect $Vector_8h.html 444,229 513,256

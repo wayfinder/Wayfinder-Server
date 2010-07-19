@@ -1,0 +1,5 @@
+base referer
+rect $classNotCopyable.html 5,5 104,32
+rect $classParserThreadGroup.html 75,135 213,161
+rect $classClientVersion.html 399,135 497,161
+rect $classMC2String.html 219,5 304,32

@@ -1,0 +1,6 @@
+base referer
+rect $OldBusRouteItem_8h.html 5,80 144,107
+rect $OldFerryItem_8h.html 168,80 277,107
+rect $OldStreetSegmentItem_8h.html 352,80 520,107
+rect $Crossing_8h.html 332,5 417,32
+rect $MERouteableItemInfoWidget_8h.html 544,80 747,107

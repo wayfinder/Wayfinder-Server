@@ -1,0 +1,4 @@
+base referer
+rect $classMimePartApplication.html 5,80 149,107
+rect $classMimePartImage.html 173,80 288,107
+rect $classMimePartText.html 312,80 416,107

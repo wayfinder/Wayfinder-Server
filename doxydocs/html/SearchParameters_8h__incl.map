@@ -1,0 +1,12 @@
+base referer
+rect $config_8h.html 500,80 569,107
+rect $Types_8h.html 597,155 664,181
+rect $MC2Logging_8h.html 264,155 371,181
+rect $MC2String_8h.html 93,155 189,181
+rect $ItemTypes_8h.html 607,379 700,405
+rect $SearchTypes_8h.html 743,304 852,331
+rect $MapRights_8h.html 284,304 380,331
+rect $UserEnums_8h.html 144,229 245,256
+rect $MC2Coordinate_8h.html 543,229 668,256
+rect $UserRightsMapInfo_8h.html 335,379 481,405
+rect $PacketRW_8h.html 320,229 413,256

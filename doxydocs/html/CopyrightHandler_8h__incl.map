@@ -1,0 +1,12 @@
+base referer
+rect $CopyrightHolder_8h.html 425,304 553,331
+rect $config_8h.html 287,80 356,107
+rect $Types_8h.html 8,155 75,181
+rect $MC2Logging_8h.html 568,155 675,181
+rect $SharedBuffer_8h.html 435,155 544,181
+rect $MC2BoundingBox_8h.html 156,229 295,256
+rect $MC2Coordinate_8h.html 99,155 224,181
+rect $MC2String_8h.html 859,155 955,181
+rect $MC2SimpleString_8h.html 699,155 835,181
+rect $BitBuffer_8h.html 448,229 531,256
+rect $NotCopyable_8h.html 380,80 489,107

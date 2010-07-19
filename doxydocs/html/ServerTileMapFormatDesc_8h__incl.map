@@ -1,0 +1,10 @@
+base referer
+rect $TileMapConfig_8h.html 7,36 124,62
+rect $TileMapFormatDesc_8h.html 176,36 328,62
+rect $TileMapParams_8h.html 189,86 315,113
+rect $GfxFeature_8h.html 203,137 301,164
+rect $TileArgNames_8h.html 193,188 311,214
+rect $ServerTileCategories_8h.html 173,238 331,265
+rect $GDColor_8h.html 211,289 293,316
+rect $MapRights_8h.html 204,340 300,366
+rect $ImageTable_8h.html 201,390 303,417

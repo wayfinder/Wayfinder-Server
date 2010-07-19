@@ -1,0 +1,8 @@
+base referer
+rect $MEItemInfoDialog_8h.html 704,290 843,317
+rect $config_8h.html 5,163 75,190
+rect $MEItemLayer_8h.html 344,366 453,393
+rect $OldGenericMap_8h.html 124,417 249,443
+rect $MEStreetSegmentItemLayer_8h.html 299,62 499,89
+rect $MC2BoundingBox_8h.html 329,163 468,190
+rect $GDFID_8h.html 149,113 224,139

@@ -1,0 +1,15 @@
+base referer
+rect $OldExternalConnections_8h.html 409,5 585,32
+rect $OldCountryOverviewMap_8h.html 407,56 588,83
+rect $OldMap_8h.html 457,157 537,184
+rect $OldOverviewMap_8h.html 223,132 356,159
+rect $OldMapFilter_8h.html 444,208 551,235
+rect $MEItemLayer_8h.html 443,360 552,387
+rect $MEMapArea_8h.html 236,385 343,412
+rect $MEItemInfoDialog_8h.html 428,411 567,437
+rect $MEEditNameDialog_8h.html 15,355 164,381
+rect $MEEditSignPostDialog_8h.html 7,417 172,444
+rect $MEFeatureIdentification_8h.html 411,512 584,539
+rect $MEMapEditorWindow_8h.html 417,563 577,589
+rect $GMSStreetSegmentItem_8h.html 408,613 587,640
+rect $WASPExtractor_8h.html 435,664 560,691

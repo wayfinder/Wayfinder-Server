@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 414,80 483,107
+rect $Types_8h.html 599,155 666,181
+rect $MC2Logging_8h.html 141,155 247,181
+rect $ParserHandler_8h.html 390,229 507,256
+rect $ParserThreadConfig_8h.html 373,155 525,181
+rect $LangTypes_8h.html 690,155 786,181
+rect $TileMapRequest_8h.html 106,229 237,256
+rect $MC2String_8h.html 21,155 117,181
+rect $ACPTileMapRequest_8h.html 42,304 199,331
+rect $NotCopyable_8h.html 650,304 759,331

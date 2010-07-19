@@ -1,0 +1,8 @@
+base referer
+rect $classHttpInterfaceFactory_1_1HttpInterfaceFactoryThread.html 148,264 463,291
+rect $classInterfaceFactory.html 325,96 443,123
+rect $classInterfaceParserThreadGroup.html 288,5 480,32
+rect $classNotCopyable.html 467,96 565,123
+rect $classISABThread.html 5,173 99,200
+rect $classSelectableSelector.html 123,173 256,200
+rect $classTCPSocket.html 280,173 368,200

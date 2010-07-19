@@ -1,0 +1,6 @@
+base referer
+rect $OldExtraDataUtility_8h.html 56,80 200,107
+rect $ExtraDataReader_8h.html 5,5 141,32
+rect $InfoSQL_8h.html 224,80 307,107
+rect $GfxData_8h.html 331,80 413,107
+rect $ExtraDataUtility_8h.html 437,80 560,107

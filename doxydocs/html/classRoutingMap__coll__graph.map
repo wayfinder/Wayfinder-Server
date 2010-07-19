@@ -1,0 +1,11 @@
+base referer
+rect $classDisturbanceStorage.html 1201,217 1340,244
+rect $classTimeTableContainer.html 576,13 717,40
+rect $classIDTranslationTable.html 583,64 711,91
+rect $classnodeIndex__t.html 600,115 693,141
+rect $classExternalRoutingConnection.html 555,279 739,305
+rect $classRoutingConnection.html 263,273 396,300
+rect $classRoutingNode.html 597,368 696,395
+rect $classRoutingConnectionData.html 5,201 168,228
+rect $classfromToNode__t.html 593,419 700,445
+rect $classMC2BoundingBox.html 583,469 711,496

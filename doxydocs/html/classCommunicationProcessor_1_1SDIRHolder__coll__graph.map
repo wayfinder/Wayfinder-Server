@@ -1,0 +1,17 @@
+base referer
+rect $classSendDataInterfaceRequest.html 455,523 636,549
+rect $classSocketInterfaceRequest.html 235,432 397,459
+rect $classSelectableInterfaceRequest.html 5,341 192,368
+rect $classInterfaceRequest.html 37,251 160,277
+rect $classTCPSocket.html 311,251 399,277
+rect $classSocketBuffer.html 216,341 315,368
+rect $classSocket.html 129,173 191,200
+rect $classSelectable.html 119,83 201,109
+rect $classTemplateSelectable.html 73,5 247,32
+rect $classWriteable.html 215,173 292,200
+rect $classReadable.html 316,173 393,200
+rect $classStepLogger.html 417,173 508,200
+rect $classMC2String.html 467,83 552,109
+rect $classvector.html 456,5 563,32
+rect $classNotCopyable.html 188,251 287,277
+rect $classURL.html 583,432 631,459

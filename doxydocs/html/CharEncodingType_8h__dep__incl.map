@@ -1,0 +1,8 @@
+base referer
+rect $CharEncoding_8h.html 268,229 385,256
+rect $NationalProperties_8h.html 31,155 172,181
+rect $OldOverviewMap_8h.html 35,80 168,107
+rect $GMSCountryOverviewMap_8h.html 5,5 197,32
+rect $WASPExtractor_8h.html 196,155 321,181
+rect $CharEncSQLQuery_8h.html 345,155 492,181
+rect $CharEncSQLConn_8h.html 403,80 544,107

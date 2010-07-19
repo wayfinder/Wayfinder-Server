@@ -1,0 +1,3 @@
+base referer
+rect $classURLFetcher.html 27,155 120,181
+rect $classNotCopyable.html 24,5 123,32

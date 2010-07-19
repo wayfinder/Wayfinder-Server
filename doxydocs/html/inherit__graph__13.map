@@ -1,0 +1,5 @@
+base referer
+rect $classBalancer.html 5,31 80,57
+rect $classSimpleBalancer.html 128,31 243,57
+rect $classInfoModuleSimpleBalancer.html 291,5 472,32
+rect $classSMSSimpleBalancer.html 309,56 453,83

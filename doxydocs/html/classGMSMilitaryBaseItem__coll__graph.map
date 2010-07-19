@@ -1,0 +1,9 @@
+base referer
+rect $classOldMilitaryBaseItem.html 31,277 172,304
+rect $classOldItem.html 68,187 135,213
+rect $classGfxDataFull.html 56,96 147,123
+rect $classGfxData.html 5,5 75,32
+rect $classMC2BoundingBox.html 99,5 227,32
+rect $classGMSItem.html 196,277 273,304
+rect $classMapData.html 197,187 272,213
+rect $classVectorElement.html 180,96 289,123

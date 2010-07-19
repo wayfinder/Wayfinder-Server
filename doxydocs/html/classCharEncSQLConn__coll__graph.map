@@ -1,0 +1,6 @@
+base referer
+rect $classSQLConnection.html 5,187 120,213
+rect $classSQLDriver.html 21,96 104,123
+rect $classCharEncoding.html 144,187 251,213
+rect $structCharEncoding_1_1unicodeToLatin1__entry.html 137,5 385,32
+rect $structCharEncoding_1_1unicodeToLatin1Table.html 356,96 599,123

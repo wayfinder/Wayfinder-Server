@@ -1,0 +1,4 @@
+base referer
+rect $classGMSStreetItem.html 5,229 120,256
+rect $classOldGroupItem.html 11,80 115,107
+rect $classOldItem.html 29,5 96,32

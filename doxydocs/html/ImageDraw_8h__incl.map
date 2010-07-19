@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 5,245 75,272
+rect $GDColor_8h.html 292,321 375,348
+rect $ImageDrawConfig_8h.html 441,119 580,145
+rect $GfxUtility_8h.html 291,524 376,551
+rect $MC2BoundingBox_8h.html 441,169 580,196
+rect $GfxDataTypes_8h.html 275,220 392,247
+rect $ItemTypes_8h.html 128,372 221,399
+rect $GfxFeature_8h.html 284,423 383,449
+rect $DrawSettings_8h.html 455,372 567,399
+rect $ImageTable_8h.html 124,17 225,44

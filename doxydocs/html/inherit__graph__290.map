@@ -1,0 +1,4 @@
+base referer
+rect $classJobDispatcher.html 5,31 112,57
+rect $classMultiJobDispatcher.html 164,5 300,32
+rect $classSingleJobDispatcher.html 160,56 304,83

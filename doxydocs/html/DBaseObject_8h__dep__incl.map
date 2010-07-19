@@ -1,0 +1,7 @@
+base referer
+rect $UserData_8h.html 197,80 285,107
+rect $MTSender_8h.html 5,5 99,32
+rect $XMLServerUtility_8h.html 123,5 256,32
+rect $CellularPhoneModelsElement_8h.html 280,5 488,32
+rect $MapUpdateDBaseObject_8h.html 412,80 591,107
+rect $InfoSQL_8h.html 512,5 595,32

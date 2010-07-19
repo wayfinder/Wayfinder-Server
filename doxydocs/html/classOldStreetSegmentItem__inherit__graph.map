@@ -1,0 +1,4 @@
+base referer
+rect $classGMSStreetSegmentItem.html 5,229 173,256
+rect $classOldRouteableItem.html 25,80 153,107
+rect $classOldItem.html 56,5 123,32

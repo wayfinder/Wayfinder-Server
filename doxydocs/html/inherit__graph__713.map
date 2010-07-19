@@ -1,0 +1,6 @@
+base referer
+rect $classTileFeatureArg.html 5,81 115,108
+rect $classCoordArg.html 167,5 244,32
+rect $classCoordsArg.html 163,56 248,83
+rect $classSimpleArg.html 164,107 247,133
+rect $classStringArg.html 167,157 244,184

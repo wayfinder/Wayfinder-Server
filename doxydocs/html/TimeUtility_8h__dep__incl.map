@@ -1,0 +1,6 @@
+base referer
+rect $Packet_8h.html 5,5 77,32
+rect $DebugClock_8h.html 101,5 205,32
+rect $ParserThread_8h.html 229,5 344,32
+rect $HttpParserThread_8h.html 368,5 507,32
+rect $ParserExternalAuth_8h.html 531,5 677,32

@@ -1,0 +1,3 @@
+base referer
+rect $classVanillaSearchParameters.html 7,5 177,32
+rect $classUserSearchParameters.html 228,5 388,32

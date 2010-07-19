@@ -1,0 +1,14 @@
+base referer
+rect $CalcRoute_8h.html 5,304 99,331
+rect $GfxCoordinates_8h.html 123,304 248,331
+rect $GfxPolygon_8h.html 125,229 227,256
+rect $GfxRoadPolygon_8h.html 101,155 235,181
+rect $GfxDataFull_8h.html 272,304 373,331
+rect $GMSGfxData_8h.html 267,229 379,256
+rect $OldItem_8h.html 360,155 440,181
+rect $OldGenericMap_8h.html 312,80 437,107
+rect $OldMapFilter_8h.html 237,5 344,32
+rect $GMSStreetSegmentItem_8h.html 377,5 556,32
+rect $MapModuleNotice_8h.html 403,229 541,256
+rect $GfxDataSingleLine_8h.html 397,304 541,331
+rect $GfxDataSinglePoint_8h.html 565,304 715,331

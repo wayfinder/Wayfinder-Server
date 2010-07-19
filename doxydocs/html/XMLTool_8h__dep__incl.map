@@ -1,0 +1,5 @@
+base referer
+rect $QypeHandler_8h.html 5,5 115,32
+rect $CategoryTree_8h.html 139,5 251,32
+rect $CategoryTranslationLoader_8h.html 275,5 467,32
+rect $XMLInit_8h.html 491,5 571,32

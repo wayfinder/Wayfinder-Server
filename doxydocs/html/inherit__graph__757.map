@@ -1,0 +1,4 @@
+base referer
+rect $classTrafficParser.html 7,31 103,57
+rect $classDatexIITrafficParser.html 152,5 291,32
+rect $classXMLTrafficParser.html 159,56 284,83

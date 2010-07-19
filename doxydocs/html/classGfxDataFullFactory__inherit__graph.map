@@ -1,0 +1,4 @@
+base referer
+rect $classGfxDataMainFactory.html 56,155 200,181
+rect $classGfxDataFactory.html 5,5 120,32
+rect $classNotCopyable.html 144,5 243,32

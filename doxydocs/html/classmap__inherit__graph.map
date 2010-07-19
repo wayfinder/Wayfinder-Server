@@ -1,0 +1,14 @@
+base referer
+rect $classCriteriumMap.html 208,5 389,32
+rect $classItemMap.html 215,56 383,83
+rect $classItemMap.html 237,107 360,133
+rect $classItemMap.html 212,157 385,184
+rect $classItemMap.html 232,208 365,235
+rect $classItemMap.html 191,259 407,285
+rect $classMapStatistics.html 177,309 420,336
+rect $structparamsByLayerAndDetail__t.html 101,360 496,387
+rect $classRegionFamilies_1_1familyToSearchTypeMap__t.html 120,411 477,437
+rect $classRouteAllowedMap.html 153,461 444,488
+rect $classSetMap.html 176,512 421,539
+rect $classstringMap.html 176,563 421,589
+rect $classTileDrawSettings.html 169,613 428,640

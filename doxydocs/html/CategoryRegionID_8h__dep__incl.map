@@ -1,0 +1,6 @@
+base referer
+rect $CategoriesData_8h.html 5,5 131,32
+rect $categoryRegionIDFromCoord_8h.html 155,5 360,32
+rect $CategoryTreeRegionConfiguration_8h.html 384,5 619,32
+rect $ClientSettings_8h.html 643,5 757,32
+rect $LocalCategoryTrees_8h.html 781,5 933,32

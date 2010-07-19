@@ -1,0 +1,17 @@
+base referer
+rect $structJobReply.html 137,200 215,227
+rect $classNotCopyable.html 67,5 165,32
+rect $classPacket.html 5,96 67,123
+rect $classMC2String.html 283,96 368,123
+rect $classProcessor.html 300,395 383,421
+rect $classMapStatistics.html 436,200 537,227
+rect $classvector.html 272,5 379,32
+rect $classJobCourier.html 255,485 340,512
+rect $classMapSafeVector.html 539,304 651,331
+rect $classmap.html 392,96 581,123
+rect $classIPnPort.html 907,200 973,227
+rect $classPointerFifoTemplate.html 683,200 883,227
+rect $classqueue.html 883,96 1013,123
+rect $classSelectableSelector.html 725,96 859,123
+rect $classISABMutex.html 748,5 836,32
+rect $classISABMonitor.html 605,96 701,123

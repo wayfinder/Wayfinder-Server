@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 214,80 283,107
+rect $ArrayTools_8h.html 429,229 525,256
+rect $ItemTypes_8h.html 158,155 251,181
+rect $NameUtility_8h.html 69,229 167,256
+rect $GMSGfxData_8h.html 242,229 354,256

@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 235,80 304,107
+rect $DataBuffer_8h.html 23,155 119,181
+rect $STLStringUtility_8h.html 255,229 378,256
+rect $MC2String_8h.html 332,155 428,181
+rect $VectorIncl_8h.html 140,229 231,256

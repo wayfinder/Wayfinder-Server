@@ -1,0 +1,9 @@
+base referer
+rect $MapHandlingProcessor_8h.html 344,304 515,331
+rect $Processor_8h.html 384,229 475,256
+rect $config_8h.html 565,80 635,107
+rect $Types_8h.html 475,155 541,181
+rect $MC2Logging_8h.html 200,155 307,181
+rect $MC2String_8h.html 355,155 451,181
+rect $StringTable_8h.html 552,229 651,256
+rect $StringTableUTF8_8h.html 667,155 800,181

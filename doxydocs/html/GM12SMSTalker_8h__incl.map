@@ -1,0 +1,8 @@
+base referer
+rect $HayesSMSTalker_8h.html 112,229 245,256
+rect $SMSTalker_8h.html 5,155 101,181
+rect $config_8h.html 275,80 344,107
+rect $ISABThread_8h.html 339,229 443,256
+rect $SysUtility_8h.html 307,155 395,181
+rect $SerialComm_8h.html 125,155 232,181
+rect $ModemParser_8h.html 467,229 581,256

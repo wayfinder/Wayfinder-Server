@@ -1,0 +1,11 @@
+base referer
+rect $StringTable_8h.html 113,229 212,256
+rect $config_8h.html 536,80 605,107
+rect $MC2String_8h.html 184,155 280,181
+rect $StringTableUTF8_8h.html 26,155 160,181
+rect $ItemTypes_8h.html 646,229 740,256
+rect $SearchTypes_8h.html 730,155 840,181
+rect $CharEncoding_8h.html 474,229 592,256
+rect $CharEncodingType_8h.html 304,155 448,181
+rect $LangTypes_8h.html 764,229 860,256
+rect $MapGenEnums_8h.html 884,229 1009,256

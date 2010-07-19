@@ -1,0 +1,12 @@
+base referer
+rect $classProcessor.html 76,109 159,136
+rect $classMapSafeVector.html 5,5 117,32
+rect $classMC2String.html 141,5 227,32
+rect $classLeaderStatus.html 183,109 284,136
+rect $classCharEncSQLConn.html 308,109 439,136
+rect $classSQLConnection.html 261,5 376,32
+rect $classCharEncoding.html 400,5 507,32
+rect $classUserSessionCache.html 463,109 599,136
+rect $classCache.html 651,109 709,136
+rect $classNotCopyable.html 557,5 656,32
+rect $classCacheElement.html 680,5 789,32

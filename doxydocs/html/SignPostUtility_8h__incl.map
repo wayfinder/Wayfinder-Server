@@ -1,0 +1,12 @@
+base referer
+rect $config_8h.html 395,80 464,107
+rect $Types_8h.html 213,155 280,181
+rect $MC2Logging_8h.html 304,155 411,181
+rect $StringTable_8h.html 492,229 591,256
+rect $MC2String_8h.html 592,155 688,181
+rect $StringTableUTF8_8h.html 435,155 568,181
+rect $SignPost_8h.html 83,229 168,256
+rect $GDColor_8h.html 5,155 88,181
+rect $GMSSignPostElm_8h.html 656,229 795,256
+rect $ItemTypes_8h.html 763,155 856,181
+rect $LangTypes_8h.html 880,155 976,181

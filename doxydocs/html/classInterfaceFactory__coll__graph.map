@@ -1,0 +1,7 @@
+base referer
+rect $classInterfaceParserThreadGroup.html 222,187 414,213
+rect $classParserThreadGroup.html 142,96 280,123
+rect $classISABMonitor.html 50,5 146,32
+rect $classInterfaceHandleIO.html 267,5 398,32
+rect $classInterfaceIO.html 355,96 443,123
+rect $classNotifyPipe.html 467,96 550,123

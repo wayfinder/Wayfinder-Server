@@ -1,0 +1,11 @@
+base referer
+rect $classAlteredGfxLink.html 229,5 339,32
+rect $classExpandRouteLink.html 221,56 347,83
+rect $classLandmarkLink.html 232,107 336,133
+rect $classMTLogLink.html 240,157 328,184
+rect $classOrigDestNode.html 231,208 337,235
+rect $classOverflowNode.html 231,259 337,285
+rect $classRequest.html 248,309 320,336
+rect $classRequestContainer.html 220,360 348,387
+rect $classSafeLink.html 248,411 320,437
+rect $classLinkage.html 7,183 73,209

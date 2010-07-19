@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 235,5 304,32
+rect $Request_8h.html 23,80 106,107
+rect $ImageDrawConfig_8h.html 130,80 268,107
+rect $MapRights_8h.html 292,80 388,107
+rect $MapUtility_8h.html 412,80 503,107
+rect $MC2BoundingBox_8h.html 527,80 666,107
+rect $RouteArrowType_8h.html 690,80 820,107
+rect $ScreenSize_8h.html 844,80 946,107

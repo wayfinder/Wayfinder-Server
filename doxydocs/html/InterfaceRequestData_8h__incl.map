@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 160,5 230,32
+rect $LangTypes_8h.html 36,80 132,107
+rect $StringTable_8h.html 171,155 270,181
+rect $IPnPort_8h.html 294,155 371,181
+rect $UserEnums_8h.html 46,155 147,181
+rect $UserLicenceKey_8h.html 335,80 463,107

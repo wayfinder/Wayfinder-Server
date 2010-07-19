@@ -1,0 +1,6 @@
+base referer
+rect $classOldStreetSegmentItem.html 5,155 163,181
+rect $classOldRouteableItem.html 20,80 148,107
+rect $classOldItem.html 51,5 117,32
+rect $classGMSItem.html 187,155 264,181
+rect $classVectorElement.html 288,155 397,181

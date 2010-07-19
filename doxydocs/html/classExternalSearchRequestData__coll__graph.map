@@ -1,0 +1,5 @@
+base referer
+rect $classSearchRequestParameters.html 5,173 187,200
+rect $classMapRights.html 53,83 139,109
+rect $classPacketRW.html 55,5 137,32
+rect $classMC2Coordinate.html 211,173 325,200

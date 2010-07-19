@@ -1,0 +1,7 @@
+base referer
+rect $MC2String_8h.html 25,5 121,32
+rect $StringTable_8h.html 24,80 122,107
+rect $SearchMatch_8h.html 146,80 258,107
+rect $XMLUtility_8h.html 282,80 376,107
+rect $VectorIncl_8h.html 400,80 490,107
+rect $LangTypes_8h.html 514,80 610,107

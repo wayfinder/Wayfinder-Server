@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 109,5 178,32
+rect $MC2BoundingBox_8h.html 21,80 160,107
+rect $PixelBox_8h.html 128,155 210,181
+rect $StringTableUTF8_8h.html 234,80 368,107
+rect $Point_8h.html 432,155 496,181

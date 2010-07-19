@@ -1,0 +1,4 @@
+base referer
+rect $classToDrawIterator.html 5,31 115,57
+rect $classMapsToDrawIt.html 169,5 276,32
+rect $classParamsToDrawIt.html 163,56 283,83

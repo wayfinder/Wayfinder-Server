@@ -1,0 +1,11 @@
+base referer
+rect $classMTLog.html 140,357 204,384
+rect $classISABMonitor.html 5,267 101,293
+rect $classMTLogHead.html 125,267 219,293
+rect $classHead.html 145,189 199,216
+rect $classLinkage.html 99,84 165,111
+rect $classDatagramSender.html 231,357 353,384
+rect $classDatagramSocket.html 243,267 363,293
+rect $classSocket.html 272,189 333,216
+rect $classSelectable.html 261,84 344,111
+rect $classTemplateSelectable.html 216,5 389,32

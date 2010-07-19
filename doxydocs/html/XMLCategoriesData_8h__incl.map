@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 333,5 403,32
+rect $LangTypes_8h.html 592,80 688,107
+rect $MC2String_8h.html 320,80 416,107
+rect $ISABThread_8h.html 192,80 296,107
+rect $CategoriesData_8h.html 367,155 492,181
+rect $SearchParserHandler_8h.html 516,155 676,181
+rect $StackOrHeap_8h.html 5,155 117,181

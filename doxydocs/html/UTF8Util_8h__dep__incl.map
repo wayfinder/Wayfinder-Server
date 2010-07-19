@@ -1,0 +1,4 @@
+base referer
+rect $StringSearchUtility_8h.html 5,5 147,32
+rect $StringUtility_8h.html 71,80 169,107
+rect $NParam_8h.html 193,80 276,107

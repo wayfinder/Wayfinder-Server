@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 392,5 461,32
+rect $ItemTypes_8h.html 88,80 181,107
+rect $DrawSettings_8h.html 281,229 393,256
+rect $GDColor_8h.html 385,155 468,181
+rect $GfxFeature_8h.html 131,155 229,181
+rect $MapSetting_8h.html 207,304 308,331
+rect $MapSettingsTypes_8h.html 468,229 609,256
+rect $MapRights_8h.html 553,304 649,331
+rect $ImageTable_8h.html 647,155 748,181

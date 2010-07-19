@@ -1,0 +1,3 @@
+base referer
+rect $classFileHandler.html 7,5 95,32
+rect $classUnixFileHandler.html 145,5 260,32

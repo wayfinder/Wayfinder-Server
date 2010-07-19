@@ -1,0 +1,10 @@
+base referer
+rect $FixedSizeString_8h.html 493,229 619,256
+rect $ScopedArray_8h.html 97,155 207,181
+rect $NotCopyable_8h.html 5,80 115,107
+rect $JobReply_8h.html 291,229 379,256
+rect $MC2String_8h.html 508,155 604,181
+rect $config_8h.html 368,80 437,107
+rect $Types_8h.html 231,155 297,181
+rect $MC2Logging_8h.html 628,155 735,181
+rect $StackOrHeap_8h.html 372,155 484,181

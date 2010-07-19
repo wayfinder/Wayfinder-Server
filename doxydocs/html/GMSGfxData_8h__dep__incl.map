@@ -1,0 +1,5 @@
+base referer
+rect $OldItem_8h.html 128,155 208,181
+rect $OldGenericMap_8h.html 80,80 205,107
+rect $OldMapFilter_8h.html 5,5 112,32
+rect $GMSStreetSegmentItem_8h.html 145,5 324,32

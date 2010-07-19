@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 19,5 88,32
+rect $MEAbstractItemInfoWidget_8h.html 24,80 216,107
+rect $OldIndividualBuildingItem_8h.html 240,80 422,107

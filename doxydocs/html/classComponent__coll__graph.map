@@ -1,0 +1,10 @@
+base referer
+rect $classSelectableSelector.html 5,173 139,200
+rect $classISABMutex.html 25,83 113,109
+rect $classNotifyPipe.html 180,173 263,200
+rect $classSelectable.html 137,83 220,109
+rect $classTemplateSelectable.html 56,5 229,32
+rect $classPipe.html 244,83 292,109
+rect $classNotCopyable.html 253,5 352,32
+rect $classMC2String.html 324,173 409,200
+rect $classvector.html 316,83 423,109

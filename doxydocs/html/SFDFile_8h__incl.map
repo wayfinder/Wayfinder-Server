@@ -1,0 +1,13 @@
+base referer
+rect $config_8h.html 579,80 648,107
+rect $Types_8h.html 433,155 500,181
+rect $MC2Logging_8h.html 303,155 409,181
+rect $Tools_2SFDTool_2include_2SFDLoadableHeader_8h.html 479,304 636,331
+rect $SFDSavableHeader_8h.html 347,229 496,256
+rect $SFDHeader_8h.html 177,155 279,181
+rect $FileHandler_8h.html 571,229 669,256
+rect $SharedBuffer_8h.html 872,155 981,181
+rect $MC2CRC32_8h.html 693,229 797,256
+rect $MC2SimpleString_8h.html 5,80 141,107
+rect $BitBuffer_8h.html 875,304 957,331
+rect $NotCopyable_8h.html 872,80 981,107

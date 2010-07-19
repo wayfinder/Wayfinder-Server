@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 115,314 184,340
+rect $OldMap_8h.html 256,554 336,580
+rect $DataBuffer_8h.html 248,503 344,530
+rect $ItemTypes_8h.html 449,199 543,226
+rect $MC2Coordinate_8h.html 233,72 359,99
+rect $ZipSideFile_8h.html 447,402 545,428
+rect $OldExternalConnections_8h.html 408,452 584,479
+rect $GMSItemNames_8h.html 431,250 561,276

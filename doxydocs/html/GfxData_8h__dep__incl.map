@@ -1,0 +1,10 @@
+base referer
+rect $OldMapFilter_8h.html 41,5 148,32
+rect $MEItemInfoDialog_8h.html 25,56 164,83
+rect $GfxBBox_8h.html 52,107 137,133
+rect $GfxDataFactory_8h.html 32,157 157,184
+rect $GfxDataFull_8h.html 44,208 145,235
+rect $GfxDataMultiplePoints_8h.html 12,259 177,285
+rect $GfxDataSingleLine_8h.html 23,309 167,336
+rect $GfxDataSinglePoint_8h.html 20,360 169,387
+rect $GfxDataSingleSmallPoly_8h.html 7,411 183,437

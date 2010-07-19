@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 225,5 295,32
+rect $ExtServiceTalker_8h.html 29,80 160,107
+rect $XPathMatchHandler_8h.html 184,80 336,107
+rect $ItemInfoEnums_8h.html 360,80 483,107
+rect $CategoryTreeUtils_8h.html 507,80 645,107
+rect $NotCopyable_8h.html 669,80 779,107
+rect $XMLTool_8h.html 875,80 960,107

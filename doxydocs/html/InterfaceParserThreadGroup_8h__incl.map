@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 288,5 358,32
+rect $ParserThreadGroup_8h.html 535,80 684,107
+rect $InterfaceParserThreadConfig_8h.html 23,80 228,107
+rect $InterfaceHandleIO_8h.html 252,80 394,107
+rect $NotifyPipe_8h.html 418,80 511,107
+rect $ServerTypes_8h.html 612,5 719,32

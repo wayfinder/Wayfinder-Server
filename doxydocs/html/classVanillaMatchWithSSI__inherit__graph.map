@@ -1,0 +1,3 @@
+base referer
+rect $classVanillaMatch.html 31,80 127,107
+rect $classSearchMatch.html 28,5 129,32

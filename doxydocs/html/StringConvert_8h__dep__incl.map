@@ -1,0 +1,8 @@
+base referer
+rect $PropertyHelper_8h.html 5,80 128,107
+rect $TalkerUtility_8h.html 152,80 251,107
+rect $XMLTool_8h.html 275,80 360,107
+rect $QypeHandler_8h.html 40,5 149,32
+rect $CategoryTree_8h.html 173,5 285,32
+rect $CategoryTranslationLoader_8h.html 309,5 501,32
+rect $XMLInit_8h.html 525,5 605,32

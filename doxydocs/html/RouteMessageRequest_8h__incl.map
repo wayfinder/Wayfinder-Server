@@ -1,0 +1,11 @@
+base referer
+rect $config_8h.html 226,5 296,32
+rect $StringTable_8h.html 100,80 198,107
+rect $Request_8h.html 29,155 112,181
+rect $UserConstants_8h.html 186,155 306,181
+rect $MimePart_8h.html 330,155 421,181
+rect $ImageDrawConfig_8h.html 324,80 462,107
+rect $RouteMessageRequestType_8h.html 486,80 686,107
+rect $MapSettings_8h.html 710,80 817,107
+rect $RouteArrowType_8h.html 597,155 728,181
+rect $NotCopyable_8h.html 752,155 861,181

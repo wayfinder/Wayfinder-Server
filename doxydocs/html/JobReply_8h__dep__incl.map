@@ -1,0 +1,4 @@
+base referer
+rect $JobLogger_8h.html 5,80 99,107
+rect $ThreadedJobCourier_8h.html 123,80 277,107
+rect $DummyCourier_8h.html 140,5 260,32

@@ -1,0 +1,7 @@
+base referer
+rect $classOldGenericMap.html 41,96 156,123
+rect $classMEMapArea.html 137,187 233,213
+rect $classOldItem.html 5,5 72,32
+rect $classMELogCommentInterfaceBox.html 257,187 455,213
+rect $classMEItemInfoWidget.html 479,187 609,213
+rect $classMC2String.html 633,187 719,213

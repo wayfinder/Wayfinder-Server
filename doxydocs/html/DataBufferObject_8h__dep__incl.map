@@ -1,0 +1,13 @@
+base referer
+rect $IDTranslationTable_8h.html 5,155 147,181
+rect $OldGenericMap_8h.html 172,80 297,107
+rect $UserRightsItemTable_8h.html 171,155 328,181
+rect $RoutingMap_8h.html 24,80 128,107
+rect $GenericMap_8h.html 328,80 432,107
+rect $SimpleArrayObject_8h.html 531,155 675,181
+rect $SelectableDataTable_8h.html 352,155 507,181
+rect $CountryOverviewMap_8h.html 417,5 577,32
+rect $MapHashTable_8h.html 456,80 579,107
+rect $DataTable_8h.html 309,379 403,405
+rect $ItemDataTable_8h.html 408,304 525,331
+rect $ItemComboTable_8h.html 364,229 495,256

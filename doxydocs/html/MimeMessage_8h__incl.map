@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 337,80 407,107
+rect $Types_8h.html 427,155 493,181
+rect $MC2Logging_8h.html 517,155 624,181
+rect $MimePart_8h.html 131,229 221,256
+rect $ImageDrawConfig_8h.html 213,155 352,181
+rect $MC2String_8h.html 43,155 139,181

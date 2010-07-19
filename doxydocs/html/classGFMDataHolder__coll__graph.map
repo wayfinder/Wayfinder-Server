@@ -1,0 +1,8 @@
+base referer
+rect $classDataBuffer.html 47,173 132,200
+rect $classSharedBuffer.html 5,83 107,109
+rect $classNotCopyable.html 7,5 105,32
+rect $classGfxFeatureMap.html 197,173 312,200
+rect $classScreenSize.html 131,83 221,109
+rect $classMC2BoundingBox.html 271,83 399,109
+rect $classMC2SimpleString.html 432,173 557,200

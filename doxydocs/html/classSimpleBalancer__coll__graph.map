@@ -1,0 +1,5 @@
+base referer
+rect $classBalancer.html 5,83 80,109
+rect $classIPnPort.html 104,83 171,109
+rect $classMC2String.html 197,83 283,109
+rect $classvector.html 187,5 293,32

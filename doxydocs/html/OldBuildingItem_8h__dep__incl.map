@@ -1,0 +1,5 @@
+base referer
+rect $MEBuildingItemInfoWidget_8h.html 5,80 195,107
+rect $MEItemInfoDialog_8h.html 203,5 341,32
+rect $MEMapArea_8h.html 219,80 325,107
+rect $GMSBuildingItem_8h.html 349,80 485,107

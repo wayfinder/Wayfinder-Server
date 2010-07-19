@@ -1,0 +1,14 @@
+base referer
+rect $ParserThread_8h.html 397,5 512,32
+rect $InterfaceRequestData_8h.html 373,107 536,133
+rect $ParserUserHandler_8h.html 165,81 312,108
+rect $NavRequestData_8h.html 172,157 305,184
+rect $NavUserHelp_8h.html 5,183 117,209
+rect $NavRevGeocodingHandler_8h.html 360,259 549,285
+rect $UserData_8h.html 195,323 283,349
+rect $MapRights_8h.html 407,360 503,387
+rect $POISetProperties_8h.html 171,399 307,425
+rect $GenericMap_8h.html 403,461 507,488
+rect $RouteStoragePacket_8h.html 377,512 532,539
+rect $UserEnumNames_8h.html 385,563 524,589
+rect $UserRight_8h.html 409,613 500,640

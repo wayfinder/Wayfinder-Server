@@ -1,0 +1,8 @@
+base referer
+rect $ImageDraw_8h.html 5,5 104,32
+rect $DrawSettings_8h.html 63,80 175,107
+rect $MapDrawer_8h.html 249,80 351,107
+rect $MapFontSettings_8h.html 375,80 508,107
+rect $SignPost_8h.html 532,80 617,107
+rect $MapSettings_8h.html 143,5 249,32
+rect $ServerTileMapFormatDesc_8h.html 641,80 833,107

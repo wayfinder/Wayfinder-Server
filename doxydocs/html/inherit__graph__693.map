@@ -1,0 +1,4 @@
+base referer
+rect $classSubscriptionResource.html 5,31 157,57
+rect $classMapSubscriptionResource.html 209,5 388,32
+rect $classStringSubscriptionResource.html 205,56 392,83

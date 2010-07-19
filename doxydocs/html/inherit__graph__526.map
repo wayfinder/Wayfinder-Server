@@ -1,0 +1,3 @@
+base referer
+rect $structProcessorFactory.html 7,5 132,32
+rect $classExtProcessorFactory.html 181,5 328,32

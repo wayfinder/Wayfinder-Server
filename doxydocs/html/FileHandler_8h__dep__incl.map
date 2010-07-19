@@ -1,0 +1,7 @@
+base referer
+rect $MultiFileDBufRequester_8h.html 65,80 236,107
+rect $UnixMFDBufRequester_8h.html 5,5 173,32
+rect $MultiFileDBufRequesterIndexHandler_8h.html 260,80 511,107
+rect $include_2SFDLoadableHeader_8h.html 535,80 692,107
+rect $Tools_2SFDTool_2include_2SFDLoadableHeader_8h.html 716,80 873,107
+rect $SFDFile_8h.html 755,5 835,32

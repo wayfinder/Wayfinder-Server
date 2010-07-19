@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 372,80 441,107
+rect $Types_8h.html 500,155 567,181
+rect $MC2Logging_8h.html 161,155 268,181
+rect $InterfaceRequest_8h.html 343,155 476,181

@@ -1,0 +1,7 @@
+base referer
+rect $CategoriesData_8h.html 60,5 185,32
+rect $CategoryTreeRegionConfiguration_8h.html 5,56 240,83
+rect $OneSearchBinaryResult_8h.html 35,107 211,133
+rect $BinaryCategoryTreeFormat_8h.html 27,157 219,184
+rect $CategoryTreeDefaultConfiguration_8h.html 5,208 240,235
+rect $CompactSearch_8h.html 59,259 187,285

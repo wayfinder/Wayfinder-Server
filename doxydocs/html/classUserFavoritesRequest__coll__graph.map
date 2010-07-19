@@ -1,0 +1,6 @@
+base referer
+rect $classRequestWithStatus.html 5,6 141,33
+rect $classPacketContainer.html 165,6 285,33
+rect $classUserFavoritesRequestPacket.html 396,6 588,33
+rect $classUserFavoritesReplyPacket.html 612,6 791,33
+rect $classUserFavoritesList.html 815,6 937,33

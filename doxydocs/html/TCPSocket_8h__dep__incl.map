@@ -1,0 +1,8 @@
+base referer
+rect $SSLSocket_8h.html 5,5 104,32
+rect $SMSListenerElement_8h.html 128,5 285,32
+rect $MTReceiver_8h.html 309,5 413,32
+rect $MTSender_8h.html 437,5 531,32
+rect $DataSocket_8h.html 555,5 656,32
+rect $PacketReceiveSocket_8h.html 680,5 843,32
+rect $WinRequestContainer_8h.html 867,5 1029,32

@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 384,80 453,107
+rect $Types_8h.html 600,155 667,181
+rect $Packet_8h.html 227,155 299,181
+rect $SearchParams_8h.html 456,155 576,181
+rect $SearchTypes_8h.html 93,155 203,181
+rect $SearchReplyPacket_8h.html 348,229 497,256
+rect $LangTypes_8h.html 673,229 769,256
+rect $SearchRequestPacket_8h.html 65,229 231,256

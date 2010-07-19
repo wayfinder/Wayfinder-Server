@@ -1,0 +1,5 @@
+base referer
+rect $classBufferSender.html 41,229 143,256
+rect $classTimedSelectable.html 32,155 152,181
+rect $classSelectable.html 51,80 133,107
+rect $classTemplateSelectable.html 5,5 179,32

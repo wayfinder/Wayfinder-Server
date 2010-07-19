@@ -1,0 +1,4 @@
+base referer
+rect $classMapNotice.html 17,83 103,109
+rect $classVectorElement.html 5,5 115,32
+rect $classMC2BoundingBox.html 127,83 255,109

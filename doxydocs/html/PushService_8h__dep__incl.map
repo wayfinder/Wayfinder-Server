@@ -1,0 +1,4 @@
+base referer
+rect $StandardReader_8h.html 5,5 136,32
+rect $MapPushService_8h.html 160,5 293,32
+rect $PushServices_8h.html 317,5 432,32

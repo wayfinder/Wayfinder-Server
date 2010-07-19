@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 75,5 144,32
+rect $UserFavorites_8h.html 27,155 141,181
+rect $Request_8h.html 165,155 248,181
+rect $StringTable_8h.html 172,80 271,107

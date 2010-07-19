@@ -1,0 +1,13 @@
+base referer
+rect $Cache_8h.html 177,155 249,181
+rect $MapRequest_8h.html 23,80 132,107
+rect $MapCacheElement_8h.html 5,155 152,181
+rect $StringTableRequest_8h.html 295,80 444,107
+rect $StringCacheElement_8h.html 273,155 428,181
+rect $MonitorCache_8h.html 156,80 271,107
+rect $ParserThreadGroup_8h.html 139,5 288,32
+rect $UserStorage_8h.html 452,155 559,181
+rect $CellularPhoneModelsElement_8h.html 480,80 688,107
+rect $UserData_8h.html 668,155 756,181
+rect $MTSender_8h.html 712,80 805,107
+rect $XMLServerUtility_8h.html 829,80 963,107

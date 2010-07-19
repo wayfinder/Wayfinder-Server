@@ -1,0 +1,11 @@
+base referer
+rect $VectorIncl_8h.html 36,25 127,52
+rect $VectorTemplates_8cc.html 237,51 376,77
+rect $MapData_8h.html 263,101 351,128
+rect $GMSZipCodeItemNotice_8h.html 219,152 395,179
+rect $SMSListenerElement_8h.html 228,203 385,229
+rect $SortDistRequest_8h.html 241,253 372,280
+rect $UserElement_8h.html 252,304 361,331
+rect $LookupItemElement_8h.html 5,380 157,407
+rect $ReverseLookupItemElement_8h.html 207,405 407,432
+rect $MapNotice_8h.html 259,456 355,483

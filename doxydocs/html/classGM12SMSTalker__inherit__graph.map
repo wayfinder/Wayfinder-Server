@@ -1,0 +1,5 @@
+base referer
+rect $classISABMonitor.html 5,80 101,107
+rect $classISABThread.html 125,80 219,107
+rect $classHayesSMSTalker.html 243,80 365,107
+rect $classSMSTalker.html 261,5 347,32

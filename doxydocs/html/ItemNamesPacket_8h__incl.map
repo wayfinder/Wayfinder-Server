@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 77,5 146,32
+rect $Packet_8h.html 22,80 94,107
+rect $ItemTypes_8h.html 118,80 211,107
+rect $LangTypes_8h.html 235,80 331,107

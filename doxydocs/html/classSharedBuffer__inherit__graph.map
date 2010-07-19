@@ -1,0 +1,4 @@
+base referer
+rect $classBitBuffer.html 5,155 77,181
+rect $classDataBuffer.html 101,155 187,181
+rect $classNotCopyable.html 43,5 141,32

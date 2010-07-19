@@ -1,0 +1,3 @@
+base referer
+rect $classClientSettingsProductReader.html 5,80 200,107
+rect $classClientSettingsWFIDReader.html 224,80 405,107

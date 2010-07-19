@@ -1,0 +1,9 @@
+base referer
+rect $classDrawingProjection.html 5,173 133,200
+rect $classPixelBox.html 33,83 105,109
+rect $classMC2BoundingBox.html 5,5 133,32
+rect $classRedLineSettings.html 164,173 284,200
+rect $classMC2SimpleString.html 308,173 433,200
+rect $classMapRights.html 476,173 561,200
+rect $classPacketRW.html 477,83 560,109
+rect $classMapSetting.html 588,173 676,200

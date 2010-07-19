@@ -1,0 +1,6 @@
+base referer
+rect $classInterfaceRequest.html 5,243 128,269
+rect $classParserExternalAuthHttpSettings.html 288,243 499,269
+rect $classMC2String.html 351,5 436,32
+rect $classInterfaceRequestData.html 523,243 675,269
+rect $classUserItem.html 699,243 773,269

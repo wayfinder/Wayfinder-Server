@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 267,80 336,107
+rect $Types_8h.html 379,155 445,181
+rect $MC2Logging_8h.html 248,155 355,181
+rect $SMSPacket_8h.html 223,304 324,331
+rect $Packet_8h.html 101,229 173,256
+rect $MC2String_8h.html 27,155 123,181

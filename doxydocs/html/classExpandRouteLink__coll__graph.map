@@ -1,0 +1,14 @@
+base referer
+rect $classLink.html 5,203 51,229
+rect $classLinkage.html 28,7 95,33
+rect $classHead.html 77,112 131,139
+rect $classLandmarkHead.html 75,203 187,229
+rect $classExpandStringSignPosts.html 211,203 373,229
+rect $classvector.html 155,112 371,139
+rect $classExpandStringLanesCont.html 397,203 563,229
+rect $classvector.html 395,112 592,139
+rect $classRouteableItem.html 587,203 693,229
+rect $classItem.html 616,112 664,139
+rect $classGfxData.html 597,7 667,33
+rect $classNode.html 701,112 755,139
+rect $classConnection.html 691,7 779,33

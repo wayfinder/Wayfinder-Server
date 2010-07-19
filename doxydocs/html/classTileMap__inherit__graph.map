@@ -1,0 +1,3 @@
+base referer
+rect $classEmptyTileMap.html 5,80 112,107
+rect $classWritableTileMap.html 136,80 253,107

@@ -1,0 +1,13 @@
+base referer
+rect $QypeHandler_8h.html 260,5 369,32
+rect $TalkerUtility_8h.html 36,69 135,96
+rect $ItemInfoEntry_8h.html 259,107 371,133
+rect $ItemDetailEnums_8h.html 248,208 381,235
+rect $ItemInfoRequest_8h.html 249,259 380,285
+rect $SearchParserHandler_8h.html 5,335 165,361
+rect $CompactSearch_8h.html 251,360 379,387
+rect $NavInfoHandler_8h.html 253,411 376,437
+rect $ExternalSearchRequestData_8h.html 213,461 416,488
+rect $ItemInfoPacket_8h.html 24,145 147,172
+rect $InfoTypeConverter_8h.html 245,512 384,539
+rect $ItemInfoFilter_8h.html 260,563 369,589

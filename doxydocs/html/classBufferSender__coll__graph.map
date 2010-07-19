@@ -1,0 +1,5 @@
+base referer
+rect $classTimedSelectable.html 120,173 240,200
+rect $classSelectable.html 51,83 133,109
+rect $classTemplateSelectable.html 5,5 179,32
+rect $classTimeoutClock.html 157,83 261,109

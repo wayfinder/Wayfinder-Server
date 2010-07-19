@@ -1,0 +1,4 @@
+base referer
+rect $classOldStreetItem.html 11,155 115,181
+rect $classOldGroupItem.html 11,80 115,107
+rect $classOldItem.html 29,5 96,32

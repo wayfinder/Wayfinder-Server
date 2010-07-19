@@ -1,0 +1,6 @@
+base referer
+rect $classParserThreadGroup.html 177,135 316,161
+rect $classClientSetting.html 305,264 401,291
+rect $classNotCopyable.html 287,5 385,32
+rect $classClientVersion.html 427,135 525,161
+rect $classMC2String.html 509,5 595,32

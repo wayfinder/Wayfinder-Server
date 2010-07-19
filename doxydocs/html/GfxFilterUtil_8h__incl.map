@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 415,80 485,107
+rect $Types_8h.html 417,155 483,181
+rect $MC2Logging_8h.html 235,155 342,181
+rect $GfxUtility_8h.html 125,155 210,181
+rect $MC2Coordinate_8h.html 507,155 633,181
+rect $MC2Exception_8h.html 221,80 341,107
+rect $Point_8h.html 133,80 197,107

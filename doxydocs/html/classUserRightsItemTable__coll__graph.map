@@ -1,0 +1,8 @@
+base referer
+rect $structDataBufferObject.html 60,5 183,32
+rect $classDataTable.html 37,133 205,160
+rect $classDataTable.html 180,83 385,109
+rect $classItemComboTable.html 96,275 339,301
+rect $classItemDataTable.html 105,184 580,211
+rect $classMapRights.html 604,184 689,211
+rect $classPacketRW.html 605,83 688,109

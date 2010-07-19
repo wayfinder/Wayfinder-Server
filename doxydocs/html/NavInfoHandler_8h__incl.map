@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 38,5 108,32
+rect $NavHandler_8h.html 22,80 124,107
+rect $ItemInfoEnums_8h.html 148,80 270,107

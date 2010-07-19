@@ -1,0 +1,10 @@
+base referer
+rect $classTileMapClientPrecacheQuery.html 161,277 356,304
+rect $classTileMapQuery.html 211,187 315,213
+rect $classSharedBuffer.html 341,83 443,109
+rect $classNotCopyable.html 343,5 441,32
+rect $classTileMapFormatDesc.html 176,83 317,109
+rect $classDBufRequester.html 440,187 552,213
+rect $classServerTileMapFormatDesc.html 5,187 187,213
+rect $classTileMapCoords.html 40,83 152,109
+rect $classMC2SimpleString.html 675,277 800,304

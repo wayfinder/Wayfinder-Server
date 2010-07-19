@@ -1,0 +1,17 @@
+base referer
+rect $classAllUserRequest.html 256,5 371,32
+rect $classCoordinateOnItemRequest.html 224,56 403,83
+rect $classDATEXRequest.html 256,107 371,133
+rect $classExpandRouteRequest.html 237,157 389,184
+rect $classItemInfoRequest.html 253,208 373,235
+rect $classLocalMapMessageRequest.html 221,259 405,285
+rect $classMapRequest.html 265,309 361,336
+rect $classMC2BoundingBoxRequest.html 224,360 403,387
+rect $classMultiplePacketsRequest.html 232,411 395,437
+rect $classRequestWithStatus.html 245,461 381,488
+rect $classRouteMessageRequest.html 233,512 393,539
+rect $classSinglePacketRequest.html 239,563 388,589
+rect $classSMSSendRequest.html 248,613 379,640
+rect $classSortDistRequest.html 253,664 373,691
+rect $classStringTableRequest.html 244,715 383,741
+rect $classLink.html 7,360 52,387

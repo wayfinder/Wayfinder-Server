@@ -1,0 +1,4 @@
+base referer
+rect $classTCPSocket.html 79,80 167,107
+rect $classDataSocket.html 5,155 96,181
+rect $classPacketReceiveSocket.html 120,155 269,181

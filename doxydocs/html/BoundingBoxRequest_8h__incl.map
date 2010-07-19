@@ -1,0 +1,11 @@
+base referer
+rect $Request_8h.html 327,229 409,256
+rect $config_8h.html 445,5 515,32
+rect $PacketContainerTree_8h.html 97,155 255,181
+rect $PacketContainer_8h.html 5,80 136,107
+rect $CCSet_8h.html 431,155 503,181
+rect $StringTable_8h.html 527,155 625,181
+rect $RequestData_8h.html 283,80 392,107
+rect $AllMapPacket_8h.html 628,229 743,256
+rect $Packet_8h.html 649,155 721,181
+rect $MC2BoundingBox_8h.html 619,80 757,107

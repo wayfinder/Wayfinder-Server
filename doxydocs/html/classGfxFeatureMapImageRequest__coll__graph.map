@@ -1,0 +1,12 @@
+base referer
+rect $classRequestWithStatus.html 269,48 405,75
+rect $classTopRegionRequest.html 540,13 673,40
+rect $classPacketContainer.html 547,153 667,180
+rect $classGfxFeatureMap.html 280,312 395,339
+rect $classGFMDataHolder.html 548,256 665,283
+rect $classScreenSize.html 25,347 116,373
+rect $classMC2BoundingBox.html 7,245 135,272
+rect $classRouteReplyPacket.html 541,420 672,447
+rect $classUserItem.html 569,471 644,497
+rect $classMapSettings.html 559,523 655,549
+rect $classMC2String.html 564,573 649,600

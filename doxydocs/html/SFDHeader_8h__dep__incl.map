@@ -1,0 +1,5 @@
+base referer
+rect $SFDSavableHeader_8h.html 100,155 249,181
+rect $include_2SFDLoadableHeader_8h.html 5,80 163,107
+rect $Tools_2SFDTool_2include_2SFDLoadableHeader_8h.html 187,80 344,107
+rect $SFDFile_8h.html 225,5 305,32

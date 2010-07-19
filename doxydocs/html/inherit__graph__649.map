@@ -1,0 +1,7 @@
+base referer
+rect $classSQLDriver.html 7,81 89,108
+rect $classMySQLDriver.html 175,5 276,32
+rect $classOracleSQLDriver.html 164,56 287,83
+rect $classPostgreSQLDriver.html 161,107 289,133
+rect $classWriteBlockableSQLDriver.html 139,157 312,184
+rect $classMySQLReplDriver.html 361,5 489,32

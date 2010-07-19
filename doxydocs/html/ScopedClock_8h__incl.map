@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 381,80 451,107
+rect $Types_8h.html 295,155 361,181
+rect $MC2Logging_8h.html 164,155 271,181
+rect $MC2String_8h.html 687,155 783,181
+rect $DebugClock_8h.html 480,229 584,256
+rect $TimeUtility_8h.html 569,155 663,181
+rect $NamedClock_8h.html 477,304 587,331

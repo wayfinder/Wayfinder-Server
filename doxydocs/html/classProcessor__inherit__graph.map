@@ -1,0 +1,10 @@
+base referer
+rect $classCommunicationProcessor.html 137,5 311,32
+rect $classEmailProcessor.html 167,56 281,83
+rect $classExtServiceProcessor.html 151,107 297,133
+rect $classFakeExtServiceProcessor.html 136,157 312,184
+rect $classGfxProcessor.html 173,208 275,235
+rect $classMapHandlingProcessor.html 144,259 304,285
+rect $classSMSProcessor.html 168,309 280,336
+rect $classTileProcessor.html 172,360 276,387
+rect $classUserProcessor.html 169,411 279,437

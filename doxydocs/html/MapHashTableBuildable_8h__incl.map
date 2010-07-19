@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 499,80 569,107
+rect $Types_8h.html 430,155 497,181
+rect $MC2Logging_8h.html 683,155 790,181
+rect $ItemTypes_8h.html 191,229 285,256
+rect $LocationHashTable_8h.html 359,229 506,256
+rect $MapHashTable_8h.html 315,304 438,331
+rect $NotCopyable_8h.html 530,229 639,256
+rect $SimpleArrayObject_8h.html 23,229 167,256

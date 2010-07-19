@@ -1,0 +1,5 @@
+base referer
+rect $MTSender_8h.html 5,5 99,32
+rect $ServerProximityPackets_8h.html 107,80 280,107
+rect $HttpFunctionHandler_8h.html 123,5 277,32
+rect $MTReceiver_8h.html 301,5 405,32

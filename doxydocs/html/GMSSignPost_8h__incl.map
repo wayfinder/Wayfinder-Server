@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 253,80 323,107
+rect $Types_8h.html 8,155 75,181
+rect $MC2Logging_8h.html 659,155 765,181
+rect $GMSSignPostSet_8h.html 205,304 341,331
+rect $GMSSignPostElm_8h.html 261,229 400,256
+rect $ItemTypes_8h.html 200,155 293,181
+rect $LangTypes_8h.html 368,155 464,181
+rect $MC2String_8h.html 488,155 584,181

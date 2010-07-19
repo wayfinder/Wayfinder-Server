@@ -1,0 +1,4 @@
+base referer
+rect $classJobCourier.html 7,31 92,57
+rect $classDummyCourier.html 157,5 269,32
+rect $classThreadedJobCourier.html 141,56 285,83

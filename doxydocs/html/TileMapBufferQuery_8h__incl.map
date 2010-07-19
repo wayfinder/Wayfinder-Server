@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 101,80 171,107
+rect $Types_8h.html 69,155 136,181
+rect $MC2Logging_8h.html 400,155 507,181
+rect $TileMapQuery_8h.html 211,155 325,181
+rect $MC2SimpleString_8h.html 568,155 704,181

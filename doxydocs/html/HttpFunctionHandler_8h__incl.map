@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 204,5 274,32
+rect $StringUtility_8h.html 28,80 127,107
+rect $HttpParserThreadConfig_8h.html 151,80 327,107
+rect $ImageDraw_8h.html 351,80 450,107
+rect $ServerProximityPackets_8h.html 474,80 647,107
+rect $StringTableUtility_8h.html 671,80 802,107
+rect $NotCopyable_8h.html 826,80 935,107

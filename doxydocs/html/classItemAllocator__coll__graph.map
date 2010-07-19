@@ -1,0 +1,4 @@
+base referer
+rect $classMC2Allocator.html 73,96 207,123
+rect $classAbstractMC2Allocator.html 5,5 157,32
+rect $structDataBufferMapObject.html 231,96 380,123

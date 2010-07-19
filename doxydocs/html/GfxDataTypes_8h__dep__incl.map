@@ -1,0 +1,6 @@
+base referer
+rect $ImageDraw_8h.html 60,80 159,107
+rect $GDImageDraw_8h.html 5,5 125,32
+rect $MapTextPlacement_8h.html 183,80 329,107
+rect $StreetTextPlacer_8h.html 353,80 484,107
+rect $GfxData_8h.html 508,80 591,107

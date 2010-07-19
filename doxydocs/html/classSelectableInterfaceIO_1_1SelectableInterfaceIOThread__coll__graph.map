@@ -1,0 +1,8 @@
+base referer
+rect $classISABThread.html 28,187 121,213
+rect $classISABThreadGroup.html 5,96 136,123
+rect $classSelectableSelector.html 147,187 280,213
+rect $classISABMutex.html 201,96 289,123
+rect $classSelectableInterfaceIO.html 304,187 453,213
+rect $classInterfaceIO.html 337,96 425,123
+rect $classInterfaceHandleIO.html 316,5 447,32

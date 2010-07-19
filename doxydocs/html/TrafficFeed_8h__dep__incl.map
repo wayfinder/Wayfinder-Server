@@ -1,0 +1,3 @@
+base referer
+rect $FileTrafficFeed_8h.html 5,5 125,32
+rect $TCPTrafficFeed_8h.html 149,5 275,32

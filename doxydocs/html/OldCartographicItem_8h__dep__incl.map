@@ -1,0 +1,5 @@
+base referer
+rect $MECartographicItemInfoWidget_8h.html 5,80 224,107
+rect $MEItemInfoDialog_8h.html 232,5 371,32
+rect $MEMapArea_8h.html 248,80 355,107
+rect $GMSCartographicItem_8h.html 379,80 544,107

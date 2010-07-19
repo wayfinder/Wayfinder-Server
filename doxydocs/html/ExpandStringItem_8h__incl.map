@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 256,5 326,32
+rect $StringUtility_8h.html 32,155 131,181
+rect $StringTable_8h.html 155,80 254,107
+rect $SMSStringUtility_8h.html 360,155 488,181
+rect $ExpandStringLane_8h.html 328,80 470,107
+rect $ExpandStringSignPost_8h.html 494,80 659,107
+rect $ItemTypes_8h.html 683,80 776,107
+rect $StringTableUtility_8h.html 206,155 336,181
+rect $NotCopyable_8h.html 664,155 774,181

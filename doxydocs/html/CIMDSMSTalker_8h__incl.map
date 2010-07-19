@@ -1,0 +1,13 @@
+base referer
+rect $SMSTalker_8h.html 88,304 184,331
+rect $SMSProcessor_8h.html 220,453 340,480
+rect $config_8h.html 341,80 411,107
+rect $Types_8h.html 761,155 828,181
+rect $SMSPacket_8h.html 319,229 420,256
+rect $MC2String_8h.html 192,155 288,181
+rect $ISABThread_8h.html 576,304 680,331
+rect $SysUtility_8h.html 639,229 727,256
+rect $StringTable_8h.html 196,229 295,256
+rect $Processor_8h.html 31,229 121,256
+rect $SMSForwardThread_8h.html 317,379 469,405
+rect $CIMDParser_8h.html 852,453 956,480

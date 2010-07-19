@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 79,5 149,32
+rect $OldCountryOverviewMap_8h.html 23,80 205,107
+rect $OldOverviewMap_8h.html 229,80 362,107

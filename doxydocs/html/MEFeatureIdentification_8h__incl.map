@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 125,5 195,32
+rect $MC2String_8h.html 27,80 123,107
+rect $OldGenericMap_8h.html 208,155 333,181
+rect $OldExtraDataUtility_8h.html 40,155 184,181
+rect $OldNode_8h.html 303,80 388,107

@@ -1,0 +1,7 @@
+base referer
+rect $classSearchResultRequest.html 252,5 404,32
+rect $classSearchRequestParameters.html 237,56 419,83
+rect $classMC2Coordinate.html 271,145 385,172
+rect $classProximityItemSetRequestPacket.html 221,196 435,223
+rect $classPacketContainer.html 268,367 388,393
+rect $classPacket.html 7,293 68,320

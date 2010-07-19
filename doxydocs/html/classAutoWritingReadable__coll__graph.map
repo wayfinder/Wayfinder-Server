@@ -1,0 +1,4 @@
+base referer
+rect $classReadable.html 16,83 93,109
+rect $classMC2String.html 137,83 223,109
+rect $classvector.html 127,5 233,32

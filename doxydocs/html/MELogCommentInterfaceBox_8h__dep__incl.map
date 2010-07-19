@@ -1,0 +1,4 @@
+base referer
+rect $MEEditNameDialog_8h.html 5,80 155,107
+rect $MEEditSignPostDialog_8h.html 229,80 395,107
+rect $MESignPostInfoDialog_8h.html 169,5 335,32

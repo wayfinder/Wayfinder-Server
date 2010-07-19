@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 258,5 327,32
+rect $MC2BoundingBox_8h.html 22,80 161,107
+rect $GfxFeature_8h.html 197,80 295,107
+rect $RedLineSettings_8h.html 379,80 510,107
+rect $GfxFeatureMapProcBase_8h.html 501,155 685,181
+rect $MapSettings_8h.html 319,155 426,181
+rect $ServerTileMapFormatDesc_8h.html 103,155 295,181

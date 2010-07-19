@@ -1,0 +1,3 @@
+base referer
+rect $classExternalSearchConsts.html 5,5 160,32
+rect $classExternalSearchDesc.html 208,5 352,32

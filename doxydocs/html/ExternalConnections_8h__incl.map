@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 82,5 152,32
+rect $GenericMap_8h.html 65,155 169,181
+rect $Item_8h.html 21,80 80,107
+rect $Connection_8h.html 154,80 253,107
+rect $DataBuffer_8h.html 244,155 340,181

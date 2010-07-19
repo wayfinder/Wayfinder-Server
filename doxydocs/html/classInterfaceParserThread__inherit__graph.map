@@ -1,0 +1,8 @@
+base referer
+rect $classHttpParserThread.html 7,304 135,331
+rect $classNavThread.html 159,304 247,331
+rect $classParserThread.html 85,155 187,181
+rect $classISABThread.html 27,80 120,107
+rect $classMapRequester.html 144,80 253,107
+rect $classRequester.html 157,5 240,32
+rect $classXMLParserThread.html 5,379 136,405

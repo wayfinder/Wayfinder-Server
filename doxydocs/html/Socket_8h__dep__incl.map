@@ -1,0 +1,3 @@
+base referer
+rect $TCPSocket_8h.html 5,5 104,32
+rect $DatagramSocket_8h.html 128,5 259,32

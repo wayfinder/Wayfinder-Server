@@ -1,0 +1,5 @@
+base referer
+rect $classPTServer.html 24,155 101,181
+rect $classServer.html 125,155 187,181
+rect $classComponent.html 5,5 96,32
+rect $classNotCopyable.html 120,5 219,32

@@ -1,0 +1,4 @@
+base referer
+rect $classTPTElement.html 5,155 101,181
+rect $classWPTElement.html 125,155 227,181
+rect $classIsabRouteElement.html 49,5 180,32

@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 399,5 468,32
+rect $LangTypes_8h.html 386,80 482,107
+rect $MC2String_8h.html 164,80 260,107
+rect $IDPairVector_8h.html 34,80 140,107
+rect $MC2Coordinate_8h.html 740,155 866,181
+rect $StringTable_8h.html 298,155 396,181
+rect $CategoryTree_8h.html 162,155 274,181
+rect $SearchTypes_8h.html 556,80 666,107
+rect $ItemInfoEnums_8h.html 471,155 594,181

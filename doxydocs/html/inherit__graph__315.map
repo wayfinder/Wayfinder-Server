@@ -1,0 +1,4 @@
+base referer
+rect $classLineParser.html 7,31 92,57
+rect $classClientSettingsProductReader.html 141,5 336,32
+rect $classClientSettingsWFIDReader.html 148,56 329,83

@@ -1,0 +1,4 @@
+base referer
+rect $ClosestSearchRequest_8h.html 5,5 173,32
+rect $SearchHandler_8h.html 197,5 317,32
+rect $XMLSearchUtility_8h.html 341,5 477,32

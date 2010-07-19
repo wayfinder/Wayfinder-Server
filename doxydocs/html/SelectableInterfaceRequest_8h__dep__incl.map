@@ -1,0 +1,13 @@
+base referer
+rect $NavInterfaceRequest_8h.html 128,304 285,331
+rect $isabBoxInterfaceRequest_8h.html 5,229 187,256
+rect $NavRequestData_8h.html 29,155 163,181
+rect $NavUserHelp_8h.html 40,80 152,107
+rect $NavExternalAuth_8h.html 29,5 163,32
+rect $SelectableInterfaceIO_8h.html 321,304 481,331
+rect $CommunicationProcessor_8h.html 211,229 395,256
+rect $TimedOutSocketLogger_8h.html 419,229 589,256
+rect $SocketInterfaceRequest_8h.html 605,304 781,331
+rect $HttpInterfaceRequest_8h.html 613,229 773,256
+rect $LoggingHttpInterfaceRequest_8h.html 591,155 796,181
+rect $SendDataInterfaceRequest_8h.html 797,229 992,256

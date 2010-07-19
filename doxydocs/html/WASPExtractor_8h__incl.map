@@ -1,0 +1,8 @@
+base referer
+rect $config_8h.html 311,5 380,32
+rect $SQLDriver_8h.html 581,80 675,107
+rect $OldGenericMap_8h.html 315,155 440,181
+rect $ItemTypes_8h.html 5,155 99,181
+rect $OldPointOfInterestItem_8h.html 323,80 491,107
+rect $CharEncoding_8h.html 123,155 240,181
+rect $SQLConnection_8h.html 565,155 691,181

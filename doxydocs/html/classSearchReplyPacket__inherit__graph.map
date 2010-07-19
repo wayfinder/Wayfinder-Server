@@ -1,0 +1,8 @@
+base referer
+rect $classProximitySearchReplyPacket.html 5,304 197,331
+rect $classSearchMatchReplyPacket.html 221,304 395,331
+rect $classVanillaSearchReplyPacket.html 419,304 595,331
+rect $classReplyPacket.html 260,155 356,181
+rect $classPacket.html 277,80 339,107
+rect $classNotCopyable.html 259,5 357,32
+rect $classOverviewSearchReplyPacket.html 211,379 405,405

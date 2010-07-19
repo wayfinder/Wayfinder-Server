@@ -1,0 +1,6 @@
+base referer
+rect $classItemIDTree.html 5,96 91,123
+rect $classMC2BoundingBox.html 115,96 243,123
+rect $classNameCollection.html 267,96 381,123
+rect $classvector.html 204,5 329,32
+rect $className.html 353,5 409,32

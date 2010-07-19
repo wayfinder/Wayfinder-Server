@@ -1,0 +1,6 @@
+base referer
+rect $classInterfaceParserThread.html 5,111 160,137
+rect $classNotCopyable.html 176,5 275,32
+rect $classHttpFunctionHandler.html 235,111 379,137
+rect $classHttpInterfaceRequest.html 551,111 697,137
+rect $classMC2String.html 444,5 529,32

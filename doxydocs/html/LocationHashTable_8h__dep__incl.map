@@ -1,0 +1,6 @@
+base referer
+rect $OldMapHashTable_8h.html 160,80 301,107
+rect $OldGenericMap_8h.html 5,5 131,32
+rect $SetTurnDescriptions_8h.html 155,5 307,32
+rect $MapHashTable_8h.html 341,80 464,107
+rect $MapHashTableBuildable_8h.html 331,5 507,32

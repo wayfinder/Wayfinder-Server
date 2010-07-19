@@ -1,0 +1,3 @@
+base referer
+rect $classMultiJobDispatcher.html 5,80 141,107
+rect $classSingleJobDispatcher.html 165,80 309,107

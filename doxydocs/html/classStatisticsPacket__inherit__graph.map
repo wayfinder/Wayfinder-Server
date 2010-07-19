@@ -1,0 +1,4 @@
+base referer
+rect $classSMSStatisticsPacket.html 5,229 149,256
+rect $classPacket.html 47,80 108,107
+rect $classNotCopyable.html 28,5 127,32

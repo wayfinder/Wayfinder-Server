@@ -1,0 +1,6 @@
+base referer
+rect $classNavPacket.html 23,187 108,213
+rect $classNParamBlock.html 5,96 109,123
+rect $classNParam.html 23,5 92,32
+rect $classMC2String.html 141,187 227,213
+rect $classvector.html 133,96 240,123

@@ -1,0 +1,9 @@
+base referer
+rect $MapRequester_8h.html 244,304 364,331
+rect $Requester_8h.html 205,229 299,256
+rect $config_8h.html 136,80 205,107
+rect $Types_8h.html 8,155 75,181
+rect $MC2Logging_8h.html 336,155 443,181
+rect $ModuleTypes_8h.html 149,155 261,181
+rect $ServerTypes_8h.html 527,304 633,331
+rect $NotCopyable_8h.html 657,304 767,331

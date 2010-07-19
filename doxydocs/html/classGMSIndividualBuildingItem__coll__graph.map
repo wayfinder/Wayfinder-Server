@@ -1,0 +1,9 @@
+base referer
+rect $classOldIndividualBuildingItem.html 16,277 187,304
+rect $classOldItem.html 68,187 135,213
+rect $classGfxDataFull.html 56,96 147,123
+rect $classGfxData.html 5,5 75,32
+rect $classMC2BoundingBox.html 99,5 227,32
+rect $classGMSItem.html 211,277 288,304
+rect $classMapData.html 212,187 287,213
+rect $classVectorElement.html 195,96 304,123

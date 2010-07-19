@@ -1,0 +1,5 @@
+base referer
+rect $classWayfinderSMSRequest.html 5,304 165,331
+rect $classRequest.html 49,155 121,181
+rect $classLink.html 63,80 108,107
+rect $classLinkage.html 52,5 119,32

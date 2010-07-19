@@ -1,0 +1,4 @@
+base referer
+rect $classWriteableSearchMapStringTable.html 5,5 219,32
+rect $classSearchMap2.html 243,5 339,32
+rect $classGetAdditionalPOIInfo.html 363,5 509,32

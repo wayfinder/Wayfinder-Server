@@ -1,0 +1,4 @@
+base referer
+rect $classMC2Coordinate.html 5,31 120,57
+rect $classFilteredCoord.html 171,5 272,32
+rect $classTileMapCoord.html 169,56 273,83

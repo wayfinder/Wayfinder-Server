@@ -1,0 +1,4 @@
+base referer
+rect $BitBuffer_8h.html 5,5 88,32
+rect $DataBuffer_8h.html 112,5 208,32
+rect $ParamsNotice_8h.html 232,5 349,32

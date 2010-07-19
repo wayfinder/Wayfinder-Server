@@ -1,0 +1,4 @@
+base referer
+rect $classJobDispatcher.html 65,96 172,123
+rect $classPacketCache.html 5,5 107,32
+rect $classPacketSender.html 131,5 235,32

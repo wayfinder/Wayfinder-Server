@@ -1,0 +1,4 @@
+base referer
+rect $classExternalSearchConsts.html 5,83 160,109
+rect $classMC2String.html 184,83 269,109
+rect $classvector.html 173,5 280,32

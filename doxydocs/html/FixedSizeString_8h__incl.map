@@ -1,0 +1,8 @@
+base referer
+rect $ScopedArray_8h.html 709,155 819,181
+rect $NotCopyable_8h.html 709,80 819,107
+rect $MC2String_8h.html 180,155 276,181
+rect $config_8h.html 469,80 539,107
+rect $Types_8h.html 567,155 633,181
+rect $MC2Logging_8h.html 300,155 407,181
+rect $StackOrHeap_8h.html 431,155 543,181

@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 29,5 98,32
+rect $GfxData_8h.html 22,80 105,107
+rect $TileMapCoord_8h.html 129,80 243,107
+rect $GfxConstants_8h.html 267,80 382,107

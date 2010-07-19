@@ -1,0 +1,16 @@
+base referer
+rect $ParserActivationHandler_8h.html 205,5 381,32
+rect $ParserAppStoreHandler_8h.html 207,56 380,83
+rect $ParserCWHandler_8h.html 224,107 363,133
+rect $ParserDebitHandler_8h.html 219,157 368,184
+rect $ParserExternalAuth_8h.html 7,233 153,260
+rect $ParserUserHandler_8h.html 220,259 367,285
+rect $ParserMapHandler_8h.html 221,309 365,336
+rect $ParserPoiReviewHandler_8h.html 204,360 383,387
+rect $ParserPosPush_8h.html 17,436 143,463
+rect $ParserPosPushItem_8h.html 217,461 369,488
+rect $ParserRouteHandler_8h.html 217,512 369,539
+rect $ParserTileHandler_8h.html 224,563 363,589
+rect $ParserTokenHandler_8h.html 217,613 369,640
+rect $SearchParserHandler_8h.html 213,664 373,691
+rect $XMLExtServiceHelper_8h.html 212,715 375,741

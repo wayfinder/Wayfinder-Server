@@ -1,0 +1,4 @@
+base referer
+rect $classGMSBusRouteItem.html 5,229 141,256
+rect $classOldRouteableItem.html 9,80 137,107
+rect $classOldItem.html 40,5 107,32

@@ -1,0 +1,6 @@
+base referer
+rect $config_8h.html 471,5 540,32
+rect $OldGenericMap_8h.html 543,155 668,181
+rect $OldConnection_8h.html 445,80 565,107
+rect $MEMapArea_8h.html 593,229 700,256
+rect $MELogCommentInterfaceBox_8h.html 209,229 417,256

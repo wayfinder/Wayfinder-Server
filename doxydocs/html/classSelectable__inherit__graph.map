@@ -1,0 +1,16 @@
+base referer
+rect $classFDSelectable.html 164,155 265,181
+rect $classNotifyPipe.html 289,155 372,181
+rect $classSocket.html 396,155 457,181
+rect $classTimedSelectable.html 617,155 737,181
+rect $classTemplateSelectable.html 292,5 465,32
+rect $classDatagramSocket.html 164,229 284,256
+rect $classTCPSocket.html 383,229 471,256
+rect $classDatagramReceiver.html 5,304 139,331
+rect $classDatagramSender.html 163,304 285,331
+rect $classDataSocket.html 309,304 400,331
+rect $classPacketReceiveSocket.html 424,304 573,331
+rect $classBufferReceiver.html 623,229 732,256
+rect $classBufferSender.html 776,229 877,256
+rect $classQueuedPacketReceiver.html 597,304 757,331
+rect $classMultiPacketSender.html 781,304 915,331

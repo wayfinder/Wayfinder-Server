@@ -1,0 +1,16 @@
+base referer
+rect $classSearchMatch.html 5,107 107,133
+rect $classOverviewMatch.html 155,81 269,108
+rect $classVanillaMatch.html 164,132 260,159
+rect $classVanillaCategoryMatch.html 319,5 471,32
+rect $classVanillaCompanyMatch.html 317,56 472,83
+rect $classVanillaMatchWithSSI.html 321,107 468,133
+rect $classVanillaMiscMatch.html 332,157 457,184
+rect $classVanillaRegionMatch.html 325,208 464,235
+rect $classVanillaStreetMatch.html 328,259 461,285
+rect $classVanillaBuiltUpAreaMatch.html 521,81 689,108
+rect $classVanillaCityPartMatch.html 533,132 677,159
+rect $classVanillaCountryMatch.html 533,183 677,209
+rect $classVanillaMunicipalMatch.html 529,233 681,260
+rect $classVanillaZipAreaMatch.html 533,284 677,311
+rect $classVanillaZipCodeMatch.html 532,335 679,361

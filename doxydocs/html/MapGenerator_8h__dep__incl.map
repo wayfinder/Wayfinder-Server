@@ -1,0 +1,8 @@
+base referer
+rect $GenericGfxMapGenerator_8h.html 100,80 284,107
+rect $GfxCountryMapGenerator_8h.html 5,5 192,32
+rect $GfxMapGenerator_8h.html 216,5 355,32
+rect $InfoMapGenerator_8h.html 308,80 447,107
+rect $RouteMapGenerator_8h.html 471,80 623,107
+rect $SearchMapGenerator_8h.html 647,80 807,107
+rect $StringTableMapGenerator_8h.html 831,80 1015,107

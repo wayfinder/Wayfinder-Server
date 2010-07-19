@@ -1,0 +1,5 @@
+base referer
+rect $AdServerTalker_8h.html 5,5 128,32
+rect $GoogleTalker_8h.html 152,5 261,32
+rect $QypeHandler_8h.html 285,5 395,32
+rect $QypeTalker_8h.html 419,5 517,32

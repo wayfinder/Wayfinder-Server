@@ -1,0 +1,16 @@
+base referer
+rect $GfxFeatureMapImageRequest_8h.html 228,5 439,32
+rect $HttpMapFunctions_8h.html 263,56 404,83
+rect $HttpUtility_8h.html 289,107 377,133
+rect $isabBoxSession_8h.html 269,157 397,184
+rect $LocalMapMessageRequest_8h.html 236,208 431,235
+rect $ParserDebitHandler_8h.html 259,259 408,285
+rect $RouteMessageRequest_8h.html 7,335 177,361
+rect $MimePart_8h.html 288,360 379,387
+rect $NavFavHandler_8h.html 272,411 395,437
+rect $NavMapHandler_8h.html 269,461 397,488
+rect $NavMessHelp_8h.html 276,512 391,539
+rect $XMLParserThread_8h.html 263,563 404,589
+rect $ImageDraw_8h.html 284,613 383,640
+rect $MapDrawer_8h.html 283,664 384,691
+rect $GfxFeatureMapImagePacket_8h.html 232,715 435,741

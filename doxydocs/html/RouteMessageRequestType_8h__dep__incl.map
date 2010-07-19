@@ -1,0 +1,5 @@
+base referer
+rect $LocalMapMessageRequest_8h.html 5,5 200,32
+rect $RouteMessageRequest_8h.html 224,5 395,32
+rect $NavMessHelp_8h.html 419,5 533,32
+rect $XMLParserThread_8h.html 557,5 699,32

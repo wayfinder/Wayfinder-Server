@@ -1,0 +1,10 @@
+base referer
+rect $classOldBuiltUpAreaItem.html 32,355 171,381
+rect $classOldGroupItem.html 49,264 153,291
+rect $classOldItem.html 68,187 135,213
+rect $classGfxDataFull.html 56,96 147,123
+rect $classGfxData.html 5,5 75,32
+rect $classMC2BoundingBox.html 99,5 227,32
+rect $classGMSItem.html 195,355 272,381
+rect $classMapData.html 196,264 271,291
+rect $classVectorElement.html 179,187 288,213

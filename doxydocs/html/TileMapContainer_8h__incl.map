@@ -1,0 +1,11 @@
+base referer
+rect $TileMap_8h.html 176,65 256,92
+rect $LangTypes_8h.html 7,92 103,118
+rect $TileMapParams_8h.html 153,120 279,146
+rect $TileMapFormatDesc_8h.html 333,192 485,218
+rect $ParamsNotice_8h.html 351,90 468,117
+rect $RouteID_8h.html 13,202 96,229
+rect $TileMapHandlerTypes_8h.html 329,344 489,370
+rect $NotCopyable_8h.html 161,240 271,266
+rect $MapProjection_8h.html 351,445 468,472
+rect $TileMapGarbage_8h.html 344,496 475,522

@@ -1,0 +1,7 @@
+base referer
+rect $config_8h.html 133,5 202,32
+rect $ItemComboLoader_8h.html 26,80 167,107
+rect $AlignUtility_8h.html 191,80 287,107
+rect $MapBits_8h.html 311,80 391,107
+rect $DataTable_8h.html 466,80 559,107
+rect $NonStdStl_8h.html 634,80 727,107

@@ -1,0 +1,4 @@
+base referer
+rect $classNotCopyable.html 5,112 104,139
+rect $classHead.html 128,112 181,139
+rect $classLinkage.html 120,7 187,33

@@ -1,0 +1,10 @@
+base referer
+rect $classBasicRequester.html 5,80 120,107
+rect $classMapRequester.html 144,80 253,107
+rect $classBasicMapRequester.html 55,155 196,181
+rect $classParserThread.html 220,155 321,181
+rect $classInterfaceParserThread.html 99,229 253,256
+rect $classPreCacheTileMapHandler.html 277,229 451,256
+rect $classHttpParserThread.html 47,304 175,331
+rect $classNavThread.html 199,304 287,331
+rect $classXMLParserThread.html 45,379 176,405

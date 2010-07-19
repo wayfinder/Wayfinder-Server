@@ -1,0 +1,4 @@
+base referer
+rect $classRequestPacket.html 59,160 171,187
+rect $classPacket.html 84,83 145,109
+rect $classNotCopyable.html 65,5 164,32

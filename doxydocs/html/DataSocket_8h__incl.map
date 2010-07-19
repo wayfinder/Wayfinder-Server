@@ -1,0 +1,4 @@
+base referer
+rect $config_8h.html 35,5 105,32
+rect $TCPSocket_8h.html 21,80 119,107
+rect $isabBoxSession_8h.html 143,80 271,107

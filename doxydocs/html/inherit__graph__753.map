@@ -1,0 +1,4 @@
+base referer
+rect $classTrafficFeed.html 5,31 93,57
+rect $classFileTrafficFeed.html 144,5 253,32
+rect $classTCPTrafficFeed.html 141,56 256,83

@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 408,80 477,107
+rect $Types_8h.html 517,155 584,181
+rect $MC2Logging_8h.html 27,155 133,181
+rect $InterfaceRequestData_8h.html 349,304 512,331
+rect $LangTypes_8h.html 659,155 755,181
+rect $StringTable_8h.html 143,229 241,256
+rect $IPnPort_8h.html 265,229 343,256
+rect $UserEnums_8h.html 569,229 671,256
+rect $UserLicenceKey_8h.html 367,229 495,256

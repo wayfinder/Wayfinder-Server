@@ -1,0 +1,11 @@
+base referer
+rect $MapGenUtil_8h.html 53,229 157,256
+rect $OldGenericMapHeader_8h.html 5,155 173,181
+rect $OldGenericMap_8h.html 17,80 143,107
+rect $OldOverviewMap_8h.html 92,5 225,32
+rect $NationalProperties_8h.html 167,80 308,107
+rect $MapIndex_8h.html 447,155 537,181
+rect $MapModuleNoticeContainer_8h.html 265,229 463,256
+rect $XMLIndata_8h.html 443,80 541,107
+rect $MapReader_8h.html 313,155 415,181
+rect $MC2MapGenUtil_8h.html 537,229 668,256

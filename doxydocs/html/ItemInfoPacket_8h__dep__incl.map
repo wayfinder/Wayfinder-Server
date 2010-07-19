@@ -1,0 +1,4 @@
+base referer
+rect $GetAdditionalPOIInfo_8h.html 61,80 219,107
+rect $MapProcessor_8h.html 5,5 123,32
+rect $SearchUnitBuilder_8h.html 147,5 285,32

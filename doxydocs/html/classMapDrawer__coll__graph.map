@@ -1,0 +1,4 @@
+base referer
+rect $classDrawingProjection.html 5,173 133,200
+rect $classPixelBox.html 33,83 105,109
+rect $classMC2BoundingBox.html 5,5 133,32

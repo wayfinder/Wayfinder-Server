@@ -1,0 +1,9 @@
+base referer
+rect $config_8h.html 396,80 465,107
+rect $Types_8h.html 397,155 464,181
+rect $MC2Logging_8h.html 688,155 795,181
+rect $GfxPolygon_8h.html 500,304 601,331
+rect $GfxCoordinates_8h.html 588,229 713,256
+rect $MC2Coordinate_8h.html 488,155 613,181
+rect $ItemTypes_8h.html 137,229 231,256
+rect $SearchTypes_8h.html 27,155 136,181

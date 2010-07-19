@@ -1,0 +1,7 @@
+base referer
+rect $classTileMapRequest.html 28,379 145,405
+rect $classFilteredGfxMapRequest.html 5,304 168,331
+rect $classRequestWithStatus.html 19,229 155,256
+rect $classRequest.html 51,155 123,181
+rect $classLink.html 64,80 109,107
+rect $classLinkage.html 53,5 120,32

@@ -1,0 +1,7 @@
+base referer
+rect $SMSTalker_8h.html 31,304 127,331
+rect $config_8h.html 66,80 135,107
+rect $Types_8h.html 67,155 134,181
+rect $SMSPacket_8h.html 28,229 130,256
+rect $MC2String_8h.html 158,155 254,181
+rect $SerialComm_8h.html 479,229 586,256

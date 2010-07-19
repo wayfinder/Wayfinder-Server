@@ -1,0 +1,5 @@
+base referer
+rect $config_8h.html 5,369 75,396
+rect $MEMapArea_8h.html 315,344 421,370
+rect $OldExtraDataUtility_8h.html 296,445 440,472
+rect $MC2String_8h.html 136,445 232,472

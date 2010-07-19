@@ -1,0 +1,10 @@
+base referer
+rect $classIPnPort.html 5,307 72,333
+rect $classUserEnums_1_1URType.html 96,307 243,333
+rect $classUserLicenceKey.html 213,148 331,175
+rect $classUserElement.html 187,5 285,32
+rect $classMC2String.html 419,5 504,32
+rect $classClientSetting.html 600,307 696,333
+rect $classClientVersion.html 599,148 697,175
+rect $classParserThreadGroup.html 721,148 860,175
+rect $classNotCopyable.html 812,5 911,32

@@ -1,0 +1,10 @@
+base referer
+rect $classGenericServer.html 84,80 191,107
+rect $classModule.html 487,80 551,107
+rect $classPTServer.html 5,155 83,181
+rect $classServer.html 107,155 168,181
+rect $classCommunicationModule.html 192,155 349,181
+rect $classExtServiceModule.html 373,155 504,181
+rect $classPreLoadMapModule.html 528,155 669,181
+rect $classTileModule.html 693,155 779,181
+rect $classUserModule.html 803,155 896,181

@@ -1,0 +1,12 @@
+base referer
+rect $structDatexIIStructs_1_1SituationValues.html 5,233 211,260
+rect $structDatexIIStructs_1_1AbnormalTrafficValues.html 320,5 565,32
+rect $structDatexIIStructs_1_1AccidentValues.html 340,56 545,83
+rect $structDatexIIStructs_1_1ActivitiesValues.html 340,107 545,133
+rect $structDatexIIStructs_1_1AnimalPresenceObstructionValues.html 284,157 601,184
+rect $structDatexIIStructs_1_1ConstructionWorksValues.html 309,208 576,235
+rect $structDatexIIStructs_1_1GeneralObstructionValues.html 308,259 577,285
+rect $structDatexIIStructs_1_1MaintenanceWorksValues.html 309,309 576,336
+rect $structDatexIIStructs_1_1NetworkManagementValues.html 303,360 583,387
+rect $structDatexIIStructs_1_1NonWeatherRelatedRoadConditionsValues.html 259,411 627,437
+rect $structDatexIIStructs_1_1VehicleObstructionValues.html 311,461 575,488

@@ -1,0 +1,5 @@
+base referer
+rect $Balancer_8h.html 33,80 119,107
+rect $SimpleBalancer_8h.html 5,5 131,32
+rect $ReaderBase_8h.html 159,80 265,107
+rect $StandardReader_8h.html 155,5 285,32

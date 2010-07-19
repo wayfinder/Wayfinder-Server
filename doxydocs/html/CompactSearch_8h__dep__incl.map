@@ -1,0 +1,8 @@
+base referer
+rect $ExternalSearchHeadingDesc_8h.html 7,5 209,32
+rect $SearchHeadingDesc_8h.html 31,56 185,83
+rect $SearchHeadingManager_8h.html 20,107 196,133
+rect $SearchParserHandler_8h.html 28,157 188,184
+rect $XMLCategoryListNode_8h.html 24,208 192,235
+rect $CompactSearchPacketTools_8h.html 8,259 208,285
+rect $ExtServicePacket_8h.html 39,309 177,336

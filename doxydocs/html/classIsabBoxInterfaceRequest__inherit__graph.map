@@ -1,0 +1,4 @@
+base referer
+rect $classNavInterfaceRequest.html 25,155 172,181
+rect $classSelectableInterfaceRequest.html 5,80 192,107
+rect $classInterfaceRequest.html 37,5 160,32

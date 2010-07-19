@@ -1,0 +1,4 @@
+base referer
+rect $classCache.html 25,80 84,107
+rect $classNotCopyable.html 5,5 104,32
+rect $classISABMonitor.html 108,80 204,107

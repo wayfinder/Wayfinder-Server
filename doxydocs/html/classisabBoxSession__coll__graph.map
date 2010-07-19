@@ -1,0 +1,9 @@
+base referer
+rect $classNavSession.html 23,251 116,277
+rect $classUserItem.html 140,251 215,277
+rect $classCacheElement.html 5,160 115,187
+rect $classUserUser.html 139,160 216,187
+rect $classUserElement.html 128,83 227,109
+rect $classVectorElement.html 123,5 232,32
+rect $classMC2String.html 245,251 331,277
+rect $classvector.html 240,160 347,187

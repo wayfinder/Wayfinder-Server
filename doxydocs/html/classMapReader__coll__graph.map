@@ -1,0 +1,4 @@
+base referer
+rect $classStandardReader.html 5,5 125,32
+rect $classMapModuleNoticeContainer.html 149,5 336,32
+rect $classMMRoutingCostTable.html 360,5 509,32

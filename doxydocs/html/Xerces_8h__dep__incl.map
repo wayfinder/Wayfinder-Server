@@ -1,0 +1,4 @@
+base referer
+rect $XMLZoomSettings_8h.html 5,5 149,32
+rect $XMLDataBufferInputStream_8h.html 173,5 371,32
+rect $XMLURLInputSource_8h.html 395,5 555,32

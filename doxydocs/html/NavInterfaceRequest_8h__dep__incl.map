@@ -1,0 +1,5 @@
+base referer
+rect $isabBoxInterfaceRequest_8h.html 5,229 187,256
+rect $NavRequestData_8h.html 29,155 163,181
+rect $NavUserHelp_8h.html 40,80 152,107
+rect $NavExternalAuth_8h.html 29,5 163,32

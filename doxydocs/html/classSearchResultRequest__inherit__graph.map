@@ -1,0 +1,11 @@
+base referer
+rect $classClosestSearchRequest.html 5,379 163,405
+rect $classEmptySearchRequest.html 187,379 339,405
+rect $classExpandRequest.html 363,379 480,405
+rect $classExternalSearchRequest.html 504,379 667,405
+rect $classProximityRequest.html 691,379 816,405
+rect $classSearchRequest.html 840,379 955,405
+rect $classRequestWithStatus.html 435,229 571,256
+rect $classRequest.html 467,155 539,181
+rect $classLink.html 480,80 525,107
+rect $classLinkage.html 469,5 536,32

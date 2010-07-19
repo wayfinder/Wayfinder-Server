@@ -1,0 +1,4 @@
+base referer
+rect $classSFDHeader.html 7,5 97,32
+rect $classSFDSavableHeader.html 148,5 287,32
+rect $classSFDLoadableHeader.html 336,5 483,32

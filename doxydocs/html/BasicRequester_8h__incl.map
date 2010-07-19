@@ -1,0 +1,7 @@
+base referer
+rect $Requester_8h.html 216,229 309,256
+rect $config_8h.html 131,80 200,107
+rect $Types_8h.html 23,155 89,181
+rect $MC2Logging_8h.html 300,155 407,181
+rect $ModuleTypes_8h.html 113,155 225,181
+rect $ServerTypes_8h.html 333,229 440,256

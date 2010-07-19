@@ -1,0 +1,10 @@
+base referer
+rect $config_8h.html 165,80 235,107
+rect $Types_8h.html 5,155 72,181
+rect $MC2Logging_8h.html 147,155 253,181
+rect $LangTypes_8h.html 277,155 373,181
+rect $RouteID_8h.html 397,155 480,181
+rect $MC2SimpleString_8h.html 441,80 577,107
+rect $TileMapParams_8h.html 455,229 580,256
+rect $TileMapConfig_8h.html 645,80 763,107
+rect $TileMapTypes_8h.html 555,155 669,181

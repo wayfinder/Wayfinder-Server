@@ -1,0 +1,4 @@
+base referer
+rect $classNavPacket.html 5,31 91,57
+rect $classNavReplyPacket.html 147,5 267,32
+rect $classNavRequestPacket.html 139,56 275,83
