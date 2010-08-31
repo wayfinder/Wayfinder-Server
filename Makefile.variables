@@ -33,24 +33,24 @@ ifndef ARCH
    else
       ifeq ($(unames),Linux)
          archdefs += -DARCH_OS_LINUX
-         CHECKREL := $(shell /bin/ls -1d /usr/share/doc/centos-release-4/EULA 2>/dev/null)
-         ifeq "$(CHECKREL)" "/usr/share/doc/centos-release-4/EULA"
+         CHECKREL := $(shell cd /usr/share/doc/centos-release-*; /bin/ls -1d EULA 2>/dev/null)
+         ifeq "$(CHECKREL)" "EULA"
             export ARCH_RH_RELEASE := $(shell rpm -q centos-release --queryformat '%{VERSION}')
-            export ARCH_EXTRA = el-$(ARCH_RH_RELEASE)
+            export ARCH_EXTRA = el$(ARCH_RH_RELEASE)
             export ARCH_SYS = linux
-            export ARCH_SYSX = centos4
+            export ARCH_SYSX = centos
          else
             export ARCH_RH_RELEASE := $(shell rpm -q redhat-release --queryformat '%{VERSION}')
             CHECKEL := $(shell rpm -q redhat-release --queryformat '%{RELEASE}' | sed -e 's/^.*\.//; s/[[:digit:]]$$//')
             ifeq ($(CHECKEL),el)
-               export ARCH_EXTRA = el-$(ARCH_RH_RELEASE)
+               export ARCH_EXTRA = el$(ARCH_RH_RELEASE)
             else
-               export ARCH_EXTRA = rh-$(ARCH_RH_RELEASE)
+               export ARCH_EXTRA = rh$(ARCH_RH_RELEASE)
             endif
             export ARCH_SYS = linux
          endif
          archdefs += -DARCH_OS_LINUX_RH_REL=$(ARCH_RH_RELEASE)
-      # $(warning ***INFO*** ARCH_OS_LINUX_RH_REL is: $(ARCH_RH_RELEASE))
+      #$(warning ***INFO*** ARCH_OS_LINUX_RH_REL is: $(ARCH_RH_RELEASE))
       else
 	 ifeq ($(unames),FreeBSD)
            export ARCH_SYS = FreeBSD
@@ -103,13 +103,13 @@ ifndef ARCH
    endif
 
    ifdef ARCH_SYSX
-      export ARCH = $(ARCH_SYSX)-$(ARCH_HW)
+      export ARCH = $(ARCH_SYSX)-$(ARCH_HW)-$(ARCH_EXTRA)
    else
-      export ARCH = $(ARCH_SYS)-$(ARCH_HW)
+      export ARCH = $(ARCH_SYS)-$(ARCH_HW)-$(ARCH_EXTRA)
    endif
    archdefs += -DARCH_STR=${ARCH}
 
-   export ARCH_DESC = $(ARCH)-$(ARCH_EXTRA)
+   export ARCH_DESC = $(ARCH)
    ifneq ($(ARCH), linux-i386)
    export LIBSUFFIX = -$(ARCH)
    endif
@@ -117,7 +117,6 @@ ifndef ARCH
    $(shell echo ***INFO*** Building for $(ARCH_DESC) 1>&2)
 
 endif
-
 
 # Normal version
 ifneq ($(release), on)
@@ -131,7 +130,11 @@ ifneq ($(release), on)
    CXXFLAGS    +=    -pipe
 
    # nasty warning strategy
-   CXXFLAGS    +=    -Wall -Werror
+   ifeq ($(ARCH_RH_RELEASE), 5)
+      CXXFLAGS    +=    -Wall # -Werror, g++ in EL5 has a problem with the lack of virtual destructors
+   else
+      CXXFLAGS    +=    -Wall -Werror
+   endif
    CXXFLAGS    +=    -Wpointer-arith -Wcast-align
    CXXFLAGS    +=    -Woverloaded-virtual
 
@@ -165,7 +168,11 @@ else
    # Release version
 
    # nasty warning strategy
-   CXXFLAGS    +=    -Wall -Werror 
+   ifeq ($(ARCH_RH_RELEASE), 5)
+      CXXFLAGS    +=    -Wall # -Werror, g++ in EL5 has a problem with the lack of virtual destructors
+   else
+      CXXFLAGS    +=    -Wall -Werror
+   endif
    CXXFLAGS    +=    -Wpointer-arith -Wcast-align
    CXXFLAGS    +=    -Woverloaded-virtual
 
@@ -347,7 +354,11 @@ ifeq ($(NEEDMAGICK), yes)
    endif
    IMAGE_MAGICK_VERSION := $(shell a=`rpm -q ImageMagick --queryformat '%{VERSION}'` ; echo -n $${a:0:1})
    ifeq ($(IMAGE_MAGICK_VERSION), 6)
-      LDFLAGS += -lbz2 -lxml2 -ldpstk -ltiff
+      ifeq ($(ARCH_RH_RELEASE), 5)
+         LDFLAGS += -lbz2 -lxml2 -ltiff
+      else
+         LDFLAGS += -lbz2 -lxml2 -ldpstk -ltiff
+      endif
    endif
    LDFLAGS += $(MAGICLIB)
 endif
@@ -474,6 +485,8 @@ endif
 ifeq ($(NEEDARCHDEFS), yes)
    CXXFLAGS += $(archdefs)
 endif
+# This one is always on, unlike the rest in archdefs
+CXXFLAGS += -DARCH_OS_LINUX_RH_REL=$(ARCH_RH_RELEASE)
 
 MEMCACHEDTEST=$(shell if ( pkg-config --exists libmemcached); then echo "yes"; fi)
 
