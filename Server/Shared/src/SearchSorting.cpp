@@ -219,6 +219,63 @@ SearchSorting::mergeSortedMatches(vector<SEARCHMATCH*>& target,
 #endif
 }
 
+// ugly workaround for linker problems in el5 that are ok in el4 and el6 beta.
+#if ARCH_OS_LINUX_RH_REL == 5 
+void
+SearchSorting::mergeSortedMatches(vector<VanillaMatch*>& target,
+                                  vector<VanillaMatch*>& source,
+                                  SearchTypes::SearchSorting sorting,
+                                  int nbrSorted)
+{
+   
+#if 0
+   // Optimize this later.
+   target.insert( target.end(), source.begin(), source.end());
+   source.clear();   
+   sortMatches(target, (SEARCHMATCH*)NULL, sorting, nbrSorted);
+#else
+   // How about now?
+   vector<VanillaMatch*> new_target( source.size() + target.size() );
+   // Urgg. This is probably why I haven't done this until now
+   
+   switch ( sorting ) {
+      case SearchTypes::DistanceSort:
+      case SearchTypes::BestDistanceSort:
+         // Update the distance
+         // Should be no need to update the distance in
+         // the target since it should be the result of
+         // a previous merge where  the source has been
+         // updated already.
+         for( vector<VanillaMatch*>::iterator it = source.begin();
+              it != source.end();
+              ++it ) {
+            (*it)->getPointInfo().setDistanceMeters((*it)->getDistance());
+         }
+         merge( source.begin(), source.end(),
+                target.begin(), target.end(),
+                new_target.begin(), DistanceComparator<VanillaMatch>() );
+         break;
+      case SearchTypes::BestMatchesSort:
+      case SearchTypes::ConfidenceSort:
+         merge( source.begin(), source.end(),
+                target.begin(), target.end(),
+                new_target.begin(), ConfidenceComparator<VanillaMatch>() );
+         break;
+      case SearchTypes::AlphaSort:
+      default:
+         merge( source.begin(), source.end(),
+                target.begin(), target.end(),
+                new_target.begin(), AlphaComparator<VanillaMatch>() );
+         break;
+   }
+
+   // Put the new target in target and clear the source.
+   new_target.swap( target );
+   source.clear();
+#endif
+}
+#endif
+
 /// Dummy function for linking. Add more types here if needed.
 namespace {
    void dummy1()
@@ -235,7 +292,6 @@ namespace {
    }
 }
 
-
 template<class SEARCHMATCH>
 int
 SearchSorting::sortSearchMatches(vector<SEARCHMATCH*>& matches,
@@ -251,8 +307,17 @@ SearchSorting::sortSearchMatches(vector<SEARCHMATCH*>& matches,
    return sortMatches(matches, (SEARCHMATCH*)NULL, sorting, nbrSorted);
 }
 
-
-
+// ugly workaround for linker problems in el5 that are ok in el4 and el6 beta.
+#if ARCH_OS_LINUX_RH_REL == 5 
+int
+SearchSorting::sortSearchMatches(vector<OverviewMatch*>& matches,
+                                 SearchTypes::SearchSorting sorting,
+                                 int nbrSorted)
+{
+   // Real function is here.
+   return sortMatches(matches, (OverviewMatch*)NULL, sorting, nbrSorted);
+}
+#endif
 
 bool
 SearchSorting::isLessThan( const MatchLink* a,

@@ -24,6 +24,12 @@ class MC2Coordinate;
 
 class MatchLink;
 
+// ugly workaround for linker problems in el5 that are ok in el4 and el6 beta.
+#if ARCH_OS_LINUX_RH_REL == 5 
+class OverviewMatch;
+class VanillaMatch;
+#endif
+
 class SearchSorting {
 public:
 
@@ -40,6 +46,13 @@ public:
    static int sortSearchMatches(vector<SEARCHMATCH*>& matches,
                                 SearchTypes::SearchSorting sorting,
                                 int nbrSorted = -1);
+
+// ugly workaround for linker problems in el5 that are ok in el4 and el6 beta.
+#if ARCH_OS_LINUX_RH_REL == 5 
+   static int sortSearchMatches(vector<OverviewMatch*>& matches,
+                                SearchTypes::SearchSorting sorting,
+                                int nbrSorted = -1);
+#endif   
 
    /**
     *   Returns true if a is less than b in the current sorting.
@@ -65,7 +78,14 @@ public:
                                      vector<SEARCHMATCH*>& source,
                                      SearchTypes::SearchSorting sorting,
                                      int nbrSorted = -1);
-   
+
+// Ugly workaround for linker problems in EL5 that are OK in EL4 and EL6 beta.
+#if ARCH_OS_LINUX_RH_REL == 5 
+      static void mergeSortedMatches(vector<VanillaMatch*>& target,
+                                     vector<VanillaMatch*>& source,
+                                     SearchTypes::SearchSorting sorting,
+                                     int nbrSorted = -1);
+#endif   
    /**
     * Sort matches by distance.
     */
