@@ -132,6 +132,7 @@ MapProcessor::MapProcessor(MapSafeVector* loadedMaps,
 
    if ( ! ::TranslationListLoader( m_poiCategories ).
         loadTranslations( categoryFilename )) {
+      mc2log << warn << "MapProcessor::MapProcessor, could not load category file" << endl;
       throw 
          ComponentException( MC2String("Could not load poi categories from: ") +
                              categoryFilename );
