@@ -441,6 +441,9 @@ ifeq ($(NEEDMYSQL), yes)
    ifeq ($(ARCH_RH_RELEASE),4)
       LDFLAGS += -L/usr/lib/mysql
    endif
+   ifeq ($(ARCH_RH_RELEASE),5)
+      LDFLAGS += -L/usr/lib/mysql
+   endif
    ifeq ($(ARCH_RH_RELEASE),6)
       LDFLAGS += -L/usr/lib/mysql
    endif
