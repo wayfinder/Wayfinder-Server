@@ -29,7 +29,7 @@ use vars qw( $m_dbh
 
 # Use POIObject and perl modules from here or BASEGENFILESPATH/script/perllib
 # use lib "fullpath/genfiles/script/perllib";
-use lib ".";
+use lib "/home/stefan/PSTC/Maps/skaneTA/script/perllib/";
 use POIObject;
 use PerlWASPTools;
 use GDFPoiFeatureCodes;
@@ -259,6 +259,9 @@ sub getWFNameLanguage {
    elsif ( $lang eq "SPA" ) {
       return "spa";
    }
+   elsif ( $lang eq "SWE" ) {
+      return "swe";
+   }
    elsif ( $lang eq "UND" ) {
       return "invalidLanguage";
    }
@@ -275,6 +278,9 @@ sub getWFNameLanguageID {
 
    if ( $lang eq "ENG" ) {
       return 0;
+   }
+   if ( $lang eq "SWE" ) {
+      return 1;
    }
    if ( $lang eq "ITA" ) {
       return 4;
@@ -380,6 +386,8 @@ sub getWFNameTypeFromBitMask {
       return "alternativeName";
    } elsif ( $rn ) {
       return "roadNumber";
+   } elsif ( $bn ) {
+      return "officialName";
    }
    else {
       errprint "unhandled name type from bitmask value $bitmask for id $id";
@@ -722,7 +730,7 @@ sub handleLanduseFile {
             $wfType = "park";
             $wfParkType = "cityPark";
          }
-         elsif ( ($midRow[ $typeCol ] == 9715) ) {    # industry
+         elsif ( ($midRow[ $typeCol ] == 9715) or ($midRow[ $typeCol ] == 9720) ) {    # industry
             $wfType = "building";
             $wfBuildingType = "unknownType";
          }
@@ -1432,7 +1440,8 @@ sub handleNetworkFile {
                die "Unhandled ferry type $midFerryType for $midId";
             }
          } else {
-            die "unhandled feature type $midFeatType for $midId";
+            #die "unhandled feature type $midFeatType for $midId";
+            errprint "WARNING: unhandled feature type $midFeatType for $midId";
          }
 
          
@@ -1508,6 +1517,9 @@ sub handleNetworkFile {
                     ($midNet2Class == 6) or
                     ($midNet2Class == 7) ) {
                $WFroadClass = 4;
+            }
+            elsif ($midNet2Class < 0) {
+               # OK, probably address area boundry
             }
             else {
                errprint "Unknown road net2class $midNet2Class " .
@@ -1621,7 +1633,7 @@ sub handleNetworkFile {
          my $WFroundabout = "N";
          my $WFroundaboutish = "N";
          my $WFroadDisplayClass = -1;
-         if ( length($midFOW) > 0 ) {
+         if (( length($midFOW) > 0 ) and ($midFOW >= 0)) {
             if ($midFOW == 1 ) {
                $WFcontrolledAccess = "Y";
             } elsif ($midFOW == 2 ) {
@@ -1728,7 +1740,7 @@ sub handleNetworkFile {
             push @{$bifurcations{$midId}}, $midFromNodeID;
             #print "bifurcation for midId $midId node0 $midFromNodeID\n";
          } elsif ($midFromNodeType != 0) {
-            if ( $midFromNodeType == 3 ){
+            if (( $midFromNodeType == 3 ) or ( $midFromNodeType == 6 )){
                # ok
             } else {
                die "Handle node0 junction type $midFromNodeType for midId=$midId";
@@ -1743,7 +1755,7 @@ sub handleNetworkFile {
             push @{$bifurcations{$midId}}, $midToNodeID;
             #print "bifurcation for midId $midId node1 $midToNodeID\n";
          } elsif ($midToNodeType != 0) {
-            if ( $midToNodeType == 3 ){
+            if (( $midToNodeType == 3 ) or ( $midToNodeType == 6 ) ) {
                # ok
             } else {
                die "Handle node1 junction type $midToNodeType for midId=$midId";
@@ -1906,7 +1918,7 @@ sub getInfoStringForPIEA {
    # 8M email
    # AP positional accuracy
    
-   if ( ($attrType eq "Atttyp") and ($attrVal eq "Attvalue") ) {
+   if ( (uc($attrType) eq "ATTTYP") and (uc($attrVal) eq "ATTVALUE") ) {
       # header line of PIEA file, skip
       $useEA = 0;
    }
@@ -1975,8 +1987,9 @@ sub getInfoStringForPIEA {
       $useEA = 1;
    }
    else {
-      die "Handle getInfoStringForPIEA for " .
+      errprint "Handle getInfoStringForPIEA for " .
           "attrType = $attrType attrVal=$attrVal";
+      $useEA = 0;
    }
 
    return ( $infoString, $useEA );
@@ -2625,8 +2638,7 @@ sub getWayfinderPoiTypeId {
             die "Special for airport with poiImportance=$poiImportance";
          }
       } else {
-         errprint "Airport poi type fix for $opt_v ???";
-         die "exit";
+         warnprint "Airport poi type fix for $opt_v ???";
       }
    }
    
@@ -2768,7 +2780,7 @@ sub handleRestrictions {
             else {
                errprint "unhandled sequential number = $seq for " .
                         "man $midRow[$manIdCol]";
-               die "exit";
+               #die "exit";
             }
          } else {
             print "WARN: no element id for this manover path idx " .
