@@ -1,0 +1,4 @@
+.depend*
+.objects*
+bin-*
+lib-*

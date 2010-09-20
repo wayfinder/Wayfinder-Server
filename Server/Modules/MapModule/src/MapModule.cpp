@@ -178,6 +178,7 @@ public:
                                    NULL, // use default scheduler
                                    m_queue.get(),
                                    m_senderReceiver->getSendQueue() );
+      cout << "MapModule.createProcessor DONE" << endl;
    }
 
    void init() throw ( ComponentException ) {
@@ -270,7 +271,7 @@ try {
                   0, &CL_testLoadAll, "F",
                   "Test loading all maps in index.db" );
 
-   char defVal[10];
+   char defVal[20];
    sprintf(defVal, "%u", MAX_UINT32);
    coh->addOption("-m", "--loadmap",
                   CommandlineOptionHandler::uint32Val,

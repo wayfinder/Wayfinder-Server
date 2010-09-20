@@ -24,7 +24,7 @@ endif
 endif
 
 ifndef MC2DIR
-   export MC2DIR := $(shell echo $(CURDIR) | sed -e 's/\(^.*mc2[^/]*\)\/.*$$/\1/')
+   export MC2DIR := $(shell echo $(CURDIR) | sed -e 's/\(^.*Wayfinder-Server[^/]*\)\/.*$$/\1/')
    CHECKMC2ARG := $(MC2DIR)/docs $(MC2DIR)/Makefile.common $(MC2DIR)/Server $(MC2DIR)/Shared
    CHECKMC2RES := $(shell /bin/ls -1d $(CHECKMC2ARG) 2>/dev/null)
    ifneq "$(CHECKMC2RES)" "$(CHECKMC2ARG)"

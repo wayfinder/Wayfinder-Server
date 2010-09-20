@@ -39,6 +39,9 @@ if [[ "$BIN" = "" ]]; then
    if [[ -d $BASEDIR/Server/bin-centos4-i386 ]]; then
       BIN=bin-centos4-i386
    fi
+   if [[ -d $BASEDIR/Server/bin-centos-i386-el5 ]]; then
+      BIN=bin-centos-i386-el5
+   fi
    if [[ -d $BASEDIR/Server/bin-centos4-x86_64 ]]; then
       BIN=bin-centos4-x86_64
    fi

@@ -110,7 +110,7 @@ try {
                   "thread and read packets of the format 4 bytes len, "
                   "len bytes packet from stdin");
 
-   char defVal[10];
+   char defVal[20];
    sprintf(defVal, "%u", MAX_UINT32);
    coh->addOption("-m", "--loadmap",
                   CommandlineOptionHandler::uint32Val,

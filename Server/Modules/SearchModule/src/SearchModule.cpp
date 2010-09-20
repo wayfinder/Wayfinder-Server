@@ -113,7 +113,7 @@ try {
    auto_ptr<CommandlineOptionHandler> 
       coh( new CommandlineOptionHandler( argc, argv ) );
       
-   char defVal[10];
+   char defVal[20];
    sprintf(defVal, "%u", MAX_UINT32);
    coh->addOption("-m", "--loadmap",
                  CommandlineOptionHandler::uint32Val,
