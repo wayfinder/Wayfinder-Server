@@ -29,7 +29,7 @@ use vars qw( $m_dbh
 
 # Use POIObject and perl modules from here or BASEGENFILESPATH/script/perllib
 # use lib "fullpath/genfiles/script/perllib";
-use lib "/home/stefan/PSTC/Maps/skaneTA/script/perllib/";
+use lib "."
 use POIObject;
 use PerlWASPTools;
 use GDFPoiFeatureCodes;
