@@ -1,0 +1,73 @@
+#!/bin/sh
+
+
+
+# Change to something else if you don't want the temp log files here
+# The directory must exist
+TEMPLOGFILEPATH="."
+#TEMPLOGFILEPATH="$something/tmpMapGenLogs"
+
+# Read input arguments.
+argNbr=0;  # Index of non-flagged parameter.
+pos=1;     # Corresponds to index of positional parameter.
+flaggedArg=""; #false
+for i; do 
+   case $i in
+      -h) echo "Writes two logfiles, one with all the data on standard in"
+          echo "and one with all rows starting with \"+\" removed. If not "
+          echo "-noStdOut, the file with rows starting with \"+\" removed"
+          echo "is written to standard out."
+          echo ""
+          echo "Make sure to pipe with |& to mlog in order to send the "
+          echo "\"+\" rows from a sh -x script."
+          echo ""
+          echo "Usage: "
+          echo "mlog [OPTIONS] FILENAME"
+          echo ""
+          echo "FILENAME"
+          echo "The name of the file with path to log to. Suffix .log is"
+          echo "added to the thin logfile and .dbg.log is added to the "
+          echo "dense one."
+          echo ""
+          echo "OPTIONS"
+          echo "-noStdOut   What is written on standard in is only written"
+          echo "            to file, not written to standard out."
+          echo "-noFile     Not writing to file. Short version -n"
+          exit;;
+      -noStdOut) noStdOut="true";;
+      -noFile) noFile="true";;
+      -n) noFile="true";;
+      -*) echo "mlog: Invalid option $i. See -h for help.";;
+      *) if [ ${flaggedArg} ]; then
+           flaggedArg=""; #false
+         else
+            eval arg${argNbr}="$i";
+            argNbr=$[argNbr+1]
+         fi;;
+   esac
+   pos=$[pos+1];
+done
+
+LOGFILE=${arg0};
+if [ -z ${LOGFILE} ]; then
+    if [ ! ${noFile} ]; then
+        echo "mlog:"
+        echo "FILENAME parameter empty. Exits."
+        echo "See -h for help."
+        exit
+    else
+        LOGFILE=`mktemp ${TEMPLOGFILEPATH}/mlog_dummyXXXXXXXXXX`;
+    fi
+fi
+
+if [ ${noStdOut} ]; then
+    tee ${LOGFILE}.dbg.log 2>&1 | grep --line-buffered -v -e "^+" 2>&1 | grep --line-buffered -v -e "^       "  2>&1 | grep --line-buffered -v -e "^/" | grep --line-buffered -v -e "\[v\]" > ${LOGFILE}.log 2>&1
+else
+    tee ${LOGFILE}.dbg.log 2>&1 | grep --line-buffered -v -e "^+" 2>&1 | grep --line-buffered -v -e "^       "  2>&1 | grep --line-buffered -v -e "^/" | grep --line-buffered -v -e "\[v\]" 2>&1 | tee ${LOGFILE}.log
+
+fi
+
+if [ ${noFile} ]; then
+    rm ${LOGFILE}.log;
+    rm ${LOGFILE}.dbg.log;
+fi

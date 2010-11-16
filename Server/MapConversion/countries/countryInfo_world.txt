@@ -1,0 +1,233 @@
+1;Canada;canada;CA;nam
+7;Russia;russia;RU;as_eur
+20;Egypt;egypt;EG;af
+27;South Africa;south_africa;ZA;af
+30;Greece;greece;GR;eur
+31;Netherlands;netherlands;NL;eur
+32;Belgium;belgium;BE;eur
+33;France;france;FR;eur_sam
+34;Spain;spain;ES;af_eur
+36;Hungary;hungary;HU;eur
+39;Italy;italy;IT;eur
+40;Romania;romania;RO;eur
+41;Switzerland;switzerland;CH;eur
+43;Austria;austria;AT;eur
+44;England;england;GB;eur
+45;Denmark;denmark;DK;eur
+46;Sweden;sweden;SE;eur
+47;Norway;norway;NO;eur
+48;Poland;poland;PL;eur
+49;Germany;germany;DE;eur
+51;Peru;peru;PE;sam
+52;Mexico;mexico;MX;sam
+53;Cuba;cuba;CU;sam
+54;Argentina;argentina;AR;sam
+55;Brazil;brazil;BR;sam
+56;Chile;chile;CL;sam
+57;Colombia;colombia;CO;sam
+58;Venezuela;venezuela;VE;sam
+60;Malaysia;malaysia;MY;as
+61;Australia;australia;AU;as
+62;Indonesia;indonesia;ID;as
+63;Philippines;philippines;PH;as
+64;New Zealand;new_zealand;NZ;as_sam
+65;Singapore;singapore;SG;as
+66;Thailand;thailand;TH;as
+81;Japan;japan;JP;as
+82;South Korea;south_korea;KR;as
+84;Viet Nam;vietnam;VN;as
+86;China;china;CN;as
+90;Turkey;turkey;TR;eur
+91;India;india;IN;as
+92;Pakistan;pakistan;PK;as
+93;Afghanistan;afghanistan;AF;as
+94;Sri Lanka;sri_lanka;LK;as
+95;Myanmar;myanmar;MM;as
+98;Iran;iran;IR;as
+152;United States Minor Outlying Islands;united_states_minor_outlying_islands;UM;as_sam
+153;Bahamas;bahamas;BS;sam
+154;Anguilla;anguilla;AI;sam
+155;Antigua and Barbuda;antigua_and_barbuda;AG;sam
+156;Northern Mariana Islands;northern_mariana_islands;MP;as
+212;Morocco;morocco;MA;af
+213;Algeria;algeria;DZ;af
+216;Tunisia;tunisia;TN;af
+218;Libya;libya;LY;af
+220;Gambia;gambia;GM;af
+221;Senegal;senegal;SN;af
+222;Mauritania;mauritania;MR;af
+223;Mali;mali;ML;af
+224;Guinea;guinea;GN;af
+225;Ivory Coast;ivory_coast;CI;af
+226;Burkina Faso;burkina_faso;BF;af
+227;Niger;niger;NE;af
+228;Togo;togo;TG;af
+229;Benin;benin;BJ;af
+230;Mauritius;mauritius;MU;af
+231;Liberia;liberia;LR;af
+232;Sierra Leone;sierra_leone;SL;af
+233;Ghana;ghana;GH;af
+234;Nigeria;nigeria;NG;af
+235;Chad;chad;TD;af
+236;Central African Republic;central_african_republic;CF;af
+237;Cameroon;cameroon;CM;af
+238;Cape Verde;cape_verde;CV;af
+239;Sao Tome and Principe;sao_tome_and_principe;ST;af
+240;Equatorial Guinea;equatorial_guinea;GQ;af
+241;Gabon;gabon;GA;af
+242;Congo;congo;CG;af
+243;D.R. Congo;dr_congo;CD;af
+244;Angola;angola;AO;af
+245;Guinea-Bissau;guinea_bissau;GW;af
+246;Barbados;barbados;BB;sam
+247;Aland Islands;aland_islands;AX;eur
+248;Seychelles;seychelles;SC;af
+249;Sudan;sudan;SD;af
+250;Rwanda;rwanda;RW;af
+251;Ethiopia;ethiopia;ET;af
+252;Somalia;somalia;SO;af
+253;Djibouti;djibouti;DJ;af
+254;Kenya;kenya;KE;af
+255;United Republic of Tanzania;tanzania;TZ;af
+256;Uganda;uganda;UG;af
+257;Burundi;burundi;BI;af
+258;Mozambique;mozambique;MZ;af
+260;Zambia;zambia;ZM;af
+261;Madagascar;madagascar;MG;af
+262;Reunion;reunion;RE;af
+263;Zimbabwe;zimbabwe;ZW;af
+264;Namibia;namibia;NA;af
+265;Malawi;malawi;MW;af
+266;Lesotho;lesotho;LS;af
+267;Botswana;botswana;BW;af
+268;Swaziland;swaziland;SZ;af
+269;Comoros;comoros;KM;af
+270;Mayotte;mayotte;YT;af
+284;British Virgin Islands;british_virgin_islands;VG;sam
+290;Saint Helena;saint_helena;SH;af
+291;Eritrea;eritrea;ER;af
+297;Aruba;aruba;AW;sam
+298;Faeroe Islands;faeroe_islands;FO;eur
+299;Greenland;greenland;GL;pol
+340;United States Virgin Islands;united_states_virgin_islands;VI;sam
+345;Cayman Islands;cayman_islands;KY;sam
+350;Gibraltar;gibraltar;GI;eur
+351;Portugal;portugal;PT;eur
+352;Luxembourg;luxembourg;LU;eur
+353;Ireland;ireland;IE;eur
+354;Iceland;iceland;IS;eur
+355;Albania;albania;AL;eur
+356;Malta;malta;MT;eur
+357;Cyprus;cyprus;CY;eur
+358;Finland;finland;FI;eur
+359;Bulgaria;bulgaria;BG;eur
+370;Lithuania;lithuania;LT;eur
+371;Latvia;latvia;LV;eur
+372;Estonia;estonia;EE;eur
+373;Moldova;moldova;MD;eur
+374;Armenia;armenia;AM;eur
+375;Belarus;belarus;BY;eur
+376;Andorra;andorra;AD;eur
+377;Monaco;monaco;MC;eur
+378;San Marino;san_marino;SM;eur
+380;Ukraine;ukraine;UA;eur
+381;Serbia and Montenegro;serbia_montenegro;CS;eur
+385;Croatia;croatia;HR;eur
+386;Slovenia;slovenia;SI;eur
+387;Bosnia and Herzegovina;bosnia;BA;eur
+389;Macedonia, TFYRO;macedonia;MK;eur
+390;Vatican;vatican;VA;eur
+420;Czech Republic;czech_republic;CZ;eur
+421;Slovakia;slovakia;SK;eur
+423;Liechtenstein;liechtenstein;LI;eur
+441;Bermuda;bermuda;BM;sam
+473;Grenada;grenada;GD;sam
+500;Falkland Islands;falkland_islands;FK;sam
+501;Belize;belize;BZ;sam
+502;Guatemala;guatemala;GT;sam
+503;El Salvador;el_salvador;SV;sam
+504;Honduras;honduras;HN;sam
+505;Nicaragua;nicaragua;NI;sam
+506;Costa Rica;costa_rica;CR;sam
+507;Panama;panama;PA;sam
+508;Saint Pierre and Miquelon;saint_pierre_and_miquelon;PM;sam
+509;Haiti;haiti;HT;sam
+590;Guadeloupe;guadeloupe;GP;sam
+591;Bolivia;bolivia;BO;sam
+592;Guyana;guyana;GY;sam
+593;Ecuador;ecuador;EC;sam
+594;French Guiana;french_guiana;GF;sam
+595;Paraguay;paraguay;PY;sam
+596;Martinique;martinique;MQ;sam
+597;Suriname;suriname;SR;sam
+598;Uruguay;uruguay;UY;sam
+599;Netherlands Antilles;netherlands_antilles;AN;sam
+612;Pitcairn;pitcairn;PN;sam
+649;Turks and Caicos Islands;turks_and_caicos_islands;TC;sam
+664;Montserrat;montserrat;MS;sam
+670;Timor-Leste;timor_leste;TL;as
+671;Guam;guam;GU;as
+672;Antarctica;antarctica;AQ;as_pol
+673;Brunei Darussalam;brunei_darussalam;BN;as
+674;Nauru;nauru;NR;as
+675;Papua New Guinea;papua_new_guinea;PG;as
+676;Tonga;tonga;TO;as
+677;Solomon Islands;solomon_islands;SB;as
+678;Vanuatu;vanuatu;VU;as
+679;Fiji;fiji;FJ;as
+680;Palau;palau;PW;as
+681;Wallis and Futuna Islands;wallis_and_futuna_islands;WF;as
+682;Cook Islands;cook_islands;CK;sam
+683;Niue;niue;NU;sam
+684;American Samoa;american_samoa;AS;sam
+685;Samoa;samoa;WS;sam
+686;Kiribati;kiribati;KI;as
+687;New Caledonia;new_caledonia;NC;as
+688;Tuvalu;tuvalu;TV;as
+689;French Polynesia;french_polynesia;PF;sam
+691;Micronesia;micronesia;FM;as
+692;Marshall Islands;marshall_islands;MH;as
+732;Western Sahara;western_sahara;EH;af
+744;Svalbard and Jan Mayen;svalbard_and_jan_mayen;SJ;eur
+758;Saint Lucia;saint_lucia;LC;sam
+767;Dominica;dominica;DM;sam
+772;Tokelau;tokelau;TK;sam
+787;Puerto Rico;puerto_rico;PR;sam
+809;Dominican Republic;dominican_republic;DO;sam
+810;Saint Vincent and the Grenadines;saint_vincent_and_the_grenadines;VC;sam
+830;Channel Islands;channel_islands;X1;eur
+833;Isle of Man;isle_of_man;X2;eur
+850;North Korea;north_korea;KP;as
+852;Hong Kong;hong_kong;HK;as
+853;Macao;macao;MO;as
+855;Cambodia;cambodia;KH;as
+856;Laos;laos;LA;as
+868;Trinidad and Tobago;trinidad_and_tobago;TT;sam
+869;Saint Kitts and Nevis;saint_kitts_and_nevis;KN;sam
+876;Jamaica;jamaica;JM;sam
+880;Bangladesh;bangladesh;BD;as
+886;Taiwan Province of China;taiwan;TW;as
+960;Maldives;maldives;MV;as
+961;Lebanon;lebanon;LB;as
+962;Jordan;jordan;JO;as
+963;Syria;syria;SY;as
+964;Iraq;iraq;IQ;as
+965;Kuwait;kuwait;KW;as
+966;Saudi Arabia;saudi_arabia;SA;as
+967;Yemen;yemen;YE;as
+968;Oman;oman;OM;as
+970;Occupied Palestinian Territory;occupied_palestinian_territory;PS;as
+971;United Arab Emirates;united_arab_emirates;AE;as
+972;Israel;israel;IL;as
+973;Bahrain;bahrain;BH;as
+974;Qatar;qatar;QA;as
+975;Bhutan;bhutan;BT;as
+976;Mongolia;mongolia;MN;as
+977;Nepal;nepal;NP;as
+992;Tajikistan;tajikistan;TJ;as
+993;Turkmenistan;turkmenistan;TM;as
+994;Azerbaijan;azerbaijan;AZ;eur
+995;Georgia;georgia_country;GE;eur
+996;Kyrgyzstan;kyrgyzstan;KG;as
+997;Kazakhstan;kazakhstan;KZ;as
+998;Uzbekistan;uzbekistan;UZ;as
