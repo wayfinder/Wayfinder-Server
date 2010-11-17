@@ -13,10 +13,10 @@ Shape to mid/mif
 ----------------
 The conversion can be done in a few different ways, like using ESRI ArcInfo, a Windows dos utility called shp2mif.exe or the ogr2ogr tool (part of the GDal project). To process the .dbf database files, a tool called dbf2csv or MS Excel can be used. In the Wayfinder-Server repository there is a basic script using the ogr2ogr and dbf2csv tools.
 
-The ogr2ogr tool can easilly be installed using e.g. yum and the dbf2csv tool is available in the repository for convenience (dbf2csv can also be downloaded from the authors page, http://www.burtonsys.com/download/DBF2CSV.ZIP)
+The ogr2ogr tool can easily be installed using e.g. yum and the dbf2csv tool is available in the repository for convenience (dbf2csv can also be downloaded from the authors page, http://www.burtonsys.com/download/DBF2CSV.ZIP)
 	sudo yum install gdal
 
-Download the Tele Atlas smaple shape iParis data from oss.wayfinder.com/downloads/teleatlas.html. To set up the necessary directories and process the files:
+Download the Tele Atlas sample shape Paris data from oss.wayfinder.com/downloads/teleatlas.html. To set up the necessary directories and process the files:
 	cd Wayfinder-Server/Server/MapConversion/SupplierMapData/	# The MapConversion directory is considered "HOME" for the rest of this document
 	mkdir -p TeleAtlas/2010_06_eu_shp/shape/FR
 	mkdir -p TeleAtlas/2010_06_eu_shp/midmif/FR
@@ -24,10 +24,12 @@ Download the Tele Atlas smaple shape iParis data from oss.wayfinder.com/download
 	# PUT FRA_SHAPE_ADMIN.zip HERE
 	unzip FRA_SHAPE_ADMIN.zip
 	gunzip f2075/*.gz
-	cd ../../
+	cd ../../	# Should be in SupplierMapData/TeleAtlas/2010_06_eu_shp
 	../../../script/convert_shp2mif.sh -i shape/FR/f2075 -o midmif/FR
 
-Now midmif/FR should contain all the necessary files. Please note that those files are also available for download via http://oss.wayfinder.com, in the zip archive TAEUR201006_midmif_f2075.zip.
+NB!	Manually remove the header row in the four text files in midmif/FR!
+
+Now midmif/FR should contain all the necessary files. Those files are also available for download via http://oss.wayfinder.com, in the zip archive TAEUR201006_midmif_f2075.zip.
 
 FIXME:	Manually remove the header row from the four txt-files in midmif/FR. This will be done by the convert_shp2mif.sh script!
 FIXME:	Performance in convert_shp2mif.sh (gzip, dirname/basename etc)
@@ -35,7 +37,7 @@ FIXME:	Performance in convert_shp2mif.sh (gzip, dirname/basename etc)
 
 Tele Atlas mid/mif to Wayfinder mid/mif
 ---------------------------------------
-Set up the directory structure for the countries, in this case France only. We also need one parse variable file per country, for the France, Paris dataset we should use the parse file in examples.
+Set up the directory structure for the countries, in this case France only. We also need one parse variable file per country, for the France, Paris data set we should use the parse file in examples.
 	cd Wayfinder-Server/Server/MapConversion/countries
 	grep -i france countryInfo_world.txt > countryInfo.txt
 	../script/adminworld.pl -m createCountryDirs -v TA_2010_06
@@ -52,7 +54,7 @@ Now we should do the conversion in five steps:
 	../../../../script/midmif_autoParseToWF -mapRelease TA_2010_06 -coordSys wgs84_lonlat_deg -parseVarFile ../../../../countries/france/script/parseMidMif_TA_2010_06.sh -start 4 -stop 4 2>&1 | ../../../../script/mlog step4_ta_fr
 
 Brief explanation to the steps:
-1. Run dow2unix, enables read and write access to all files.
+1. Run dos2unix, enables read and write access to all files.
 2. Patch Pline Multiple features. Note that the default action is to do nothing, enable when necessary!
 3. Merge same-feature files. Note that the default action is to do nothing, enable when necessary!
 4. Process all Items except POIs
@@ -72,21 +74,20 @@ Prepare the area files. The sample data for Paris is the simple case, e.g.
 only one municipal, for details see
 http://oss.wayfinder.com/wiki/generate_maps_for_the_mc2_back-end#create_the_midmif_areafiles_from_wayfinder_municipal_midmif_file
 
+	cd Wayfinder_Server/Server/MapConversion/
 	cp SupplierMapData/TeleAtlas/2010_06_eu_shp/wf_midmif/FR/create/WFmunicipalItems.mid countries/france/TA_2010_06/areafiles/fr_centralparis_municipalItems.mid
 	cp SupplierMapData/TeleAtlas/2010_06_eu_shp/wf_midmif/FR/create/WFmunicipalItems.mif countries/france/TA_2010_06/areafiles/fr_centralparis_municipalItems.mif
 	cp SupplierMapData/TeleAtlas/2010_06_eu_shp/wf_midmif/FR/create/WFmunicipalItems.mif countries/france/TA_2010_06/areafiles/fr_centralparis_municipalItemsmap.mif
 
 Make the necessary XML files and other settings files available:
-	cd xml
-	ln -s i../../bin/Scripts/region_ids.xml .
-	ln -s ../../bin/map_generation-mc2.dtd .
-	ln -s map_generation-mc2.dtd   ../countries/france/TA_2010_06/xml/
-	cd ../countries
+	cd countries/france/TA_2010_06/xml/
+	ln -s ../../../../xml/map_generation-mc2.dtd .
+	cd Wayfinder-Server/Server/MapConversion
 	wget -O /tmp/TAfrance.zip "http://oss.wayfinder.com/downloads/files/mapGenSettingFiles/TAfrance.zip"
 	unzip -j /tmp/TAfrance.zip TAfrance/france_ar.xml -d countries/france/TA_2010_06/xml/
 	unzip -j /tmp/TAfrance.zip TAfrance/france_co.xml -d countries/france/TA_2010_06/xml/
 	unzip -j /tmp/TAfrance.zip TAfrance/variables_france.TA_2010_06.sh -d countries/france/script
-	# Update the path in the variables_france.TA_2010_06.sh file
+	# Update the path in the variables_france.TA_2010_06.sh file, e.g.  MAPPATH="${BASEGENFILESPATH}/SupplierMapData/TeleAtlas/2010_06_eu_shp/wf_midmif/FR"
 	wget -O /tmp/countrypolygons_dk_fr_se.zip "http://oss.wayfinder.com/downloads/files/worldborders201005countrypolygonmifs/countrypolygons_dk_fr_se.zip"
 	unzip /tmp/countrypolygons_dk_fr_se.zip france.mi* -d countries/france/countrypol/
 	cp SupplierMapData/TeleAtlas/2010_06_eu_shp/wf_midmif/FR/create/*Items*.mi?  SupplierMapData/TeleAtlas/2010_06_eu_shp/wf_midmif/FR/
@@ -96,28 +97,31 @@ FIXME: Automatically handle the path in france/script/variables_* file.
 
 If to utilize the distribute application, that distributes tasks over several
 computers, first of all make sure to have the ssh keys in place for all
-mashines to enable log in without manually entering password. In addition to
+machines to enable log in without manually entering password. In addition to
 that you might have to install expect (sudo yum install expect) that is used
 by distribute.
 
 Put the binaries in the right place and run the makemaps script that produce the binary mcm files.
+	cd /Wayfinder-Server/Server/MapConversion/
+	mkdir -p mcm/TA_2010_06
 	cd mcm/TA_2010_06/
 	cp ../../../bin/mc2.prop .
-	ln ../../../bin-centos-i386-el5/GenerateMapServer .
-	# Make sure MAP_PATH = "."
+	# Make sure MAP_PATH = "." in mc2.prop
+	ln -s ../../../bin-centos-i386-el5/GenerateMapServer .
 	../../script/makemaps france -noDist -mapRelease TA_2010_06 -noExtFiltOrWASP -afterMapDataExtrBackup 2>&1 | ../../script/mlog makemaps_france
-
 
 The final step is to optimize the maps for the Wayfinder Server, e.g. create
 the m3 maps and caches for the RouteModule and SearchModule (the name
 mc2_m17_sr26 can be interpreted as "maps for mc2 cluster, m3 maps version 17 
 and search/route caches version 26"):
-	cd mcm/TA_2010_06
+	cd /Wayfinder-Server/Server/MapConversion/mcm/TA_2010_06
 	cp ../../../bin-centos-i386-el5/MapHttpServer .
 	cp ../../../bin-centos-i386-el5/MapModule .
 	cp ../../../bin/Scripts/MapGen/makemaps.mcgen .
 	cp ../../../bin/Scripts/MapGen/mc2.prop.end .
 	../../script/makemaps.mcgen -fromM3 -mapSet 0 -mc2Dir mc2_m17_sr26 2>&1 |  ../../script/mlog cache_0
+
+FIXME: The makemaps.mcgen script currently does a lot of ssh, assuming you use a lot of different computers -- add a noDist option that does everything locally.
 
 Now the resulting maps should be available in mcm/TA_2010_06/mc2_m17_sr26,
 e.g. set MAP_PATH in the mc2.prop of your Wayfinder Server cluster to this
