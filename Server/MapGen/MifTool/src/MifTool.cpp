@@ -213,7 +213,7 @@ createMidMifAreaFiles( CommandlineOptionHandler coh )
    // Write the file info to the correct mun midmif files while looping
    // Also store the gfxDatas for each mapName, so we can merge and create
    // the municipal map mif file(s) when done looping
-   uint32 maxLineLength = 250;
+   uint32 maxLineLength = 65530;
    char inbuffer[maxLineLength];
    inbuffer[0] = '\0';
    uint32 nbrItemsInFile = 0;
