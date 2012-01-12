@@ -111,9 +111,20 @@ OldCountryOverviewMap::internalSave(int outfile)
       
       // Write the array of filter stacks.
       if (m_simplifiedGfxStack != NULL) {
-         
+
+         int numElements = m_nbrGfxPolygons * NBR_SIMPLIFIED_COUNTRY_GFX;
          // 10MB should be enough.
-         DataBuffer* stackBuf = new DataBuffer(10000000); 
+         for (byte i = 0; i < NBR_SIMPLIFIED_COUNTRY_GFX; i++) {
+            // And each stack for that level
+            for (uint32 j = 0; j < m_nbrGfxPolygons; j++) {
+               // The number of elements of this stack.
+               numElements += m_simplifiedGfxStack[i][j]->getStackSize();
+            }
+         }
+
+         mc2dbg4 << "required stack size="<<4*numElements+12<<endl;
+
+         DataBuffer* stackBuf = new DataBuffer(4*numElements + 12);
 
          // Write the number of bytes to follow (filled in later)
          stackBuf->writeNextLong(0);
