@@ -97,6 +97,7 @@ char*    CL_maporigin                  = NULL;
 char*    CL_printMidMif                = NULL;
 bool     CL_checkExtraData             = false;
 char*    CL_printMidMifMapGfx          = NULL;
+char*    CL_printMidMifMunicipalGfx    = NULL;
 bool     CL_applyExtraDataOnMergedMaps = false;
 char*    CL_applyWaspOnMergedMaps      = NULL;
 char*    CL_getEDtimePerCountry        = NULL;
@@ -331,7 +332,7 @@ int main(int argc, char **argv) {
       createOverview(CL_coXMLFilesStr);  
       exit(0);
    }
-   else if ( (CL_printMidMifMapGfx != NULL) &&
+   else if ( (CL_printMidMifMapGfx != NULL || CL_printMidMifMunicipalGfx != NULL) &&
              ((CL_startAtMap != 0) || (CL_endAtMap != MAX_UINT32)) ) {
       // print midmif map gfxdata using startAtMap and endAtMap
       
@@ -354,8 +355,8 @@ int main(int argc, char **argv) {
                  << endl;
             
             // Print gfxdata of the municipals in the map
-            bool municipals = true;
-            curMap->printMidMifMapGfxData(CL_printMidMifMapGfx,
+            bool municipals = CL_printMidMifMunicipalGfx != NULL;
+            curMap->printMidMifMapGfxData(CL_printMidMifMunicipalGfx?CL_printMidMifMunicipalGfx:CL_printMidMifMapGfx,
                                           municipals, printMifHeader);
             // Print mif header only for the first map
             if (printMifHeader)
@@ -487,8 +488,7 @@ int main(int argc, char **argv) {
                      mc2log << info << "   " << toPrint[i] << endl;
                   }
                }
-               else if (CL_printMidMifMapGfx != NULL) {
-
+               else if ( ( CL_printMidMifMapGfx != NULL) || ( CL_printMidMifMunicipalGfx != NULL ) ) {
                   theMap = 
                      static_cast<GMSMap*>(GMSMap::createMap(mapName.c_str()));
                   cout << "Print map gfxdata for map " << theMap->getMapID()
@@ -496,14 +496,14 @@ int main(int argc, char **argv) {
                        << endl;
                   
                   // Print gfxdata of the municipals in the map
-                  bool municipals = true;
+		  bool municipals = CL_printMidMifMunicipalGfx != NULL;
                   
                   // Print mif header only for the first map given in tail
                   bool printMifHeader = false;
                   if (pos == 0)
                      printMifHeader = true;
 
-                  theMap->printMidMifMapGfxData(CL_printMidMifMapGfx,
+                  theMap->printMidMifMapGfxData(CL_printMidMifMunicipalGfx?CL_printMidMifMunicipalGfx:CL_printMidMifMapGfx,
                                                 municipals, printMifHeader);
                   
                }
@@ -1828,11 +1828,20 @@ void initCommandline(CommandlineOptionHandler& coh)
                  CommandlineOptionHandler::stringVal,
                  1,&CL_printMidMifMapGfx,"",
                  "Print a map gfxdata to a mid/mif file (file name "
-                 "without extension= option). Either the gfxdata of "
-                 "the map or the gfxdata of the municipal items in "
-                 "the map can be printed. The latter choice is currently "
-                 "hard coded. If a municipal has no gfxdata, it is "
-                 "built as the convex hull of all street segments "
+                 "without extension= option)."
+                 "Specify maps in tail, or use startAtMap and endAtMap if "
+                 "the maps are in this directory.");
+
+   //
+   // Print map gfxdata to mid/mif
+   //---------------------------------------------------------------------
+   coh.addOption("", "--printMidMifMunicipalGfx",
+                 CommandlineOptionHandler::stringVal,
+                 1,&CL_printMidMifMunicipalGfx,"",
+                 "Print a map gfxdata to a mid/mif file (file name "
+                 "without extension= option). The gfx data of the municipal"
+                 "items in the map is printed. If a municipal has no gfxdata, "
+                 "it is built as the convex hull of all street segments "
                  "in the municipal.\n"
                  "Specify maps in tail, or use startAtMap and endAtMap if "
                  "the maps are in this directory.");
@@ -1889,6 +1898,7 @@ commandLineSemantics(CommandlineOptionHandler& coh,
            !CL_generateStreetsFromStreetSegments &&
            (CL_printMidMif == NULL) &&
            (CL_printMidMifMapGfx == NULL) &&
+           (CL_printMidMifMunicipalGfx == NULL) &&
            (CL_applyWaspOnMergedMaps == NULL) &&
            (CL_getEDtimePerCountry == NULL) &&
            !CL_createBorderBoundrySegments &&
