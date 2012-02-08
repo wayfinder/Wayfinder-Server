@@ -1098,7 +1098,7 @@ GMSMidMifHandler::correctMapForItem( GfxData* itemGfx,
       } else {
          // Check if the item fits m_map using the mapGfx.
          int32 lat, lon;
-         uint16 coord = 0;
+         uint32 coord = 0;
          itemGfx->getCoordinate(coord, lat, lon);
          if ( ! m_mapBBox.contains(lat, lon)) {
             // outside map bbox

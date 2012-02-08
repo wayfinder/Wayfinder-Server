@@ -2737,10 +2737,10 @@ OldOverviewMap::createZipCodeAgglomerations()
          if ( zipCodeType == NationalProperties::symmetricNumberZipCodeType && 
               this->itemNameMaxLength ( ItemTypes::zipCodeItem ) > maxZipCodeLength ) {
             mc2log << error << "Symmetric zip code item name "
-                   << "with length larger than 7 "
+                   << "with length " << this->itemNameMaxLength ( ItemTypes::zipCodeItem )
                    << "- need to adjust the rule here!"
                    << endl;
-            MC2_ASSERT ( false );
+	    maxZipCodeLength = this->itemNameMaxLength ( ItemTypes::zipCodeItem );
          }
 
          for ( uint32 i = maxZipCodeLength;

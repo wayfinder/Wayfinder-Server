@@ -1979,7 +1979,7 @@ OldGenericMap::internalSave(int outfile)
    // ***************************************************************
 
    mc2dbg2 << "saveSegmentsOnBoundry" << endl;
-   dataBuffer = new DataBuffer(10000000); // Size hardcoded
+   dataBuffer = new DataBuffer(100000000); // Size hardcoded
    dataBuffer->fillWithZeros();
 
    dataBuffer->writeNextLong(0);          // size set later
@@ -2011,7 +2011,7 @@ OldGenericMap::internalSave(int outfile)
    typedef landmarkTable_t::iterator LI;
    uint32 landmarkSize = m_landmarkTable.size();
 
-   dataBuffer = new DataBuffer(10000000); // Size hardcoded
+   dataBuffer = new DataBuffer(100000000); // Size hardcoded
    dataBuffer->fillWithZeros();
 
    dataBuffer->writeNextLong(landmarkSize);

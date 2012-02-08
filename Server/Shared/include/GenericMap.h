@@ -46,7 +46,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 //      this is an ugly way
 //      to handle this. Should/will be replaced with the 
 //      totalMapSize-attribute when this is implemented
-#define MAX_BUFFER_SIZE 150000000
+#define MAX_BUFFER_SIZE 250000000
 // XXX: Max size of a zoomlevel of a super overview map 
 // (0x90000000 or greater)
 #define MAX_BUFFER_SIZE_SUPER_OVERVIEW 450000000

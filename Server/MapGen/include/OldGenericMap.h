@@ -45,7 +45,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "MapBits.h"
 
 // This is the maximum size of a zoomlevel of a map, 
-#define MAX_BUFFER_SIZE 150000000
+#define MAX_BUFFER_SIZE 250000000
 // Max size of a zoomlevel of a super overview map (level 2 overview map)
 // (0x90000000 or greater)
 #define MAX_BUFFER_SIZE_SUPER_OVERVIEW 450000000
