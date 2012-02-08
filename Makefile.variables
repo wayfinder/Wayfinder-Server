@@ -439,12 +439,15 @@ endif
 ifeq ($(NEEDMYSQL), yes)
    LDFLAGS     += -lmysqlclient_r -lz
    ifeq ($(ARCH_RH_RELEASE),4)
+      LDFLAGS += -L/usr/lib64/mysql
       LDFLAGS += -L/usr/lib/mysql
    endif
    ifeq ($(ARCH_RH_RELEASE),5)
+      LDFLAGS += -L/usr/lib64/mysql
       LDFLAGS += -L/usr/lib/mysql
    endif
    ifeq ($(ARCH_RH_RELEASE),6)
+      LDFLAGS += -L/usr/lib64/mysql
       LDFLAGS += -L/usr/lib/mysql
    endif
 endif
@@ -491,12 +494,12 @@ endif
 # This one is always on, unlike the rest in archdefs
 CXXFLAGS += -DARCH_OS_LINUX_RH_REL=$(ARCH_RH_RELEASE)
 
-MEMCACHEDTEST=$(shell if ( pkg-config --exists libmemcached); then echo "yes"; fi)
+MEMCACHEDTEST=$(shell if ( pkg-config --exists libmemcache); then echo "yes"; fi)
 
 ifeq ($(MEMCACHEDTEST), yes)
-   CXXFLAGS    += -DHAVE_MEMCACHED $(shell pkg-config libmemcached --cflags)
+   CXXFLAGS    += -DHAVE_MEMCACHED $(shell pkg-config libmemcache --cflags)
    ifeq ($(NEEDMEMCACHED), yes)
-      LDFLAGS  += -lmemcached
+      LDFLAGS  += -lmemcache
    endif
 endif
 
