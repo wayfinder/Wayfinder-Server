@@ -34,12 +34,12 @@ fi
 for map in $*; do
    
    if [ -d $map ]; then
-      for i in `ls $map/0000000*.mcm* | egrep ".*(mcm$|mcm\.bz2$|mcm\.gz$)"`; do
+      for i in `ls $map/000000*.mcm* | egrep ".*(mcm$|mcm\.bz2$|mcm\.gz$)"`; do
          ALLMAPS="$ALLMAPS $i"
       done
    elif [ -s $map ]; then
       # Make sure it's a mcm map
-      if (echo $map | egrep "0000000[0-9a-f]*\.(mcm$|mcm\.bz2$|mcm\.gz$)" > /dev/null); then
+      if (echo $map | egrep "000000[0-9a-f]*\.(mcm$|mcm\.bz2$|mcm\.gz$)" > /dev/null); then
          ALLMAPS="$ALLMAPS $map"
       else
          echo "$map is not a underview mcm file"
@@ -50,33 +50,27 @@ for map in $*; do
 done
 
 #Change ids for the maps
+
+mkdir -p tmpdir
+
+rm -f changemapids.dist
+touch changemapids.dist
 newid=0
+
 for map in $ALLMAPS; do
    echo "Processing $map"
    basemap=`basename $map`
    hexoldid="0x`echo $basemap | awk -F "." '{print $1}'`"
    #Convert to dec
    oldid=`printf '%d' $hexoldid`
-   
    #Check if we need to change id or if we can just copy the original
    if [ $oldid -ne $newid ]; then
-      cp $map $tmpdir
-      pushd $tmpdir > /dev/null
-      echo "./GenerateMapServer -n $oldid $newid"
-      ./GenerateMapServer -n $oldid $newid >& latestChangeID.log
-      popd > /dev/null
+      tmpdir=`mktemp -d -p $PWD/tmpdir`
+      cp mc2.prop $tmpdir
+      cp -a GenerateMapServer $tmpdir
+      cp -l $map $tmpdir
       newmcm="`printf '%09x' ${newid}`.mcm"
-      if ( ! [ -s $tmpdir/$newmcm ] ); then
-         chmod +w $tmpdir/*.mcm*
-         echo "Something went wrong. No $newmcm was created!"
-         pushd $tmpdir > /dev/null
-         echo "Find map and log in `pwd`";
-         #rm -fr $tmpdir
-         exit 1;
-      fi
-      cp $tmpdir/$newmcm .
-      chmod +w $tmpdir/*.mcm*
-      rm $tmpdir/*.mcm*
+      echo "cd $tmpdir && ./GenerateMapServer -n $oldid $newid && mv ./$newmcm $PWD/ && rm -rf $tmpdir" >>changemapids.dist
    else
       echo "$map already has id $oldid. Copying original."
       cp $map .
@@ -86,7 +80,13 @@ for map in $ALLMAPS; do
    newid=$[newid + 1];
 done
 
-rm -fr $tmpdir
+if [ -z "$DISTRIBUTE_HOSTS" ] ; then
+  DISTRIBUTE_HOSTS=localhost
+fi
+
+./distribute -ev $DISTRIBUTE_HOSTS < changemapids.dist || exit 1
+
+rm -fr $tmpdir 
 
 echo "Done!"
 

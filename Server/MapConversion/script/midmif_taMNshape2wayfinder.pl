@@ -115,9 +115,22 @@ if ( scalar @ARGV >= 4) {
    open FOURTH_FILE, $FOURTH_FILE_NAME
       or die "Can not open fourth file $FOURTH_FILE_NAME: $!\n";
 }
+my $FIFTH_FILE_NAME;
+if ( scalar @ARGV >= 5) {
+   $FIFTH_FILE_NAME = $ARGV[ 4 ];
+   open FIFTH_FILE, $FIFTH_FILE_NAME
+      or die "Can not open fifth file $FIFTH_FILE_NAME: $!\n";
+}
+my $SIXTH_FILE_NAME;
+if ( scalar @ARGV >= 6) {
+   $SIXTH_FILE_NAME = $ARGV[ 5 ];
+   open SIXTH_FILE, $SIXTH_FILE_NAME
+      or die "Can not open sixth file $SIXTH_FILE_NAME: $!\n";
+}
+
 
 # Connect to database for working with POI objects, etc
-#$m_dbh = db_connect();
+$m_dbh = db_connect();
 
 
 # Define global variables
@@ -132,6 +145,9 @@ if ( !defined($opt_v) ) {
 } else {
    if ( ($opt_v eq "TA_2010_06") ) {
       dbgprint "Extract data, version $opt_v";
+   } elsif ( ($opt_v =~ m/TA_2[0-9]{3}_[01][0-9]/) ) {
+      dbgprint "Extract data in compatibility mode TA_2010_06 from successor version $opt_v";
+      $opt_v = "TA_2010_06";
    } else {
       print "Invalid version specified ($opt_v)\n";
       die "Exit!!!";
@@ -143,15 +159,18 @@ if ( !defined($opt_c) ) {
    die "Country (2 letter ISO-code) not given - exit";
 } else {
   # SB HACK XXX
-  my $id = 12;	# France
-  # SB HACK XXX
-   #my $id = getCountryIDFromISO3166Code($m_dbh, $opt_c);
-   #if ( !defined $id ) {
-   #   die "No country with iso code $opt_c - exit"
-   #} else {
+  #my $id = 12;	# France
+  # my $id = 2; # Germany
+
+
+   # SB HACK XXX
+   my $id = getCountryIDFromISO3166Code($m_dbh, $opt_c);
+   if ( !defined $id ) {
+      die "No country with iso code $opt_c - exit"
+   } else {
       dbgprint "Parsing data in country $opt_c with id $id";
       $m_countryID = $id;
-   #}
+   }
 }
 
 # Must give the coordinate system
@@ -244,30 +263,16 @@ sub getWFNameLanguage {
    my $lang = $_[0];
    my $id = $_[1];
 
-   if ( $lang eq "ENG" ) {
-      return "eng";
-   }
-   elsif ( $lang eq "DUT" ) {
-      return "dut";
-   }
-   elsif ( $lang eq "FIN" ) {
-      return "fin";
-   }
-   elsif ( $lang eq "FRE" ) {
-      return "fre";
-   }
-   elsif ( $lang eq "ITA" ) {
-      return "ita";
-   }
-   elsif ( $lang eq "SPA" ) {
-      return "spa";
-   }
-   elsif ( $lang eq "UND" ) {
+   if ( $lang eq "UND" ) {
       return "invalidLanguage";
    }
-   else {
-      errprint "getWFNameLanguage unknown lang '$lang' for id $id";
-      die "exit";
+   elsif (getWFNameLanguageID($lang) != 31) {
+       return lc($lang);
+   }
+   elsif ( $lang eq "" ) {
+      return "invalidLanguage"; #workaround for entry:
+      # 582760049030874,1119,"$DE","","","","","","","","$$WATER$$06",3675865170,1657476,"","",6,0,-1
+      # in /root/Wayfinder-Conversion-3/Wayfinder-Server/Server/MapConversion/SupplierMapData/TeleAtlas/2011_06_eu_shp/midmif/deud58_a8.mid
    }
 }
 # Get language id, see WASP POINameLanguages table and LangTypes::language_t
@@ -278,6 +283,15 @@ sub getWFNameLanguageID {
 
    if ( $lang eq "ENG" ) {
       return 0;
+   }
+   if ( $lang eq "SWE" ) {
+      return 1;
+   }
+   if ( $lang eq "GER" ) {
+      return 2;
+   }
+   if ( $lang eq "DAN" ) {
+      return 3;
    }
    if ( $lang eq "ITA" ) {
       return 4;
@@ -294,8 +308,193 @@ sub getWFNameLanguageID {
    if ( $lang eq "FIN" ) {
       return 9;
    }
+   if ( $lang eq "WEL" ) {
+      return 9;
+   }
+   if ( $lang eq "NOR" ) {
+      return 10;
+   }
+   if ( $lang eq "POR" ) {
+      return 11;
+   }
+   if ( $lang eq "AME" ) {
+      return 12;
+   }
+   if ( $lang eq "CZE" ) {
+      return 13;
+   }
+   if ( $lang eq "ALB" ) {
+      return 14;
+   }
+   if ( $lang eq "BAQ" ) {
+      return 15;
+   }
+   if ( $lang eq "CAT" ) {
+      return 16;
+   }
+   if ( $lang eq "FRY" ) {
+      return 17;
+   }
+   if ( $lang eq "GLE" ) {
+      return 18;
+   }
+   if ( $lang eq "GLG" ) {
+      return 19;
+   }
+   if ( $lang eq "LTZ" ) {
+      return 20;
+   }
+   if ( $lang eq "ROH" ) {
+      return 21;
+   }
+   if ( $lang eq "SCR" ) { # maybe this should be serbian latin syntax?
+      return 22;
+   }
+   if ( $lang eq "SLV" ) {
+      return 23;
+   }
+   if ( $lang eq "VAL" ) { # valencian - off standard
+      return 24;
+   }
+   if ( $lang eq "HUN" ) {
+      return 25;
+   }
+   if ( $lang eq "GRE" ) {
+      return 26;
+   }
+   if ( $lang eq "ELL" ) {
+      return 26;
+   }
+   if ( $lang eq "POL" ) {
+      return 27;
+   }
+   if ( $lang eq "SLK" ) {
+      return 28;
+   }
+   if ( $lang eq "SLO" ) {
+      return 28;
+   }
+   if ( $lang eq "RUS" ) {
+      return 29;
+   }
+   if ( $lang eq "GRL" ) {
+      return 30;
+   }
+   if ( $lang eq "RUL" ) {
+      return 32;
+   }
+   if ( $lang eq "TUR" ) {
+      return 33;
+   }
+   if ( $lang eq "ARA" ) {
+      return 34;
+   }
+
+   # this is completely off specification:
+   if ( $lang eq "CHI" ) {
+      return 35;
+   }
+   if ( $lang eq "ZHO" ) {
+      return 35;
+   }
+   if ( $lang eq "EST" ) {
+      return 37;
+   }
+   if ( $lang eq "LAV" ) {
+      return 38;
+   }
+   if ( $lang eq "LIT" ) {
+      return 39;
+   }
+   if ( $lang eq "THA" ) {
+      return 40;
+   }
+   if ( $lang eq "BUL" ) {
+      return 41;
+   }
+   if ( $lang eq "IND" ) {
+      return 43;
+   }
+   if ( $lang eq "MAY" ) {
+      return 44;
+   }
+   if ( $lang eq "MSA" ) {
+      return 44;
+   }
+   if ( $lang eq "TGL" ) {
+      return 49;
+   }
+   if ( $lang eq "BEL" ) {
+      return 50;
+   }
+   if ( $lang eq "CRO" ) { # croatian; off-standard
+      return 53;
+   }
+   if ( $lang eq "FAR" ) { # farsi; off-standard
+      return 54;
+   }
+   if ( $lang eq "HEB" ) {
+      return 58;
+   }
+   if ( $lang eq "MAC" ) {
+      return 65;
+   }
+   if ( $lang eq "MAK" ) {
+      return 65;
+   }
+   if ( $lang eq "MOL" ) {
+      return 68;
+   }
+   if ( $lang eq "RON" ) {
+      return 71;
+   }
+   if ( $lang eq "RUM" ) {
+      return 71;
+   }
+   if ( $lang eq "SER" ) { # serbian ; off-standard
+      return 72;
+   }
+   if ( $lang eq "UKR" ) {
+      return 81;
+   }
+   if ( $lang eq "BOS" ) { # bosnian; off-standard
+      return 87;
+   }
+   if ( $lang eq "SLA" ) {
+      return 88;
+   }
+   if ( $lang eq "MLT" ) {
+      return 93;
+   }
+   if ( $lang eq "SRD" ) {
+       return 97;
+   }
+
+   # these are new occurrences from eastern europe.
+   if ( $lang eq "SCC" ) { # serbo croatian cyrillic ?
+      return 22;
+   }
+   if ( $lang eq "UKL" ) { # Ukranian latin syntax?
+      return 92;
+   }
+   if ( $lang eq "MAT" ) { # Macedonian latin syntax?
+      return 90;
+   }
+   if ( $lang eq "BET" ) { # Belarusian latin syntax?
+      return 89;
+   }
+   if ( $lang eq "BUN" ) { # Bulgarian latin syntax?
+      return 86;
+   }
+   
+
+
    if ( $lang eq "UND" ) {
       return 31; # undefined = invalidLanguage
+   }
+
+   if ( $lang eq "" ) {
+      return 31; # empty -> invalidLanguage. hack for now.
    }
    else {
       errprint "getWFNameLanguageID unknown lang $lang " .
@@ -311,6 +510,9 @@ sub getWFNameType {
 
    if ( $type eq "ON" ) {
       return "officialName";
+   }
+   if ( $type eq "AN" ) {
+      return "alternativeName";
    }
    else {
       errprint "unknown type $type for id $id";
@@ -381,6 +583,8 @@ sub getWFNameTypeFromBitMask {
       return "officialName";
    } elsif ( $an ) {
       return "alternativeName";
+   } elsif ( $bn ) {
+      return "brunnelName";
    } elsif ( $rn ) {
       return "roadNumber";
    }
@@ -443,7 +647,7 @@ sub handleBuiltUpAreaFile {
          }
          
          my $allNames = "";
-         if ( length($itemName) > 1) {
+         if ( length($itemName) > 0) {
             $allNames = "$itemName:officialName:$nameLang";
          }
 
@@ -511,8 +715,9 @@ sub handleCityPartFile {
          
          # If the miditem has no name at all set name to "$$$"
          if ( length($itemName) == 0 ) {
-            print "ERROR Item midId=$midId has no name\n";
-            die "exit";
+            print "WARNING Item midId=$midId has no name\n";
+            $itemName='$$$';
+            #die "exit";
          }
          
          my $allNames = "";
@@ -702,6 +907,8 @@ sub handleLanduseFile {
             $wfType = "ibi";
             if ( $class == 1 ) {
                $wfIBIType = "airportTerminal";
+            } elsif ( $class == 2 ) {
+               $wfIBIType = "otherIndividualBuilding";
             } elsif ( $class == 13 ) {
                $wfIBIType = "parkingGarage";
             } else {
@@ -712,14 +919,20 @@ sub handleLanduseFile {
             $wfType = "park";
             if ( ($dispType == 5) or ($dispType == 2) ) {
                $wfParkType = "regionOrNationalPark";
-            } elsif ( $dispType == 1 ) {
+            } elsif ( ( $dispType == 1 ) or ($dispType == 3) ) {
                $wfParkType = "cityPark";
+            } elsif ( $dispType == 4 ) {
+               $wfParkType = "stateOrProvincePark";
             } else {
                die "handle park dispType = $dispType";
             }
          }
          elsif ( ($midRow[ $typeCol ] == 7180) ) {    # island
             $wfType = "island";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9353) ) {    # company ground
+            $wfType = "cartographic";
+            $wfCartoType = "institution";
          }
          elsif ( ($midRow[ $typeCol ] == 9710) ) {    # beach/dune/sand area
             $wfType = "park";
@@ -729,27 +942,159 @@ sub handleLanduseFile {
             $wfType = "building";
             $wfBuildingType = "unknownType";
          }
+         elsif ( ($midRow[ $typeCol ] == 9720) ) {    # gewerbegebiet?
+            $wfType = "building";
+            $wfBuildingType = "otherIndividualBuilding";
+         }
+         elsif ( $midRow[ $typeCol ] == 9730 ) {   # freeport
+            $wfType = "cartographic";
+            $wfCartoType = "freeport";
+         }
+         elsif ( $midRow[ $typeCol ] == 9731 ) {   # Abbey Ground
+            $wfType = "cartographic";
+            $wfCartoType = "abbeyGround";
+         }
          elsif ( $midRow[ $typeCol ] == 9732 ) {   # airport ground
             $wfType = "airport";
+         }
+         elsif ( $midRow[ $typeCol ] == 9733 ) {   # amusement park ground
+            $wfType = "cartographic";
+            $wfCartoType = "amusementParkGround";
+         }
+         elsif ( $midRow[ $typeCol ] == 9734 ) {   # arts centre ground
+            $wfType = "cartographic";
+            $wfCartoType = "artsCentreGround";
+         }
+         elsif ( $midRow[ $typeCol ] == 9735 ) {   # camping site ground
+            $wfType = "cartographic";
+            $wfCartoType = "campingGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9737) ) {    # castleNotToVisitGround
+            $wfType = "cartographic";
+            $wfCartoType = "castleNotToVisitGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9738) ) {    # castleToVisitGround
+            $wfType = "cartographic";
+            $wfCartoType = "castleToVisitGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9739) ) {    # Church ground
+            $wfType = "cartographic";
+            $wfCartoType = "churchGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9740) ) {    # city hall ground
+            $wfType = "cartographic";
+            $wfCartoType = "cityHallGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9741) ) {    # Court House Ground
+            $wfType = "cartographic";
+            $wfCartoType = "courthouseGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9742) ) {    # fire station ground
+            $wfType = "cartographic";
+            $wfCartoType = "fireStationGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9743) ) {    # fortress ground
+            $wfType = "cartographic";
+            $wfCartoType = "fortressGround";
          }
          elsif ( ($midRow[ $typeCol ] == 9744) ) {    # golf
             $wfType = "cartographic";
             $wfCartoType = "golfGround";
          }
+         elsif ( ($midRow[ $typeCol ] == 9745) ) {    # governmentBuildingGround
+            $wfType = "cartographic";
+            $wfCartoType = "governmentBuildingGround";
+         }
          elsif ( ($midRow[ $typeCol ] == 9748) ) {    # hospital ground
             $wfType = "cartographic";
             $wfCartoType = "hospitalGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9750) ) {    # Library ground
+            $wfType = "cartographic";
+            $wfCartoType = "libraryGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9751) ) {    # Lighthouse ground
+            $wfType = "cartographic";
+            $wfCartoType = "lightHouseGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9753) ) {    # monastery ground
+            $wfType = "cartographic";
+            $wfCartoType = "monasteryGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9754) ) {    # museum ground
+            $wfType = "cartographic";
+            $wfCartoType = "museumGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9756) ) {    # parking area ground
+            $wfType = "cartographic";
+            $wfCartoType = "parkingAreaGround";
+         } # skip petrol station ground
+         elsif ( ($midRow[ $typeCol ] == 9758) ) {    # place Of Interest Building
+            $wfType = "cartographic";
+            $wfCartoType = "placeOfInterestBuilding";
+         } # skip monument ground
+         elsif ( ($midRow[ $typeCol ] == 9760) ) {    # policeOfficeGround
+            $wfType = "cartographic";
+            $wfCartoType = "policeOfficeGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9761) ) {    # prisonGround
+            $wfType = "cartographic";
+            $wfCartoType = "prisonGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9762) ) {    # railway station ground
+            $wfType = "cartographic";
+            $wfCartoType = "railwayStationGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9763) ) {    # recreational area ground
+            $wfType = "cartographic";
+            $wfCartoType = "recreationalAreaGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9765) ) {    # rest area ground
+            $wfType = "cartographic";
+            $wfCartoType = "restAreaGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9767) ) {    # sports hall ground
+            $wfType = "cartographic";
+            $wfCartoType = "sportsHallGround";
          }
          elsif ( ($midRow[ $typeCol ] == 9768) ) {    # stadium ground
             $wfType = "cartographic";
             $wfCartoType = "stadiumGround";
          }
+         elsif ( ($midRow[ $typeCol ] == 9769) ) {    # state police office
+            $wfType = "cartographic";
+            $wfCartoType = "statePoliceOffice";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9770) ) {    # theatre
+            $wfType = "cartographic";
+            $wfCartoType = "theatreGround";
+         }
          elsif ( ($midRow[ $typeCol ] == 9771) ) {    # university/college
             $wfType = "cartographic";
             $wfCartoType = "universityOrCollegeGround";
          }
+         elsif ( ($midRow[ $typeCol ] == 9774) ) {    # waterMillGround
+            $wfType = "cartographic";
+            $wfCartoType = "waterMillGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9775) ) {    # zoo
+            $wfType = "cartographic";
+            $wfCartoType = "zooGround";
+         }
          elsif ( ($midRow[ $typeCol ] == 9776) ) {    # runway
             $wfType = "acri";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9777) ) {    # post office ground
+            $wfType = "cartographic";
+            $wfCartoType = "postOfficeGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9778) ) {    # windmillGround
+            $wfType = "cartographic";
+            $wfCartoType = "windmillGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9780) ) {    # institution
+            $wfType = "cartographic";
+            $wfCartoType = "institution";
          }
          elsif ( ($midRow[ $typeCol ] == 9781) ) {    # other landuse
             $wfType = "cartographic";
@@ -762,6 +1107,10 @@ sub handleLanduseFile {
          elsif ( ($midRow[ $typeCol ] == 9790) ) {    # shopping centre
             $wfType = "cartographic";
             $wfCartoType = "shoppingCenterGround";
+         }
+         elsif ( ($midRow[ $typeCol ] == 9791) ) {    # school ground -> treat as university or college
+            $wfType = "cartographic";
+            $wfCartoType = "universityOrCollegeGround";
          } else {
             errprint "Handle land use type " . $midRow[ $typeCol ];
             die "exit";
@@ -824,6 +1173,8 @@ sub handleLanduseFile {
              $outFileName = $outCartoFileName;
          } elsif ( $wfType eq "ibi") {
              $outFileName = $outIBIFileName;
+         } elsif ( $wfType eq "none") {
+             # do nothing.
          } else {
             errprint "wfType '$wfType' - which mif file?";
             die "exit";
@@ -869,11 +1220,15 @@ sub handleLandcoverFile {
    # Open Wayfinder mid files
    # Define WF mif files, open to clear for append writing
    open(WF_FOREST_FILE, ">WFforestItems.mid");
+   open(WF_P_FILE, ">WFparkItems.mid");
    # Define Wayfinder mif files,
    # print the Wayfinder mif header with correct coordsys tag, this clears 
    # the files for future append writing
    my $outForestFileName = "WFforestItems.mif";
    printOneWayfinderMifHeader( $outForestFileName, "$opt_y" );
+
+   my $outParkFileName = "WFparkItems.mif";
+   printOneWayfinderMifHeader( $outParkFileName, "$opt_y" );
    
    my %nbrOrigFeatures = ();
    my %nbrItems = ();
@@ -912,7 +1267,11 @@ sub handleLandcoverFile {
          # find out which type of item this is
          my $wfType = "none";
          if ( ($midRow[ $typeCol ] == 7120) ) {    # forest
-            $wfType = "forest";
+             $wfType = "forest";
+         } elsif ( ($midRow[ $typeCol ] == 9725) ) {    # moors and heathland - data type appearing in deu_d52.
+	     $wfType = "park";
+         } elsif ( ($midRow[ $typeCol ] == 9710) ) {    # beach/dune - appearing in ndlndl
+             $wfType = "park";
          } else {
             errprint "Handle land cover type " . $midRow[ $typeCol ];
             die "exit";
@@ -931,6 +1290,8 @@ sub handleLandcoverFile {
             $nbrItemsToWFfile += 1;
             if ( $wfType eq "forest" ) {
                print WF_FOREST_FILE "$midId,\"$itemName\",\"$allNames\"\n";
+            } elsif ( $wfType eq "park" ) {
+               print WF_P_FILE "$midId,\"$itemName\",\"$allNames\"\n";
             } else {
                errprint "wfType '$wfType' - which mid file?";
                die "exit";
@@ -947,7 +1308,9 @@ sub handleLandcoverFile {
          my $outFileName = "_invalidMifFileName";
          if ( $wfType eq "forest" ) {
              $outFileName = $outForestFileName;
-         } else {
+         } elsif ($wfType eq "park") {
+             $outFileName = $outParkFileName;
+         } elsif ($wanted) {
             errprint "wfType '$wfType' - which mif file?";
             die "exit";
          }
@@ -1058,8 +1421,9 @@ sub handleMunicipalFile {
          
          # If the miditem has no name, exit
          if ( (length($itemName) == 0) ) {
-            print "ERROR Municipal midId=$midId has no name!\n";
-            die "exit";
+            print "WARNING Municipal midId=$midId has no name!\n";
+            $itemName='$$$';
+            #die "exit";
          }
          
          my $allNames = "";
@@ -1105,12 +1469,14 @@ sub handleNetworkFile {
    my $readHnbrs = 0;
    dbgprint "handleNetworkFile $opt_v";
    dbgprint "Default speed limit $defaultWFspeed";
-   if ( scalar @ARGV != 4 ) {
+   if ( scalar @ARGV != 6 ) {
       errprint "handleNetworkFile: needs\n" .
                " - network.mid\n" .
                " - network.mif\n" .
                " - ta.txt (transportation elem belonging to area)\n" .
-               " - orderX.mid";
+               " - orderX.mid\n" .
+               " - pc.txt (postal codes)\n" .
+               " - lrs.txt (restrictions for logistics)";
       die "exit";
    }
 
@@ -1126,6 +1492,116 @@ sub handleNetworkFile {
 
 
 
+   # Read the logistics restrictions file.
+   # example: "522760003006761","1","4110","!A","50","1","2.80","3","","1","0"
+   # specification: FeatureID, SEQNR, FEATTYP, RESTRTYP, VEHTYP, RSTRVAL(Scope), LIMIT(value of restr.), UNIT_MEAS, LANE_VALID, VARDIR, VERIFIED
+   my %restrictions = ();
+   if ( scalar @ARGV >= 6 ) {
+      
+      my $idCol = "";
+      my $seqCol = "";
+      my $feattypeCol = "";
+      my $restrtypeCol= "";
+      my $scopeCol = "";
+      my $valueCol = "";
+
+      if ( ($opt_v eq "TA_2010_06") ) {
+          $idCol = 0;
+          $seqCol = 1;
+          $feattypeCol = 2;
+          $restrtypeCol= 3;
+          $scopeCol = 5;
+          $valueCol = 6;
+      } else {
+         die "Specify attribute parsing for $opt_v";
+      }
+      
+      print "\n";
+      print "Store restrictions ids-rownbr\n";
+      my $rows = 0;
+      my $lastID = "";
+      while (<SIXTH_FILE>) {
+         chomp;
+         if (length() > 1) {
+            $rows += 1;
+            # Split the mid line, handling $midSepChar within strings
+            # and removing "-chars from string values
+            my @midRow =  splitOneMidRow( $midSepChar, $midRplChar, $_ );
+
+            if (($midRow[ $feattypeCol ] != 4110) && ($midRow[ $feattypeCol ] != 4130)) {
+                # only feature type 4110 and 4130 refer to street segments; others refer to ID of lmn table.
+                #print "skipping midrow $rows because feature type is $midRow[$feattypeCol].\n";
+		next
+	    }
+
+            my $midid = $midRow[ $idCol ];
+
+            if ((($midRow[$restrtypeCol] eq "!*") || ($midRow[$restrtypeCol] eq "@*")) && ($midRow[ $scopeCol ] != 1)) {
+                # not a hard restriction; may be ignored.
+                die "$midid does not contain a hard restriction, but rather $midRow[$scopeCol]\n";
+		next;
+	    }
+
+            $restrictions{$midid}{$midRow[$restrtypeCol]} = $midRow[$valueCol];
+         }
+      }
+      print "Stored " . scalar(keys(%restrictions)) . 
+            " restrictions from $rows rows\n";
+
+#      foreach my $midid (keys(%{%restrictions})) {
+#	  foreach my $a (keys(%{$restrictions{$midid}})) {
+#	      print "$a:",${$restrictions{$midid}}{$a}, " ";
+#	  }
+#	  print "\n";
+#      }
+   }
+   dbgprint "Stored " . scalar(keys(%restrictions)) . " restrictions by id";
+   print "\n";
+
+
+
+   # Read the postal codes file.
+   # example: "522760004345792","1","0","1","63741","",""
+   # specification: ID, POSTALTYP (1:Main, 2:Sub), Side of Line (0:Both sides, 1:left, 2:right), SeqNR, POSTCODE, NAME, NAMELC(languagecode)
+   my %postalcodes = ();
+   if ( scalar @ARGV >= 5 ) {
+      
+      my $idCol = "";
+      my $typeCol = "";
+      my $sideCol = "";
+      my $codeCol = "";
+
+      if ( ($opt_v eq "TA_2010_06") ) {
+         $idCol = 0;
+         $typeCol = 1;
+         $sideCol = 2;
+         $codeCol = 4;
+      } else {
+         die "Specify attribute parsing for $opt_v";
+      }
+      
+      print "\n";
+      print "Store postal code ids-rownbr\n";
+      my $rows = 0;
+      while (<FIFTH_FILE>) {
+         chomp;
+         if (length() > 1) {
+            $rows += 1;
+            # Split the mid line, handling $midSepChar within strings
+            # and removing "-chars from string values
+            my @midRow =  splitOneMidRow( $midSepChar, $midRplChar, $_ );
+
+            my $rowId = $.;
+            my $midid = $midRow[ $idCol ];
+            #$postalcodes{$midid} = $rowId;
+            $postalcodes{$midid} = $midRow[ $codeCol ];
+         }
+      }
+      print "Stored " . scalar(keys(%postalcodes)) . 
+            " postal codes from $rows rows\n";
+   }
+   dbgprint "Stored " . scalar(keys(%postalcodes)) . " postal codes by id";
+   print "\n";
 
    # Read the orderX file, to store rownbr (municipal midId)
    # for the orderX ids
@@ -1407,6 +1883,13 @@ sub handleNetworkFile {
          my $midId = $.;
          checkMidId($midId, 0); # not parseonly die if check fails
 
+	 if ($postalcodes{$midOrigId}) {
+	     $midLeftPostal = $postalcodes{$midOrigId};
+	     $midRightPostal = $postalcodes{$midOrigId};
+	     #print "setting postal code for $midOrigId to $midLeftPostal.\n";
+	 }
+
+
          if ($nbrMidItems == 1) {
             print " midId = $midId - max 4294967295, length midId=" .
                   length($midId) . "\n";
@@ -1434,6 +1917,8 @@ sub handleNetworkFile {
             } else {
                die "Unhandled ferry type $midFerryType for $midId";
             }
+         } elsif ( $midFeatType == 4165 ) {
+            # dunno. tolerate "address area boundary element"
          } else {
             die "unhandled feature type $midFeatType for $midId";
          }
@@ -1475,13 +1960,16 @@ sub handleNetworkFile {
                         "$midRouteNbr:roadNumber:invalidLanguage";
          }
 
-         
          # Road class (default Wayfinder road class is 4)
          # using Net2Class combined with FRC
          my $WFroadClass = 4;
          if ( (length($midNet2Class) > 0) and (length($midFRC) > 0) ) {
             if ( $midNet2Class == 0 ) {
                $WFroadClass = 0;
+            }
+            elsif ( $midNet2Class == -1 ) {
+		warn "found net2class = -1 in midid $midId.\n";
+                $WFroadClass = 1;
             }
             elsif ( $midNet2Class == 1 ) {
                $WFroadClass = 1;
@@ -1568,12 +2056,27 @@ sub handleNetworkFile {
          if ( length $midNbrLanes > 0 ) {
             $WFnumberLanes = $midNbrLanes;
          }
+
          # Road width
          my $WFwidth = "";
+	 if ($restrictions{$midOrigId}{"!O"} && $restrictions{$midOrigId}{"!O"} < 250) {
+	     $WFwidth = $restrictions{$midOrigId}{"!O"} / 10;
+	     print "setting WFwidth for $midOrigId to $WFwidth.\n";
+	 }
+
          # Max height
          my $WFheight = "";
+	 if ($restrictions{$midOrigId}{"!P"} && $restrictions{$midOrigId}{"!P"} < 400) {
+	     $WFheight = $restrictions{$midOrigId}{"!P"} / 10;
+	     print "setting WFheight for $midOrigId to $WFheight.\n";
+	 }
          # Max weight
          my $WFweight = "";
+	 if ($restrictions{$midOrigId}{"!A"} &&
+             ($restrictions{$midOrigId}{"!A"} < 37) && !($restrictions{$midOrigId}{"SP"})) {
+	     $WFweight = $restrictions{$midOrigId}{"!A"}/10;
+	     print "setting WFweight for $midOrigId to $WFweight.\n";
+	 }
          
          # House numbers from house_numbers file
          my $WFleftStart = 0;
@@ -1599,15 +2102,35 @@ sub handleNetworkFile {
 
          # Toll road
          my $WFtoll = "N";
+
          if ( length $midToll > 0 ) {
-            if ( ($midToll eq "B") or 
+            if ( ($midToll eq "11") ) {
+                $WFtoll = "Y";
+            } elsif ( ($midToll eq "12") ) {
+            } elsif ( ($midToll eq "13") ) {
+            } elsif ( ($midToll eq "21") ) {
+                $WFtoll = "Y";
+            } elsif ( ($midToll eq "22") ) {
+            } elsif ( ($midToll eq "23") ) {
+            } elsif ( ($midToll eq "B") or 
                  ($midToll eq "FT") or
                  ($midToll eq "TF") ) {
-               $WFtoll = "Y";
+                $WFtoll = "Y"; # hack - apparently, midCharge and midToll are being confused, e.g. in itai16.
             } else {
                die "unhandled midToll $midToll for $midId";
+	    }
+         }
+         if ( length $midCharge > 0 ) {
+            if ( ($midCharge eq "B") or 
+                 ($midCharge eq "FT") or
+                 ($midCharge eq "TF") ) {
+               $WFtoll = "Y";
+            } else {
+               die "unhandled midCharge $midCharge for $midId";
             }
          }
+
+
 
          # Road condition
          my $WFpaved = "Y";
@@ -1624,7 +2147,7 @@ sub handleNetworkFile {
          my $WFroundabout = "N";
          my $WFroundaboutish = "N";
          my $WFroadDisplayClass = -1;
-         if ( length($midFOW) > 0 ) {
+         if ( length($midFOW) > 0 && $midFOW != -1 ) {
             if ($midFOW == 1 ) {
                $WFcontrolledAccess = "Y";
             } elsif ($midFOW == 2 ) {
@@ -1635,6 +2158,8 @@ sub handleNetworkFile {
                $WFroadDisplayClass = 5; # etaParkingPlace
             } elsif ($midFOW == 7 ) {
                $WFroadDisplayClass = 4; # etaParkingGarage
+            } elsif ($midFOW == 8 ) {
+               $WFroadDisplayClass = 6; # etaUnstructuredTrafficSquare
             } elsif ($midFOW == 10 ) {
                $WFramp = "Y";
             } elsif ($midFOW == 11 ) {
@@ -1649,8 +2174,10 @@ sub handleNetworkFile {
                $WFroundaboutish = "Y";
             } elsif ($midFOW == 20 ) {
                $WFroadDisplayClass = 2; # roadForAuthorities
-            }
-            elsif ( ($midFOW == 3)  # single carriageway
+            } elsif ( ($midFOW == 3)  # single carriageway
+                  ) {
+                  # ok
+            } elsif ( ($midFOW == 18 || $midFOW == 19)  # had to be added for TA 2011-12. dunno what that is.
                   ) {
                   # ok
             } else {
@@ -1731,10 +2258,10 @@ sub handleNetworkFile {
             push @{$bifurcations{$midId}}, $midFromNodeID;
             #print "bifurcation for midId $midId node0 $midFromNodeID\n";
          } elsif ($midFromNodeType != 0) {
-            if ( $midFromNodeType == 3 ){
+            if ( $midFromNodeType == 3|| $midFromNodeType == 5 || $midFromNodeType == 6 ){
                # ok
             } else {
-               die "Handle node0 junction type $midFromNodeType for midId=$midId";
+               die "ERROR: Handle node0 junction type $midFromNodeType for midId=$midId";
             }
          }
          if ( $midToNodeType == 4 ) {
@@ -1746,10 +2273,10 @@ sub handleNetworkFile {
             push @{$bifurcations{$midId}}, $midToNodeID;
             #print "bifurcation for midId $midId node1 $midToNodeID\n";
          } elsif ($midToNodeType != 0) {
-            if ( $midToNodeType == 3 ){
+            if ( $midToNodeType == 3 || $midToNodeType == 5 || $midToNodeType == 6 ){
                # ok
             } else {
-               die "Handle node1 junction type $midToNodeType for midId=$midId";
+               die "ERROR: Handle node1 junction type $midToNodeType for midId=$midId";
             }
          }
 
@@ -1758,10 +2285,10 @@ sub handleNetworkFile {
          # (might be solved in handleRestrictions reading the maneuvers file
          #  but uncertain about that)
          if ( $midFromBlocked != 0 ) {
-            #die "Handle node0 blockedPassage $midFromBlocked for midId=$midId";
+            #die "ERROR: Handle node0 blockedPassage $midFromBlocked for midId=$midId";
          }
          if ( $midToBlocked != 0 ) {
-            #die "Handle node1 blockedPassage $midToBlocked for midId=$midId";
+            #die "ERROR: Handle node1 blockedPassage $midToBlocked for midId=$midId";
          }
 
 
@@ -1953,9 +2480,19 @@ sub getInfoStringForPIEA {
                      $poiInfoFieldSeparator . "$attrVal";
       $useEA = 1;
    }
+   # height of mountain peak
+   elsif ( $attrType eq "6P" ) {
+      $useEA = 0;
+   }
    # 8J Parking Garage Construction Type
    elsif ( $attrType eq "8J" ) {
       $useEA = 0;
+   }
+   # 8U Rest Area Facilities
+   elsif ( $attrType eq "8U" ) {
+      $infoString = "4: REST_AREA_FACILITIES" . 
+                     $poiInfoFieldSeparator . "$attrVal";
+      $useEA = 1;
    }
    # 8Q Truck Stop
    elsif ( $attrType eq "8Q" ) {
@@ -1965,17 +2502,54 @@ sub getInfoStringForPIEA {
       $infoString = "4: FOOD_TYPE" . $poiInfoFieldSeparator . "$attrVal";
       $useEA = 1;
    }
+   # AD Departure / Arrival
+   elsif ( $attrType eq "AD" ) {
+      $infoString = "4: DEPARTURE_ARRIVAL" . 
+                     $poiInfoFieldSeparator . "$attrVal";
+      $useEA = 1;
+   }
    # FT Ferry type
    elsif ( $attrType eq "FT" ) {
       $infoString = "4: FERRY_TYPE" . 
                      $poiInfoFieldSeparator . "$attrVal";
       $useEA = 1;
    }
+   # Domestic / International
+   elsif ( $attrType eq "NI" ) {
+      $useEA = 0;
+   }
+   # Passport control
+   elsif ( $attrType eq "PU" ) {
+      $infoString = "4: POLICE_STATION_TYPE" . 
+                     $poiInfoFieldSeparator . "Passport control";
+      $useEA = 0;
+   }
    # RY Railway Station Type
    elsif ( $attrType eq "RY" ) {
       $infoString = "4: RAILWAY_STATION_TYPE" . 
                      $poiInfoFieldSeparator . "$attrVal";
       $useEA = 1;
+   }
+   elsif ( $attrType eq "NG" ) {
+      $infoString = "4: RAILWAY_STATION_TYPE" . 
+                     $poiInfoFieldSeparator . "$attrVal";
+      $useEA = 1;
+   }
+   # Park Type - national park
+   elsif ( $attrType eq "PT" ) {
+      $useEA = 0;
+   }
+   # 7V - 2 Validity direction: Valid in Positive Line Direction. ignored.
+   elsif ( $attrType eq "7V" ) {
+      $useEA = 0;
+   }
+   # HP - height of peak. ignored for now.
+   elsif ( $attrType eq "HP" ) {
+      $useEA = 0;
+   }
+   # ER - emergency room
+   elsif ( $attrType eq "ER" ) {
+      $useEA = 0;
    }
    else {
       die "Handle getInfoStringForPIEA for " .
@@ -2277,7 +2851,7 @@ sub handleGenPoiFile {
 
    dbgprint "handleGenPoiFile: $fileType";
 
-   $m_dbh = db_connect();	# SB!!!
+   #$m_dbh = db_connect();	# SB!!!
    
    # Define out file name, open to empty any old file, then it is
    # written with append.
@@ -2620,13 +3194,16 @@ sub getWayfinderPoiTypeId {
    # The not-so-important are local apts, likely not with passenger traffic
    if ( $wfPoiTypeId == 1 ) {
       if ( ($opt_v eq "TA_2006_10_sa") or
-           ($opt_v eq "TA_2008_v1_31_sa") ) {
+           ($opt_v eq "TA_2008_v1_31_sa") or
+           ($opt_v eq "TA_2010_06") ) {
          if ( $poiImportance == 1 ) {
             # ok, keep as airport
          } elsif ( $poiImportance == 2 ) {
             $wfPoiTypeId = 94; # noType
          } else {
-            die "Special for airport with poiImportance=$poiImportance";
+            # parse error. flatly accept; as an experiment.
+	    # $wfPoiTypeId = -1; # don't include.
+            # die "Special for airport with poiImportance=$poiImportance";
          }
       } else {
          errprint "Airport poi type fix for $opt_v ???";
@@ -2722,6 +3299,10 @@ sub handleRestrictions {
    my %seq3NetworkId = ();
    my %seq4NetworkId = ();
    my %seq5NetworkId = ();
+   my %seq6NetworkId = ();
+   my %seq7NetworkId = ();
+   my %seq8NetworkId = ();
+   my %seq9NetworkId = ();
    print "\n";
    print "Store start/end network id\n";
    my $manIdCol = "";
@@ -2769,10 +3350,22 @@ sub handleRestrictions {
             elsif ( $seq == 5 ) {
                $seq5NetworkId{ $midRow[$manIdCol] } = $elemId;
             }
+            elsif ( $seq == 6 ) {
+               $seq6NetworkId{ $midRow[$manIdCol] } = $elemId;
+            }
+            elsif ( $seq == 7 ) {
+               $seq7NetworkId{ $midRow[$manIdCol] } = $elemId;
+            }
+            elsif ( $seq == 8 ) {
+               $seq8NetworkId{ $midRow[$manIdCol] } = $elemId;
+            }
+            elsif ( $seq == 9 ) {
+               $seq9NetworkId{ $midRow[$manIdCol] } = $elemId;
+            }
             else {
                errprint "unhandled sequential number = $seq for " .
                         "man $midRow[$manIdCol]";
-               die "exit";
+               #die "exit";
             }
          } else {
             print "WARN: no element id for this manover path idx " .
@@ -2784,7 +3377,11 @@ sub handleRestrictions {
          scalar(keys(%seq2NetworkId)) . " seq2 ids, " .
          scalar(keys(%seq3NetworkId)) . " seq3 ids, " .
          scalar(keys(%seq4NetworkId)) . " seq4 ids, and " .
-         scalar(keys(%seq5NetworkId)) . " seq5 ids for manouvers\n";
+         scalar(keys(%seq5NetworkId)) . " seq5 ids, and " .
+         scalar(keys(%seq6NetworkId)) . " seq6 ids, and " .
+         scalar(keys(%seq7NetworkId)) . " seq7 ids, and " .
+         scalar(keys(%seq8NetworkId)) . " seq8 ids, and " .
+         scalar(keys(%seq9NetworkId)) . " seq9 ids for manouvers\n";
    print "\n";
    
 
@@ -2841,6 +3438,10 @@ sub handleRestrictions {
       my $seq3Id = $seq3NetworkId{ $manId };
       my $seq4Id = $seq4NetworkId{ $manId };
       my $seq5Id = $seq5NetworkId{ $manId };
+      my $seq6Id = $seq6NetworkId{ $manId };
+      my $seq7Id = $seq7NetworkId{ $manId };
+      my $seq8Id = $seq8NetworkId{ $manId };
+      my $seq9Id = $seq9NetworkId{ $manId };
          
       # translate the road elem id to road row id
       my $seq1RowId = undef;
@@ -2854,6 +3455,30 @@ sub handleRestrictions {
       my $seq3RowId = undef;
       if ( defined $seq3Id ) {
          $seq3RowId = $networkIDsToRowNbr{ $seq3Id };
+      }
+      my $seq4RowId = undef;
+      if ( defined $seq4Id ) {
+         $seq4RowId = $networkIDsToRowNbr{ $seq4Id };
+      }
+      my $seq5RowId = undef;
+      if ( defined $seq5Id ) {
+         $seq5RowId = $networkIDsToRowNbr{ $seq5Id };
+      }
+      my $seq6RowId = undef;
+      if ( defined $seq6Id ) {
+         $seq6RowId = $networkIDsToRowNbr{ $seq6Id };
+      }
+      my $seq7RowId = undef;
+      if ( defined $seq7Id ) {
+         $seq7RowId = $networkIDsToRowNbr{ $seq7Id };
+      }
+      my $seq8RowId = undef;
+      if ( defined $seq8Id ) {
+         $seq8RowId = $networkIDsToRowNbr{ $seq8Id };
+      }
+      my $seq9RowId = undef;
+      if ( defined $seq9Id ) {
+         $seq9RowId = $networkIDsToRowNbr{ $seq9Id };
       }
 
       # FIXME: the handledOK marks the manouvers that are handled properly 

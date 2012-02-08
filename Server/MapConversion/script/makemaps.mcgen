@@ -1501,11 +1501,11 @@ if [ -z $dummyrun ]; then
     chMapIdScript="${BASEGENFILESPATH}/script/changemapids"
     echo "   Using script ${chMapIdScript}";
 
-    ${SSHCPCMD} ${chMapIdScript} ${ORDERED_MCMLIST}
+    ${SSHCPCMD} DISTRIBUTE_HOSTS=\"$COUNTRYGEN_COMPUTERS\" ${chMapIdScript} ${MCM_LIST}
     chk_res
     echo ""
     echo `date +"%Y%m%d %T"`" Unzipps *.mcm.bz2 files.";
-    ${SSHCMD} 'bunzip2 *.mcm.bz2'
+    ${SSHCMD} 'find . -type f -name "*.mcm.bz2" -maxdepth 1 -exec bunzip "{}" ";" '
     chk_res
 else
     echo "Skips changemapids in dummyrun.";
@@ -1887,7 +1887,7 @@ MAPSUPNAMESFILE=$MAPSUPNAMESPATH/map_supplier_names.xml
 # The old command without copright strings from copyright box files
 #${SSHCMD} nice time ./GenerateMapServer --addRegionsToIndex --arXML=\"${AR_LIST} ${REGIONFILE}\" >& $LOGPATH/gs_ar.log
 preploclog $LOGPATH/gs_ar.log
-${SSHCMD} nice time ./GenerateMapServer --addMapSupCoverage --mapSupNamesXML=${MAPSUPNAMESFILE} --crbXML=$CRB_FILE   --addRegionsToIndex --arXML=\"${AR_LIST} ${REGIONFILE}\" >& $loclog
+${SSHCMD} nice time ./GenerateMapServer --addMapSupCoverage --mapSupNamesXML=${MAPSUPNAMESFILE} --crbXML=$CRB_FILE   --addRegionsToIndex --arXML="\"${AR_LIST} ${REGIONFILE}\"" >& $loclog
 chk_log
 
 if [ "$dummyrun" ]; then 

@@ -235,7 +235,7 @@ distFlag="-e"; # Makes distribute die on error.
 
 MAPRELEASE="";
 if [ "$MAP_RELEASE_ARG" ]; then
-    if [ "$MAP_RELEASE_ARG" = "TA_2010_06" ]; then
+    if echo $MAP_RELEASE_ARG | egrep '^TA_2[0-9]{3}_[01][0-9]' ; then
         # Tele Atlas
         MAPRELEASE="${MAP_RELEASE_ARG}";
 

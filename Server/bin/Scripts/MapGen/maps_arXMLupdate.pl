@@ -21,7 +21,7 @@ use Getopt::Long ':config',
 ;
 use vars qw( $opt_help $opt_m $opt_mapCountriesDirs 
              $opt_okWithMissingCountries
-             %m_countryInfo $m_dbh @alreadyIncluded );
+             %m_countryOvr %m_countryInfo $m_dbh @alreadyIncluded );
              
 # Use POIObject and perl modules from here or BASEGENFILESPATH/script/perllib
 # use lib "fullpath/genfiles/script/perllib";
@@ -41,6 +41,7 @@ GetOptions('help|h',
            ) or die "Use -help for help.";
 
 my $m_countryInfoFileName = "countryInfo.txt";
+my $m_countryOvrFileName = "countryOverviews.txt";
 my @countriesDirs;
 
 if (defined $opt_help) {
@@ -159,7 +160,7 @@ sub multiCountry {
          print "\n" . "Countries directories OK.\n";
       }
 
-   # Loads countriInfo.txt in current directory.
+   # Loads countryInfo.txt in current directory.
    loadCountryInfo();
 
    # Get the translations
@@ -175,12 +176,49 @@ sub multiCountry {
    #            from m_countryInfo
    # lang= dodona language id as in POINameLanguages table
    # trstring= the translated string on language $lang
+
+   # map languageName to language code, according to POINameLanguages.
+   my %languageCodes =(); 
+
+   $query = "select langName, dodonaLangID from POINameLanguages;";
+
+   my $poi_sth = $poi_dbh->prepare($query);
+   $poi_sth->execute();
+
+   my $langName;
+   my $langCode;
+
+   while ( ($langName, $langCode) = $poi_sth->fetchrow() ) {
+       $languageCodes{$langName} = $langCode;
+   }
+
+   # map country codes to cleartext, take from countryinfo.txt
+   #
+
+   my %countryNames = ();
+
+   foreach my $id ( keys(%m_countryInfo) ) {
+       $countryNames{$m_countryInfo{$id}{"alpha2"}} = $m_countryInfo{$id}{"gmsName"};
+   }
+
+   #
+
    my %stringhash = ();
+
+   open (COUNTRYNAMES, "<", "countrynames.csv") || die "Cant open country names file!";
+
+   while (<COUNTRYNAMES>) {
+       chomp;
+
+       (my $languageName, 
+	my $countryCode, 
+	my $caption) = split (":");
+        
+       $stringhash{uc($countryNames{$countryCode})}{$languageCodes{lc($languageName)}} = $caption;
+   }
+
    # get all the translations here!
    # Example with hardcoded values
-   $stringhash{"DENMARK"}{"en"} = "Denmark";
-   $stringhash{"SWEDEN"}{"en"} = "Sweden";
-   $stringhash{"SWEDEN"}{"sv"} = "Sverige";
    print "size %stringhash = " . scalar keys(%stringhash) . "\n";
 
    my %newCountries = ();
@@ -444,6 +482,22 @@ sub loadCountryInfo {
    } else {
       die "ERROR loadCountryInfo: no info file to read\n";
    }
+
+   dbgprint "loadCountryOverviews from $m_countryOvrFileName";
+   if (open INFO_FILE, $m_countryOvrFileName) {
+      %m_countryOvr = ();
+      while( <INFO_FILE> ) {
+         chomp;
+         (my $countryName, 
+          my $ovrs) = split (":");
+         $m_countryOvr{$countryName} = $ovrs;
+         print $countryName, $ovrs;
+      }
+      print " loaded overview list for " . 
+            scalar(keys(%m_countryOvr)) . " countries\n";
+   } else {
+      die "ERROR loadCountryInfo: no ovr file to read\n";
+   }
 }
 
 # Returns the names of ovierview maps of a country.
@@ -464,6 +518,9 @@ sub getOvrMapIdent {
 #       @result = ("germany_1", "germany_2", "germany_3", "germany_4");
 #   }
 
+   elsif ( $m_countryOvr{$gmsName} ) {
+       @result = split(" ", $m_countryOvr{$gmsName});
+   }
    else {
        # standard
        @result = $gmsName;

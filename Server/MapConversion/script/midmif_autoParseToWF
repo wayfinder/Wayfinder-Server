@@ -113,15 +113,16 @@ mapRelease="";
 if [ "$MAP_RELEASE_ARG" ]; then
    
    # TA MN shape
-   if [ "$MAP_RELEASE_ARG" = "TA_2010_06" ]; then
+   prefix=`echo "$MAP_RELEASE_ARG" | cut -d"_" -f 1`
+   if [ "$prefix" = "TA" ] ; then
       mapRelease=$MAP_RELEASE_ARG;
       supplier="TeleAtlasMNshp";
-      
+
    # Open Street Map
-   elif [ "$MAP_RELEASE_ARG" = "OSM_201005" ]; then
+   elif [ "$prefix" = "OSM" ]; then
       mapRelease=$MAP_RELEASE_ARG;
       supplier="OSM";
-   
+
    else
        echo "Invalid map release $MAP_RELEASE_ARG. Exits!"
        exit 33
@@ -166,11 +167,12 @@ fi
 # defined for map data from suppliers which delivers more than one country
 # in one product/release
 ccSubName="";
-if [ "$CC_CODE" ]; then
-   ccSubName="${CC_CODE}";
+if [ "$TACC_CODE" != "" ]; then
+   subCcSubName="/${TACC_CODE}";
+elif [ "$CC_CODE" != "" ]; then
+   ccSubName="/${CC_CODE}";
 fi
-WFMIDMIFDIR="${RELEASEDIR}/wf_midmif/${ccSubName}"
-
+WFMIDMIFDIR="${RELEASEDIR}/wf_midmif${ccSubName}${subCcSubName}"
 
 if [ ! "$supplier" ]; then
    echo " no supplier defined - don't know what to do - exit"
@@ -505,7 +507,7 @@ if [ $startStep -le 4 -a $stopStep -ge 4 ]; then
       
       # network ssi + ferry
       echo `date +"%Y%m%d %T"`"   network";
-      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t network $NETWORKMID $NETWORKMIF $ELEMINAREA $MUNICIPALMID >& $LOGPATH/parse_network.log
+      $scriptDir/midmif_taMNshape2wayfinder.pl -v $mapRelease $countryCommand $coordSysOption -t network $NETWORKMID $NETWORKMIF $ELEMINAREA $MUNICIPALMID $POSTALCODES $RESTRICTIONS >& $LOGPATH/parse_network.log
       chk_res
 
 
@@ -602,12 +604,20 @@ if [ $startStep -le 4 -a $stopStep -ge 4 ]; then
       
    if [ $supplier = "TeleAtlasMNshp" ]; then
       echo "merge wf water files into one WFwaterItems_all.mid/mif"
+
+      cat WFwater_line.mif > WFwaterItems_all.mif
+
+      datalineno=`grep -n "Data" WFwater_poly.mif| cut -d":" -f 1`
+      datalineno=`expr $datalineno + 1`
+
+      echo "data line in water_poly is $datalineno"
+
+      tail -n +$datalineno WFwater_poly.mif >> WFwaterItems_all.mif
+
       cat WFwater_line.mid WFwater_poly.mid >& WFwaterItems_all.mid
-      cat WFwater_line.mif WFwater_poly.mif >& WFwaterItems_all.mif
-      
+ 
       echo "merge wf restrictions files and header file into one WFstreetSegmentItemsturntable.txt"
       cat WFturntableheader.txt WFrestrictionsTurntable.txt WFnetwork_restrictions.txt >& WFstreetSegmentItemsturntable.txt
-
 
    elif [ $supplier = "OSM" ]; then
       echo "merge wf water files into one WFwaterItems_all.mid/mif"
@@ -638,25 +648,23 @@ if [ $startStep -le 4 -a $stopStep -ge 4 ]; then
    if [ ! "$USESUBDIRS" ]; then
       for mifFile in `ls *.mif`; do
          nbrCoordSysTag=`grep -c -i coordSys $mifFile`;
-         echo " $mifFile:  $nbrCoordSysTag coordsys tag"
-         #coordSysTag=`grep -i coordSys $mifFile`;
-         #echo "    $coordSysTag"
+         if [ "$nbrCoordSysTag" -ne 1 ] ; then
+             echo "ERROR: $mifFile:  $nbrCoordSysTag coordsys tag."
+             echo "";
+             echo "fix the script or at least manually update the coordys tag of all mif headers that are incorrect!"
+             echo "";
+             exit 1
+         fi
       done
    fi
-   echo "";
-   echo "Manually update the coordys tag of all mif headers that are incorrect"
-   echo "";
 
-   
-   echo "Manually move the final WF municipal midmif item files to"
+   echo "Moving the final WF municipal midmif item files to"
    echo " ${WFMIDMIFDIR}/municipals";
+   mv -v WFmunicipalItems.mid WFmunicipalItems.mif ${WFMIDMIFDIR}/municipals
    echo "";
-   echo "Manually move the final WF midmif item files to"
+   echo "moving all other WF midmif item files to"
    echo " ${WFMIDMIFDIR}";
-   echo "";
-   
-   echo "Manually remove any crap from the end of WF mif files"
-   echo "";
+   mv  -v *.mid *.mif ${WFMIDMIFDIR}/
    
    echo `date +"%Y%m%d %T"`" Step 4 done";
    echo "";

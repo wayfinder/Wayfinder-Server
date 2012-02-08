@@ -1268,7 +1268,7 @@ sub db_connect {
 
    # Define the settings for connecting to the WASP database here
    my $dbname = "poi";     # sql database name
-   my $dbhost = "localhost"; # sql host
+   my $dbhost = "poihost"; # sql host
    my $dbuser = "poi";     # sql user
    my $dbpw = "UghTre6S";  # sql database password
 
