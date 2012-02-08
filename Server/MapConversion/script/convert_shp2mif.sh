@@ -7,7 +7,9 @@
 
 ORIG=""
 DEST="."
+PRESERVEPATH="no"
 PATH_DBF2CSV="$(dirname $(readlink -f ${BASH_SOURCE[0]}))/dbf2csv.pl"
+
 
 print_usage()
 {
@@ -55,21 +57,34 @@ echo "Converting data in $ORIG to files in $DEST"
 # Create the necessary mid/mif files for all shp files in $ORIG
 for p in "a0" "a1" "a8" "a9" "bu" "lc" "lu" "mn" "nw" "pi" "rr" "sm" "wa" "wl"
 do
-   i=`find $ORIG -maxdepth 1 -iname "*$p.shp"`
-   # Replace multiple __ with a single underscore for convenience
-   m="$DEST/`echo $i | sed -e "s/.*\///" |sed -e "s/\.shp$/.\mif/I" | sed -e "s/__*/_/"`"
-   echo "ogr2ogr -f 'MapInfo File' $m $i"
-   `ogr2ogr -f 'MapInfo File' $m $i`
-done              
+   files=`find $ORIG -maxdepth 2 -iname "*$p.shp"`
+   for i in $files ; do
+      # Replace multiple __ with a single underscore for convenience
+      if [ "$PRESERVEPATH" == "no" ] ; then
+         m="$DEST/`echo $i | sed -e "s/.*\///" |sed -e "s/\.shp$/.\mif/I" | sed -e "s/__*/_/"`"
+      else
+         m="$DEST/`echo $i |sed -e "s/\.shp$/.\mif/I" | sed -e "s/__*/_/"`"
+      fi
+      echo "ogr2ogr -f 'MapInfo File' $m $i"
+      `ogr2ogr -f 'MapInfo File' $m $i`
+   done
+done
 
 # Create csv files for some DBX files in $ORIG
-for i in "an.dbf" "mp.dbf" "pc.dbf" "piea.dbf" "ta.dbf"
+for i in "an.dbf" "mp.dbf" "pc.dbf" "piea.dbf" "ta.dbf" "lrs.dbf" "ltr.dbf" "lmn.dbf" "ltd.dbf" "lvc.dbf"
 do
-   f=`find $ORIG -maxdepth 1 -iname "*$i"`
-   perl $PATH_DBF2CSV $f
-   basePathFile=`echo $f | sed -e "s/\.dbf$//I"`
-   destFile=`echo $basePathFile| sed -e "s/.*\///" | sed -e "s/__*/_/"`
-   mv $basePathFile.csv $DEST/$destFile.txt
+   files=`find $ORIG -maxdepth 2 -iname "*$i"`
+   for f in $files ; do
+      echo "converting the following dbfs: $f"
+      perl $PATH_DBF2CSV $f
+      basePathFile=`echo $f | sed -e "s/\.dbf$//I"`
+      if [ "$PRESERVEPATH" == "no" ] ; then
+         destFile=`echo $basePathFile | sed -e "s/.*\///" | sed -e "s/__*/_/"`
+      else
+         destFile=`echo $basePathFile | sed -e "s/__*/_/"`
+      fi
+      mv $basePathFile.csv $DEST/$destFile.txt
+   done
 done
 
 # Run dos2unix on all files to ensure the line breaks are as expected
