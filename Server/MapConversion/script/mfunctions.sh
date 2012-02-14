@@ -9,7 +9,9 @@
 #BASEGENFILESPATH="fullpath/genfiles";
 #BASEGENFILESPATH="."
 #Set the BASEGENFILESPATH assuming this script is located in genfiles/script
-BASEGENFILESPATH=`echo $(dirname $(readlink -f ${BASH_SOURCE[0]})) | sed -e "s/\/script$//"`
+if [ -z "$BASEGENFILESPATH" ] ; then
+    BASEGENFILESPATH=`echo $(dirname $(readlink -f ${BASH_SOURCE[0]})) | sed -e "s/\/script$//"`
+fi
 
 # Change to something else if you don't want the temp log files here
 # The directory must exist
