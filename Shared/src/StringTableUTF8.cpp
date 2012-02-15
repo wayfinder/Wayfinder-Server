@@ -60244,7 +60244,7 @@ StringTableUTF8::strings[nbrStrings][44]=
     NULL, // SMSISH_CHI
     NULL, // SMSISH_ZHT
   },
-  { // 1308 MC2_info_provided_by_txt
+  { // 1309 SAN_MARINO
     "San Marino", // ENGLISH	2012-02-26 03:25:42
     "San Marino", // SWEDISH	2012-02-03 03:25:42
     "San Marino", // GERMAN	2012-02-03 03:25:42
