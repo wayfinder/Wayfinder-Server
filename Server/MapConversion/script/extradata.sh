@@ -6,7 +6,9 @@
 # Update it to point to the full path of where you create the BASEGENFILESPATH
 #BASEGENFILESPATH="fullpath/genfiles";
 #BASEGENFILESPATH="."
-BASEGENFILESPATH=`echo $(dirname $(readlink -f ${BASH_SOURCE[0]})) | sed -e "s/\/script$//"`
+if [ -z "$BASEGENFILESPATH" ] ; then
+    BASEGENFILESPATH=`echo $(dirname $(readlink -f ${BASH_SOURCE[0]})) | sed -e "s/\/script$//"`
+fi
 
 
 # Change to something else if you don't want the temp log files here
