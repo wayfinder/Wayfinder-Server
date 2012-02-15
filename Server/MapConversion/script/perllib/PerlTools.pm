@@ -573,29 +573,24 @@ sub testFile($){
    }
 }
 
-sub testDir($){
+sub testDir($) {
+
    if ( ! defined($_[0] ) ){
       errprint("Directory not defined.");
       return undef;
    }
-   if ( -s $_[0]){
-      if ( -d $_[0] ){
-         return 1;
-      }
-      else {
-         errprint("Directory is a file: $_[0]");
-         return undef;
-      }
-   }
-   else {
-      if ( -e $_[0] ){
-         errprint("Directory: $_[0] is a zero size file.");
-         return undef;
-      }
-      else {
-         errprint("Directory: $_[0] does not exist.");
-         return undef;
-      }
+
+   if ( -d $_[0] ) {
+       return 1;
+   } elsif ( -s $_[0] ) {
+       errprint("Directory $_[0] is a regular file.");
+       return undef;
+   } elsif ( -e $_[0] ) {
+       errprint("Directory: $_[0] is a zero size file.");
+       return undef;
+   } else {
+       errprint("Directory: $_[0] does not exist.");
+       return undef;
    }
 }
 
