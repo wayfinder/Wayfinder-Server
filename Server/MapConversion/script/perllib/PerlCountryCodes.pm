@@ -216,6 +216,7 @@ $countryCode{"si"}{"country"} 	= "slovenia";
 $countryCode{"sj"}{"country"} 	= "svalbard_and_jan_mayen";
 $countryCode{"sk"}{"country"} 	= "slovakia";
 $countryCode{"sl"}{"country"} 	= "sierra_leone";
+$countryCode{"sm"}{"country"} 	= "san_marino";
 $countryCode{"sn"}{"country"} 	= "senegal";
 $countryCode{"so"}{"country"} 	= "somalia";
 $countryCode{"sr"}{"country"} 	= "suriname";
@@ -265,7 +266,7 @@ $countryCode{"ca"}{"country"} 	= "canada";
 my %notHandled = ();
 $notHandled{"gi"} = 1; # gibraltar  (in spain)
 $notHandled{"va"} = 1; # vatican    (in italy)
-$notHandled{"sm"} = 1; # san_marino (in italy)
+#$notHandled{"sm"} = 1; # san_marino (in italy)
 $notHandled{"ax"} = 1; # aland_islands (in finland)
 $notHandled{"pr"} = 1; # puerto_rico (in usa)
 $notHandled{"nf"} = 1; # norfolk islands (in antarctica)
@@ -651,6 +652,7 @@ push @countryOrder, "mayotte";
 push @countryOrder, "south_africa";
 push @countryOrder, "zambia";
 push @countryOrder, "zimbabwe";
+push @countryOrder, "san_marino";
 
 sub getCountryOrder {
     my %countriesToSort;

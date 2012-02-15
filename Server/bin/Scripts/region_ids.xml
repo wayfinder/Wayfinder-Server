@@ -1080,6 +1080,12 @@
       <region ident = "samoa" id = "236" mcc="549" iso_name="WSM">
          <region_group_id id="2097181"/>
       </region>
+      <region ident = "san_marino" id = "313" mcc="781" iso_name="SMR">
+         <region_group_id id="2097152"/>
+         <region_group_id id="2097153"/>
+         <region_group_id id="2097160"/>
+         <region_group_id id="2097181"/>
+      </region>
       <region ident = "sao_tome_and_principe" id = "237" mcc="626" iso_name="STP">
          <region_group_id id="2097181"/>
       </region>

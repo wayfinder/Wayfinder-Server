@@ -717,6 +717,9 @@ public :
          /// ZIMBABWE,
          ZIMBABWE_CC = 226,
 
+         /// ZIMBABWE,
+         SAN_MARINO_CC = 227,
+
          /// Number of country codes
          NBR_COUNTRY_CODES
             

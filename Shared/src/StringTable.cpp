@@ -1336,6 +1336,9 @@ StringTable::getCountryStringCode(StringTable::countryCode cc)
       case ZIMBABWE_CC :
          retCode = StringTable::ZIMBABWE;
          break;
+      case SAN_MARINO_CC :
+         retCode = StringTable::SAN_MARINO;
+         break;
 
       default:
          break;
@@ -1624,6 +1627,7 @@ const char* StringTable::countryCodes[][2] = {
    {"967", "Yemen"},
    {"260", "Zambia"},
    {"263", "Zimbabwe"},
+   {"378", "San Marino"},
    
    {"XX", "EndOfCountryEnum"},
 
@@ -1631,7 +1635,6 @@ const char* StringTable::countryCodes[][2] = {
    {"350", "Gibraltar"},
    {"6723", "Norfolk Island"},
    {"1787", "Puerto Rico"},
-   {"378", "San Marino"},
 
 
    { NULL, NULL}

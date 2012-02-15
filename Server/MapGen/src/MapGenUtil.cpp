@@ -1313,6 +1313,8 @@ MapGenUtil::getCountryCodeFromGmsName( const MC2String& gmsName ){
       countryCode = StringTable::SAINT_VINCENT_AND_THE_GRENADINES_CC;
    } else if (strcasecmp(gmsName.c_str(), "samoa") == 0) {
       countryCode = StringTable::SAMOA_CC;
+   } else if (strcasecmp(gmsName.c_str(), "san_marino") == 0) {
+      countryCode = StringTable::SAN_MARINO_CC;
    } else if (strcasecmp(gmsName.c_str(), "sao_tome_and_principe") == 0) {
       countryCode = StringTable::SAO_TOME_AND_PRINCIPE_CC;
    } else if (strcasecmp(gmsName.c_str(), "saudi_arabia") == 0) {

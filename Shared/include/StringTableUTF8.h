@@ -1434,6 +1434,7 @@ public :
       MC2_poi_thumbnail_txt = 1306,
       MC2_view_on_xxx_txt = 1307,
       MC2_info_provided_by_txt = 1308,
+      SAN_MARINO = 1309,
 
       /**
        * The total number of strings in this enumeration.
