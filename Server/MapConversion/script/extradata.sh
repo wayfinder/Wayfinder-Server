@@ -5491,6 +5491,27 @@ function extradata()
 #      fi
 
 
+# San Marino extradata
+   elif [ ${COUNTRY} = san_marino ]; then
+       ok=""; #Empty statment replacer
+#      if [ ${INSERTION} = after_extitm ]; then #zimbabwe
+#      fi
+#      if [ ${INSERTION} = after_intconn ]; then #zimbabwe
+#      fi
+#      if [ ${INSERTION} = after_trngen ]; then #zimbabwe
+#      fi
+#      if [ ${INSERTION} = after_setloc ]; then #zimbabwe
+#      fi
+#      if [ ${INSERTION} = before_merge ]; then #zimbabwe
+#      fi
+#      if [ ${INSERTION} = after_extconn ]; then #zimbabwe
+#      fi
+#      if [ ${INSERTION} = after_ovrmaps ]; then #zimbabwe
+#      fi
+#      if [ ${INSERTION} = after_addreg ]; then #zimbabwe
+#      fi
+
+
 # Zimbabwe extradata
    elif [ ${COUNTRY} = san_marino ]; then
        ok=""; #Empty statment replacer
