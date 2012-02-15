@@ -60290,51 +60290,5 @@ StringTableUTF8::strings[nbrStrings][44]=
     NULL, // SMSISH_CHI
     NULL, // SMSISH_ZHT
   },
-  { // 1308 MC2_info_provided_by_txt
-    "San Marino", // ENGLISH	2012-02-26 03:25:42
-    "San Marino", // SWEDISH	2012-02-03 03:25:42
-    "San Marino", // GERMAN	2012-02-03 03:25:42
-    "San Marino", // DANISH	2012-02-03 03:25:42
-    "San Marino", // FINNISH	2012-02-03 03:25:42
-    "San Marino", // NORWEGIAN	2012-02-03 03:25:42
-    "San Marino", // FRENCH	2012-02-03 03:25:42
-    "San Marino", // SPANISH	2012-02-03 03:25:42
-    "San Marino", // ITALIAN	2012-02-03 03:25:42
-    "San Marino", // DUTCH	2012-02-03 03:25:42
-    "San Marino", // PORTUGUESE	2012-02-03 03:25:42
-    "San Marino", // AMERICAN_ENGLISH	2012-02-03 03:25:42
-    "San Marino", // HUNGARIAN	2012-02-03 03:25:42
-    "San Marino", // CZECH	2012-02-03 03:25:42
-    "San Marino", // GREEK	2012-02-03 03:25:42
-    "San Marino", // POLISH	2012-02-03 03:25:42
-    "San Marino", // SLOVAK	2012-02-03 03:25:42
-    "San Marino", // RUSSIAN	2012-02-03 03:25:42
-    "San Marino", // SLOVENIAN	2012-02-03 03:25:42
-    "San Marino", // TURKISH	2012-02-03 03:25:42
-    "San Marino", // CHINESE	2012-02-03 03:25:42
-    "San Marino", // CHINESE_TRADITIONAL	2012-02-03 03:25:42
-    "San Marino", // SMSISH_ENG	2012-02-03 03:25:42
-    "San Marino", // SMSISH_SWE	2012-02-03 03:25:42
-    "San Marino", // SMSISH_GER	2012-02-03 03:25:42
-    "San Marino", // SMSISH_DAN	2012-02-03 03:25:42
-    "San Marino", // SMSISH_FIN	2012-02-03 03:25:42
-    "San Marino", // SMSISH_NOR	2012-02-03 03:25:42
-    "San Marino", // SMSISH_FRA	2012-02-03 03:25:42
-    "San Marino", // SMSISH_SPA	2012-02-03 03:25:42
-    "San Marino", // SMSISH_ITA	2012-02-03 03:25:42
-    "San Marino", // SMSISH_DUT	2012-02-03 03:25:42
-    "San Marino", // SMSISH_POR	2012-02-03 03:25:42
-    "San Marino", // SMSISH_AME	2012-02-03 03:25:42
-    "San Marino", // SMSISH_HUN	2012-02-03 03:25:42
-    "San Marino", // SMSISH_CZE	2012-02-03 03:25:42
-    "San Marino", // SMSISH_GRE	2012-02-03 03:25:42
-    "San Marino", // SMSISH_POL	2012-02-03 03:25:42
-    "San Marino", // SMSISH_SVK	2012-02-03 03:25:42
-    "San Marino", // SMSISH_RUS	2012-02-03 03:25:42
-    "San Marino", // SMSISH_SLV	2012-02-03 03:25:42
-    "San Marino", // SMSISH_TUR	2012-02-03 03:25:42
-    NULL, // SMSISH_CHI
-    NULL, // SMSISH_ZHT
-  },
 };
 
