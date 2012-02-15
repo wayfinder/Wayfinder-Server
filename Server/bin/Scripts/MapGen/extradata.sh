@@ -5086,7 +5086,7 @@ function extradata()
 
 
 # UK extradata
-   elif [ ${COUNTRY} = uk ]; then
+   elif [ ${COUNTRY} = uk -o ${COUNTRY} = england ]; then
        ok=""; #Empty statment replacer
 #      if [ ${INSERTION} = after_extitm ]; then #uk
 #

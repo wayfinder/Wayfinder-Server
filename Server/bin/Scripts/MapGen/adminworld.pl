@@ -251,10 +251,7 @@ sub multiCountry {
 
        # Handle the dirName
        my $dirName = $gmsName;
-       if ($dirName eq "england"){
-           $dirName = "uk";
-       }
-       elsif ($dirName eq "united_arab_emirates"){
+       if ($dirName eq "united_arab_emirates"){
            $dirName = "uae";
        }
        print "processing dirName $dirName\n";
