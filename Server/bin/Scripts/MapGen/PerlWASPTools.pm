@@ -403,8 +403,7 @@ sub countryWaspNameToDirName {
 # The names that aren't right only after usual lower case underscore 
 # substitution.
    my %specDirNameByWaspName 
-       = ( 'England'                  => 'uk',
-           'United Arab Emirates'     => 'uae',
+       = ( 'United Arab Emirates'     => 'uae',
            'Bosnia and Herzegovina'   => 'bosnia',
            'D.R. Congo'               => 'dr_congo',
            'Georgia'                  => 'georgia_country',

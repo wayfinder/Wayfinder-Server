@@ -264,10 +264,7 @@ sub multiCountry {
 
        # Handle the dirName
        my $dirName = $gmsName;
-       if ($dirName eq "england"){
-           $dirName = "uk";
-       }
-       elsif ($dirName eq "united_arab_emirates"){
+       if ($dirName eq "united_arab_emirates"){
            $dirName = "uae";
        }
  
@@ -350,9 +347,6 @@ sub multiCountry {
           
           # Get country names from Dodona. dodonaName = the dodonaStringKey
           my $dodonaName = uc($gmsName);
-          if ($dodonaName eq 'ENGLAND'){
-             $dodonaName = 'UNITED_KINGDOM';
-          }
           
            # Handle special map names.
            my $regionIdent = $gmsName;
@@ -506,10 +500,7 @@ sub getOvrMapIdent {
    my $gmsName = $_[0];
    my @result;
 
-   if ( $gmsName eq "england" ){
-       @result = ("great_britain");
-   }
-   elsif ( $gmsName eq "united_arab_emirates" ){
+   if ( $gmsName eq "united_arab_emirates" ){
        @result = ("uae");
    }
 
