@@ -28,7 +28,9 @@ use vars qw( $opt_h $opt_v
 # Use perl modules from here or BASEGENFILESPATH/script/perllib
 # Todo: get BASEGENFILESPATH into the use-lib-string possible?
 # use lib "fullpath/genfiles/script/perllib";
-use lib ".";
+# Set lib assuming the script is located in genfiles/script
+use FindBin '$Bin';
+use lib "$Bin/perllib";
 use PerlTools;
 
 
@@ -105,7 +107,6 @@ EOM
 # (already included inside other countries)
 push @alreadyIncluded, "GI";  # gibraltar in spain
 push @alreadyIncluded, "VA";  # vatican in italy
-push @alreadyIncluded, "SM";  # san marino in italy
 push @alreadyIncluded, "AX";  # åland islands in finland
 push @alreadyIncluded, "PR";  # puerto rico in USA
 push @alreadyIncluded, "X1";  # Channel islands in uk
