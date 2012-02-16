@@ -105,8 +105,11 @@ if [ ${runDynamicWasp} ]; then
    echo ""
    echo `date +"%Y%m%d %T"`" Apply dynamic WASPing, underviews."
    echo `date +"%Y%m%d %T"`" Using WASP date from maps."
-    ./WASPExtractor -t  \
-                    00*.mcm >& $LOGPATH/dyn_we_addwasp.log
+
+    for i in 00*.mcm ; do
+	./WASPExtractor -t $i >& $LOGPATH/dyn_we_addwasp.log || ./WASPExtractor -t $i >& $LOGPATH/dyn_we_addwasp.2ndtry.log || exit 1
+    done
+
     chk_res
     dos2unix modifiedPOIs.txt
     chgrp maps modifiedPOIs.txt
