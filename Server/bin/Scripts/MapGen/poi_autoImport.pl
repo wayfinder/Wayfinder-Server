@@ -30,8 +30,8 @@ print "\n\n";
 # Update it to point to the full path of where you create the BASEGENFILESPATH
 #my $BASEGENFILESPATH="fullpath/genfiles";
 use lib "/home/is/devel/Maps/genfilesPSTC/script/perllib"; # LLLPSTC
-#my $BASEGENFILESPATH=".";
-my $BASEGENFILESPATH="/home/is/devel/Maps/genfilesPSTC"; # LLLPSTC
+my $BASEGENFILESPATH=".";
+#my $BASEGENFILESPATH="/home/is/devel/Maps/genfilesPSTC"; # LLLPSTC
 my $genfilesScriptPath = "$BASEGENFILESPATH/script";
 my $poiCategoryXMLFile = "$BASEGENFILESPATH/xml/poi_category_tree.xml";
 
