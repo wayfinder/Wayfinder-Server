@@ -2057,27 +2057,6 @@ sub handleNetworkFile {
             $WFnumberLanes = $midNbrLanes;
          }
 
-         # Road width
-         my $WFwidth = "";
-	 if ($restrictions{$midOrigId}{"!O"} && $restrictions{$midOrigId}{"!O"} < 250) {
-	     $WFwidth = $restrictions{$midOrigId}{"!O"} / 10;
-	     print "setting WFwidth for $midOrigId to $WFwidth.\n";
-	 }
-
-         # Max height
-         my $WFheight = "";
-	 if ($restrictions{$midOrigId}{"!P"} && $restrictions{$midOrigId}{"!P"} < 400) {
-	     $WFheight = $restrictions{$midOrigId}{"!P"} / 10;
-	     print "setting WFheight for $midOrigId to $WFheight.\n";
-	 }
-         # Max weight
-         my $WFweight = "";
-	 if ($restrictions{$midOrigId}{"!A"} &&
-             ($restrictions{$midOrigId}{"!A"} < 37) && !($restrictions{$midOrigId}{"SP"})) {
-	     $WFweight = $restrictions{$midOrigId}{"!A"}/10;
-	     print "setting WFweight for $midOrigId to $WFweight.\n";
-	 }
-         
          # House numbers from house_numbers file
          my $WFleftStart = 0;
          my $WFleftEnd = 0;
