@@ -664,7 +664,7 @@ if [ $startStep -le 4 -a $stopStep -ge 4 ]; then
    echo "";
    echo "moving all other WF midmif item files to"
    echo " ${WFMIDMIFDIR}";
-   mv  -v *.mid *.mif ${WFMIDMIFDIR}/
+   mv  -v *.mid *.mif *turntable.txt ${WFMIDMIFDIR}/
    
    echo `date +"%Y%m%d %T"`" Step 4 done";
    echo "";
